@@ -1,0 +1,69 @@
+\documentclass[12pt,leqno]{book}
+
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{subfiles}
+\usepackage{hyperref}
+\hypersetup{
+	pdfstartview=,
+	pdfencoding=auto,
+}
+\usepackage[style=musuos,sorting=nyt,labeldateparts=true]{biblatex}
+\addbibresource[]{ref.bib}
+
+\usepackage{xifthen,fancyhdr}
+\usepackage{iftex}
+\ifpdftex
+	\usepackage[T1]{fontenc}
+	%\usepackage[]{OldStandard}
+	%\usepackage{mlmodern}
+	%\usepackage{baskervillef}
+	%\usepackage[baskervillef]{newtxmath}
+	\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,]{microtype}
+	\microtypecontext{spacing=nonfrench}
+	\usepackage{pdfrender, xcolor}
+	\pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.4pt}
+	\makeatletter\let\normalrender\PdfRender@NormalColorHook\let\PdfRender@NormalColorHook\@empty\newcommand*{\textnormalrender}[1]{\begingroup\normalrender#1\endgroup}\makeatother
+\fi
+
+\usepackage[intoc]{nomencl}
+\renewcommand{\nomname}{Notations}
+\makenomenclature
+
+\usepackage[toc,nopostdot, nonumberlist,style=long,automake,acronym]{glossaries}
+\subfile{glossary.tex}
+\makeglossaries
+\usepackage{makeidx}
+\makeindex
+
+\setlength{\textwidth}{360pt}
+%\setlength{\oddsidemargin}{.1in}
+%\setlength{\evensidemargin}{.1in}
+%\setlength{\topmargin}{-.1in}
+\setlength{\textheight}{615pt}
+
+\newtheorem{theorem}{\textsc{Theorem}}
+\theoremstyle{definition}
+\newenvironment{definition}[1][]{\par\medskip\noindent \textbf{\ifthenelse{\isempty{#1}}{Definition.}{#1.}} \rmfamily}{\medskip}
+\newtheorem*{remark}{Remark}
+
+\title{Elementary Analytic Number Theory}
+\author{Masum Billal}
+
+
+
+\begin{document}
+    \frontmatter
+    \maketitle
+    \tableofcontents
+    \mainmatter
+    \begin{refsection}
+        \subfile{intro.tex}
+        \printbibliography
+    \end{refsection}
+    \backmatter
+    \subfile{nomencl.tex}
+    \printnomenclature
+    \printglossary[type=\acronymtype,title={List of Acronyms}]
+    \printglossary[title=Glossary]
+    \printindex
+\end{document}
