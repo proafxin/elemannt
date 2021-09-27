@@ -36,9 +36,6 @@
 \makeindex
 
 \setlength{\textwidth}{360pt}
-%\setlength{\oddsidemargin}{.1in}
-%\setlength{\evensidemargin}{.1in}
-%\setlength{\topmargin}{-.1in}
 \setlength{\textheight}{615pt}
 
 \newtheorem{theorem}{\textsc{Theorem}}
@@ -55,15 +52,14 @@
     \frontmatter
     \maketitle
     \tableofcontents
+    \subfile{nomencl.tex}
+    \printnomenclature
     \mainmatter
     \begin{refsection}
         \subfile{intro.tex}
-        \nomenclature{$\varphi(n)$}{Euler's totient function}
         \printbibliography
     \end{refsection}
     \backmatter
-    
-    \printnomenclature
     \printglossary[type=\acronymtype,title={List of Acronyms}]
     \printglossary[title=Glossary]
     \printindex
