@@ -14,8 +14,7 @@
 \usepackage{iftex}
 \ifpdftex
 	\usepackage[T1]{fontenc}
-	%\usepackage[]{OldStandard}
-	%\usepackage{mlmodern}
+	\usepackage[]{OldStandard}
 	%\usepackage{baskervillef}
 	%\usepackage[baskervillef]{newtxmath}
 	\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,]{microtype}
@@ -57,6 +56,11 @@
     \mainmatter
     \begin{refsection}
         \subfile{intro.tex}
+        \printbibliography
+    \end{refsection}
+
+    \begin{refsection}
+        \subfile{dirichlet.tex}
         \printbibliography
     \end{refsection}
     \backmatter
