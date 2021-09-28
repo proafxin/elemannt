@@ -1,11 +1,17 @@
 \documentclass[]{subfile}
 
 \begin{document}
-    \chapter{Dirichlet Convolution and Generalization}
-    We can write the number of divisor function as the following.
+    \section{Dirichlet Convolution and Generalization}
+        \begin{definition}
+            For two arithmetic functions $f$ and $g$, the \textit{Dirichlet product} or \textit{Dirichlet convolution} of $f$ and $g$ is defined as
+                \begin{align*}
+                    f\ast g
+                        & = \sum_{d\mid n}f(d)g\left(\dfrac{n}{d}\right)
+                \end{align*}
+        \end{definition}
+    We will discuss here how this came to be. Consider the zeta function.
         \begin{align*}
-            \tau(n)
-                & = \sum_{d\mid n}1
+            \zeta(s)
+                & = \dfrac{1}{1^{s}}+\dfrac{1}{2^{s}}+\ldots\\
         \end{align*}
-    See \textcite{apostol_1976}
 \end{document}

@@ -3,10 +3,7 @@
 \usepackage{amsmath,amsfonts,amssymb,amsthm}
 \usepackage{subfiles}
 \usepackage{hyperref}
-\hypersetup{
-	pdfstartview=,
-	pdfencoding=auto,
-}
+\hypersetup{pdfstartview=,pdfencoding=auto,}
 \usepackage[style=musuos,sorting=nyt,labeldateparts=true]{biblatex}
 \addbibresource[]{ref.bib}
 
@@ -42,13 +39,16 @@
 \newenvironment{definition}[1][]{\par\medskip\noindent \textbf{\ifthenelse{\isempty{#1}}{Definition.}{#1.}} \rmfamily}{\medskip}
 \newtheorem*{remark}{Remark}
 
+\newcommand{\lcm}{\mbox{lcm}}
+
+\usepackage{pdfpages}
+
 \title{Elementary Analytic Number Theory}
 \author{Masum Billal}
 
-
-
 \begin{document}
     \frontmatter
+    \includepdf[pages={-1}]{cover.pdf}
     \maketitle
     \tableofcontents
     \subfile{nomencl.tex}
@@ -59,9 +59,10 @@
         \printbibliography
     \end{refsection}
 
-    \begin{refsection}
+	\begin{refsection}
+		\subfile{arith.tex}
         \subfile{dirichlet.tex}
-        \printbibliography
+        % \printbibliography
     \end{refsection}
     \backmatter
     \printglossary[type=\acronymtype,title={List of Acronyms}]
