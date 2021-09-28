@@ -1,0 +1,49 @@
+\documentclass[
+%coverwidth=150mm,
+%coverheight=220mm,
+spinewidth=25mm,
+bleedwidth=20mm,
+markcolor=black,
+foldingmargin,
+12pt,
+%
+trimmed % Show only trimmed part!
+]{bookcover}
+
+\letnamebookcoverpart{front with margin}{front}[5mm,5mm,5mm,5mm]
+\letnamebookcoverpart{front upper third}{front with margin}[,2\partheight/3,,]
+\letnamebookcoverpart{front lower third}{front with margin}[,,,2\partheight/3]
+\letnamebookcoverpart{back with margin}{back}[5mm,5mm,5mm,5mm]
+\letnamebookcoverpart{back text area}{back}[27mm,,22mm,27mm]
+\letnamebookcoverpart{bg spine bottom}{bg spine}[,,,\partheight-\bleedwidth-\spinewidth]
+\newbookcovercomponenttype{center rotate}{
+\vfill\centering\rotatebox[origin=c]{-90}{#1}\vfill}
+\usepackage[english]{babel}
+\usepackage{kantlipsum,microtype}
+\usepackage{transparent}
+
+\begin{document}
+    \begin{bookcover}
+        \bookcovercomponent{color}{bg whole}{orange}
+        \bookcovercomponent{color}{front upper third}{red!60!black}
+        \bookcovercomponent{color}{front lower third}{red!60!black}
+        \bookcovercomponent{color}{back with margin}{red!60!black}
+        \bookcovercomponent{tikz}{front with margin}{
+        \draw[opacity=0.4,red,line width=10mm] (\partwidth-15mm,0) -- +(0,\partheight);}
+        \bookcovercomponent{tikz}{back with margin}{
+        \draw[opacity=0.4,red,line width=10mm] (15mm,0) -- +(0,\partheight);}
+        \bookcovercomponent{tikz}{whole}[5mm,,5mm,]{
+        \draw[opacity=0.4,red,line width=10mm] (0,\partheight-20mm) -- +(\partwidth,0);}
+        \bookcovercomponent{color}{bg spine bottom}{black}
+        \bookcovercomponent{center}{front upper third}{
+        \resizebox*{\partwidth-5mm}{\partheight-5mm}{%
+        \color{black}\transparent{0.1}Elementary Analytic Number Theory}}
+        \bookcovercomponent{center}{front lower third}{
+        \resizebox*{\partwidth-5mm}{\partheight-5mm}{%
+        \color{white}\transparent{0.1}Masum Billal}}
+        \bookcovercomponent{center}{front}{
+        \resizebox{90mm}{!}{\color{black}\bfseries \MakeUppercase{Elementary Analytic Number Theory}}}
+        \bookcovercomponent{normal}{back text area}{\color{black}{\MakeUppercase{Elementary Analytic Number Theory}}}
+        \bookcovercomponent{center rotate}{spine}{\resizebox{50mm}{!}{\color{black}Masum Billal}}
+    \end{bookcover}
+\end{document}
