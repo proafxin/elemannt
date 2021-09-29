@@ -1,6 +1,7 @@
 \documentclass[12pt,leqno]{book}
 
-\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
 \usepackage{subfiles}
 \usepackage{hyperref}
 \hypersetup{pdfstartview=,pdfencoding=auto,}
@@ -8,31 +9,24 @@
 \addbibresource[]{ref.bib}
 
 \usepackage{xifthen,fancyhdr,centernot}
-\usepackage{iftex}
-\ifpdftex
-	\usepackage[T1]{fontenc}
-	%\usepackage[]{OldStandard}
-	%\usepackage{baskervillef}
-	%\usepackage[baskervillef]{newtxmath}
-	\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,]{microtype}
-	\microtypecontext{spacing=nonfrench}
-	\usepackage{pdfrender, xcolor}
-	\pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.4pt}
-	\makeatletter\let\normalrender\PdfRender@NormalColorHook\let\PdfRender@NormalColorHook\@empty\newcommand*{\textnormalrender}[1]{\begingroup\normalrender#1\endgroup}\makeatother
+
+\ifxetex
+	\usepackage[no-math]{fontspec}
+	\usepackage{unicode-math}
 \fi
 
 \usepackage[intoc]{nomencl}
 \renewcommand{\nomname}{Notations}
 \makenomenclature
 
-\usepackage[toc,nopostdot, nonumberlist,style=long,automake,acronym]{glossaries}
+\usepackage[toc,nopostdot,nonumberlist,style=long,automake,acronym]{glossaries}
 \subfile{glossary.tex}
 \makeglossaries
 \usepackage{makeidx}
 \makeindex
 
-\setlength{\textwidth}{360pt}
-\setlength{\textheight}{615pt}
+%\setlength{\textwidth}{360pt}
+%\setlength{\textheight}{615pt}
 
 \newtheorem{theorem}{\textsc{Theorem}}
 \theoremstyle{definition}
@@ -42,6 +36,45 @@
 \newcommand{\lcm}{\mbox{lcm}}
 
 \usepackage{pdfpages}
+
+\usepackage{iftex}
+\ifpdftex
+	\usepackage[T1]{fontenc}
+	%\usepackage[]{OldStandard}
+	%\usepackage{baskervillef}
+	%\usepackage[baskervillef]{newtxmath}
+	\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,]{microtype}
+	\microtypecontext{spacing=nonfrench}
+	%\usepackage{pdfrender, xcolor}
+	%\pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.4pt}
+	%\makeatletter\let\normalrender\PdfRender@NormalColorHook\let\PdfRender@NormalColorHook\@empty\newcommand*{\textnormalrender}[1]{\begingroup\normalrender#1\endgroup}\makeatother
+\else
+	\setmainfont{Old Standard}[
+	FakeBold=2,
+	%SmallCapsFont=PlayfairDisplaySC-Black.otf,
+	%BoldFont=ModernMTStd-Bold.otf,
+	%ItalicFont=ModernMT-ExtendedItalic.otf,
+	%BoldItalicFont=ModernMT-ExtendedItalic.otf,
+	]
+	\setmathfont{NewCMMath-Book.otf}[FakeBold=2]
+	\newfontfamily{\bask}{GFS Baskerville}
+	
+	\makeatletter
+	\RenewDocumentCommand{\sum@}{}{\DOTSB\baskervillesum}
+	\AtBeginDocument{%
+		\RenewDocumentCommand{\sum}{}{\mathop{\sum@}\slimits@}%
+	}
+	\NewDocumentCommand{\baskervillesum}{}{%
+		\mathchoice
+		{\makebaskervillesum{2}}% displaystyle
+		{\makebaskervillesum{1.5}}% textstyle
+		{\makebaskervillesum{1}}% scriptstyle
+		{\makebaskervillesum{0.7}}% scriptscriptstyle
+	}
+	\NewDocumentCommand{\makebaskervillesum}{m}{%
+		\vcenter{\hbox{\scalebox{#1}{\bask Σ}}}%
+	}
+\fi
 
 \title{Elementary and Introductory Analytic Number Theory}
 \author{Masum Billal}
