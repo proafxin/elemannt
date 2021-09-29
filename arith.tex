@@ -2,8 +2,38 @@
 
 \begin{document}
 	\chapter{Arithmetic Functions}
-		\begin{definition}[Arithmetic function]
-			A real or complex valued function $f:\mathbb{N}\to\mathbb{C}$ is an \textit{arithmetic function}.
+	In this chapter, we will discuss some generalized arithmetic functions and their asymptotic behavior. We will skip discussing the basic definitions since they are common in most introductory number theory texts.
+		\begin{definition}[Summatory function]
+			For an arithmetic function $f$, the \textit{summatory function} of $f$ is defined as
+				\begin{align*}
+					F(n)
+						& = \sum_{d\mid n}f(d)
+				\end{align*}
 		\end{definition}
-	In this book, we will be concerned with $f:\mathbb{N}\to\mathbb{N}$ primarily.
+	Note that the number of divisor function $\tau(n)$ is the summatory function of the unit function $u(n)=1$. The sum of divisor function $\sigma(n)$ is the summatory function of the invariant function $f(n)=n$. An interesting property that we will repeatedly use is that
+		\begin{align*}
+			\sum_{i=1}^{n}F(i)
+				& = \sum_{i=1}^{n}\sum_{d\mid i}f(d)\\
+				& = \sum_{i=1}^{n}\left\lfloor{\dfrac{n}{i}}\right\rfloor f(i)
+		\end{align*}
+	Here, the last equation is true because there are $\lfloor{n/i}\rfloor$ multiples of $i$ not exceeding $n$. We can 
+		\begin{definition}[Generalized sum of divisor]
+			The \index{Generalized sum of divisor}\textit{generalized sum of divisor} function can be defined as
+				\begin{align*}
+					\sigma_{k}(n)
+					& = \sum_{d\mid n}d^{k}
+			\end{align*}
+		\end{definition}
+	We can write $\tau(n)=\sum_{ab=n}1$.
+		\begin{definition}[Generalized number of divisor]
+			The \index{Generalized number of divisor}\textit{generalized number of divisor} function is defined as
+				\begin{align*}
+					\tau_{k}(n)
+						& = 
+				\end{align*}
+		\end{definition}
+	We will focus on the following function for now.
+		\begin{align*}
+			\sum_{n\leq x}\tau_{k}(n)
+		\end{align*}
 \end{document}

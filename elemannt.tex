@@ -7,11 +7,11 @@
 \usepackage[style=musuos,sorting=nyt,labeldateparts=true]{biblatex}
 \addbibresource[]{ref.bib}
 
-\usepackage{xifthen,fancyhdr}
+\usepackage{xifthen,fancyhdr,centernot}
 \usepackage{iftex}
 \ifpdftex
 	\usepackage[T1]{fontenc}
-	\usepackage[]{OldStandard}
+	%\usepackage[]{OldStandard}
 	%\usepackage{baskervillef}
 	%\usepackage[baskervillef]{newtxmath}
 	\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,]{microtype}
@@ -43,7 +43,7 @@
 
 \usepackage{pdfpages}
 
-\title{Elementary Analytic Number Theory}
+\title{Elementary and Introductory Analytic Number Theory}
 \author{Masum Billal}
 
 \begin{document}
@@ -55,8 +55,8 @@
     \printnomenclature
     \mainmatter
     \begin{refsection}
-        \subfile{intro.tex}
-        \printbibliography
+        %\subfile{intro.tex}
+        %\printbibliography
     \end{refsection}
 
 	\begin{refsection}
@@ -64,6 +64,10 @@
         \subfile{dirichlet.tex}
         % \printbibliography
     \end{refsection}
+
+	\begin{refsection}
+		\subfile{sieve.tex}
+	\end{refsection}
     \backmatter
     \printglossary[type=\acronymtype,title={List of Acronyms}]
     \printglossary[title=Glossary]
