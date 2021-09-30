@@ -2,6 +2,7 @@
 
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{graphicx}
+\usepackage{mathtools}
 \usepackage{subfiles}
 \usepackage{hyperref}
 \hypersetup{pdfstartview=,pdfencoding=auto,}
@@ -46,17 +47,12 @@
 	%\usepackage[baskervillef]{newtxmath}
 	\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,]{microtype}
 	\microtypecontext{spacing=nonfrench}
-	%\usepackage{pdfrender, xcolor}
-	%\pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.4pt}
+	\usepackage{pdfrender, xcolor}
+	\pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.4pt}
 	\makeatletter\let\normalrender\PdfRender@NormalColorHook\let\PdfRender@NormalColorHook\@empty\newcommand*{\textnormalrender}[1]{\begingroup\normalrender#1\endgroup}\makeatother
 \else
-	\setmainfont{ModernMTStd-Extended.otf}[
-	FakeBold=3,
-	SmallCapsFont=PlayfairDisplaySC-black.otf,
-	BoldFont=ModernMTStd-Bold.otf,
-	ItalicFont=ModernMT-ExtendedItalic.otf,
-	BoldItalicFont=ModernMT-ExtendedItalic.otf,	]
-	\setmathfont{NewCMMath-Book.otf}[FakeBold=3]
+	\setmainfont[FakeBold=2]{Old Standard}
+	\setmathfont[FakeBold=2]{NewCMMath-Book.otf}
 	\newfontfamily{\bask}{GFS Baskerville}
 	
 	\makeatletter
