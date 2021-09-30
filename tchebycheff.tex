@@ -1,0 +1,22 @@
+\documentclass[elemannt.tex]{subfile}
+
+\begin{document}
+	\chapter{Bertrand to Tchebycheff}
+		\begin{definition}
+			Tchebycheff function of the first kind or \textit{Tchebycheff's theta function} is defined as
+				\begin{align*}
+					\vartheta(x)
+						& = \sum_{p\leq x}\log{p}
+				\end{align*}
+		\end{definition}
+	
+		\begin{definition}
+			Tchebycheff function of the second kind or \textit{Tchebycheff's psi function} is defined as
+				\begin{align*}
+					\psi(x)
+						& = \sum_{n\leq x}\Lambda(n)\\
+						& = \sum_{p^{e}\leq x}\log{p}\\
+						& = \sum_{p\leq x}\left\lfloor{\dfrac{\log{x}}{\log{p}}}\right\rfloor \log{p}
+				\end{align*}
+		\end{definition}
+\end{document}

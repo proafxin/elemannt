@@ -19,7 +19,8 @@
 \renewcommand{\nomname}{Notations}
 \makenomenclature
 
-\usepackage[toc,nopostdot,nonumberlist,style=long,automake,acronym]{glossaries}
+\usepackage[toc,nopostdot,nonumberlist,style=long,automake,acronym,section,numberedsection=autolabel]{glossaries}
+\glstoctrue
 \subfile{glossary.tex}
 \makeglossaries
 \usepackage{makeidx}
@@ -40,14 +41,14 @@
 \usepackage{iftex}
 \ifpdftex
 	\usepackage[T1]{fontenc}
-	%\usepackage[]{OldStandard}
+	\usepackage[]{OldStandard}
 	%\usepackage{baskervillef}
 	%\usepackage[baskervillef]{newtxmath}
 	\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,]{microtype}
 	\microtypecontext{spacing=nonfrench}
 	%\usepackage{pdfrender, xcolor}
 	%\pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.4pt}
-	%\makeatletter\let\normalrender\PdfRender@NormalColorHook\let\PdfRender@NormalColorHook\@empty\newcommand*{\textnormalrender}[1]{\begingroup\normalrender#1\endgroup}\makeatother
+	\makeatletter\let\normalrender\PdfRender@NormalColorHook\let\PdfRender@NormalColorHook\@empty\newcommand*{\textnormalrender}[1]{\begingroup\normalrender#1\endgroup}\makeatother
 \else
 	\setmainfont{ModernMTStd-Extended.otf}[
 	FakeBold=3,
@@ -98,10 +99,14 @@
     \end{refsection}
 
 	\begin{refsection}
+		\subfile{tchebycheff.tex}
+	\end{refsection}
+
+	\begin{refsection}
 		\subfile{sieve.tex}
 	\end{refsection}
     \backmatter
     \printglossary[type=\acronymtype,title={List of Acronyms}]
-    \printglossary[title=Glossary]
+    \printglossary[title=Glossary,type=main]
     \printindex
 \end{document}
