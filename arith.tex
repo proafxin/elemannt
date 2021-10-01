@@ -2,7 +2,7 @@
 
 \begin{document}
 	\chapter{Arithmetic Functions}
-	In this chapter, we will discuss some generalized arithmetic functions and their asymptotic behavior. We will skip discussing the basic definitions since they are common in most introductory number theory texts. But for the sake of completeness, check \gls{mobius}, \gls{erdos} in the Glossary.
+	In this chapter, we will discuss some generalized arithmetic functions and their asymptotic behavior. We will skip discussing the basic definitions since they are common in most introductory number theory texts.
 		\begin{definition}[Summatory function]
 			For an arithmetic function $f$, the \textit{summatory function} of $f$ is defined as
 				\begin{align*}
@@ -16,15 +16,7 @@
 				& = \sum_{i=1}^{n}\sum_{d\mid i}f(d)\\
 				& = \sum_{i=1}^{n}\left\lfloor{\dfrac{n}{i}}\right\rfloor f(i)
 		\end{align*}
-	Here, the last equation is true because there are $\lfloor{n/i}\rfloor$ multiples of $i$ not exceeding $n$. We can 
-		\begin{definition}[Generalized sum of divisor]
-			The \index{Generalized sum of divisor}\textit{generalized sum of divisor} function can be defined as
-				\begin{align*}
-					\sigma_{k}(n)
-					& = \sum_{d\mid n}d^{k}
-			\end{align*}
-		\end{definition}
-	Recall that the number of divisor function $\tau(n)=\sum_{ab=n}1$. We can generalize this as follows.
+	Here, the last equation is true because there are $\lfloor{n/i}\rfloor$ multiples of $i$ not exceeding $n$. Recall that the number of divisor function $\tau(n)=\sum_{ab=n}1$. We can generalize this as follows.
 		\begin{definition}[Generalized number of divisor]
 			The \index{Generalized number of divisor}\textit{generalized number of divisor} function is defined as
 				\begin{align*}
@@ -33,21 +25,34 @@
 				\end{align*}
 			So $\tau_{k}(n)$ is the number of ways to write $n$ as a product of $k$ positive integers. 
 		\end{definition}
-	At this point, we will define some asymptotic notions.
+	Similarly, we can take the sum of divisor function and generalize it.
+		\begin{definition}[Generalized sum of divisor]
+			The \index{Generalized sum of divisor}\textit{generalized sum of divisor} function can be defined as
+				\begin{align*}
+					\sigma_{k}(n)
+						& = \sum_{d\mid n}d^{k}
+				\end{align*}
+		\end{definition}
+	At this point, we will discuss some asymptotic notions.
 		\begin{definition}[Big O]
 			Let $f$ and $g$ be two real or complex valued functions. We say that
 				\begin{align*}
 					f(x)
 					& = O(g(x))
 				\end{align*}
-			if there is a constant $C$ such that
+			if there is a positive real constant $C$ such that
 				\begin{align*}
 					|f(x)|
 					& \leq Cg(x)
 				\end{align*}
 			for all sufficiently large $x$. It is also written as $f(x)\ll g(x)$  or $g(x)\gg f(x)$.
 		\end{definition}
-	Some trivial examples are $x^{2}=O(x^{3})$, $x+1=O(x)$ and $x^{2}+x=O(x^{2})$. We usually want $g(x)$ to be as small as possible to avoid triviality.
+	In particular, $f(x)=O(1)$ means that $f$ is bounded above by some positive constant. Some trivial examples are $x^{2}=O(x^{3})$, $x+1=O(x)$ and $x^{2}+2x=O(x^{2})$. We usually want $g(x)$ to be as small as possible to avoid triviality. Another useful example is
+		\begin{align*}
+			\left\lfloor{x}\right\rfloor
+				& = x+O(1)
+		\end{align*}
+	since $x=\lfloor{x}\rfloor+\{x\}$ and $0\leq \{x\}<1$.
 		\begin{definition}[Small O]
 			Let $f$ and $g$ be two real or complex valued functions. Then the following two statements are equivalent
 				\begin{align*}
@@ -73,5 +78,56 @@
 			\iff |f(x)-g(x)|
 				& = o(g(x))
 		\end{align*}
-	We will use these symbols extensively throughout the book. It is advised that the reader properly familiarize themselves with these notations. These symbols make our lives a lot easier very often. 
+	We will use these symbols extensively throughout the book. It is of utmost importance that the reader gets well familiarized with these notions since they will be crucial in understanding much of this book. The primary motivation behind these asymptotic notions is to get an as precise as possible idea about the \textit{order of magnitude} of a certain function. This is why we will be leaning more towards $x^{2}+2x=O(x^{2})$ than $x^{2}+2x=O(x^{3})$ even though both are mathematically correct. The reason is, even though $x^{2}+2x=O(x^{3})$ is true, it is taking away a great portion of the accuracy to which we suppose $x^{2}+2x$ should be measured with respect to. On the other hand, we easily see that we cannot have $x^{2}+2x=O(x^{\epsilon})$ for $\epsilon<2$. Under the same philosophy, we will be interested in such asymptotic of some functions. Right now it is not quite straightforward why we are so interested in asymptotic estimation. Hopefully, the reason will unveil itself in the coming chapters.
+	
+	Consider the \textbf{harmonic sum}
+		\begin{align*}
+			H(n)
+				& = 1+\dfrac{1}{2}+\ldots+\dfrac{1}{n}
+		\end{align*}
+	It does not seem easy to calculate $H(n)$ accurately, however, we can make a decent attempt to estimate $H(n)$. The tool that is best suited for carrying out such an estimation is the \textbf{Abel partial summation formula}, which today is a cornerstone of analytic number theory.
+		\begin{theorem}[Abel partial summation formula]
+			Let $\{a_{n}\}$ be a sequence of real numbers and $f$ be a continuously differentiable function in the range $[y,x]$. If the partial sums of $\{a_{n}\}$ is
+				\begin{align*}
+					A(x)
+						& = \sum_{n\leq x}a_{n}
+				\end{align*}
+			are known, then
+				\begin{align*}
+					\sum_{y<n\leq x}a_{n}f(n)
+						& = A(x)f(x)-A(y)f(y)-\int_{y}^{x}A(t)f'(t)dt
+				\end{align*}
+		\end{theorem}
+	
+		\begin{proof}
+			
+		\end{proof}
+	It is not straightforward to realize how such a formula can be as influential as we are making it out to be. Notice that, the formula essentially converts a discreet sum into an integral, which occasionally may be calculable. If the integral is not calculable, we may be able to estimate its value sometimes. We will demonstrate these ideas next.
+	
+	Now, we are interested in the general number of divisors and general sum of divisors. Let us define the cumulative sum of these functions.
+		\begin{align*}
+			\mathfrak{S}_{k}(x)
+				& = \sum_{n\leq x}\sigma_{k}(n)\\
+			\mathfrak{T}_{k}(x)
+				& = \sum_{n\leq x}\tau_{k}(n)
+		\end{align*}
+	Notice the following.
+		\begin{align*}
+			\mathfrak{S}_{k}(x)
+				& = \sum_{n\leq x}\sum_{d\mid n}d^{k}\\
+				& = \sum_{n\leq x}\left\lfloor{\dfrac{x}{n}}\right\rfloor n^{k}\\
+				& = \sum_{n\leq x}\left(\dfrac{x}{n}+O(1)\right)n^{k}\\
+				& = x\sum_{n\leq x}n^{k-1}+O\left(\sum_{n\leq x}n^{k}\right)\\
+				& = x\mathfrak{S}_{k-1}(x)+O\left(\sum_{n\leq x}n^{k}\right)
+		\end{align*}
+	We can use this to inductively establish an asymptotic for $\mathfrak{S}_{k}(x)$ if we can establish the asymptotic of $\mathfrak{S}_{2}(x)$. We will get to that in a moment. First, let us take care of the summation within the big O bracket. We have the trivial inequality that
+		\begin{align*}
+			\sum_{n\leq x}n^{k}
+				& \leq \sum_{n\leq x}x^{k}\\
+				& = x^{k}\sum_{n\leq x}1\\
+				& = \lfloor{x}\rfloor x^{k}\\
+				& = (x+O(1))x^{k}\\
+				& = x^{k+1}+O(x^{k})
+		\end{align*}
+	We have that $\mathfrak{S}_{k}(x)=x\mathfrak{S}_{k-1}(x)+O(x^{k+1})$.
 \end{document}
