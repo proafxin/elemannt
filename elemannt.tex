@@ -12,7 +12,7 @@
 \usepackage{xifthen,fancyhdr,centernot}
 \usepackage[intoc]{nomencl}
 
-\usepackage[toc,nopostdot,nonumberlist,style=long,automake,acronym,section,numberedsection=autolabel]{glossaries}
+\usepackage[toc,nopostdot,nonumberlist,style=long,automake,acronym]{glossaries}
 \usepackage{makeidx}
 \usepackage{pdfpages}
 \usepackage{iftex}
@@ -99,6 +99,6 @@
 	\end{refsection}
     \backmatter
     \printglossary[type=\acronymtype,title={List of Acronyms}]
-    \printglossary[title=Glossary,type=main]
+    \printglossary[title=Glossary,]
     \printindex
 \end{document}
