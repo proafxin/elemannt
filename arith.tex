@@ -2,7 +2,7 @@
 
 \begin{document}
 	\chapter{Arithmetic Functions}
-	In this chapter, we will discuss some generalized arithmetic functions and their asymptotic behavior. We will skip discussing the basic definitions since they are common in most introductory number theory texts.
+	In this chapter, we will discuss some generalized arithmetic functions and their asymptotic behavior. We will skip discussing the basic definitions since they are common in most introductory number theory texts. See \gls{erdos}, \gls{mobius}
 		\begin{definition}[Summatory function]
 			For an arithmetic function $f$, the \textit{summatory function} of $f$ is defined as
 				\begin{align*}
@@ -64,7 +64,7 @@
 		\end{definition}
 	Some trivial examples are $1/x=o(1)$, $x=o(x^{2})$ and $2x^{2}\neq o(x^{2})$.
 		\begin{definition}[Equivalence]
-			Let $f$ and $g$ be two real or complex valued functions. We say that they are \textbf{asymptotically equivalent} if
+			Let $f$ and $g$ be two real or complex valued functions. We say that they are \textit{asymptotically equivalent} if
 				\begin{align*}
 					\lim\limits_{x\to\infty}\dfrac{f(x)}{g(x)}
 						& = 1
@@ -80,12 +80,12 @@
 		\end{align*}
 	We will use these symbols extensively throughout the book. It is of utmost importance that the reader gets well familiarized with these notions since they will be crucial in understanding much of this book. The primary motivation behind these asymptotic notions is to get an as precise as possible idea about the \textit{order of magnitude} of a certain function. This is why we will be leaning more towards $x^{2}+2x=O(x^{2})$ than $x^{2}+2x=O(x^{3})$ even though both are mathematically correct. The reason is, even though $x^{2}+2x=O(x^{3})$ is true, it is taking away a great portion of the accuracy to which we suppose $x^{2}+2x$ should be measured with respect to. On the other hand, we easily see that we cannot have $x^{2}+2x=O(x^{\epsilon})$ for $\epsilon<2$. Under the same philosophy, we will be interested in such asymptotic of some functions. Right now it is not quite straightforward why we are so interested in asymptotic estimation. Hopefully, the reason will unveil itself in the coming chapters.
 	
-	Consider the \textbf{harmonic sum}
+	Consider the \textit{harmonic sum}
 		\begin{align*}
 			H(n)
 				& = 1+\dfrac{1}{2}+\ldots+\dfrac{1}{n}
 		\end{align*}
-	It does not seem easy to calculate $H(n)$ accurately, however, we can make a decent attempt to estimate $H(n)$. The tool that is best suited for carrying out such an estimation is the \textbf{Abel partial summation formula}, which today is a cornerstone of analytic number theory.
+	It does not seem easy to calculate $H(n)$ accurately, however, we can make a decent attempt to estimate $H(n)$. The tool that is best suited for carrying out such an estimation is the \textit{Abel partial summation formula}, which today is a cornerstone of analytic number theory.
 		\begin{theorem}[Abel partial summation formula]
 			Let $\{a_{n}\}$ be a sequence of real numbers and $f$ be a continuously differentiable function in the range $[y,x]$. If the partial sums of $\{a_{n}\}$ is
 				\begin{align*}
@@ -102,8 +102,11 @@
 		\begin{proof}
 			
 		\end{proof}
-	It is not straightforward to realize how such a formula can be as influential as we are making it out to be. Notice that, the formula essentially converts a discreet sum into an integral, which occasionally may be calculable. If the integral is not calculable, we may be able to estimate its value sometimes. We will demonstrate these ideas next.
-	
+	It is not straightforward to realize how such a formula can be as influential as we are describing it to be. Notice that, the formula essentially converts a discreet sum into an integral, which occasionally may be calculable. If the integral is not calculable, we may be able to estimate its value sometimes. We will demonstrate these ideas next. It is worth mentioning that Ramanujan also used such a technique. For example, in \textcite[Page $83$, $\S4$]{aiyangar_hardy_vennkatesvara_seshu_aiyar_p_wilson_1927}, we can definitely see what can only be described as the Abel's partial summation formula. Although, it is very unclear whether Ramanujan simply knew about this or he came up with the idea on his own while working on number of divisors. He essentially gives an outline of the proof of the summation formula to show that his calculation is correct. So, we can only speculate that he did not possibly know about this as a separate result beforehand. Checking $f:\mathbb{N}\to\mathbb{C}$ and
+		\begin{align*}
+			\Phi_{m}(x,n,p^{a})
+				& = \dfrac{x^{mn+1}}{mn+1}\dfrac{p-1}{p^{a-1}(p^{m+1}-1)}\dfrac{1}{D_{m+1}}+\Delta\Phi_{m}(x,n,p^{a})
+		\end{align*}
 	Now, we are interested in the general number of divisors and general sum of divisors. Let us define the cumulative sum of these functions.
 		\begin{align*}
 			\mathfrak{S}_{k}(x)

@@ -18,13 +18,16 @@
 \usepackage{iftex}
 
 \ifxetex
-	\usepackage{mathspec}
+	%\usepackage{mathspec}
+	\usepackage[no-math]{fontspec}
+	\usepackage{unicode-math}
 \else
 	\usepackage[T1]{fontenc}
 	\usepackage[]{OldStandard}
 	\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,]{microtype}
 	\usepackage{pdfrender, xcolor}
 \fi
+% ö
 
 \renewcommand{\nomname}{Notations}
 \makenomenclature
@@ -48,9 +51,17 @@
 	\pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.4pt}
 	\makeatletter\let\normalrender\PdfRender@NormalColorHook\let\PdfRender@NormalColorHook\@empty\newcommand*{\textnormalrender}[1]{\begingroup\normalrender#1\endgroup}\makeatother
 \else
-	\setallmainfonts{Old Standard}
+	\setmainfont{ModernMT-Extended.otf}[
+	FakeBold=1,
+	SmallCapsFont={PlayfairDisplaySC-Black.otf},
+	%SmallCapsFont=OldStyleSeven-SC.otf,
+	BoldFont=BaskervilleF-Bold.otf,
+	ItalicFont=ModernMT-ExtendedItalic.otf,
+	BoldItalicFont=ModernMTStd-BoldItalic.otf,
+	Ligatures=TeX,Mapping=Tex-text]
+	\setmathfont[FakeBold=2]{NewComputerModern Math}
+	%texgyreschola-math.otf
 	\newfontfamily{\bask}{GFS Baskerville}
-	
 	\makeatletter
 	\RenewDocumentCommand{\sum@}{}{\DOTSB\baskervillesum}
 	\AtBeginDocument{%
@@ -58,7 +69,7 @@
 	}
 	\NewDocumentCommand{\baskervillesum}{}{%
 		\mathchoice
-		{\makebaskervillesum{2}}% displaystyle
+		{\makebaskervillesum{1.8}}% displaystyle
 		{\makebaskervillesum{1.5}}% textstyle
 		{\makebaskervillesum{1}}% scriptstyle
 		{\makebaskervillesum{0.7}}% scriptscriptstyle
@@ -66,6 +77,7 @@
 	\NewDocumentCommand{\makebaskervillesum}{m}{%
 		\vcenter{\hbox{\scalebox{#1}{\bask Σ}}}%
 	}
+	%\setmathfont[range={\sum,\prod,\coprod},Scale=MatchUppercase]{STIX Two Math}
 \fi
 
 \title{\bfseries Introduction to Elementary Analytic Number Theory}
@@ -87,7 +99,7 @@
 	\begin{refsection}
 		\subfile{arith.tex}
         \subfile{dirichlet.tex}
-        % \printbibliography
+        \printbibliography
     \end{refsection}
 
 	\begin{refsection}
