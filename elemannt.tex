@@ -1,15 +1,13 @@
-\documentclass[12pt,leqno,]{book}
+\documentclass[10pt,leqno,]{extbook}
 
 \usepackage{amsmath,amssymb,amsthm}
-\usepackage{graphicx}
-\usepackage{mathtools}
 \usepackage{subfiles}
 \usepackage{hyperref}
 \hypersetup{pdfstartview=,pdfencoding=auto,}
 \usepackage[style=musuos,sorting=nyt,labeldateparts=true]{biblatex}
 \addbibresource[]{ref.bib}
 
-\usepackage{xifthen,fancyhdr,centernot}
+\usepackage{xifthen,fancyhdr,centernot,datetime}
 \usepackage[intoc]{nomencl}
 
 \usepackage[toc,nopostdot,nonumberlist,style=long,automake,acronym]{glossaries}
@@ -27,7 +25,7 @@
 	\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,]{microtype}
 	\usepackage{pdfrender, xcolor}
 \fi
-% ö
+% ö,ő
 
 \renewcommand{\nomname}{Notations}
 \makenomenclature
@@ -51,15 +49,15 @@
 	\pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.4pt}
 	\makeatletter\let\normalrender\PdfRender@NormalColorHook\let\PdfRender@NormalColorHook\@empty\newcommand*{\textnormalrender}[1]{\begingroup\normalrender#1\endgroup}\makeatother
 \else
-	\setmainfont{ModernMT-Extended.otf}[
-	FakeBold=1,
+	\setmainfont{NewComputerModern}[
+	FakeBold=4,
 	SmallCapsFont={PlayfairDisplaySC-Black.otf},
 	%SmallCapsFont=OldStyleSeven-SC.otf,
 	BoldFont=BaskervilleF-Bold.otf,
 	ItalicFont=ModernMT-ExtendedItalic.otf,
 	BoldItalicFont=ModernMTStd-BoldItalic.otf,
 	Ligatures=TeX,Mapping=Tex-text]
-	\setmathfont[FakeBold=2]{NewComputerModern Math}
+	\setmathfont[FakeBold=4]{NewComputerModern Math}
 	%texgyreschola-math.otf
 	\newfontfamily{\bask}{GFS Baskerville}
 	\makeatletter
@@ -69,7 +67,7 @@
 	}
 	\NewDocumentCommand{\baskervillesum}{}{%
 		\mathchoice
-		{\makebaskervillesum{1.8}}% displaystyle
+		{\makebaskervillesum{2}}% displaystyle
 		{\makebaskervillesum{1.5}}% textstyle
 		{\makebaskervillesum{1}}% scriptstyle
 		{\makebaskervillesum{0.7}}% scriptscriptstyle
@@ -98,9 +96,12 @@
 
 	\begin{refsection}
 		\subfile{arith.tex}
-        \subfile{dirichlet.tex}
         \printbibliography
     \end{refsection}
+
+	\begin{refsection}
+		\subfile{dirichlet.tex}
+	\end{refsection}
 
 	\begin{refsection}
 		\subfile{tchebycheff.tex}
