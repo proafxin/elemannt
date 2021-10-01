@@ -1,4 +1,4 @@
-\documentclass[12pt,leqno]{book}
+\documentclass[12pt,leqno,]{book}
 
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{graphicx}
@@ -10,25 +10,31 @@
 \addbibresource[]{ref.bib}
 
 \usepackage{xifthen,fancyhdr,centernot}
-
-\ifxetex
-	\usepackage[no-math]{fontspec}
-	\usepackage{unicode-math}
-\fi
-
 \usepackage[intoc]{nomencl}
-\renewcommand{\nomname}{Notations}
-\makenomenclature
 
 \usepackage[toc,nopostdot,nonumberlist,style=long,automake,acronym,section,numberedsection=autolabel]{glossaries}
+\usepackage{makeidx}
+\usepackage{pdfpages}
+\usepackage{iftex}
+
+\ifxetex
+	\usepackage{mathspec}
+\else
+	\usepackage[T1]{fontenc}
+	\usepackage[]{OldStandard}
+	\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,]{microtype}
+	\usepackage{pdfrender, xcolor}
+\fi
+
+\renewcommand{\nomname}{Notations}
+\makenomenclature
 \glstoctrue
 \subfile{glossary.tex}
-\makeglossaries
-\usepackage{makeidx}
 \makeindex
+\makeglossaries
 
-%\setlength{\textwidth}{360pt}
-%\setlength{\textheight}{615pt}
+\setlength{\textwidth}{360pt}
+\setlength{\textheight}{615pt}
 
 \newtheorem{theorem}{\textsc{\textbf{Theorem}}}
 \theoremstyle{definition}
@@ -37,22 +43,12 @@
 
 \newcommand{\lcm}{\mbox{lcm}}
 
-\usepackage{pdfpages}
-
-\usepackage{iftex}
 \ifpdftex
-	\usepackage[T1]{fontenc}
-	\usepackage[]{OldStandard}
-	%\usepackage{baskervillef}
-	%\usepackage[baskervillef]{newtxmath}
-	\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,]{microtype}
 	\microtypecontext{spacing=nonfrench}
-	\usepackage{pdfrender, xcolor}
 	\pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.4pt}
 	\makeatletter\let\normalrender\PdfRender@NormalColorHook\let\PdfRender@NormalColorHook\@empty\newcommand*{\textnormalrender}[1]{\begingroup\normalrender#1\endgroup}\makeatother
 \else
-	\setmainfont[FakeBold=2]{Old Standard}
-	\setmathfont[FakeBold=2]{NewCMMath-Book.otf}
+	\setallmainfonts{Old Standard}
 	\newfontfamily{\bask}{GFS Baskerville}
 	
 	\makeatletter
