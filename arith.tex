@@ -2,7 +2,7 @@
 
 \begin{document}
 	\chapter{Arithmetic Functions}
-	In this chapter, we will discuss some generalized arithmetic functions and their asymptotic behavior. We will skip discussing the basic definitions since they are common in most introductory number theory texts. But for the sake of completeness, check \gls{mobius} in \autoref{main}
+	In this chapter, we will discuss some generalized arithmetic functions and their asymptotic behavior. We will skip discussing the basic definitions since they are common in most introductory number theory texts. But for the sake of completeness, check \gls{mobius},\gls{erdos} in \autoref{main}
 		\begin{definition}[Summatory function]
 			For an arithmetic function $f$, the \textit{summatory function} of $f$ is defined as
 				\begin{align*}
@@ -24,22 +24,54 @@
 					& = \sum_{d\mid n}d^{k}
 			\end{align*}
 		\end{definition}
-	We can write $\tau(n)=\sum_{ab=n}1$.
+	Recall that the number of divisor function $\tau(n)=\sum_{ab=n}1$. We can generalize this as follows.
 		\begin{definition}[Generalized number of divisor]
 			The \index{Generalized number of divisor}\textit{generalized number of divisor} function is defined as
 				\begin{align*}
 					\tau_{k}(n)
-						& = 
+						& = \sum_{d_{1}\cdots d_{k}=n}1
+				\end{align*}
+			So $\tau_{k}(n)$ is the number of ways to write $n$ as a product of $k$ positive integers. 
+		\end{definition}
+	At this point, we will define some asymptotic notions.
+		\begin{definition}[Big O]
+			Let $f$ and $g$ be two real or complex valued functions. We say that
+				\begin{align*}
+					f(x)
+					& = O(g(x))
+				\end{align*}
+			if there is a constant $C$ such that
+				\begin{align*}
+					|f(x)|
+					& \leq Cg(x)
+				\end{align*}
+			for all sufficiently large $x$. It is also written as $f(x)\ll g(x)$  or $g(x)\gg f(x)$.
+		\end{definition}
+	Some trivial examples are $x^{2}=O(x^{3})$, $x+1=O(x)$ and $x^{2}+x=O(x^{2})$. We usually want $g(x)$ to be as small as possible to avoid triviality.
+		\begin{definition}[Small O]
+			Let $f$ and $g$ be two real or complex valued functions. Then the following two statements are equivalent
+				\begin{align*}
+					f(x)
+						& = o(g(x))\\
+					\iff \lim\limits_{x\to\infty}\dfrac{f(x)}{g(x)}
+						& = 0
 				\end{align*}
 		\end{definition}
-	We will focus on the following function for now.
+	Some trivial examples are $1/x=o(1)$, $x=o(x^{2})$ and $2x^{2}\neq o(x^{2})$.
+		\begin{definition}[Equivalence]
+			Let $f$ and $g$ be two real or complex valued functions. We say that they are \textbf{asymptotically equivalent} if
+				\begin{align*}
+					\lim\limits_{x\to\infty}\dfrac{f(x)}{g(x)}
+						& = 1
+				\end{align*}
+			and we denote it by $f\sim g$.
+		\end{definition}
+	An example is $x^{2}\sim x^{2}+x$. Note the following.
 		\begin{align*}
-			\sum_{n\leq x}\tau_{k}(n)
+			f
+				& \sim g\\
+			\iff |f(x)-g(x)|
+				& = o(g(x))
 		\end{align*}
-	
-		\begin{theorem}
-			A test theorem
-		\end{theorem}
-	
-	This is a theorem\footnote{This is a theorem}. Now I am citing \textcite{apostol_1976}. See a proof by \gls{erdos}
+	We will use these symbols extensively throughout the book. It is advised that the reader properly familiarize themselves with these notations. These symbols make our lives a lot easier very often. See Erd\"{o}s
 \end{document}
