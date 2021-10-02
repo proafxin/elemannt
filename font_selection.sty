@@ -1,0 +1,32 @@
+\setmainfont{NewComputerModern}[
+FakeBold=0,
+SmallCapsFont={PlayfairDisplaySC-Black.otf},
+BoldFont=BaskervilleF-Bold.otf,
+ItalicFont=ModernMT-ExtendedItalic.otf,
+BoldItalicFont=ModernMTStd-BoldItalic.otf,
+Ligatures=TeX,Mapping=Tex-text,Numbers=OldStyle]
+\setsansfont[%
+FakeBold=0,ItalicFont=NewCMSans10-Oblique.otf,BoldFont=NewCMSans10-Bold.otf,BoldItalicFont=NewCMSans10-BoldOblique.otf,
+SmallCapsFeatures={Numbers=OldStyle}]{NewCMSans10-Regular.otf}
+
+\setmonofont[%
+FakeBold=0,ItalicFont=NewCMMono10-Italic.otf,BoldFont=NewCMMono10-Bold.otf,
+BoldItalicFont=NewCMMono10-BoldOblique.otf,SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
+\setmathfont[FakeBold=0]{NewComputerModern Math}
+%texgyreschola-math.otf
+\newfontfamily{\bask}{GFS Baskerville}
+\makeatletter
+\RenewDocumentCommand{\sum@}{}{\DOTSB\baskervillesum}
+\AtBeginDocument{%
+	\RenewDocumentCommand{\sum}{}{\mathop{\sum@}\slimits@}%
+}
+\NewDocumentCommand{\baskervillesum}{}{%
+	\mathchoice
+	{\makebaskervillesum{2}}% displaystyle
+	{\makebaskervillesum{1.5}}% textstyle
+	{\makebaskervillesum{1}}% scriptstyle
+	{\makebaskervillesum{0.7}}% scriptscriptstyle
+}
+\NewDocumentCommand{\makebaskervillesum}{m}{%
+	\vcenter{\hbox{\scalebox{#1}{\bask Σ}}}%
+}
