@@ -52,14 +52,14 @@
 	\setmainfont[FakeBold=2,BoldFont=BaskervilleF-Bold.otf,ItalicFont=ModernMT-ExtendedItalic.otf,BoldItalicFont=ModernMTStd-BoldItalic.otf]{ModernMT-Extended.otf}
 	\setmathfont[FakeBold=2.5]{NewComputerModern Math}
 	\setmathfont[range=it,FakeBold=2.5]{Old Standard Italic}
-	
-	\newfontfamily{\stm}{STIX Two Math}
+	% texgyrepagella-math.otf
+	\newfontfamily{\stm}{Garamond-Math.otf}
 	\makeatletter
 	\RenewDocumentCommand{\sum@}{}{\DOTSB\baskervillesum}
 	\AtBeginDocument{\RenewDocumentCommand{\sum}{}{\mathop{\sum@}\slimits@}}
 	\NewDocumentCommand{\baskervillesum}{}{%
 		\mathchoice
-		{\makebaskervillesum{2}}% displaystyle
+		{\makebaskervillesum{2.2}}% displaystyle
 		{\makebaskervillesum{1.5}}% textstyle
 		{\makebaskervillesum{1}}% scriptstyle
 		{\makebaskervillesum{0.7}}% scriptscriptstyle
