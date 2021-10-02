@@ -47,7 +47,7 @@
 				\end{align*}
 			for all sufficiently large $x$. It is also written as $f(x)\ll g(x)$  or $g(x)\gg f(x)$.
 		\end{definition}
-	In particular, $f(x)=O(1)$ means that $f$ is bounded above by some positive constant. Some trivial examples are $x^{2}=O(x^{3})$, $x+1=O(x)$ and $x^{2}+2x=O(x^{2})$. We usually want $g(x)$ to be as small as possible to avoid triviality. Another useful example is
+	In particular, $f(x)=O(1)$ means that $f$ is bounded above by some positive constant. Some trivial examples are $x^{2}=O(x^{3})$, $x+1=O(x)$ and $x^{2}+2x=O(x^{2})$. We usually want $g(x)$ to be as small as possible to avoid triviality. A useful example is
 		\begin{align*}
 			\left\lfloor{x}\right\rfloor
 				& = x+O(1)
@@ -102,25 +102,25 @@
 		\begin{proof}
 			
 		\end{proof}
-	It is not straightforward to realize how such a formula can be as influential as we are describing it to be. Notice that, the formula essentially converts a discreet sum into an integral, which occasionally may be calculable. If the integral is not calculable, we may be able to estimate its value sometimes. We will demonstrate these ideas next. It is worth mentioning that Ramanujan also used such a technique. For example, in \textcite[Page $83$, $\S4$]{aiyangar_hardy_vennkatesvara_seshu_aiyar_p_wilson_1927}, we can definitely see what can only be described as the Abel's partial summation formula. Although, it is very unclear whether Ramanujan simply knew about this or he came up with the idea on his own while working on number of divisors. He essentially gives an outline of the proof of the summation formula to show that his calculation is correct. So, we can only speculate that he did not possibly know about this as a separate result beforehand.
+	It is not straightforward to realize how such a formula can be as influential as we are describing it to be. Notice that, the formula essentially converts a discreet sum into an integral, which occasionally may be calculable. If the integral is not calculable, we may be able to estimate its value sometimes. We will demonstrate these ideas next. It is worth mentioning that Ramanujan also used such a technique. For example, in \textcite[Page $83$, $\S4$]{aiyangar_hardy_vennkatesvara_seshu_aiyar_p_wilson_1927}, we can definitely see what can only be described as the Abel's partial summation formula. Although, it is very unclear whether Ramanujan simply knew about this or he came up with the idea on his own while working on number of divisors. He essentially derives the partial summation formula while trying to express a sum of the form $\sum_{p\leq x}\phi(p)$ with respect to $\pi(x),\phi(x)$ and an integral where $\pi(x)$ is the number of primes not exceeding $x$.
 	
 	Now, we are interested in the general number of divisors and general sum of divisors. Let us define the cumulative sum of these functions.
 		\begin{align*}
-			\mathfrak{S}_{k}(x)
+			A_{k}(x)
 				& = \sum_{n\leq x}\sigma_{k}(n)\\
-			\mathfrak{T}_{k}(x)
+			B_{k}(x)
 				& = \sum_{n\leq x}\tau_{k}(n)
 		\end{align*}
 	Notice the following.
 		\begin{align*}
-			\mathfrak{S}_{k}(x)
+			A_{k}(x)
 				& = \sum_{n\leq x}\sum_{d\mid n}d^{k}\\
 				& = \sum_{n\leq x}\left\lfloor{\dfrac{x}{n}}\right\rfloor n^{k}\\
 				& = \sum_{n\leq x}\left(\dfrac{x}{n}+O(1)\right)n^{k}\\
 				& = x\sum_{n\leq x}n^{k-1}+O\left(\sum_{n\leq x}n^{k}\right)\\
-				& = x\mathfrak{S}_{k-1}(x)+O\left(\sum_{n\leq x}n^{k}\right)
+				& = xA_{k-1}(x)+O\left(\sum_{n\leq x}n^{k}\right)
 		\end{align*}
-	We can use this to inductively establish an asymptotic for $\mathfrak{S}_{k}(x)$ if we can establish the asymptotic of $\mathfrak{S}_{2}(x)$. We will get to that in a moment. First, let us take care of the summation within the big O bracket. We have the trivial inequality that
+	We can use this to inductively establish an asymptotic for $A_{k}(x)$ if we can establish the asymptotic of $A_{2}(x)$. We will get to that in a moment. First, let us take care of the summation within the big O bracket. We have the trivial inequality that
 		\begin{align*}
 			\sum_{n\leq x}n^{k}
 				& \leq \sum_{n\leq x}x^{k}\\
@@ -129,5 +129,10 @@
 				& = (x+O(1))x^{k}\\
 				& = x^{k+1}+O(x^{k})
 		\end{align*}
-	We have that $\mathfrak{S}_{k}(x)=x\mathfrak{S}_{k-1}(x)+O(x^{k+1})$.
+	We have that $A_{k}(x)=xA_{k-1}(x)+O(x^{k+1})$. An interested reader can try and prove that
+		\begin{align*}
+			(n+1)^{k+1}-1
+				& =\sum_{i=0}^{k}\binom{k+1}{i}(1^{i}+\ldots+n^{i})
+		\end{align*}
+	This is known as the \textit{Pascal identity} (see \textcite{pascal_1964}). For an English translation, see \textcite{knoebel_laubenbacher_lodder_pengelley_2007}.  \textcite{kieren_macmillan_jonathan_sondow_2011} may also be of interest.
 \end{document}
