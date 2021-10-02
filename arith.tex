@@ -117,8 +117,7 @@
 				& = \sum_{n\leq x}\sum_{d\mid n}d^{k}\\
 				& = \sum_{n\leq x}\left\lfloor{\dfrac{x}{n}}\right\rfloor n^{k}\\
 				& = \sum_{n\leq x}\left(\dfrac{x}{n}+O(1)\right)n^{k}\\
-				& = x\sum_{n\leq x}n^{k-1}+O\left(\sum_{n\leq x}n^{k}\right)\\
-				& = xA_{k-1}(x)+O\left(\sum_{n\leq x}n^{k}\right)
+				& = x\sum_{n\leq x}n^{k-1}+O\left(\sum_{n\leq x}n^{k}\right)
 		\end{align*}
 	We can use this to inductively establish an asymptotic for $A_{k}(x)$ if we can establish the asymptotic of $A_{2}(x)$. We will get to that in a moment. First, let us take care of the summation within the big O bracket. We have the trivial inequality that
 		\begin{align*}
@@ -129,10 +128,12 @@
 				& = (x+O(1))x^{k}\\
 				& = x^{k+1}+O(x^{k})
 		\end{align*}
-	We have that $A_{k}(x)=xA_{k-1}(x)+O(x^{k+1})$. An interested reader can try and prove that
+	We have that $A_{k}(x)=x\left(x^{k}+O(x^{k-1})\right)+O(x^{k+1})=O(x^{k+1})$. Although this is a weak estimate, it shows a method of estimation. On this note, an interested reader can try and prove that
 		\begin{align*}
 			(n+1)^{k+1}-1
 				& =\sum_{i=0}^{k}\binom{k+1}{i}(1^{i}+\ldots+n^{i})
 		\end{align*}
 	This is known as the \textit{Pascal identity} (see \textcite{pascal_1964}, for an English translation, see \textcite{knoebel_laubenbacher_lodder_pengelley_2007}). The reader may also be interested in \textcite{kieren_macmillan_jonathan_sondow_2011}.
+	
+	Using a similar approach, we will now estimate $B$.
 \end{document}
