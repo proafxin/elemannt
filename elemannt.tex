@@ -1,4 +1,4 @@
-\documentclass[12pt,leqno,]{extbook}
+\documentclass[10pt,]{extbook}
 
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{subfiles}
@@ -50,6 +50,12 @@
 	\makeatletter\let\normalrender\PdfRender@NormalColorHook\let\PdfRender@NormalColorHook\@empty\newcommand*{\textnormalrender}[1]{\begingroup\normalrender#1\endgroup}\makeatother
 \else
 	\setmainfont[FakeBold=2,BoldFont=BaskervilleF-Bold.otf,ItalicFont=ModernMT-ExtendedItalic.otf,BoldItalicFont=ModernMTStd-BoldItalic.otf]{ModernMT-Extended.otf}
+	\setsansfont[%
+	FakeBold=2,ItalicFont=NewCMSans10-Oblique.otf,BoldFont=NewCMSans10-Bold.otf,BoldItalicFont=NewCMSans10-BoldOblique.otf,
+	SmallCapsFeatures={Numbers=OldStyle}]{NewCMSans10-Regular.otf}
+	
+	\setmonofont[%
+	FakeBold=2,ItalicFont=NewCMMono10-Italic.otf,BoldFont=NewCMMono10-Bold.otf,BoldItalicFont=NewCMMono10-BoldOblique.otf,SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
 	\setmathfont[FakeBold=2.5]{NewComputerModern Math}
 	\setmathfont[range=it,FakeBold=2.5]{Old Standard Italic}
 	% texgyrepagella-math.otf
@@ -59,7 +65,7 @@
 	\AtBeginDocument{\RenewDocumentCommand{\sum}{}{\mathop{\sum@}\slimits@}}
 	\NewDocumentCommand{\baskervillesum}{}{%
 		\mathchoice
-		{\makebaskervillesum{2.2}}% displaystyle
+		{\makebaskervillesum{2.5}}% displaystyle
 		{\makebaskervillesum{1.5}}% textstyle
 		{\makebaskervillesum{1}}% scriptstyle
 		{\makebaskervillesum{0.7}}% scriptscriptstyle
