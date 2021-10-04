@@ -133,12 +133,12 @@
 			(n+1)^{k+1}-1
 				& =\sum_{i=0}^{k}\binom{k+1}{i}(1^{i}+\ldots+n^{i})
 		\end{align*}
-	This is known as the \index{Pascal identity}\textit{Pascal identity} (see \textcite{pascal_1964}, for an English translation, see \textcite{knoebel_laubenbacher_lodder_pengelley_2007}). The reader may also be interested in \textcite{kieren_macmillan_jonathan_sondow_2011}. \textcite[Chapter II, Theorem $1$]{lehmer_1900} proves that
+	This is known as the \index{Pascal identity}\textit{Pascal identity} (see \textcite{pascal_1964}, for an English translation, see \textcite{knoebel_laubenbacher_lodder_pengelley_2007}). \textcite[Chapter II, Theorem $1$]{lehmer_1900} proves that
 		\begin{align*}
 			\sum_{n\leq x}^{k}
 				& = \dfrac{x^{k+1}}{k+1}+\Delta
 		\end{align*}
-	where $|\Delta|\leq x^{n}$. Let us try to estimate $T$ in a similar fashion. First, see that
+	where $|\Delta|\leq x^{n}$. The reader may also be interested in \textcite{kieren_macmillan_jonathan_sondow_2011}. Let us try to estimate $T$ in a similar fashion. First, see that
 		\begin{align*}
 			\tau_{k}(n)
 				& = \sum_{d_{1}\cdots d_{k}=n}1\\
@@ -191,7 +191,7 @@
 		\begin{proof}
 			
 		\end{proof}
-	It is not straightforward to realize how such a formula can be as influential as we are describing it to be. Notice that, the formula essentially converts a discreet sum into an integral, which occasionally may be calculable. If the integral is not calculable, we may be able to estimate its value sometimes. We will demonstrate these ideas next. It is worth mentioning that Ramanujan also used such a technique. For example, in \textcite[Page $83$, $\S4$]{aiyangar_hardy_vennkatesvara_seshu_aiyar_p_wilson_1927}, we can definitely see what can only be described as the formula itself. It is unclear whether Ramanujan simply knew about this or he came up with the idea on his own while working on number of divisors. He essentially derives the partial summation formula while trying to express a sum of the form $\sum_{p\leq x}\phi(p)$ with respect to $\pi(x),\phi(x)$ and an integral where $\pi(x)$ is the number of primes not exceeding $x$. A consequence of \nameref{thm:abel} is the celebrated \index{Euler's summation formula}\textit{Euler's summation formula}.
+	It is not straightforward to realize how such a formula can be as influential as we are describing it to be. Notice that, the formula essentially converts a discreet sum into an integral, which occasionally may be calculable. If the integral is not calculable, we may be able to estimate its value sometimes. We will demonstrate these ideas next. It is worth mentioning that Ramanujan also used such a technique. For example, in \textcite[Page $83$, $\S4$]{aiyangar_hardy_vennkatesvara_seshu_aiyar_p_wilson_1927}, we can definitely see what can only be described as the formula itself. It is unclear whether Ramanujan simply knew about this. Considering he shows the calculation instead of just mentioning the formula, it is certainly possible he came up with the idea on his own, possibly before he had been working on that particular paper. He essentially derives the partial summation formula while trying to express a sum of the form $\sum_{p\leq x}\phi(p)$ with respect to $\pi(x),\phi(x)$ and an integral where $\pi(x)$ is the number of primes not exceeding $x$. A consequence of \nameref{thm:abel} is the celebrated \index{Euler's summation formula}\textit{Euler's summation formula}.
 		\begin{theorem}[Euler's summation formula]
 			Let $f$ be a continuous differentiable function in $[y,x]$. Then
 				\begin{align*}
