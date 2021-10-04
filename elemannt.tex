@@ -4,7 +4,7 @@
 \usepackage{subfiles}
 \usepackage{hyperref}
 \hypersetup{pdfstartview=,pdfencoding=auto,}
-\usepackage[style=musuos,sorting=nyt,labeldateparts=true]{biblatex}
+\usepackage[style=musuos,sorting=nyt,labeldateparts=true,sortcites=true,backend=biber,]{biblatex}
 \addbibresource[]{ref.bib}
 
 \usepackage{xifthen,fancyhdr,centernot,datetime}
@@ -14,6 +14,7 @@
 \usepackage{makeidx}
 \usepackage{pdfpages}
 \usepackage{iftex}
+\usepackage{xstring}
 
 \ifxetex
 	%\usepackage{mathspec}
@@ -42,7 +43,7 @@
 \setlength{\topmargin}{-.1in}
 \setlength{\textheight}{8.4in}
 
-\newtheorem{theorem}{\textsc{\textbf{Theorem}}}[chapter]
+\newtheorem{theorem}{\textbf{\getsc{Theorem}}}[chapter]
 \theoremstyle{definition}
 \newenvironment{definition}[1][]{\par\medskip\noindent \textbf{\ifthenelse{\isempty{#1}}{Definition.}{#1.}} \rmfamily}{\medskip}
 \newtheorem*{remark}{Remark}
@@ -54,12 +55,16 @@
 	\pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.4pt}
 	\makeatletter\let\normalrender\PdfRender@NormalColorHook\let\PdfRender@NormalColorHook\@empty\newcommand*{\textnormalrender}[1]{\begingroup\normalrender#1\endgroup}\makeatother
 \else
-	\setmainfont[FakeBold=4]{Old Standard}
-	\setsansfont[FakeBold=4]{Old Standard}
+	\setmainfont[FakeBold=2,BoldFont=OldStandard-Bold.otf,ItalicFont=ModernMT-ExtendedItalic.otf,BoldItalicFont=ModernMTStd-BoldItalic.otf,SmallCapsFont=OldStyleSeven-SC.otf]{ModernMT-Extended.otf}
+	\setsansfont[%
+	FakeBold=2,ItalicFont=NewCMSans10-Oblique.otf,BoldFont=NewCMSans10-Bold.otf,BoldItalicFont=NewCMSans10-BoldOblique.otf,
+	SmallCapsFeatures={Numbers=OldStyle}]{NewCMSans10-Regular.otf}
+	
 	\setmonofont[%
-	FakeBold=4,ItalicFont=NewCMMono10-Italic.otf,BoldFont=NewCMMono10-Bold.otf,BoldItalicFont=NewCMMono10-BoldOblique.otf,SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
-	\setmathfont[FakeBold=4]{NewComputerModern Math}
-	\setmathfont[range=it,FakeBold=4]{Old Standard Italic}
+	FakeBold=2,ItalicFont=NewCMMono10-Italic.otf,BoldFont=NewCMMono10-Bold.otf,BoldItalicFont=NewCMMono10-BoldOblique.otf,SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
+	\setmathfont[FakeBold=2,BoldFont={Old Standard Bold}]{NewComputerModern Math}
+	\setmathfont[range=it,FakeBold=2]{Old Standard Italic}
+	% texgyrepagella-math.otf
 	\newfontfamily{\stm}{Garamond-Math.otf}
 	\makeatletter
 	\RenewDocumentCommand{\sum@}{}{\DOTSB\baskervillesum}
@@ -77,23 +82,46 @@
 	\DeclareSymbolFont{alphabets}{\encodingdefault}{pmn}{m}{it}
 	\SetSymbolFont{alphabets}{bold}{T1}{pmn}{b}{it}
 	\DeclareMathSymbol{f}{\mathalpha}{alphabets}{"66}
+	
+	\newcommand{\getsc}[1]{%
+		\StrLeft{#1}{1}[\headtoken]%
+		\StrGobbleLeft{#1}{1}[\tailtokens]%
+		\MakeUppercase{\headtoken\scriptsize\tailtokens}%
+	}
 \fi
 
 \title{\bfseries Introduction to Elementary Analytic Number Theory}
-\author{\textsc{\bfseries{Masum Billal}}}
+\author{\Large\textbf{\getsc{Masum} \getsc{Billal}}}
 
 \renewcommand*{\chapterautorefname}{Chapter}
 \renewcommand*{\sectionautorefname}{Section}
 \renewcommand{\theequation}{$\ddagger$\ \thechapter.\arabic{equation}}
 \interfootnotelinepenalty=10000
+
+\pagestyle{fancyplain}
+\fancyhf{}
+%\fancyhead[C]{\rule{.5\textwidth}{4\baselineskip}}
+\setlength{\headheight}{52pt}
+
+%\fancyhead[RE]{\textit{\nouppercase{\leftmark}}}
+\fancyhead[LO, RE]{\small\textsc{Masum Billal}}
+\fancyhead[LE]{$\S$\thechapter}
+\fancyhead[RO]{$\S$\thesection}
+\fancyfoot[LE, RO]{Page\ \thepage}
+\renewcommand{\headrulewidth}{.1pt} % remove lines as well
+\renewcommand{\footrulewidth}{.1pt}
+
 \begin{document}
+	\pagestyle{empty}
     \includepdf[pages={-1}]{cover.pdf}
+    \cleardoublepage
     \maketitle
     \frontmatter
     \tableofcontents
     \subfile{nomencl.tex}
     \printnomenclature
     \mainmatter
+    \pagestyle{fancyplain}
     \begin{refsection}
 		\subfile{arith.tex}
         \printbibliography
