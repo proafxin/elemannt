@@ -20,12 +20,12 @@
 	\usepackage[no-math]{fontspec}
 	\usepackage{unicode-math}
 \else
-	\usepackage[T1]{fontenc}
-	\usepackage[]{OldStandard}
+	\usepackage[LGR,T2A,LY1]{fontenc}
+	\usepackage{OldStandard}
 	\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,]{microtype}
 	\usepackage{pdfrender, xcolor}
 \fi
-% ö,ő
+% ö,ő,Ü
 
 \renewcommand{\nomname}{Notations}
 \makenomenclature
@@ -34,8 +34,13 @@
 \makeindex
 \makeglossaries
 
-\setlength{\textwidth}{360pt}
-\setlength{\textheight}{615pt}
+%\setlength{\textwidth}{360pt}
+%\setlength{\textheight}{615pt}
+\setlength{\textwidth}{6.5in}
+\setlength{\oddsidemargin}{.1in}
+\setlength{\evensidemargin}{.1in}
+\setlength{\topmargin}{-.1in}
+\setlength{\textheight}{8.4in}
 
 \newtheorem{theorem}{\textsc{\textbf{Theorem}}}[chapter]
 \theoremstyle{definition}
@@ -49,16 +54,12 @@
 	\pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.4pt}
 	\makeatletter\let\normalrender\PdfRender@NormalColorHook\let\PdfRender@NormalColorHook\@empty\newcommand*{\textnormalrender}[1]{\begingroup\normalrender#1\endgroup}\makeatother
 \else
-	\setmainfont[FakeBold=2,BoldFont=BaskervilleF-Bold.otf,ItalicFont=ModernMT-ExtendedItalic.otf,BoldItalicFont=ModernMTStd-BoldItalic.otf,SmallCapsFont=OldStyleSeven-SC.otf]{ModernMT-Extended.otf}
-	\setsansfont[%
-	FakeBold=1,ItalicFont=NewCMSans10-Oblique.otf,BoldFont=NewCMSans10-Bold.otf,BoldItalicFont=NewCMSans10-BoldOblique.otf,
-	SmallCapsFeatures={Numbers=OldStyle}]{NewCMSans10-Regular.otf}
-	
+	\setmainfont[FakeBold=4]{Old Standard}
+	\setsansfont[FakeBold=4]{Old Standard}
 	\setmonofont[%
-	FakeBold=1,ItalicFont=NewCMMono10-Italic.otf,BoldFont=NewCMMono10-Bold.otf,BoldItalicFont=NewCMMono10-BoldOblique.otf,SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
-	\setmathfont[FakeBold=2.5]{NewComputerModern Math}
-	\setmathfont[range=it,FakeBold=2.5]{Old Standard Italic}
-	% texgyrepagella-math.otf
+	FakeBold=4,ItalicFont=NewCMMono10-Italic.otf,BoldFont=NewCMMono10-Bold.otf,BoldItalicFont=NewCMMono10-BoldOblique.otf,SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
+	\setmathfont[FakeBold=4]{NewComputerModern Math}
+	\setmathfont[range=it,FakeBold=4]{Old Standard Italic}
 	\newfontfamily{\stm}{Garamond-Math.otf}
 	\makeatletter
 	\RenewDocumentCommand{\sum@}{}{\DOTSB\baskervillesum}
@@ -79,13 +80,12 @@
 \fi
 
 \title{\bfseries Introduction to Elementary Analytic Number Theory}
-\author{\textsc{\LARGE{Masum Billal}}}
+\author{\textsc{\bfseries{Masum Billal}}}
 
 \renewcommand*{\chapterautorefname}{Chapter}
 \renewcommand*{\sectionautorefname}{Section}
 \renewcommand{\theequation}{$\ddagger$\ \thechapter.\arabic{equation}}
-
-
+\interfootnotelinepenalty=10000
 \begin{document}
     \frontmatter
     \includepdf[pages={-1}]{cover.pdf}
@@ -95,11 +95,6 @@
     \printnomenclature
     \mainmatter
     \begin{refsection}
-        %\subfile{intro.tex}
-        %\printbibliography
-    \end{refsection}
-
-	\begin{refsection}
 		\subfile{arith.tex}
         \printbibliography
     \end{refsection}
@@ -110,6 +105,14 @@
 
 	\begin{refsection}
 		\subfile{tchebycheff.tex}
+	\end{refsection}
+
+	\begin{refsection}
+		\subfile{dirichletprime.tex}
+	\end{refsection}
+
+	\begin{refsection}
+		\subfile{prime.tex}
 	\end{refsection}
 
 	\begin{refsection}

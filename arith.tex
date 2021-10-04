@@ -45,7 +45,12 @@
 					|f(x)|
 					& \leq Cg(x)
 				\end{align*}
-			for all sufficiently large $x$. It is also written as $f(x)\ll g(x)$  or $g(x)\gg f(x)$.
+			for all sufficiently large $x$. It is also written as $f(x)\ll g(x)$  or $g(x)\gg f(x)$. When we say $g$ is an asymptotic estimate of $f$, we mean that
+				\begin{align*}
+					f(x)
+						& = g(x)+O(h(x))
+				\end{align*}
+			for two functions $g$ and $h$. Here, $h$ is the \textit{error term} which obviously should be of lower magnitude than $g$.
 		\end{definition}
 	In particular, $f(x)=O(1)$ means that $f$ is bounded above by some positive constant. Some trivial examples are $x^{2}=O(x^{3})$, $x+1=O(x)$ and $x^{2}+2x=O(x^{2})$. We usually want $g(x)$ to be as small as possible to avoid triviality. A useful example is
 		\begin{align*}
@@ -55,39 +60,110 @@
 	since $x=\lfloor{x}\rfloor+\{x\}$ and $0\leq \{x\}<1$.
 		\begin{definition}[Small O]
 			Let $f$ and $g$ be two real or complex valued functions. Then the following two statements are equivalent
-				\begin{align*}
+				\begin{align}
 					f(x)
 						& = o(g(x))\\
-					\iff \lim\limits_{x\to\infty}\dfrac{f(x)}{g(x)}
+					\lim\limits_{x\to\infty}\dfrac{f(x)}{g(x)}
 						& = 0
-				\end{align*}
+				\end{align}
 		\end{definition}
-	Some trivial examples are $1/x=o(1)$, $x=o(x^{2})$ and $2x^{2}\neq o(x^{2})$.
+	Some trivial examples are $1/x=o(1)$, $x=o(x^{2})$ and $2x^{2}\neq o(x^{2})$. It should be evident that having an estimate with respect to $O$ asymptotic formulas is more desirable than $o$ formulas. By nature, $O$ formulas give us a better understanding and a specific estimate whereas $o$ does not always say as much. Moreover, working with $O$ is a lot easier than working with $o$. For example,
+		\begin{align*}
+			\sum O(f(x))
+				& = O\left(\sum f(x)\right)\\
+			\int O(f(x))dx
+				& = O\left(\int f(x)dx\right)
+		\end{align*}
+	Or consider the possibility that we can very easily deal with constants that would otherwise pop up here and there unnecessarily. With the help of $O$,
+		\begin{align*}
+			O(1)+c
+				& = O(1)\\
+			O(cf(x))
+				& = O(f(x))
+		\end{align*}
+	and so on.
 		\begin{definition}[Equivalence]
 			Let $f$ and $g$ be two real or complex valued functions. We say that they are \textit{asymptotically equivalent} if
 				\begin{align*}
 					\lim\limits_{x\to\infty}\dfrac{f(x)}{g(x)}
 						& = 1
 				\end{align*}
-			and we denote it by $f\sim g$.
+			and we denote it by $f\sim g$. So, we can say that $g$ is an asymptotic formula for $f$.
 		\end{definition}
 	An example is $x^{2}\sim x^{2}+x$. Note the following.
 		\begin{align*}
-			f
-				& \sim g\\
-			\iff |f(x)-g(x)|
-				& = o(g(x))
+			f \sim g
+				& \iff |f(x)-g(x)|= o(g(x))
 		\end{align*}
-	We will use these symbols extensively throughout the book. It is of utmost importance that the reader gets well familiarized with these notions since they will be crucial in understanding much of this book. The primary motivation behind these asymptotic notions is to get an as precise as possible idea about the \textit{order of magnitude} of a certain function. This is why we will be leaning more towards $x^{2}+2x=O(x^{2})$ than $x^{2}+2x=O(x^{3})$ even though both are mathematically correct. The reason is, even though $x^{2}+2x=O(x^{3})$ is true, it is taking away a great portion of the accuracy to which we suppose $x^{2}+2x$ should be measured with respect to. On the other hand, we easily see that we cannot have $x^{2}+2x=O(x^{\epsilon})$ for $\epsilon<2$. Under the same philosophy, we will be interested in such asymptotic of some functions. Right now it is not quite straightforward why we are so interested in asymptotic estimation. Hopefully, the reason will unveil itself in the coming chapters.
-	
-	Consider the \textit{harmonic sum}
+	We will use these symbols extensively throughout the book. It is of utmost importance that the reader gets well familiarized with these notions since they will be crucial in understanding much of this book. The primary motivation behind these asymptotic notions is to get an as precise as possible idea about the \textit{order of magnitude} of a certain function. This is why we will be leaning more towards $x^{2}+2x=O(x^{2})$ than $x^{2}+2x=O(x^{3})$ even though both are mathematically correct. The reason is, even though $x^{2}+2x=O(x^{3})$ is true, it is taking away a great portion of the accuracy to which we suppose $x^{2}+2x$ should be measured with. On the other hand, we easily see that we cannot have $x^{2}+2x=O(x^{\epsilon})$ for $\epsilon<2$. Under the same philosophy, we define the order of magnitude equivalence.
+		\begin{definition}
+			If $f$ and $g$ are functions such that both $f(x)\ll g(x)$ and $g(x)\ll f(x)$ hold, then we write $f\asymp g$ and say that $f$ and $g$ have the \textit{same order of magnitude}.
+		\end{definition}
+	Now, we are interested in the general number of divisors and general sum of divisors. Let us define the cumulative sum of these functions.
 		\begin{align*}
-			H(n)
-				& = 1+\dfrac{1}{2}+\ldots+\dfrac{1}{n}
+			T_{k}(x)
+				& = \sum_{n\leq x}\sigma_{k}(n)\\
+			T_{k}(x)
+				& = \sum_{n\leq x}\tau_{k}(n)
 		\end{align*}
-	It does not seem easy to calculate $H(n)$ accurately, however, we can make a decent attempt to estimate $H(n)$. The tool that is best suited for carrying out such an estimation is the \textit{Abel partial summation formula}, which today is a cornerstone of analytic number theory.
-		\begin{theorem}[Abel partial summation formula]
-			Let $\{a_{n}\}$ be a sequence of real numbers and $f$ be a continuously differentiable function in the range $[y,x]$. If the partial sums of $\{a_{n}\}$ is
+	Notice the following.
+		\begin{align*}
+			T_{k}(x)
+				& = \sum_{n\leq x}\sum_{d\mid n}d^{k}\\
+				& = \sum_{n\leq x}\left\lfloor{\dfrac{x}{n}}\right\rfloor n^{k}\\
+				& = \sum_{n\leq x}\left(\dfrac{x}{n}+O(1)\right)n^{k}\\
+				& = x\sum_{n\leq x}n^{k-1}+O\left(\sum_{n\leq x}n^{k}\right)
+		\end{align*}
+	We can use this to establish an asymptotic for $T_{k}(x)$ if we can establish the asymptotic of $A_{2}(x)$. We will get to that in a moment. First, let us take care of the summation within the big O bracket. We have the trivial inequality that
+		\begin{align*}
+			\sum_{n\leq x}n^{k}
+				& \leq \sum_{n\leq x}x^{k}\\
+				& = x^{k}\sum_{n\leq x}1\\
+				& = \lfloor{x}\rfloor x^{k}\\
+				& = (x+O(1))x^{k}\\
+				& = x^{k+1}+O(x^{k})
+		\end{align*}
+	We have that $T_{k}(x)=x\left(x^{k}+O(x^{k-1})\right)+O(x^{k+1})=O(x^{k+1})$. Although this is a weak estimate, it shows a method of estimation. On this note, an interested reader can try and prove that
+		\begin{align*}
+			(n+1)^{k+1}-1
+				& =\sum_{i=0}^{k}\binom{k+1}{i}(1^{i}+\ldots+n^{i})
+		\end{align*}
+	This is known as the \textit{Pascal identity} (see \textcite{pascal_1964}, for an English translation, see \textcite{knoebel_laubenbacher_lodder_pengelley_2007}). The reader may also be interested in \textcite{kieren_macmillan_jonathan_sondow_2011}.
+	
+	Using a similar approach, we will now estimate $B$. First, see that
+		\begin{align*}
+			\tau_{k}(n)
+				& = \sum_{d_{1}\cdots d_{k}=n}1\\
+				& = \sum_{d_{k}\mid n}\sum_{d_{1}\cdots d_{k-1}=n/d_{k}}1\\
+				& = \sum_{d\mid n}\tau_{k-1}\left(\dfrac{n}{d}\right)
+		\end{align*}
+	Note that the two sets $\{d:d\mid n\}$ and $\{n/d:d\mid n\}$ actually coincide. So, we get
+		\begin{align*}
+			\tau_{k}(n)
+				& = \sum_{d\mid n}\tau_{k-1}(d)
+		\end{align*}
+	Using this for $T$,
+		\begin{align*}
+			T_{k}(x)
+				& = \sum_{n\leq x}\tau_{k}(n)\\
+				& = \sum_{n\leq x}\sum_{d\mid n}\tau_{k-1}(d)\\
+				& = \sum_{n\leq x}\left\lfloor{\dfrac{x}{n}}\right\rfloor\tau_{k-1}(n)\\
+				& = \sum_{n\leq x}\left(\dfrac{x}{n}+O(1)\right)\tau_{k-1}(n)\\
+				& = x\sum_{n\leq x}\dfrac{\tau_{k-1}(n)}{n}+O\left(\sum_{n\leq x}\tau_{k-1}(n)\right)
+		\end{align*}
+	Thus, we have the recursive result
+		\begin{align*}
+			T_{k}(x)
+				& = x\sum_{n\leq x}\dfrac{\tau_{k-1}(n)}{n}+O(T_{k-1}(x))
+		\end{align*}
+	It gets nontrivial how to proceed from here. Consider the \textit{harmonic sum}
+		\begin{align*}
+			H(x)
+			& = \sum_{n\leq x}\dfrac{1}{n}
+		\end{align*}
+	It does not seem easy to calculate $H$ accurately, however, we can make a decent attempt to estimate $H$. The tool that is best suited for carrying out such an estimation is the \textit{Abel partial summation formula}, which today is a cornerstone of analytic number theory.
+		\begin{theorem}[Abel partial summation formula]\label{thm:abel}
+			Let $\{a_{n}\}$ be a sequence of real numbers and $f$ be a continuously differentiable function in $[y,x]$. If the partial sums of $\{a_{n}\}$ is
 				\begin{align*}
 					A(x)
 						& = \sum_{n\leq x}a_{n}
@@ -97,43 +173,156 @@
 					\sum_{y<n\leq x}a_{n}f(n)
 						& = A(x)f(x)-A(y)f(y)-\int_{y}^{x}A(t)f'(t)dt
 				\end{align*}
+			In particular, if $f$ is an arithmetic function,
+				\begin{align*}
+					\sum_{n\leq x}a_{n}f(n)
+						& = A(x)f(x)-\int_{1}^{x}A(t)f'(t)dt
+				\end{align*}
+		\end{theorem}
+		
+		\begin{proof}
+			
+		\end{proof}
+	It is not straightforward to realize how such a formula can be as influential as we are describing it to be. Notice that, the formula essentially converts a discreet sum into an integral, which occasionally may be calculable. If the integral is not calculable, we may be able to estimate its value sometimes. We will demonstrate these ideas next. It is worth mentioning that Ramanujan also used such a technique. For example, in \textcite[Page $83$, $\S4$]{aiyangar_hardy_vennkatesvara_seshu_aiyar_p_wilson_1927}, we can definitely see what can only be described as the formula itself. It is unclear whether Ramanujan simply knew about this or he came up with the idea on his own while working on number of divisors. He essentially derives the partial summation formula while trying to express a sum of the form $\sum_{p\leq x}\phi(p)$ with respect to $\pi(x),\phi(x)$ and an integral where $\pi(x)$ is the number of primes not exceeding $x$. A consequence of \nameref{thm:abel} is the celebrated \textit{Euler's summation formula}.
+		\begin{theorem}[Euler's summation formula]
+			Let $f$ be a continuously differentiable function in $[y,x]$. Then
+				\begin{align*}
+					\sum_{y<n\leq x}f(n)
+						& = \int_{y}^{x}f(x)dx+\int_{y}^{x}{t}f(t)dt+{y}f(y)-{x}f(x)
+				\end{align*}
+			where ${t}=t-\lfloor{t}\rfloor$ is the fractional part of $t$.
 		\end{theorem}
 	
 		\begin{proof}
 			
 		\end{proof}
-	It is not straightforward to realize how such a formula can be as influential as we are describing it to be. Notice that, the formula essentially converts a discreet sum into an integral, which occasionally may be calculable. If the integral is not calculable, we may be able to estimate its value sometimes. We will demonstrate these ideas next. It is worth mentioning that Ramanujan also used such a technique. For example, in \textcite[Page $83$, $\S4$]{aiyangar_hardy_vennkatesvara_seshu_aiyar_p_wilson_1927}, we can definitely see what can only be described as the Abel's partial summation formula. Although, it is very unclear whether Ramanujan simply knew about this or he came up with the idea on his own while working on number of divisors. He essentially derives the partial summation formula while trying to express a sum of the form $\sum_{p\leq x}\phi(p)$ with respect to $\pi(x),\phi(x)$ and an integral where $\pi(x)$ is the number of primes not exceeding $x$.
+	Setting $a_{n}=\tau_{k-1}(n)$ and $f(n)=1/n$ in \nameref{thm:abel}, we get
+		\begin{align*}
+			\sum_{n\leq x}\dfrac{\tau_{k-1}(n)}{n}
+				& = \dfrac{T_{k-1}(x)}{x}-\int_{1}^{x}-\dfrac{T_{k-1}(t)}{t^{2}}dt
+		\end{align*}
+	Thus, we have a result where we can inductively get to the final expression. First, let us see the case $k=2$.
+		\begin{align*}
+			\sum_{n\leq x}\tau(n)
+				& = \sum_{n\leq x}\left\lfloor{\dfrac{x}{n}}\right\rfloor
+		\end{align*}
+	Clearly, this is just the number of pairs $(a,b)$ such that $ab\leq x$. We can divide the pairs in two classes. In the first class, $1\leq a\leq \sqrt{x}$ and in the second one, $a>\sqrt{x}$. In the first case, for a fixed $a$, there are $\lfloor{x/a}\rfloor$ possible choices for a valid value of $b$. So, the number of pairs in the first case is
+		\begin{align*}
+			\sum_{a\leq \sqrt{x}}\left\lfloor{\dfrac{x}{a}}\right\rfloor
+		\end{align*}
+	In the second case, since $a>\sqrt{x}$ and $b\leq x/a$, we must have $b\leq \sqrt{x}$. For a fixed $b$, there are $\lfloor{x/b}\rfloor-\sqrt{x}$ choices for a valid value of $a$, the choices namely are
+		\begin{align*}
+			\lfloor{x}\rfloor+1,\ldots,\left\lfloor{\dfrac{x}{b}}\right\rfloor
+		\end{align*}
+	Then the number of pairs in this case is
+		\begin{align*}
+			\sum_{b\leq \sqrt{x}}\left\lfloor{\dfrac{x}{b}}\right\rfloor-\sqrt{x}
+		\end{align*}
+	Thus, the total number of such pairs is
+		\begin{align*}
+			\sum_{a\leq \sqrt{x}}\left\lfloor{\dfrac{x}{a}}\right\rfloor+\sum_{b\leq \sqrt{x}}\left(\left\lfloor{\dfrac{x}{b}}\right\rfloor-\sqrt{x}\right)
+				& = 2\sum_{n\leq \sqrt{x}}\left\lfloor{\dfrac{x}{n}}\right\rfloor-\lfloor{x}\rfloor^{2}
+		\end{align*}
+	For getting past this sum, we have to deal with the sum
+		\begin{align*}
+			\sum_{n\leq \sqrt{x}}\left\lfloor{x/n}\right\rfloor
+				& = \sum_{n\leq \sqrt{x}}\left(\dfrac{x}{n}+O(1)\right)\\
+				& = x\sum_{n\leq \sqrt{x}}\dfrac{1}{n}+O(\sqrt{x})
+		\end{align*}
+	Setting $a_{n}=1$ and $f(n)=1/n$ in \nameref{thm:abel}, we get
+		\begin{align*}
+			H(x)
+				& = \dfrac{A(x)}{x}-\int_{1}^{x}-\dfrac{A(t)}{t^{2}}dt
+		\end{align*}
+	Here, $A(x)=\lfloor{x}\rfloor=x+O(1)$. Using this,
+		\begin{align*}
+			H(x)
+				& =  1+O\left(\dfrac{1}{x}\right)+\int_{1}^{x}\left(\dfrac{1}{t}+\dfrac{O(1)}{t^{2}}\right)dt\\
+				& = 1+O\left(\dfrac{1}{x}\right)+\int_{1}^{x}\dfrac{1}{t}dt+O\left(\int_{1}^{x}\dfrac{1}{t^{2}}dt\right)\\
+				& = 1+O\left(\dfrac{1}{x}\right)+\log{x}+O\left(1-\dfrac{1}{x}\right)
+		\end{align*}
+	Thus, we have the following result.
+		\begin{theorem}\label{thm:harmonicsum}
+				\begin{align*}
+					H(x)
+						& = \log{x}+C+O\left(\dfrac{1}{x}\right)
+				\end{align*}
+			where $C$ is a constant.
+		\end{theorem}
+	We get a more precise formulation of $H(x)$ by considering the limit $x\to\infty$ which removes $O(1/x)$ from the expression since this limit would be $0$.
+		\begin{theorem}
+			There is a constant $\gamma$ such that
+				\begin{align*}
+					\gamma
+						& = \lim\limits_{x\to\infty}(H(x)-\log{x})
+				\end{align*}
+		\end{theorem}
+	This constant is now known as \textit{Euler's constant} or \textit{Euler-Mascheroni's constant}. Although, neither Euler nor Mascheroni used the notation $\gamma$ for this constant. \textcite{euler_2020} used $C$ and $O$ in his original paper. \textcite{mascheroni_1790} used $A$ and $a$. Today it is not known whether $\gamma$ is even irrational. For now, we will not require the use of $\gamma$, so we will use \autoref{thm:harmonicsum}. Applying this, we have
+		\begin{align*}
+			\sum_{n\leq \sqrt{x}}\left\lfloor{\dfrac{x}{n}}\right\rfloor
+				& = xH(\sqrt{x})+O(\sqrt{x})\\
+				& = x\left(C+\log{\sqrt{x}}+O\left(\dfrac{1}{\sqrt{x}}\right)\right)+O(\sqrt{x})\\
+				& = \dfrac{1}{2}x\log{x}+Cx+O\left(\dfrac{x}{\sqrt{x}}\right)+O(\sqrt{x})\\
+				& = \dfrac{1}{2}x\log{x}+O(x)
+		\end{align*}
+	We can now use this to get
+		\begin{align*}
+			\sum_{n\leq x}\tau(n)
+				& = 2\sum_{n\leq \sqrt{x}}\left\lfloor{x/n}\right\rfloor-\lfloor{\sqrt{x}}\rfloor^{2}\\
+				& = x\log{x}+O(x)
+		\end{align*}
+	Thus, we get the following result.
+		\begin{align*}
+			\dfrac{\sum_{n\leq x}\tau(n)}{x}
+				& = \log{x}+O(1)
+		\end{align*}
+	\textcite{dirichlet_1897} actually proves the more precise result given below.
+		\begin{theorem}[Dirichlet's average order of $\tau$ theorem]\label{thm:dirtau}
+				\begin{align*}
+					\dfrac{\sum_{n\leq x}\tau(n)}{x}
+						& = \log{x}+2\gamma-1+O\left(\dfrac{1}{\sqrt{x}}\right)
+				\end{align*}
+			where $\gamma$ is the Euler-Mascheroni constant.
+		\end{theorem}
 	
-	Now, we are interested in the general number of divisors and general sum of divisors. Let us define the cumulative sum of these functions.
-		\begin{align*}
-			A_{k}(x)
-				& = \sum_{n\leq x}\sigma_{k}(n)\\
-			B_{k}(x)
-				& = \sum_{n\leq x}\tau_{k}(n)
-		\end{align*}
-	Notice the following.
-		\begin{align*}
-			A_{k}(x)
-				& = \sum_{n\leq x}\sum_{d\mid n}d^{k}\\
-				& = \sum_{n\leq x}\left\lfloor{\dfrac{x}{n}}\right\rfloor n^{k}\\
-				& = \sum_{n\leq x}\left(\dfrac{x}{n}+O(1)\right)n^{k}\\
-				& = x\sum_{n\leq x}n^{k-1}+O\left(\sum_{n\leq x}n^{k}\right)
-		\end{align*}
-	We can use this to inductively establish an asymptotic for $A_{k}(x)$ if we can establish the asymptotic of $A_{2}(x)$. We will get to that in a moment. First, let us take care of the summation within the big O bracket. We have the trivial inequality that
-		\begin{align*}
-			\sum_{n\leq x}n^{k}
-				& \leq \sum_{n\leq x}x^{k}\\
-				& = x^{k}\sum_{n\leq x}1\\
-				& = \lfloor{x}\rfloor x^{k}\\
-				& = (x+O(1))x^{k}\\
-				& = x^{k+1}+O(x^{k})
-		\end{align*}
-	We have that $A_{k}(x)=x\left(x^{k}+O(x^{k-1})\right)+O(x^{k+1})=O(x^{k+1})$. Although this is a weak estimate, it shows a method of estimation. On this note, an interested reader can try and prove that
-		\begin{align*}
-			(n+1)^{k+1}-1
-				& =\sum_{i=0}^{k}\binom{k+1}{i}(1^{i}+\ldots+n^{i})
-		\end{align*}
-	This is known as the \textit{Pascal identity} (see \textcite{pascal_1964}, for an English translation, see \textcite{knoebel_laubenbacher_lodder_pengelley_2007}). The reader may also be interested in \textcite{kieren_macmillan_jonathan_sondow_2011}.
+		\begin{definition}[Average order of arithmetic functions]
+				For an arithmetic function $f$, the average order of $f$ is
+				\begin{align*}
+					\lim\limits_{x\to\infty}\dfrac{\sum_{n\leq x}f(n)}{x}
+				\end{align*}
+		\end{definition}
+	Then Dirichlet's theorem on $\tau$ can be restated as \textit{the average order of $\tau$ is }$O(\log{x})$. \textcite{aiyangar_hardy_vennkatesvara_seshu_aiyar_p_wilson_1927} points out in his paper that the error term $O(1/\sqrt{x})$ in Dirichlet's theorem can be improved to $O\left(x^{-\frac{2}{3}+\epsilon}\right)$ or $O\left(x^{-2/3}\log{x}\right)$ as \textcite[Page $689$]{landau_1912} shows.
 	
-	Using a similar approach, we will now estimate $B$.
+	We can now get back to estimating $T$. Using \nameref{thm:abel}, we were able to deduce
+		\begin{align*}
+			T_{k}(x)
+				& = O\left(T_{k-1}(x)\right)+x\int_{1}^{x}\dfrac{T_{k-1}(t)}{t^{2}}dt
+		\end{align*}
+	Using \nameref{thm:dirtau}, $T(x)=x\log{x}+O(x)$, so
+		\begin{align*}
+			T_{3}(x)
+				& = O(T(x))+x\int_{1}^{x}\dfrac{T(t)}{t^{2}}dt\\
+				& = O(x\log{x})+x\int_{1}^{x}\dfrac{\log{t}}{t}dt
+		\end{align*}
+	Using the integration by parts formula,
+		\begin{align*}
+			\int\dfrac{\log{t}}{t}dt
+				& = \log{t}\int\dfrac{1}{t}-\int\left(\dfrac{1}{t}\int\dfrac{1}{t}dt\right)dt\\
+				& = \log^{2}{t}-\int\dfrac{\log{t}}{t}dt
+		\end{align*}
+	Thus, we get
+		\begin{align*}
+			\int_{1}^{x}\dfrac{\log{t}}{t}dt
+				& = \dfrac{1}{2}\log^{2}{x}
+		\end{align*}
+	which in turn gives
+		\begin{align*}
+			T_{3}(x)
+				& = \dfrac{1}{2}x\log^{2}{x}+O(x\log{x})
+		\end{align*}
+	We leave it as an exercise for the reader to prove the following (from what we have already developed, induction is one way to go about it).
+		\begin{align*}
+			T_{k}(x)
+				& = \dfrac{1}{(k-1)!}x\log^{k-1}{x}+O\left(x\log^{k-2}{x}\right)
+		\end{align*}
 \end{document}
