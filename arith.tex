@@ -163,7 +163,7 @@
 		\end{align*}
 	It does not seem easy to calculate $H$ accurately, however, we can make a decent attempt to estimate $H$. The tool that is best suited for carrying out such an estimation is the \textit{Abel partial summation formula}, which today is a cornerstone of analytic number theory.
 		\begin{theorem}[Abel partial summation formula]\label{thm:abel}
-			Let $\{a_{n}\}$ be a sequence of real numbers and $f$ be a continuously differentiable function in $[y,x]$. If the partial sums of $\{a_{n}\}$ is
+			Let $\{a_{n}\}$ be a sequence of real numbers and $f$ be a continuous differentiable function in $[y,x]$. If the partial sums of $\{a_{n}\}$ is
 				\begin{align*}
 					A(x)
 						& = \sum_{n\leq x}a_{n}
@@ -185,7 +185,7 @@
 		\end{proof}
 	It is not straightforward to realize how such a formula can be as influential as we are describing it to be. Notice that, the formula essentially converts a discreet sum into an integral, which occasionally may be calculable. If the integral is not calculable, we may be able to estimate its value sometimes. We will demonstrate these ideas next. It is worth mentioning that Ramanujan also used such a technique. For example, in \textcite[Page $83$, $\S4$]{aiyangar_hardy_vennkatesvara_seshu_aiyar_p_wilson_1927}, we can definitely see what can only be described as the formula itself. It is unclear whether Ramanujan simply knew about this or he came up with the idea on his own while working on number of divisors. He essentially derives the partial summation formula while trying to express a sum of the form $\sum_{p\leq x}\phi(p)$ with respect to $\pi(x),\phi(x)$ and an integral where $\pi(x)$ is the number of primes not exceeding $x$. A consequence of \nameref{thm:abel} is the celebrated \textit{Euler's summation formula}.
 		\begin{theorem}[Euler's summation formula]
-			Let $f$ be a continuously differentiable function in $[y,x]$. Then
+			Let $f$ be a continuous differentiable function in $[y,x]$. Then
 				\begin{align*}
 					\sum_{y<n\leq x}f(n)
 						& = \int_{y}^{x}f(x)dx+\int_{y}^{x}{t}f(t)dt+{y}f(y)-{x}f(x)
@@ -324,5 +324,10 @@
 		\begin{align*}
 			T_{k}(x)
 				& = \dfrac{1}{(k-1)!}x\log^{k-1}{x}+O\left(x\log^{k-2}{x}\right)
+		\end{align*}
+	The reason we do not write $T_{k}(x)$ as $O\left(x\log^{k-1}{x}\right)$ directly is because in this case, we already know what the constant multiplier of $x\log^{k-1}{x}$ is. Usually, we write $O(f(x))$ when we do not know what the constant multiplier of $f(x)$ is. \textcite[Page $2$]{landau_1912_0} states a sharper result.
+		\begin{align*}
+			T_{k}(x)
+				& = x\left(\sum_{m=0}^{k-1}b_{m}\log^{m}{x}\right)+O\left(x^{1-\frac{1}{k}}\right)+O\left(x^{1-\frac{1}{k}}\log^{k-2}{x}\right)
 		\end{align*}
 \end{document}
