@@ -4,13 +4,18 @@
 	\chapter{Arithmetic Functions}
 	In this chapter, we will discuss some generalized arithmetic functions and their asymptotic behavior. We will skip discussing the basic definitions since they are common in most introductory number theory texts. See \gls{erdos}, \gls{mobius}
 		\begin{definition}[Summatory function]
-			For an arithmetic function $f$, the \textit{summatory function} of $f$ is defined as
+			For an arithmetic function $f$, the \index{Summatory function}\textit{summatory function} of $f$ is defined as
 				\begin{align*}
 					F(n)
-						& = \sum_{d\mid n}f(d)
+						& = \sum_{d\in \mathbb{D}}f(d)
 				\end{align*}
+			where $\mathbb{D}$ is some set possibly depending on $n$.
 		\end{definition}
-	Note that the number of divisor function $\tau(n)$ is the summatory function of the unit function $u(n)=1$. The sum of divisor function $\sigma(n)$ is the summatory function of the invariant function $f(n)=n$. An interesting property that we will repeatedly use is that
+	Note that the number of divisor function $\tau(n)$ is the summatory function of the unit function $u(n)=1$ where $\mathbb{D}$ is the set of divisors of $n$. The sum of divisor function $\sigma(n)$ is the summatory function of the invariant function $f(n)=n$ where $\mathbb{D}$ is the set of divisors of $n$. Another interesting summatory function we will see is functions of the form
+		\begin{align*}
+			\sum_{n\leq x}f(n)
+		\end{align*}
+	for a real number $x$. An interesting property that we will repeatedly use is that
 		\begin{align*}
 			\sum_{i=1}^{n}F(i)
 				& = \sum_{i=1}^{n}\sum_{d\mid i}f(d)\\
@@ -98,17 +103,17 @@
 	We will use these symbols extensively throughout the book. It is of utmost importance that the reader gets well familiarized with these notions since they will be crucial in understanding much of this book. The primary motivation behind these asymptotic notions is to get an as precise as possible idea about the \textit{order of magnitude} of a certain function. This is why we will be leaning more towards $x^{2}+2x=O(x^{2})$ than $x^{2}+2x=O(x^{3})$ even though both are mathematically correct. The reason is, even though $x^{2}+2x=O(x^{3})$ is true, it is taking away a great portion of the accuracy to which we suppose $x^{2}+2x$ should be measured with. On the other hand, we easily see that we cannot have $x^{2}+2x=O(x^{\epsilon})$ for $\epsilon<2$. Under the same philosophy, we define the order of magnitude equivalence.
 		\begin{definition}
 			If $f$ and $g$ are functions such that both $f(x)\ll g(x)$ and $g(x)\ll f(x)$ hold, then we write $f\asymp g$ and say that $f$ and $g$ have the \textit{same order of magnitude}.
-		\end{definition}
+		\end{definition}\par
 	Now, we are interested in the general number of divisors and general sum of divisors. Let us define the cumulative sum of these functions.
 		\begin{align*}
-			T_{k}(x)
+			S_{k}(x)
 				& = \sum_{n\leq x}\sigma_{k}(n)\\
 			T_{k}(x)
 				& = \sum_{n\leq x}\tau_{k}(n)
 		\end{align*}
 	Notice the following.
 		\begin{align*}
-			T_{k}(x)
+			S_{k}(x)
 				& = \sum_{n\leq x}\sum_{d\mid n}d^{k}\\
 				& = \sum_{n\leq x}\left\lfloor{\dfrac{x}{n}}\right\rfloor n^{k}\\
 				& = \sum_{n\leq x}\left(\dfrac{x}{n}+O(1)\right)n^{k}\\
@@ -123,21 +128,24 @@
 				& = (x+O(1))x^{k}\\
 				& = x^{k+1}+O(x^{k})
 		\end{align*}
-	We have that $T_{k}(x)=x\left(x^{k}+O(x^{k-1})\right)+O(x^{k+1})=O(x^{k+1})$. Although this is a weak estimate, it shows a method of estimation. On this note, an interested reader can try and prove that
+	We have that $S_{k}(x)=x\left(x^{k}+O(x^{k-1})\right)+O(x^{k+1})=O(x^{k+1})$. Although weak, we get an estimate this way. On this note, an interested reader can try and prove that
 		\begin{align*}
 			(n+1)^{k+1}-1
 				& =\sum_{i=0}^{k}\binom{k+1}{i}(1^{i}+\ldots+n^{i})
 		\end{align*}
-	This is known as the \textit{Pascal identity} (see \textcite{pascal_1964}, for an English translation, see \textcite{knoebel_laubenbacher_lodder_pengelley_2007}). The reader may also be interested in \textcite{kieren_macmillan_jonathan_sondow_2011}.
-	
-	Using a similar approach, we will now estimate $B$. First, see that
+	This is known as the \index{Pascal identity}\textit{Pascal identity} (see \textcite{pascal_1964}, for an English translation, see \textcite{knoebel_laubenbacher_lodder_pengelley_2007}). The reader may also be interested in \textcite{kieren_macmillan_jonathan_sondow_2011}. \textcite[Chapter II, Theorem $1$]{lehmer_1900} proves that
+		\begin{align*}
+			\sum_{n\leq x}^{k}
+				& = \dfrac{x^{k+1}}{k+1}+\Delta
+		\end{align*}
+	where $|\Delta|\leq x^{n}$. Let us try to estimate $T$ in a similar fashion. First, see that
 		\begin{align*}
 			\tau_{k}(n)
 				& = \sum_{d_{1}\cdots d_{k}=n}1\\
 				& = \sum_{d_{k}\mid n}\sum_{d_{1}\cdots d_{k-1}=n/d_{k}}1\\
 				& = \sum_{d\mid n}\tau_{k-1}\left(\dfrac{n}{d}\right)
 		\end{align*}
-	Note that the two sets $\{d:d\mid n\}$ and $\{n/d:d\mid n\}$ actually coincide. So, we get
+	Note that the two sets $\{d:d\mid n\}$ and $\{n/d:d\mid n\}$ are actually the same. So, we get
 		\begin{align*}
 			\tau_{k}(n)
 				& = \sum_{d\mid n}\tau_{k-1}(d)
@@ -161,7 +169,7 @@
 			H(x)
 			& = \sum_{n\leq x}\dfrac{1}{n}
 		\end{align*}
-	It does not seem easy to calculate $H$ accurately, however, we can make a decent attempt to estimate $H$. The tool that is best suited for carrying out such an estimation is the \textit{Abel partial summation formula}, which today is a cornerstone of analytic number theory.
+	It does not seem easy to calculate $H$ accurately, however, we can make a decent attempt to estimate $H$. The tool that is best suited for carrying out such an estimation is the \index{Abel partial summation formula}\textit{Abel partial summation formula}, which today is a cornerstone of analytic number theory.
 		\begin{theorem}[Abel partial summation formula]\label{thm:abel}
 			Let $\{a_{n}\}$ be a sequence of real numbers and $f$ be a continuous differentiable function in $[y,x]$. If the partial sums of $\{a_{n}\}$ is
 				\begin{align*}
@@ -183,7 +191,7 @@
 		\begin{proof}
 			
 		\end{proof}
-	It is not straightforward to realize how such a formula can be as influential as we are describing it to be. Notice that, the formula essentially converts a discreet sum into an integral, which occasionally may be calculable. If the integral is not calculable, we may be able to estimate its value sometimes. We will demonstrate these ideas next. It is worth mentioning that Ramanujan also used such a technique. For example, in \textcite[Page $83$, $\S4$]{aiyangar_hardy_vennkatesvara_seshu_aiyar_p_wilson_1927}, we can definitely see what can only be described as the formula itself. It is unclear whether Ramanujan simply knew about this or he came up with the idea on his own while working on number of divisors. He essentially derives the partial summation formula while trying to express a sum of the form $\sum_{p\leq x}\phi(p)$ with respect to $\pi(x),\phi(x)$ and an integral where $\pi(x)$ is the number of primes not exceeding $x$. A consequence of \nameref{thm:abel} is the celebrated \textit{Euler's summation formula}.
+	It is not straightforward to realize how such a formula can be as influential as we are describing it to be. Notice that, the formula essentially converts a discreet sum into an integral, which occasionally may be calculable. If the integral is not calculable, we may be able to estimate its value sometimes. We will demonstrate these ideas next. It is worth mentioning that Ramanujan also used such a technique. For example, in \textcite[Page $83$, $\S4$]{aiyangar_hardy_vennkatesvara_seshu_aiyar_p_wilson_1927}, we can definitely see what can only be described as the formula itself. It is unclear whether Ramanujan simply knew about this or he came up with the idea on his own while working on number of divisors. He essentially derives the partial summation formula while trying to express a sum of the form $\sum_{p\leq x}\phi(p)$ with respect to $\pi(x),\phi(x)$ and an integral where $\pi(x)$ is the number of primes not exceeding $x$. A consequence of \nameref{thm:abel} is the celebrated \index{Euler's summation formula}\textit{Euler's summation formula}.
 		\begin{theorem}[Euler's summation formula]
 			Let $f$ be a continuous differentiable function in $[y,x]$. Then
 				\begin{align*}
@@ -219,15 +227,16 @@
 			\sum_{b\leq \sqrt{x}}\left\lfloor{\dfrac{x}{b}}\right\rfloor-\sqrt{x}
 		\end{align*}
 	Thus, the total number of such pairs is
-		\begin{align*}
+		\begin{align}
 			\sum_{a\leq \sqrt{x}}\left\lfloor{\dfrac{x}{a}}\right\rfloor+\sum_{b\leq \sqrt{x}}\left(\left\lfloor{\dfrac{x}{b}}\right\rfloor-\sqrt{x}\right)
-				& = 2\sum_{n\leq \sqrt{x}}\left\lfloor{\dfrac{x}{n}}\right\rfloor-\lfloor{x}\rfloor^{2}
-		\end{align*}
+				& = 2\sum_{n\leq \sqrt{x}}\left\lfloor{\dfrac{x}{n}}\right\rfloor-\lfloor{x}\rfloor^{2}\label{eqn:totdiv}
+		\end{align}
 	For getting past this sum, we have to deal with the sum
 		\begin{align*}
 			\sum_{n\leq \sqrt{x}}\left\lfloor{x/n}\right\rfloor
 				& = \sum_{n\leq \sqrt{x}}\left(\dfrac{x}{n}+O(1)\right)\\
-				& = x\sum_{n\leq \sqrt{x}}\dfrac{1}{n}+O(\sqrt{x})
+				& = x\sum_{n\leq \sqrt{x}}\dfrac{1}{n}+O(\sqrt{x})\\
+				& = xH(\sqrt{x})+O(\sqrt{x})
 		\end{align*}
 	Setting $a_{n}=1$ and $f(n)=1/n$ in \nameref{thm:abel}, we get
 		\begin{align*}
@@ -257,7 +266,7 @@
 						& = \lim\limits_{x\to\infty}(H(x)-\log{x})
 				\end{align*}
 		\end{theorem}
-	This constant is now known as \textit{Euler's constant} or \textit{Euler-Mascheroni's constant}. Although, neither Euler nor Mascheroni used the notation $\gamma$ for this constant. \textcite{euler_2020} used $C$ and $O$ in his original paper. \textcite{mascheroni_1790} used $A$ and $a$. Today it is not known whether $\gamma$ is even irrational. For now, we will not require the use of $\gamma$, so we will use \autoref{thm:harmonicsum}. Applying this, we have
+	This constant $\gamma$ is now known as \index{Euler-Mascheroni constant}\textit{Euler's constant} or \textit{Euler-Mascheroni's constant}, although, neither Euler nor Mascheroni used the notation $\gamma$ for this constant. \textcite{euler_2020} used $C$ and $O$ in his original paper. \textcite{mascheroni_1790} used $A$ and $a$. Today it is not known whether $\gamma$ is even irrational. For now, we will not require the use of $\gamma$, so we will use \autoref{thm:harmonicsum}. Applying this, we have
 		\begin{align*}
 			\sum_{n\leq \sqrt{x}}\left\lfloor{\dfrac{x}{n}}\right\rfloor
 				& = xH(\sqrt{x})+O(\sqrt{x})\\
@@ -286,7 +295,7 @@
 		\end{theorem}
 	
 		\begin{definition}[Average order of arithmetic functions]
-				For an arithmetic function $f$, the average order of $f$ is
+				For an arithmetic function $f$, \index{Averge order}the average order of $f$ is
 				\begin{align*}
 					\lim\limits_{x\to\infty}\dfrac{\sum_{n\leq x}f(n)}{x}
 				\end{align*}
