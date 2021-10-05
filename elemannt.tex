@@ -43,16 +43,11 @@
 \setlength{\topmargin}{-.1in}
 \setlength{\textheight}{8.4in}
 
-\newtheorem{theorem}{\textbf{\getsc{Theorem}}}[chapter]
-\theoremstyle{definition}
-\newenvironment{definition}[1][]{\par\medskip\noindent \textbf{\ifthenelse{\isempty{#1}}{Definition.}{#1.}} \rmfamily}{\medskip}
-\newtheorem*{remark}{Remark}
-
 \newcommand{\lcm}{\mbox{lcm}}
 
 \ifpdftex
 	\microtypecontext{spacing=nonfrench}
-	\pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.4pt}
+	\pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.2pt}
 	\makeatletter\let\normalrender\PdfRender@NormalColorHook\let\PdfRender@NormalColorHook\@empty\newcommand*{\textnormalrender}[1]{\begingroup\normalrender#1\endgroup}\makeatother
 \else
 	\setmainfont[FakeBold=2,BoldFont=OldStandard-Bold.otf,ItalicFont=ModernMT-ExtendedItalic.otf,BoldItalicFont=ModernMTStd-BoldItalic.otf,SmallCapsFont=OldStyleSeven-SC.otf]{ModernMT-Extended.otf}
@@ -90,8 +85,22 @@
 	}
 \fi
 
+\ifxetex
+	\newtheorem{theorem}{\textbf{\getsc{Theorem}}}[chapter]
+\else
+	\newtheorem{theorem}{\textbf{\textsc{Theorem}}}[chapter]
+\fi
+\theoremstyle{definition}
+\newenvironment{definition}[1][]{\par\medskip\noindent \textbf{\ifthenelse{\isempty{#1}}{Definition.}{#1.}} \rmfamily}{\medskip}
+\newtheorem*{remark}{Remark}
+
+
 \title{\bfseries Introduction to Elementary Analytic Number Theory}
-\author{\Large\textbf{\getsc{Masum} \getsc{Billal}}}
+\ifxetex
+	\author{\Large\textbf{\getsc{Masum} \getsc{Billal}}}
+\else
+	\author{\Large\textbf{\textsc{Masum Billal}}}
+\fi
 
 \renewcommand*{\chapterautorefname}{Chapter}
 \renewcommand*{\sectionautorefname}{Section}
@@ -104,7 +113,11 @@
 \setlength{\headheight}{52pt}
 
 %\fancyhead[RE]{\textit{\nouppercase{\leftmark}}}
-\fancyhead[LO, RE]{\small\textsc{Masum Billal}}
+\ifpdftex
+	\fancyhead[LO, RE]{\small\textsc{Masum Billal}}
+\else
+	\fancyhead[LO,RE]{\small\getsc{Masum} \getsc{Billal}}
+\fi
 \fancyhead[LE]{$\S$\thechapter}
 \fancyhead[RO]{$\S$\thesection}
 \fancyfoot[LE, RO]{Page\ \thepage}
@@ -112,16 +125,15 @@
 \renewcommand{\footrulewidth}{.1pt}
 
 \begin{document}
-	\pagestyle{empty}
+	%\pagestyle{empty}
     \includepdf[pages={-1}]{cover.pdf}
-    \cleardoublepage
     \maketitle
     \frontmatter
     \tableofcontents
     \subfile{nomencl.tex}
     \printnomenclature
     \mainmatter
-    \pagestyle{fancyplain}
+    %\pagestyle{fancyplain}
     \begin{refsection}
 		\subfile{arith.tex}
         \printbibliography
