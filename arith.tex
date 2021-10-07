@@ -196,7 +196,7 @@
 			Let $f$ be a continuous differentiable function in $[y,x]$. Then
 				\begin{align*}
 					\sum_{y<n\leq x}f(n)
-						& = \int_{y}^{x}f(x)dx+\int_{y}^{x}{t}f(t)dt+{y}f(y)-{x}f(x)
+						& = \int_{y}^{x}f(t)dt+\int_{y}^{x}\{t\}f(t)dt+\{y\}f(y)-\{x\}f(x)
 				\end{align*}
 			where ${t}=t-\lfloor{t}\rfloor$ is the fractional part of $t$.
 		\end{theorem}
@@ -352,23 +352,30 @@
 					J_{k}(n)
 						& = \sum_{\substack{1\leq a_{1},\ldots,a_{k}\leq n\\\gcd(a_{1},\ldots,a_{k},n)=1}}1
 				\end{align*}
-			In the same manner as $\varphi$, we can show that
-				\begin{align*}
-					J_{k}(n)
-						& = \prod_{p^{e}\|n}p^{k(e-1)}(p-1)
-				\end{align*}
+			\textcite{lehmer_1900} used the notation $\varphi_{k}(n)$ but today $J_{k}(n)$ is used more often.
 		\end{definition}
-	\textcite[Page $95-97$]{jordan_1989} first discussed this function and \textcite{lehmer_1900} considered the asymptotic. \textcite{lehmer_1900} used the notation $\varphi_{k}(n)$ but today $J_{k}(n)$ is used more often.
-	
-	We leave it to the reader to prove that
+	\textcite[Page $95-97$]{jordan_1989} first discussed this function and \textcite{lehmer_1900} developed some asymptotic results. Jordan totient function is interesting not only because it is a generalization of Euler's totient function but also because it has many interesting properties.
+	For example, similar to $\varphi$, we can show that
+		\begin{align*}
+			J_{k}(n)
+				& = \prod_{p^{e}\|n}p^{k(e-1)}(p-1)\\
+			J_{k}(n^{m})
+				& = n^{k(m-1)}J_{k}(n)
+		\end{align*}
+	\textcite[Theorem VI]{lehmer_1900} proves the following which he calls the \textit{fundamental theorem}.
+		\begin{align}
+			J_{k}(mn)
+				& = J_{k}(n)\prod_{p^{e}\parallel m}\left(p^{ke}-p^{k(e-1)}\lambda(n,p)\right)\label{thm:lehfund}
+		\end{align}
+	where $\lambda(n,p)=0$ if $p\mid n$ otherwise $\lambda(n,p)=1$. We leave the proof of this result and the following to the reader.
 		\begin{align*}
 			\sum_{d\mid n}J_{k}(d)
 				& = n^{k}
 		\end{align*}
-	Then from M\"{o}bius inversion (see \gls{mobius} in Glossary),
+	 Like $\sigma_{k}(n)$, $J_{k}(n)$ is also  related to the sum
 		\begin{align*}
-			J_{k}(n)
-				& = \sum_{d\mid n}\mu(d)\left(\dfrac{n}{d}\right)^{k}\\
-				& = n^{k}\sum_{d\mid n}\dfrac{\mu(d)}{d^{k}}
+			S(x,k)
+				& = \sum_{n\leq x}n^{k}
 		\end{align*}
+	But before we further look into $J_{k}(n)$, we will have to discuss M\"{o}bius inversion as well as generalized inversion which we shall do in the next chapter.
 \end{document}
