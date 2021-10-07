@@ -11,7 +11,7 @@
 				\end{align*}
 			where $\mathbb{D}$ is some set possibly depending on $n$.
 		\end{definition}
-	Note that the number of divisor function $\tau(n)$ is the summatory function of the unit function $u(n)=1$ where $\mathbb{D}$ is the set of divisors of $n$. The sum of divisor function $\sigma(n)$ is the summatory function of the invariant function $f(n)=n$ where $\mathbb{D}$ is the set of divisors of $n$. Another interesting summatory function we will see is functions of the form
+	Note that the number of divisor function $\tau(n)$ is the summatory function of the unit function $u(n)=1$ where $\mathbb{D}$ is the set of divisors of $n$. The sum of divisor function $\sigma(n)$ is the summatory function of the invariant function $f(n)=n$ where $\mathbb{D}$ is the set of divisors of $n$. Another interesting summatory function we will see are functions of the form
 		\begin{align*}
 			\sum_{n\leq x}f(n)
 		\end{align*}
@@ -135,7 +135,7 @@
 		\end{align*}
 	This is known as the \index{Pascal identity}\textit{Pascal identity} (see \textcite{pascal_1964}, for an English translation, see \textcite{knoebel_laubenbacher_lodder_pengelley_2007}). \textcite[Chapter II, Theorem $1$]{lehmer_1900} proves that
 		\begin{align*}
-			\sum_{n\leq x}^{k}
+			\sum_{n\leq x}n^{k}
 				& = \dfrac{x^{k+1}}{k+1}+\Delta
 		\end{align*}
 	where $|\Delta|\leq x^{n}$. The reader may also be interested in \textcite{kieren_macmillan_jonathan_sondow_2011}. Let us try to estimate $T$ in a similar fashion. First, see that
@@ -338,5 +338,37 @@
 		\begin{align*}
 			T_{k}(x)
 				& = x\left(\sum_{m=0}^{k-1}b_{m}\log^{m}{x}\right)+O\left(x^{1-\frac{1}{k}}\right)+O\left(x^{1-\frac{1}{k}}\log^{k-2}{x}\right)
+		\end{align*}
+	
+	For our next function, let us consider a generalization of the Euler's totient function $\varphi(n)$.
+		\begin{align*}
+			\varphi(x,a)
+				& = \sum_{\substack{n\leq x\\\gcd(n,a)=1}}1
+		\end{align*}
+	For a positive integer $n$, $\varphi(n)=\varphi(n,n)$. A generalization of $\varphi$ is the \index{Jordan function}\textit{Jordan function}.
+		\begin{definition}[Jordan function]
+			Let $n$ and $k$ be positive integers. Then the Jordan function $J_{k}(n)$ is the number of $k$ tuples of positive integers not exceeding $n$ that are relatively prime to $n$.
+				\begin{align*}
+					J_{k}(n)
+						& = \sum_{\substack{1\leq a_{1},\ldots,a_{k}\leq n\\\gcd(a_{1},\ldots,a_{k},n)=1}}1
+				\end{align*}
+			In the same manner as $\varphi$, we can show that
+				\begin{align*}
+					J_{k}(n)
+						& = \prod_{p^{e}\|n}p^{k(e-1)}(p-1)
+				\end{align*}
+		\end{definition}
+	\textcite[Page $95-97$]{jordan_1989} first discussed this function and \textcite{lehmer_1900} considered the asymptotic. \textcite{lehmer_1900} used the notation $\varphi_{k}(n)$ but today $J_{k}(n)$ is used more often.
+	
+	We leave it to the reader to prove that
+		\begin{align*}
+			\sum_{d\mid n}J_{k}(d)
+				& = n^{k}
+		\end{align*}
+	Then from M\"{o}bius inversion (see \gls{mobius} in Glossary),
+		\begin{align*}
+			J_{k}(n)
+				& = \sum_{d\mid n}\mu(d)\left(\dfrac{n}{d}\right)^{k}\\
+				& = n^{k}\sum_{d\mid n}\dfrac{\mu(d)}{d^{k}}
 		\end{align*}
 \end{document}

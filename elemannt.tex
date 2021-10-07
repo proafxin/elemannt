@@ -4,7 +4,7 @@
 \usepackage{subfiles}
 \usepackage{hyperref}
 \hypersetup{pdfstartview=,pdfencoding=auto,}
-\usepackage[style=musuos,sorting=nyt,labeldateparts=true,sortcites=true,backend=biber,]{biblatex}
+\usepackage[style=verbose,backend=biber,sortcites=true]{biblatex}
 \addbibresource[]{ref.bib}
 
 \usepackage{xifthen,fancyhdr,centernot,datetime}
@@ -57,16 +57,16 @@
 	
 	\setmonofont[%
 	FakeBold=2,ItalicFont=NewCMMono10-Italic.otf,BoldFont=NewCMMono10-Bold.otf,BoldItalicFont=NewCMMono10-BoldOblique.otf,SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
-	\setmathfont[FakeBold=2,BoldFont={Old Standard Bold}]{NewComputerModern Math}
+	\setmathfont[FakeBold=2,BoldFont={XITSMath-Bold.otf}]{NewCMMath-Book.otf}
 	\setmathfont[range=it,FakeBold=2]{Old Standard Italic}
 	% texgyrepagella-math.otf
-	\newfontfamily{\stm}{Garamond-Math.otf}
+	\newfontfamily{\stm}{STIXMath-Regular.otf}
 	\makeatletter
 	\RenewDocumentCommand{\sum@}{}{\DOTSB\baskervillesum}
 	\AtBeginDocument{\RenewDocumentCommand{\sum}{}{\mathop{\sum@}\slimits@}}
 	\NewDocumentCommand{\baskervillesum}{}{%
 		\mathchoice
-		{\makebaskervillesum{2.5}}% displaystyle
+		{\makebaskervillesum{2.6}}% displaystyle
 		{\makebaskervillesum{1.5}}% textstyle
 		{\makebaskervillesum{1}}% scriptstyle
 		{\makebaskervillesum{0.7}}% scriptscriptstyle
@@ -136,7 +136,7 @@
     %\pagestyle{fancyplain}
     \begin{refsection}
 		\subfile{arith.tex}
-        \printbibliography
+        \printbibliography[heading=bibintoc]
     \end{refsection}
 
 	\begin{refsection}
