@@ -131,14 +131,16 @@
 	We have that $S_{k}(x)=x\left(x^{k}+O(x^{k-1})\right)+O(x^{k+1})=O(x^{k+1})$. Although weak, we get an estimate this way. On this note, an interested reader can try and prove that
 		\begin{align*}
 			(n+1)^{k+1}-1
-				& =\sum_{i=0}^{k}\binom{k+1}{i}(1^{i}+\ldots+n^{i})
+				& =\sum_{i=0}^{k}\binom{k+1}{i}\mathfrak{S}(n,k)
 		\end{align*}
-	This is known as the \index{Pascal identity}\textit{Pascal identity} (see \textcite{pascal_1964}, for an English translation, see \textcite{knoebel_laubenbacher_lodder_pengelley_2007}). \textcite[Chapter II, Theorem $1$]{lehmer_1900} proves that
+	where $\mathfrak{S}(x,k)=\sum_{n\leq x}n^{k}$. This is known as the \index{Pascal identity}\textit{Pascal identity} (see \textcite{pascal_1964}, for an English translation, see \textcite{knoebel_laubenbacher_lodder_pengelley_2007}). \textcite[Chapter II, Theorem $1$]{lehmer_1900} proves that
 		\begin{align*}
-			\sum_{n\leq x}n^{k}
+			\mathfrak{S}(x,k)
 				& = \dfrac{x^{k+1}}{k+1}+\Delta
 		\end{align*}
-	where $|\Delta|\leq x^{n}$. The reader may also be interested in \textcite{kieren_macmillan_jonathan_sondow_2011}. Let us try to estimate $T$ in a similar fashion. First, see that
+	where $|\Delta|\leq x^{k}$. The reader may also be interested in \textcite{kieren_macmillan_jonathan_sondow_2011}.
+	
+	We shall try to estimate $T$ in a similar fashion. First, see that
 		\begin{align*}
 			\tau_{k}(n)
 				& = \sum_{d_{1}\cdots d_{k}=n}1\\
@@ -372,10 +374,5 @@
 			\sum_{d\mid n}J_{k}(d)
 				& = n^{k}
 		\end{align*}
-	 Like $\sigma_{k}(n)$, $J_{k}(n)$ is also  related to the sum
-		\begin{align*}
-			S(x,k)
-				& = \sum_{n\leq x}n^{k}
-		\end{align*}
-	But before we further look into $J_{k}(n)$, we will have to discuss M\"{o}bius inversion as well as generalized inversion which we shall do in the next chapter.
+	 Like $\sigma_{k}(n)$, $J_{k}(n)$ is also  related to the sum $\mathfrak{S}(x, k)$. But before we further look into $J_{k}(n)$, we will have to discuss M\"{o}bius inversion as well as generalized inversion which we shall do in the next chapter.
 \end{document}
