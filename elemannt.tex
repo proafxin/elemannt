@@ -60,19 +60,20 @@
 	\setmathfont[FakeBold=2,BoldFont={XITSMath-Bold.otf}]{NewCMMath-Book.otf}
 	\setmathfont[range=it,FakeBold=2]{Old Standard Italic}
 	\setmathfont[range={\prod},Scale=1.2]{STIX Two Math}
+	\setmathfont[range={\sum},Scale=1.3]{STIX Math Regular}
 	% texgyrepagella-math.otf
-	\newfontfamily{\stm}{STIXMath-Regular.otf}
-	\makeatletter
-	\RenewDocumentCommand{\sum@}{}{\DOTSB\baskervillesum}
-	\AtBeginDocument{\RenewDocumentCommand{\sum}{}{\mathop{\sum@}\slimits@}}
-	\NewDocumentCommand{\baskervillesum}{}{%
-		\mathchoice
-		{\makebaskervillesum{2.6}}% displaystyle
-		{\makebaskervillesum{1.5}}% textstyle
-		{\makebaskervillesum{1}}% scriptstyle
-		{\makebaskervillesum{0.7}}% scriptscriptstyle
-	}
-	\NewDocumentCommand{\makebaskervillesum}{m}{\vcenter{\hbox{\scalebox{#1}{\stm Σ}}}}
+	%\newfontfamily{\stm}{STIXMath-Regular.otf}
+	%\makeatletter
+	%\RenewDocumentCommand{\sum@}{}{\DOTSB\baskervillesum}
+	%\AtBeginDocument{\RenewDocumentCommand{\sum}{}{\mathop{\sum@}\slimits@}}
+	%\NewDocumentCommand{\baskervillesum}{}{%
+	%	\mathchoice
+	%	{\makebaskervillesum{2.6}}% displaystyle
+	%	{\makebaskervillesum{1.5}}% textstyle
+	%	{\makebaskervillesum{1}}% scriptstyle
+	%	{\makebaskervillesum{0.7}}% scriptscriptstyle
+	%}
+	%\NewDocumentCommand{\makebaskervillesum}{m}{\vcenter{\hbox{\scalebox{#1}{\stm Σ}}}}
 	
 	\newfontfamily{\minion}{ModernMTStd-BoldItalic.otf}[NFSSFamily=pmn]
 	\DeclareSymbolFont{alphabets}{\encodingdefault}{pmn}{m}{it}
