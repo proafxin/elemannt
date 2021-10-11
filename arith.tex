@@ -187,12 +187,12 @@
 			are known, then
 				\begin{align*}
 					\sum_{y<n\leq x}a_{n}f(n)
-						& = A(x)f(x)-A(y)f(y)-\int_{y}^{x}A(t)f'(t)dt
+						& = A(x)f(x)-A(y)f(y)-\int\limits_{y}^{x}A(t)f'(t)dt
 				\end{align*}
 			In particular, if $f$ is an arithmetic function,
 				\begin{align*}
 					\sum_{n\leq x}a_{n}f(n)
-						& = A(x)f(x)-\int_{1}^{x}A(t)f'(t)dt
+						& = A(x)f(x)-\int\limits_{1}^{x}A(t)f'(t)dt
 				\end{align*}
 		\end{theorem}
 		
@@ -204,7 +204,7 @@
 			Let $f$ be a continuous differentiable function in $[y,x]$. Then
 				\begin{align*}
 					\sum_{y<n\leq x}f(n)
-						& = \int_{y}^{x}f(t)dt+\int_{y}^{x}\{t\}f(t)dt+\{y\}f(y)-\{x\}f(x)
+						& = \int\limits_{y}^{x}f(t)dt+\int\limits_{y}^{x}\{t\}f(t)dt+\{y\}f(y)-\{x\}f(x)
 				\end{align*}
 			where ${t}=t-\lfloor{t}\rfloor$ is the fractional part of $t$.
 		\end{theorem}
@@ -216,14 +216,14 @@
 		\begin{align*}
 			\mathfrak{S}_{k}(x)
 				& = \sum_{n\leq x}n^{k}\\
-				& = \int_{1}^{x}t^{k}dt+k\int_{1}^{x}t^{k-1}(t-\lfloor{t}\rfloor)dt+1-(x-\lfloor{x}\rfloor)x^{k}\\
-				& = \dfrac{x^{k+1}}{k+1}-\dfrac{1}{k+1}+O\left(k\int_{1}^{x}t^{k-1}dt\right)+O(x^{k})\\
+				& = \int\limits_{1}^{x}t^{k}dt+k\int\limits_{1}^{x}t^{k-1}(t-\lfloor{t}\rfloor)dt+1-(x-\lfloor{x}\rfloor)x^{k}\\
+				& = \dfrac{x^{k+1}}{k+1}-\dfrac{1}{k+1}+O\left(k\int\limits_{1}^{x}t^{k-1}dt\right)+O(x^{k})\\
 				& = \dfrac{x^{k+1}}{k+1}+O(x^{k})
 		\end{align*}
 	Setting $a_{n}=\tau_{k-1}(n)$ and $f(n)=1/n$ in \nameref{thm:abel}, we get
 		\begin{align*}
 			\sum_{n\leq x}\dfrac{\tau_{k-1}(n)}{n}
-				& = \dfrac{T_{k-1}(x)}{x}-\int_{1}^{x}-\dfrac{T_{k-1}(t)}{t^{2}}dt
+				& = \dfrac{T_{k-1}(x)}{x}-\int\limits_{1}^{x}-\dfrac{T_{k-1}(t)}{t^{2}}dt
 		\end{align*}
 	Thus, we have a result where we can inductively get to the final expression. First, let us see the case $k=2$.
 		\begin{align*}
@@ -257,13 +257,13 @@
 	Setting $a_{n}=1$ and $f(n)=1/n$ in \nameref{thm:abel}, we get
 		\begin{align*}
 			H(x)
-				& = \dfrac{A(x)}{x}-\int_{1}^{x}-\dfrac{A(t)}{t^{2}}dt
+				& = \dfrac{A(x)}{x}-\int\limits_{1}^{x}-\dfrac{A(t)}{t^{2}}dt
 		\end{align*}
 	Here, $A(x)=\lfloor{x}\rfloor=x+O(1)$. Using this,
 		\begin{align*}
 			H(x)
-				& =  1+O\left(\dfrac{1}{x}\right)+\int_{1}^{x}\left(\dfrac{1}{t}+\dfrac{O(1)}{t^{2}}\right)dt\\
-				& = 1+O\left(\dfrac{1}{x}\right)+\int_{1}^{x}\dfrac{1}{t}dt+O\left(\int_{1}^{x}\dfrac{1}{t^{2}}dt\right)\\
+				& =  1+O\left(\dfrac{1}{x}\right)+\int\limits_{1}^{x}\left(\dfrac{1}{t}+\dfrac{O(1)}{t^{2}}\right)dt\\
+				& = 1+O\left(\dfrac{1}{x}\right)+\int\limits_{1}^{x}\dfrac{1}{t}dt+O\left(\int\limits_{1}^{x}\dfrac{1}{t^{2}}dt\right)\\
 				& = 1+O\left(\dfrac{1}{x}\right)+\log{x}+O\left(1-\dfrac{1}{x}\right)
 		\end{align*}
 	Thus, we have the following result.
@@ -314,13 +314,13 @@
 	We can now get back to estimating $T$. Using \nameref{thm:abel}, we were able to deduce
 		\begin{align*}
 			T_{k}(x)
-				& = O\left(T_{k-1}(x)\right)+x\int_{1}^{x}\dfrac{T_{k-1}(t)}{t^{2}}dt
+				& = O\left(T_{k-1}(x)\right)+x\int\limits_{1}^{x}\dfrac{T_{k-1}(t)}{t^{2}}dt
 		\end{align*}
 	Using \nameref{thm:dirtau}, $T(x)=x\log{x}+O(x)$, so
 		\begin{align*}
 			T_{3}(x)
-				& = O(T(x))+x\int_{1}^{x}\dfrac{T(t)}{t^{2}}dt\\
-				& = O(x\log{x})+x\int_{1}^{x}\dfrac{\log{t}}{t}dt
+				& = O(T(x))+x\int\limits_{1}^{x}\dfrac{T(t)}{t^{2}}dt\\
+				& = O(x\log{x})+x\int\limits_{1}^{x}\dfrac{\log{t}}{t}dt
 		\end{align*}
 	Using integration by parts,
 		\begin{align*}
@@ -330,7 +330,7 @@
 		\end{align*}
 	Thus, we get
 		\begin{align*}
-			\int_{1}^{x}\dfrac{\log{t}}{t}dt
+			\int\limits_{1}^{x}\dfrac{\log{t}}{t}dt
 				& = \dfrac{1}{2}\log^{2}{x}
 		\end{align*}
 	which in turn gives
@@ -361,7 +361,7 @@
 		\begin{align*}
 			\sum_{n\leq x}\dfrac{1}{n^{k}}
 		\end{align*}
-	is also quite important. In fact, this is closely connected with the famous Euler's \index{Zeta function}\textit{zeta function}.
+	is also quite important. In fact, it is the partial sum of Euler's \index{Zeta function}\textit{zeta function}.
 		\begin{definition}[Zeta function]
 			For a complex number $s$, the zeta function $\zeta(s)$ is defined as
 				\begin{align*}
@@ -369,12 +369,32 @@
 						& = \sum_{n\geq 1}\dfrac{1}{n^{s}}
 				\end{align*}
 		\end{definition}
+	Even though today $\zeta$ is mostly called Riemann's zeta function, Euler is the first one to investigate this function. Euler started working on $\zeta$ around $1730$. During that period, evaluating $\zeta(2)$ was an open problem and of high interest among mathematicians. The calculation of $\zeta(2)$ and $\zeta$ in general has a rich history. \textcite{ayoub_1974} is a very good read for this purpose. Euler's first contribution in the subject is possibly \textcite{euler_1738} where he proves that $\zeta(2)\approx 1.644934$. It was first presented to the St. Petersburg Academy on March 5, $1731$ and republished in \textcite{euler_2020_a}. \textcite{euler_1744} (republished in \textcite{euler_2020_b}) proves the following fundamental result which essentially gives a new proof of infinitude of primes.
+		\begin{theorem}[Euler's identity]
+			Let $s$ be a complex number. Then
+				\begin{align*}
+					\zeta(s)
+						& = \prod_{p}\dfrac{p^{s}}{p^{s}-1}
+				\end{align*}
+			where $p$ extends over all primes.
+		\end{theorem}
+	One of the results in \textcite{euler_1744} is the following which we shall prove later.
+		\begin{align*}
+			\sum_{n\leq x}\dfrac{1}{p}
+				& \sim \log{\sum_{n\leq x}\dfrac{1}{x}}
+		\end{align*}
+	Here, $\sim$ is the asymptotic equivalence we have already defined. Even though Euler is the main architect behind the development of $\zeta$, there are compelling reasons why it is called Riemann's zeta function. \textcite{riemann_1859} (which is the only paper on number theory by Riemann) first considered $\zeta$ for complex $s$ instead of real $s$ only. This also gave new insight of primes and Riemann conjectured that the non-trivial zeros of $\zeta$ lie in the \index{Critical line}\textit{critical line}
+		\begin{align*}
+			\{s\in\mathbb{C}:Re(s)=1/2\}
+		\end{align*}
+	which is now known as the \index{Riemann hypothesis}\textit{Riemann hypothesis}. Riemann hypothesis is considered to be one of the greatest unsolved mysteries in mathematics. 
+	
 	For our next function, let us consider a generalization of the Euler's totient function $\varphi(n)$.
 		\begin{align*}
 			\varphi(x,a)
 				& = \sum_{\substack{n\leq x\\\gcd(n,a)=1}}1
 		\end{align*}
-	For a positive integer $n$, $\varphi(n)=\varphi(n,n)$. A generalization of $\varphi$ is the \index{Jordan function}\textit{Jordan function}.
+	For a positive integer $n$, $\varphi(n)=\varphi(n,n)$ and \index{Jordan function}\textit{Jordan function}.
 		\begin{definition}[Jordan function]
 			Let $n$ and $k$ be positive integers. Then the Jordan function $J_{k}(n)$ is the number of $k$ tuples of positive integers not exceeding $n$ that are relatively prime to $n$.
 				\begin{align*}
