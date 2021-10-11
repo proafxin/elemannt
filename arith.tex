@@ -15,7 +15,13 @@
 		\begin{align*}
 			\sum_{n\leq x}f(n)
 		\end{align*}
-	for a real number $x$. An interesting property that we will repeatedly use is that
+	for a real number $x$. Associated with this is the \textit{average order} of an arithmetic function.
+		\begin{align*}
+			\lim\limits_{x\to\infty}\dfrac{\sum_{n\leq x}f(x)}{x}
+		\end{align*}
+	is the average order of the arithmetic function $f$.
+	
+	An interesting property that we will repeatedly use is that
 		\begin{align*}
 			\sum_{i=1}^{n}F(i)
 				& = \sum_{i=1}^{n}\sum_{d\mid i}f(d)\\
@@ -134,10 +140,10 @@
 				& =\sum_{i=0}^{k}\binom{k+1}{i}\mathfrak{S}(n,k)
 		\end{align*}
 	where $\mathfrak{S}(x,k)=\sum_{n\leq x}n^{k}$. This is known as the \index{Pascal identity}\textit{Pascal identity} (see \textcite{pascal_1964}, for an English translation, see \textcite{knoebel_laubenbacher_lodder_pengelley_2007}). \textcite[Chapter II, Theorem $1$]{lehmer_1900} proves that
-		\begin{align*}
+		\begin{align}
 			\mathfrak{S}(x,k)
-				& = \dfrac{x^{k+1}}{k+1}+\Delta
-		\end{align*}
+				& = \dfrac{x^{k+1}}{k+1}+\Delta\label{eqn:lehmers}
+		\end{align}
 	where $|\Delta|\leq x^{k}$. The reader may also be interested in \textcite{kieren_macmillan_jonathan_sondow_2011}.
 	
 	We shall try to estimate $T$ in a similar fashion. First, see that
@@ -194,7 +200,7 @@
 			
 		\end{proof}
 	It is not straightforward to realize how such a formula can be as influential as we are describing it to be. Notice that, the formula essentially converts a discreet sum into an integral, which occasionally may be calculable. If the integral is not calculable, we may be able to estimate its value sometimes. We will demonstrate these ideas next. It is worth mentioning that Ramanujan also used such a technique. For example, in \textcite[Page $83$, $\S4$]{aiyangar_hardy_vennkatesvara_seshu_aiyar_p_wilson_1927}, we can definitely see what can only be described as the formula itself. It is unclear whether Ramanujan simply knew about this. Considering he shows the calculation instead of just mentioning the formula, it is certainly possible he came up with the idea on his own, possibly before he had been working on that particular paper. He essentially derives the partial summation formula while trying to express a sum of the form $\sum_{p\leq x}\phi(p)$ with respect to $\pi(x),\phi(x)$ and an integral where $\pi(x)$ is the number of primes not exceeding $x$. A consequence of \nameref{thm:abel} is the celebrated \index{Euler's summation formula}\textit{Euler's summation formula}.
-		\begin{theorem}[Euler's summation formula]
+		\begin{theorem}[Euler's summation formula]\label{thm:eulersum}
 			Let $f$ be a continuous differentiable function in $[y,x]$. Then
 				\begin{align*}
 					\sum_{y<n\leq x}f(n)
@@ -206,6 +212,14 @@
 		\begin{proof}
 			
 		\end{proof}
+	As an application of \nameref{thm:eulersum}, we can derive a result similar to \ref{eqn:lehmers} taking  $f(n)=n^{k}$.
+		\begin{align*}
+			\mathfrak{S}_{k}(x)
+				& = \sum_{n\leq x}n^{k}\\
+				& = \int_{1}^{x}t^{k}dt+k\int_{1}^{x}t^{k-1}(t-\lfloor{t}\rfloor)dt+1-(x-\lfloor{x}\rfloor)x^{k}\\
+				& = \dfrac{x^{k+1}}{k+1}-\dfrac{1}{k+1}+O\left(k\int_{1}^{x}t^{k-1}dt\right)+O(x^{k})\\
+				& = \dfrac{x^{k+1}}{k+1}+O(x^{k})
+		\end{align*}
 	Setting $a_{n}=\tau_{k-1}(n)$ and $f(n)=1/n$ in \nameref{thm:abel}, we get
 		\begin{align*}
 			\sum_{n\leq x}\dfrac{\tau_{k-1}(n)}{n}
@@ -295,13 +309,6 @@
 				\end{align*}
 			where $\gamma$ is the Euler-Mascheroni constant.
 		\end{theorem}
-	
-		\begin{definition}[Average order of arithmetic functions]
-				For an arithmetic function $f$, \index{Averge order}the average order of $f$ is
-				\begin{align*}
-					\lim\limits_{x\to\infty}\dfrac{\sum_{n\leq x}f(n)}{x}
-				\end{align*}
-		\end{definition}
 	Then Dirichlet's theorem on $\tau$ can be restated as \textit{the average order of $\tau$ is }$O(\log{x})$. \textcite{aiyangar_hardy_vennkatesvara_seshu_aiyar_p_wilson_1927} points out in his paper that the error term $O(1/\sqrt{x})$ in Dirichlet's theorem can be improved to $O\left(x^{-\frac{2}{3}+\epsilon}\right)$ or $O\left(x^{-2/3}\log{x}\right)$ as \textcite[Page $689$]{landau_1912} shows.
 	
 	We can now get back to estimating $T$. Using \nameref{thm:abel}, we were able to deduce
@@ -341,7 +348,27 @@
 			T_{k}(x)
 				& = x\left(\sum_{m=0}^{k-1}b_{m}\log^{m}{x}\right)+O\left(x^{1-\frac{1}{k}}\right)+O\left(x^{1-\frac{1}{k}}\log^{k-2}{x}\right)
 		\end{align*}
-	
+	Let us now turn our attention to improving the asymptotic of $S_{k}(x)$.
+		\begin{align*}
+			S_{k}(x)
+				& = \sum_{n\leq x}\sum_{d\mid n}d^{k}\\
+				& = \sum_{n\leq x}\sum_{m\leq x/n}m^{k}\\
+				& = \sum_{n\leq x}\mathfrak{S}_{k}\left(\dfrac{x}{n}\right)\\
+				& = \sum_{n\leq x}\dfrac{x^{k+1}}{(k+1)n^{k+1}}+O\left(\dfrac{x^{k}}{n^{k}}\right)\\
+				& = \dfrac{x^{k+1}}{k+1}\sum_{n\leq x}\dfrac{1}{n^{k+1}}+O\left(x^{k}\sum_{n\leq x}\dfrac{1}{n^{k}}\right)
+		\end{align*}
+	Here, we can see that the function
+		\begin{align*}
+			\sum_{n\leq x}\dfrac{1}{n^{k}}
+		\end{align*}
+	is also quite important. In fact, this is closely connected with the famous Euler's \index{Zeta function}\textit{zeta function}.
+		\begin{definition}[Zeta function]
+			For a complex number $s$, the zeta function $\zeta(s)$ is defined as
+				\begin{align*}
+					\zeta(s)
+						& = \sum_{n\geq 1}\dfrac{1}{n^{s}}
+				\end{align*}
+		\end{definition}
 	For our next function, let us consider a generalization of the Euler's totient function $\varphi(n)$.
 		\begin{align*}
 			\varphi(x,a)

@@ -50,17 +50,17 @@
 	\pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.2pt}
 	\makeatletter\let\normalrender\PdfRender@NormalColorHook\let\PdfRender@NormalColorHook\@empty\newcommand*{\textnormalrender}[1]{\begingroup\normalrender#1\endgroup}\makeatother
 \else
-	\setmainfont[FakeBold=2,BoldFont=OldStandard-Bold.otf,ItalicFont=ModernMT-ExtendedItalic.otf,BoldItalicFont=ModernMTStd-BoldItalic.otf,SmallCapsFont=OldStyleSeven-SC.otf]{ModernMT-Extended.otf}
+	\setmainfont[FakeBold=1,BoldFont=OldStandard-Bold.otf,ItalicFont=ModernMT-ExtendedItalic.otf,BoldItalicFont=ModernMTStd-BoldItalic.otf,SmallCapsFont=OldStyleSeven-SC.otf]{ModernMT-Extended.otf}
 	\setsansfont[%
-	FakeBold=2,ItalicFont=NewCMSans10-Oblique.otf,BoldFont=NewCMSans10-Bold.otf,BoldItalicFont=NewCMSans10-BoldOblique.otf,
+	FakeBold=1,ItalicFont=NewCMSans10-Oblique.otf,BoldFont=NewCMSans10-Bold.otf,BoldItalicFont=NewCMSans10-BoldOblique.otf,
 	SmallCapsFeatures={Numbers=OldStyle}]{NewCMSans10-Regular.otf}
 	
 	\setmonofont[%
-	FakeBold=2,ItalicFont=NewCMMono10-Italic.otf,BoldFont=NewCMMono10-Bold.otf,BoldItalicFont=NewCMMono10-BoldOblique.otf,SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
-	\setmathfont[FakeBold=2,BoldFont={XITSMath-Bold.otf}]{NewCMMath-Book.otf}
-	\setmathfont[range=it,FakeBold=2]{Old Standard Italic}
+	FakeBold=1,ItalicFont=NewCMMono10-Italic.otf,BoldFont=NewCMMono10-Bold.otf,BoldItalicFont=NewCMMono10-BoldOblique.otf,SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
+	\setmathfont[FakeBold=1,BoldFont={XITSMath-Bold.otf}]{NewCMMath-Book.otf}
+	\setmathfont[range=it,FakeBold=1]{Old Standard Italic}
 	\setmathfont[range={\prod},Scale=1.2]{STIX Two Math}
-	\setmathfont[range={\sum},Scale=1.3]{STIX Math Regular}
+	\setmathfont[range={\sum},Scale=1.3,FakeBold=0]{STIX Two Math}
 	% texgyrepagella-math.otf
 	%\newfontfamily{\stm}{STIXMath-Regular.otf}
 	%\makeatletter
