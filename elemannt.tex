@@ -50,16 +50,14 @@
 
 \ifpdftex
 	\microtypecontext{spacing=nonfrench}
-	\pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.2pt}
+	\pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.1pt}
 	\makeatletter\let\normalrender\PdfRender@NormalColorHook\let\PdfRender@NormalColorHook\@empty\newcommand*{\textnormalrender}[1]{\begingroup\normalrender#1\endgroup}\makeatother
 \else
 	\setmainfont[FakeBold=1,BoldFont=OldStandard-Bold.otf,ItalicFont=ModernMT-ExtendedItalic.otf,BoldItalicFont=ModernMTStd-BoldItalic.otf,SmallCapsFont=OldStyleSeven-SC.otf]{ModernMT-Extended.otf}
-	\setsansfont[%
-	FakeBold=1,ItalicFont=NewCMSans10-Oblique.otf,BoldFont=NewCMSans10-Bold.otf,BoldItalicFont=NewCMSans10-BoldOblique.otf,
+	\setsansfont[FakeBold=1,ItalicFont=NewCMSans10-Oblique.otf,BoldFont=NewCMSans10-Bold.otf,BoldItalicFont=NewCMSans10-BoldOblique.otf,
 	SmallCapsFeatures={Numbers=OldStyle}]{NewCMSans10-Regular.otf}
 	
-	\setmonofont[%
-	FakeBold=1,ItalicFont=NewCMMono10-Italic.otf,BoldFont=NewCMMono10-Bold.otf,BoldItalicFont=NewCMMono10-BoldOblique.otf,SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
+	\setmonofont[FakeBold=1,ItalicFont=NewCMMono10-Italic.otf,BoldFont=NewCMMono10-Bold.otf,BoldItalicFont=NewCMMono10-BoldOblique.otf,SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
 	\setmathfont[FakeBold=1,BoldFont={XITSMath-Bold.otf}]{NewCMMath-Book.otf}
 	\setmathfont[range=it,FakeBold=1]{Old Standard Italic}
 	\setmathfont[range={\prod},Scale=1.2]{STIX Two Math}
