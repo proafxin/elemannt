@@ -339,10 +339,13 @@
 				& = \dfrac{1}{2}x\log^{2}{x}+O(x\log{x})
 		\end{align*}
 	We leave it as an exercise for the reader to prove the following (from what we have already developed, induction is one way to go about it).
-		\begin{align*}
-			T_{k}(x)
-				& = \dfrac{1}{(k-1)!}x\log^{k-1}{x}+O\left(x\log^{k-2}{x}\right)
-		\end{align*}
+		\begin{theorem}
+			Let $k$ be a positive integer. Then
+				\begin{align*}
+					T_{k}(x)
+						& = \dfrac{1}{(k-1)!}x\log^{k-1}{x}+O\left(x\log^{k-2}{x}\right)
+				\end{align*}
+		\end{theorem}
 	The reason we do not write $T_{k}(x)$ as $O\left(x\log^{k-1}{x}\right)$ directly is because in this case, we already know what the constant multiplier of $x\log^{k-1}{x}$ is. Usually, we write $O(f(x))$ when we do not know what the constant multiplier of $f(x)$ is. \textcite[Page $2$]{landau_1912_0} states a sharper result.
 		\begin{align*}
 			T_{k}(x)
@@ -407,9 +410,23 @@
 					C
 						& = \lim\limits_{x\to\infty}\left(\sum_{n\leq x}\dfrac{1}{n^{s}}-\dfrac{x^{1-s}}{1-s}\right)
 				\end{align*}
-			Furthermore, if $0<s<1$, then $C=\zeta(s)$ since $x^{-s}\to 0$.
+			Furthermore, if $0<s<1$, then $C=\zeta(s)$ since $x^{1-s}\to 0$.
 		\end{theorem}
-	For our next function, let us consider a generalization of the Euler's totient function $\varphi(n)$.
+	We can now get back to estimating $S_{k}(x)$.
+		\begin{align*}
+			S_{k}(x)
+				& = \dfrac{x^{k+1}}{k+1}\sum_{n\leq x}\dfrac{1}{n^{k+1}}+O\left(x^{k}\sum_{n\leq x}\dfrac{1}{n^{k}}\right)\\
+				& = \dfrac{x^{k+1}}{k+1}\left(\dfrac{x^{-k}}{-k}+\zeta(k+1)+O(x^{-k-1})\right)+O\left(x^{k}\left(\dfrac{x^{1-k}}{1-k}+\zeta(k)+O(x^{-k})\right)\right)
+		\end{align*}
+	From this, we finally get the following.
+		\begin{theorem}
+			Let $k$ be a positive integer. Then
+				\begin{align*}
+					S_{k}(x)
+						& = \dfrac{x^{k+1}}{k+1}\zeta(k+1)+O(x^{\max(1,k)})
+				\end{align*}
+		\end{theorem}
+	We leave the case when $k$ is a negative integer as an exercise. For our next function, let us consider a generalization of the Euler's totient function $\varphi(n)$.
 		\begin{align*}
 			\varphi(x,a)
 				& = \sum_{\substack{n\leq x\\\gcd(n,a)=1}}1
