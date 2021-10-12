@@ -41,7 +41,7 @@
 
 %\setlength{\textwidth}{360pt}
 %\setlength{\textheight}{615pt}
-\setlength{\textwidth}{6.5in}
+\setlength{\textwidth}{7in}
 \setlength{\oddsidemargin}{.1in}
 \setlength{\evensidemargin}{.1in}
 \setlength{\topmargin}{-.1in}
@@ -78,7 +78,7 @@
 	%}
 	%\NewDocumentCommand{\makebaskervillesum}{m}{\vcenter{\hbox{\scalebox{#1}{\stm Σ}}}}
 	
-	\newfontfamily{\minion}{ModernMTStd-ExtendedItalic.otf}[NFSSFamily=pmn]
+	\newfontfamily{\minion}{ModernMTStd-BoldItalic.otf}[NFSSFamily=pmn]
 	\DeclareSymbolFont{alphabets}{\encodingdefault}{pmn}{m}{it}
 	\SetSymbolFont{alphabets}{bold}{T1}{pmn}{b}{it}
 	\DeclareMathSymbol{f}{\mathalpha}{alphabets}{"66}
@@ -131,9 +131,9 @@
 
 \begin{document}
 	%\pagestyle{empty}
+    \relscale{1.1}
     \includepdf[pages={-1}]{cover.pdf}
     \maketitle
-    \relscale{1.2}
     \frontmatter
     \tableofcontents
     \subfile{nomencl.tex}
