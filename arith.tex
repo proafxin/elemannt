@@ -212,7 +212,7 @@
 		\begin{proof}
 			
 		\end{proof}
-	As an application of \nameref{thm:eulersum}, we can derive a result similar to \ref{eqn:lehmers} taking  $f(n)=n^{k}$.
+	As an application of \nameref{thm:eulersum}, we can derive a result similar to \ref{eqn:lehmers} taking  $f(n)=n^{k}$ for $k\geq 0$.
 		\begin{align*}
 			\mathfrak{S}_{k}(x)
 				& = \sum_{n\leq x}n^{k}\\
@@ -387,8 +387,28 @@
 		\begin{align*}
 			\{s\in\mathbb{C}:Re(s)=1/2\}
 		\end{align*}
-	which is now known as the \index{Riemann hypothesis}\textit{Riemann hypothesis}. Riemann hypothesis is considered to be one of the greatest unsolved mysteries in mathematics. 
-	
+	which is now known as the \index{Riemann hypothesis}\textit{Riemann hypothesis}. Riemann hypothesis is considered to be one of the greatest unsolved mysteries in mathematics. Let us establish a result similar to \nameref{thm:dirtau} for partial sums of $\zeta$. Setting $f(n):=n^{-s}$ and $a_{n}=1$ in \nameref{thm:abel}, $A(x)=\lfloor{x}\rfloor=x+O(1)$ and
+		\begin{align*}
+			\sum_{n\leq x}\dfrac{1}{n^{s}}
+				& = \lfloor{x}\rfloor x^{-s}-\int\limits_{1}^{x}(t+O(1))f'(t)dt\\
+				& = x^{1-s}+O\left(x^{-s}\right)+s\int\limits_{1}^{x}t^{-s}dt+O\left(s\int\limits_{1}^{x}t^{-s-1}dt\right)\\
+				& = x^{1-s}+\dfrac{s}{1-s}\left(x^{1-s}-1\right)+O\left(\int\limits_{1}^{x}t^{-s-1}\right)\\
+				& = \dfrac{x^{1-s}}{1-s}+C+O(x^{-s})
+		\end{align*}
+	Similar to $\gamma$, we can take $x\to\infty$ and get the following result.
+		\begin{theorem}
+			Let $s$ be a positive real number other than $1$. Then
+				\begin{align*}
+					\sum_{n\leq x}\dfrac{1}{n^{s}}
+						& = \dfrac{x^{1-s}}{1-s}+C+O(x^{-s})
+				\end{align*}
+			where $C$ is a constant similar to Euler-Mascheroni constant dependent on $s$ and
+				\begin{align*}
+					C
+						& = \lim\limits_{x\to\infty}\left(\sum_{n\leq x}\dfrac{1}{n^{s}}-\dfrac{x^{1-s}}{1-s}\right)
+				\end{align*}
+			Furthermore, if $0<s<1$, then $C=\zeta(s)$ since $x^{-s}\to 0$.
+		\end{theorem}
 	For our next function, let us consider a generalization of the Euler's totient function $\varphi(n)$.
 		\begin{align*}
 			\varphi(x,a)
