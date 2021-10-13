@@ -1,7 +1,7 @@
 \documentclass[elemannt.tex]{subfile}
 
 \begin{document}
-	\chapter{Arithmetic Functions}
+	\chapter{Arithmetic Functions}\label{ch:arith}
 	In this chapter, we will discuss some generalized arithmetic functions and their asymptotic behavior. We will skip discussing the basic definitions since they are common in most introductory number theory texts.
 		\begin{definition}[Summatory function]
 			For an arithmetic function $f$, the \index{Summatory function}\textit{summatory function} of $f$ is defined as
@@ -320,6 +320,8 @@
 		\begin{align*}
 			T_{3}(x)
 				& = O(T(x))+x\int\limits_{1}^{x}\dfrac{T(t)}{t^{2}}dt\\
+				& = O(x\log{x})+x\int\limits_{1}^{x}\dfrac{\log{t}+O(1)}{t}dt\\
+				& = O(x\log{x})+x\int\limits_{1}^{x}\dfrac{\log{t}}{t}dt+xO\left(\int\limits_{1}^{x}\dfrac{1}{t}dt\right)\\
 				& = O(x\log{x})+x\int\limits_{1}^{x}\dfrac{\log{t}}{t}dt
 		\end{align*}
 	Using integration by parts,
@@ -364,7 +366,7 @@
 		\begin{align*}
 			\sum_{n\leq x}\dfrac{1}{n^{k}}
 		\end{align*}
-	is also quite important. In fact, it is the partial sum of Euler's \index{Zeta function}\textit{zeta function}.
+	occurs repeatedly. It is in fact, the partial sum of the famous Euler's \index{Zeta function}\textit{zeta function}.
 		\begin{definition}[Zeta function]
 			For a complex number $s$, the zeta function $\zeta(s)$ is defined as
 				\begin{align*}
@@ -372,7 +374,7 @@
 						& = \sum_{n\geq 1}\dfrac{1}{n^{s}}
 				\end{align*}
 		\end{definition}
-	Even though today $\zeta$ is mostly called Riemann's zeta function, Euler is the first one to investigate this function. Euler started working on $\zeta$ around $1730$. During that period, evaluating $\zeta(2)$ was an open problem and of high interest among mathematicians. The calculation of $\zeta(2)$ and $\zeta$ in general has a rich history. \textcite{ayoub_1974} is a very good read for this purpose. Euler's first contribution in the subject is possibly \textcite{euler_1738} where he proves that $\zeta(2)\approx 1.644934$. It was first presented to the St. Petersburg Academy on March 5, $1731$ and republished in \textcite{euler_2020_a}. \textcite{euler_1744} (republished in \textcite{euler_2020_b}) proves the following fundamental result which essentially gives a new proof of infinitude of primes.
+	The function $\zeta$ has quite a rich history. Today $\zeta$ is mostly called Riemann's zeta function, however, Euler is the first one to investigate this function. Euler started working on $\zeta$ around $1730$. During that period, the value of $\zeta(2)$ was unknown and of high interest among prominent mathematicians.\textcite{ayoub_1974} is a very good read on this subject. Euler's first contribution in this matter is \textcite{euler_1738} where he proves that $\zeta(2)\approx 1.644934$. The paper was first presented to the St. Petersburg Academy on March 5, $1731$ and republished in \textcite{euler_2020_a}. \textcite{euler_1744} (republished in \textcite{euler_2020_b}) proves the following fundamental result which essentially gives a new proof of infinitude of primes.
 		\begin{theorem}[Euler's identity]
 			Let $s$ be a positive integer. Then
 				\begin{align*}
@@ -390,7 +392,7 @@
 		\begin{align*}
 			\{s\in\mathbb{C}:Re(s)=1/2\}
 		\end{align*}
-	which is now known as the \index{Riemann hypothesis}\textit{Riemann hypothesis}. Riemann hypothesis is considered to be one of the greatest unsolved mysteries in mathematics. Let us establish a result similar to \nameref{thm:dirtau} for partial sums of $\zeta$. Setting $f(n):=n^{-s}$ and $a_{n}=1$ in \nameref{thm:abel}, $A(x)=\lfloor{x}\rfloor=x+O(1)$ and
+	which is now known as the \index{Riemann hypothesis}\textit{Riemann hypothesis}. Riemann hypothesis is considered to be one of the greatest unsolved mysteries in mathematics. This topic is right now out of the scope of this book, so let us back to establishing a result similar to \nameref{thm:dirtau} for partial sums of $\zeta$. Setting $f(n):=n^{-s}$ and $a_{n}=1$ in \nameref{thm:abel}, $A(x)=\lfloor{x}\rfloor=x+O(1)$ and
 		\begin{align*}
 			\sum_{n\leq x}\dfrac{1}{n^{s}}
 				& = \lfloor{x}\rfloor x^{-s}-\int\limits_{1}^{x}(t+O(1))f'(t)dt\\
@@ -416,7 +418,9 @@
 		\begin{align*}
 			S_{k}(x)
 				& = \dfrac{x^{k+1}}{k+1}\sum_{n\leq x}\dfrac{1}{n^{k+1}}+O\left(x^{k}\sum_{n\leq x}\dfrac{1}{n^{k}}\right)\\
-				& = \dfrac{x^{k+1}}{k+1}\left(\dfrac{x^{-k}}{-k}+\zeta(k+1)+O(x^{-k-1})\right)+O\left(x^{k}\left(\dfrac{x^{1-k}}{1-k}+\zeta(k)+O(x^{-k})\right)\right)
+				& = \dfrac{x^{k+1}}{k+1}\left(\dfrac{x^{-k}}{-k}+\zeta(k+1)+O(x^{-k-1})\right)+O\left(x^{k}\left(\dfrac{x^{1-k}}{1-k}+\zeta(k)+O(x^{-k})\right)\right)\\
+				& = \dfrac{x}{-k(k+1)}+\dfrac{x^{k+1}}{k+1}\zeta(k+1)+O(x^{k+1-k-1})+O\left(\dfrac{x}{1-k}+x^{k}\zeta(k)+O(1)\right)\\
+				& = \dfrac{x^{k+1}}{k+1}\zeta(k+1)+O(x)+O(1)+O(x+x^{k})
 		\end{align*}
 	From this, we finally get the following.
 		\begin{theorem}

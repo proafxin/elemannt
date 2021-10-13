@@ -39,9 +39,11 @@
 \makeindex
 \makeglossaries
 
+%amsart setting
 %\setlength{\textwidth}{360pt}
 %\setlength{\textheight}{615pt}
-\setlength{\textwidth}{7in}
+%amazon setting
+\setlength{\textwidth}{6.5in}
 \setlength{\oddsidemargin}{.1in}
 \setlength{\evensidemargin}{.1in}
 \setlength{\topmargin}{-.1in}
@@ -125,12 +127,14 @@
 \fi
 \fancyhead[LE]{$\S$\thechapter}
 \fancyhead[RO]{$\S$\thesection}
-\fancyfoot[LE, RO]{Page\ \thepage}
+\fancyfoot[LE]{\small Page\ \thepage}
+\fancyfoot[LO]{\small Page\ \thepage}
 \renewcommand{\headrulewidth}{.1pt} % remove lines as well
 \renewcommand{\footrulewidth}{.1pt}
 
+
 \begin{document}
-	%\pagestyle{empty}
+	\pagestyle{empty}
     \relscale{1.1}
     \includepdf[pages={-1}]{cover.pdf}
     \maketitle
@@ -139,10 +143,10 @@
     \subfile{nomencl.tex}
     \printnomenclature
     \mainmatter
-    %\pagestyle{fancyplain}
+    \pagestyle{fancyplain}
     \begin{refsection}
 		\subfile{arith.tex}
-        \printbibliography[heading=bibintoc]
+        \printbibliography[title=Works Cited In \nameref{ch:arith},heading=bibintoc]
     \end{refsection}
 
 	\begin{refsection}
@@ -154,17 +158,14 @@
 	\end{refsection}
 
 	\begin{refsection}
-		\subfile{dirichletprime.tex}
+		\subfile{sieve.tex}
 	\end{refsection}
 
 	\begin{refsection}
 		\subfile{prime.tex}
 	\end{refsection}
 
-	\begin{refsection}
-		\subfile{sieve.tex}
-	\end{refsection}
-    \backmatter
+	\backmatter
     \printglossary[type=\acronymtype,title={List of Acronyms}]
     \printglossary[title=Glossary,]
     \printindex
