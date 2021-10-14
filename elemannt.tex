@@ -1,6 +1,8 @@
-\documentclass[12pt,]{extbook}
+\documentclass[12pt,]{book}
 
 \usepackage{amsmath,amssymb,amsthm}
+%\usepackage[layout=true,bg=full,nomultitoc,nodeprecatedcode]{dnd}
+
 \usepackage{subfiles}
 \usepackage{hyperref}
 \usepackage{relsize}
@@ -56,11 +58,10 @@
 	\pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.1pt}
 	\makeatletter\let\normalrender\PdfRender@NormalColorHook\let\PdfRender@NormalColorHook\@empty\newcommand*{\textnormalrender}[1]{\begingroup\normalrender#1\endgroup}\makeatother
 \else
-	\setmainfont[FakeBold=1,BoldFont=OldStandard-Bold.otf,ItalicFont=ModernMT-ExtendedItalic.otf,BoldItalicFont=ModernMTStd-BoldItalic.otf,SmallCapsFont=OldStyleSeven-SC.otf]{ModernMT-Extended.otf}
-	\setsansfont[FakeBold=1,ItalicFont=NewCMSans10-Oblique.otf,BoldFont=NewCMSans10-Bold.otf,BoldItalicFont=NewCMSans10-BoldOblique.otf,
-	SmallCapsFeatures={Numbers=OldStyle}]{NewCMSans10-Regular.otf}
+	\setmainfont[FakeBold=2,BoldFont=OldStandard-Bold.otf,ItalicFont=ModernMT-ExtendedItalic.otf,BoldItalicFont=ModernMTStd-BoldItalic.otf,SmallCapsFont=OldStyleSeven-SC.otf]{ModernMT-Extended.otf}
+	\setsansfont[FakeBold=2,ItalicFont=NewCMSans10-Oblique.otf,BoldFont=NewCMSans10-Bold.otf,BoldItalicFont=NewCMSans10-BoldOblique.otf,SmallCapsFeatures={Numbers=OldStyle}]{NewCMSans10-Regular.otf}
 	
-	\setmonofont[FakeBold=1,ItalicFont=NewCMMono10-Italic.otf,BoldFont=NewCMMono10-Bold.otf,BoldItalicFont=NewCMMono10-BoldOblique.otf,SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
+	\setmonofont[FakeBold=2,ItalicFont=NewCMMono10-Italic.otf,BoldFont=NewCMMono10-Bold.otf,BoldItalicFont=NewCMMono10-BoldOblique.otf,SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
 	\setmathfont[FakeBold=1,BoldFont={XITSMath-Bold.otf}]{NewCMMath-Book.otf}
 	\setmathfont[range=it,FakeBold=1]{Old Standard Italic}
 	\setmathfont[range={\prod},Scale=1.3]{STIX Two Math}
@@ -139,6 +140,7 @@
     \includepdf[pages={-1}]{cover.pdf}
     \maketitle
     \frontmatter
+    \pagestyle{empty}
     \tableofcontents
     \subfile{nomencl.tex}
     \printnomenclature
