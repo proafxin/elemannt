@@ -1,7 +1,7 @@
 \documentclass[12pt,]{book}
 
 \usepackage{amsmath,amssymb,amsthm}
-
+%\usepackage[nodeprecatedcode,layout=true,nomultitoc,justified]{dnd}
 \usepackage{subfiles}
 \usepackage{hyperref}
 \usepackage{relsize}
@@ -48,7 +48,7 @@
 \setlength{\oddsidemargin}{.1in}
 \setlength{\evensidemargin}{.1in}
 \setlength{\topmargin}{-.1in}
-\setlength{\textheight}{8.4in}
+\setlength{\textheight}{9in}
 
 \newcommand{\lcm}{\mbox{lcm}}
 
@@ -151,7 +151,8 @@
     \pagestyle{fancyplain}
     \begin{refsection}
 		\subfile{arith.tex}
-        \printbibliography[title=Works Cited In \nameref{ch:arith},heading=bibintoc]
+		\subfile{zeta.tex}
+        \printbibliography[title=Works Cited In \nameref{ch:arith},]
     \end{refsection}
 
 	\begin{refsection}

@@ -2,7 +2,13 @@
 
 \begin{document}
 	\chapter{Arithmetic Functions}\label{ch:arith}
-	In this chapter, we will discuss some generalized arithmetic functions and their asymptotic behavior. We will skip discussing the basic definitions since they are common in most introductory number theory texts.
+	In this chapter, we will discuss some generalized arithmetic functions and their asymptotic behavior. The primary reason to analyze asymptotic behavior is to see how a function grows. A very common way to understand the growth of a function $f$ is to find out how the sum
+		\begin{align*}
+			\sum_{n\leq x}f(n)
+		\end{align*}
+	behaves as $x\to\infty$. This may seem like a random thing to do at first. But as we will see, analyzing growth of arithmetic functions give us insight to many questions we have. A prominent example of one such question is, how often do the primes occur? We will attempt to answer this question in \autoref{ch:primes}.
+	\section{Introduction}
+	We will skip discussing the basic definitions since they are common in most introductory number theory texts.
 		\begin{definition}[Summatory function]
 			For an arithmetic function $f$, the \index{Summatory function}\textit{summatory function} of $f$ is defined as
 				\begin{align*}
@@ -199,7 +205,7 @@
 		\begin{proof}
 			
 		\end{proof}
-	It is not straightforward to realize how such a formula can be as influential as we are describing it to be. Notice that, the formula essentially converts a discreet sum into an integral, which occasionally may be calculable. If the integral is not calculable, we may be able to estimate its value sometimes. We will demonstrate these ideas next. It is worth mentioning that Ramanujan also used such a technique. For example, in \textcite[Page $83$, $\S4$]{aiyangar_hardy_vennkatesvara_seshu_aiyar_p_wilson_1927}, we can definitely see what can only be described as the formula itself. It is unclear whether Ramanujan simply knew about this. Considering he shows the calculation instead of just mentioning the formula, it is certainly possible he came up with the idea on his own, possibly before he had been working on that particular paper. He essentially derives the partial summation formula while trying to express a sum of the form $\sum_{p\leq x}\phi(p)$ with respect to $\pi(x),\phi(x)$ and an integral where $\pi(x)$ is the number of primes not exceeding $x$. A consequence of \nameref{thm:abel} is the celebrated \index{Euler's summation formula}\textit{Euler's summation formula}.
+	It is not straightforward to realize how such a formula can be as influential as we are describing it to be. Notice that, the formula essentially converts a discreet sum into an integral, which occasionally may be calculable. If the integral is not calculable, we may be able to estimate its value sometimes. We will demonstrate these ideas next. It is worth mentioning that Ramanujan also used such a technique. For example, in \textcite[Page $83$, $\S4$]{aiyangar_hardy_vennkatesvara_seshu_aiyar_p_wilson_1927}, we can definitely see what can only be described as the formula itself. It is unclear if Ramanujan simply knew about this. Considering he shows the calculation instead of just mentioning the formula, it is certainly possible he came up with the idea on his own, possibly before he had been working on that particular paper. He essentially derives the partial summation formula while trying to express a sum of the form $\sum_{p\leq x}\phi(p)$ with respect to $\pi(x),\phi(x)$ and an integral where $\pi(x)$ is the number of primes not exceeding $x$. A consequence of \nameref{thm:abel} is the celebrated \index{Euler's summation formula}\textit{Euler's summation formula}.
 		\begin{theorem}[Euler's summation formula]\label{thm:eulersum}
 			Let $f$ be a continuous differentiable function in $[y,x]$. Then
 				\begin{align*}
@@ -374,25 +380,7 @@
 						& = \sum_{n\geq 1}\dfrac{1}{n^{s}}
 				\end{align*}
 		\end{definition}
-	The function $\zeta$ has quite a rich history. Today $\zeta$ is mostly called Riemann's zeta function, however, Euler is the first one to investigate this function. Euler started working on $\zeta$ around $1730$. During that period, the value of $\zeta(2)$ was unknown and of high interest among prominent mathematicians.\textcite{ayoub_1974} is a very good read on this subject. Euler's first contribution in this matter is \textcite{euler_1738} where he proves that $\zeta(2)\approx 1.644934$. The paper was first presented to the St. Petersburg Academy on March 5, $1731$ and republished in \textcite{euler_2020_a}. \textcite{euler_1744} (republished in \textcite{euler_2020_b}) proves the following fundamental result which essentially gives a new proof of infinitude of primes.
-		\begin{theorem}[Euler's identity]
-			Let $s$ be a positive integer. Then
-				\begin{align*}
-					\zeta(s)
-						& = \prod_{p}\dfrac{p^{s}}{p^{s}-1}
-				\end{align*}
-			where $p$ extends over all primes.
-		\end{theorem}
-	One of the results in \textcite{euler_1744} is the following which we shall prove later.
-		\begin{align*}
-			\sum_{n\leq x}\dfrac{1}{p}
-				& \sim \log{\sum_{n\leq x}\dfrac{1}{x}}
-		\end{align*}
-	Here, $\sim$ is the asymptotic equivalence we have already defined. Even though Euler is the main architect behind the development of $\zeta$, there are compelling reasons why it is called Riemann's zeta function. \textcite{riemann_1859} (which is the only paper on number theory by Riemann) first considered $\zeta$ for complex $s$ instead of real $s$ only. This also gave new insight of primes and Riemann conjectured that the non-trivial zeros of $\zeta$ lie in the \index{Critical line}\textit{critical line}
-		\begin{align*}
-			\{s\in\mathbb{C}:Re(s)=1/2\}
-		\end{align*}
-	which is now known as the \index{Riemann hypothesis}\textit{Riemann hypothesis}. Riemann hypothesis is considered to be one of the greatest unsolved mysteries in mathematics. This topic is right now out of the scope of this book, so let us back to establishing a result similar to \nameref{thm:dirtau} for partial sums of $\zeta$. Setting $f(n):=n^{-s}$ and $a_{n}=1$ in \nameref{thm:abel}, $A(x)=\lfloor{x}\rfloor=x+O(1)$ and
+	We will discuss zeta function in details in \autoref{sec:zeta}. For now, let us establish a result similar to \nameref{thm:dirtau} for partial sums of $\zeta$. Setting $f(n):=n^{-s}$ and $a_{n}=1$ in \nameref{thm:abel}, $A(x)=\lfloor{x}\rfloor=x+O(1)$ and
 		\begin{align*}
 			\sum_{n\leq x}\dfrac{1}{n^{s}}
 				& = \lfloor{x}\rfloor x^{-s}-\int\limits_{1}^{x}(t+O(1))f'(t)dt\\
@@ -462,5 +450,5 @@
 			\sum_{d\mid n}J_{k}(d)
 				& = n^{k}
 		\end{align*}
-	 Like $\sigma_{k}(n)$, $J_{k}(n)$ is also  related to the sum $\mathfrak{S}(x, k)$. But before we further look into $J_{k}(n)$, we will have to discuss M\"{o}bius inversion as well as generalized inversion which we shall do in the next chapter.
+	 Like $\sigma_{k}(n)$, $J_{k}(n)$ is also  related to the sum $\mathfrak{S}(x, k)$. But before we further look into $J_{k}(n)$, we will have to discuss M\"{o}bius inversion as well as generalized inversion.
 \end{document}

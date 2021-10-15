@@ -1,0 +1,24 @@
+\documentclass[elemannt.tex]{subfile}
+
+\begin{document}
+	\section{Zeta Function}\label{sec:zeta}
+	We encountered $\zeta$ when we tried to develop an asymptotic for $S_{k}(x)$. The function $\zeta$ has quite a rich history. Today $\zeta$ is mostly called Riemann's zeta function, however, Euler is the first one to investigate this function. Euler started working on $\zeta$ around $1730$. During that period, the value of $\zeta(2)$ was unknown and of high interest among prominent mathematicians. \textcite{ayoub_1974} is a very good read on this subject. Euler's first contribution in this matter is \textcite{euler_1738} where he proves that $\zeta(2)\approx 1.644934$. The paper was first presented to the St. Petersburg Academy on March 5, $1731$ and republished in \textcite{euler_2020_a}. \textcite{euler_1744} (republished in \textcite{euler_2020_b}) proves the following fundamental result which essentially gives a new proof of infinitude of primes.
+		\begin{theorem}[Euler's identity]
+			Let $s$ be a positive integer. Then
+				\begin{align*}
+					\zeta(s)
+						& = \prod_{p}\dfrac{p^{s}}{p^{s}-1}
+				\end{align*}
+			where $p$ extends over all primes.
+		\end{theorem}
+	One of the results in \textcite{euler_1744} is the following which we shall prove later.
+		\begin{align*}
+			\sum_{n\leq x}\dfrac{1}{p}
+			& \sim \log{\sum_{n\leq x}\dfrac{1}{x}}
+		\end{align*}
+	Here, $\sim$ is the asymptotic equivalence we have already defined. Even though Euler is the main architect behind the development of $\zeta$, there are compelling reasons why it is called Riemann's zeta function. \textcite{riemann_1859} (which is the only paper on number theory by Riemann) first considered $\zeta$ for complex $s$ instead of real $s$ only. This also gave new insight of primes and Riemann conjectured that the non-trivial zeros of $\zeta$ lie in the \index{Critical line}\textit{critical line}
+		\begin{align*}
+			\{s\in\mathbb{C}:Re(s)=1/2\}
+		\end{align*}
+	which is now known as the \index{Riemann hypothesis}\textit{Riemann hypothesis}. Riemann hypothesis is considered to be one of the greatest unsolved mysteries in mathematics.
+\end{document}
