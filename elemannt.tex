@@ -14,6 +14,9 @@
 
 \usepackage{xifthen,fancyhdr,centernot,datetime}
 \usepackage[intoc]{nomencl}
+\usepackage{tocloft}
+\renewcommand{\cftsecfont}{\scshape}
+\renewcommand{\cftchapfont}{\scshape}
 
 \usepackage[toc,nopostdot,nonumberlist,style=long,automake,acronym]{glossaries}
 \usepackage{makeidx}
@@ -62,9 +65,9 @@
 	\setmonofont[FakeBold=1,ItalicFont=NewCMMono10-Italic.otf,BoldFont=NewCMMono10-Bold.otf,BoldItalicFont=NewCMMono10-BoldOblique.otf,SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
 	\setmathfont[FakeBold=1,BoldFont={XITSMath-Bold.otf}]{NewCMMath-Book.otf}
 	\setmathfont[range=it,FakeBold=1]{Old Standard Italic}
-	\setmathfont[range={\prod},Scale=1.5]{STIX Two Math}
-	\setmathfont[range={\sum},Scale=1.5,FakeBold=0]{STIX Two Math}
-	\setmathfont[range={\int},Scale=1.5]{Asana Math}
+	\setmathfont[range={\prod},Scale=1.4]{STIX Two Math}
+	\setmathfont[range={\sum},Scale=1.4,FakeBold=0]{Asana Math}
+	\setmathfont[range={\int},Scale=1.4]{Asana Math}
 	% texgyrepagella-math.otf
 	%\newfontfamily{\stm}{STIXMath-Regular.otf}
 	%\makeatletter
@@ -135,6 +138,7 @@
 \usepackage{eso-pic}
 \usepackage{ifthen}
 
+\defbibfilter{books}{type=book or type=inbook}
 
 \begin{document}
 	\pagestyle{empty}
@@ -149,29 +153,34 @@
     \printnomenclature
     \mainmatter
     \pagestyle{fancyplain}
-    \begin{refsection}
+    %\begin{refsection}
 		\subfile{arith.tex}
 		\subfile{zeta.tex}
-        \printbibliography[title=Works Cited In \nameref{ch:arith},]
-    \end{refsection}
-
-	\begin{refsection}
 		\subfile{dirichlet.tex}
-	\end{refsection}
+		\subfile{hyperbola.tex}
+        %\printbibliography[title=Works Cited In \nameref{ch:arith},]
+    %\end{refsection}
 
-	\begin{refsection}
+	%\begin{refsection}
+		
+	%\end{refsection}
+
+	%\begin{refsection}
 		\subfile{tchebycheff.tex}
-	\end{refsection}
+	%\end{refsection}
 
-	\begin{refsection}
+	%\begin{refsection}
 		\subfile{sieve.tex}
-	\end{refsection}
+	%\end{refsection}
 
-	\begin{refsection}
+	%\begin{refsection}
 		\subfile{prime.tex}
-	\end{refsection}
+	%\end{refsection}
 
 	\backmatter
+	\printbibliography[type=article,title=Articles,heading=bibnumbered]
+	\printbibliography[filter=books,title=Books,heading=bibnumbered]
+	%\printbibliography[type=inbook,title=Chapters/Sections in Books,heading=bibnumbered]
     \printglossary[type=\acronymtype,title={List of Acronyms}]
     \printglossary[title=Glossary,]
     \printindex
