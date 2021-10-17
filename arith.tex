@@ -7,7 +7,7 @@
 			\sum_{n\leq x}f(n)
 		\end{align*}
 	behaves as $x\to\infty$. This may seem like a random thing to do at first. But as we will see, analyzing growth of arithmetic functions give us insight to many questions we have. A prominent example of one such question is, how often do the primes occur? We will attempt to answer this question in \autoref{ch:primes}.
-	\section{Introduction}
+	\section{Some Summatory functions}
 	We will skip discussing the basic definitions since they are common in most introductory number theory texts.
 		\begin{definition}[Summatory function]
 			For an arithmetic function $f$, the \index{Summatory function}\textit{summatory function} of $f$ is defined as
@@ -98,7 +98,7 @@
 			O(cf(x))
 				& = O(f(x))
 		\end{align*}
-	and so on.
+	and so on. \textcite[Page 883]{landau_1909} states that the symbol $O$ had been first used by \textcite[Page 401]{bachmann_1894}. \textcite{hardy_riesz_1915} adopted the notations small $o$ and big $O$.
 		\begin{definition}[Equivalence]
 			Let $f$ and $g$ be two real or complex valued functions. We say that they are \textit{asymptotically equivalent} if
 				\begin{align*}
@@ -183,7 +183,7 @@
 			H(x)
 			& = \sum_{n\leq x}\dfrac{1}{n}
 		\end{align*}
-	It does not seem easy to calculate $H$ accurately, however, we can make a decent attempt to estimate $H$. The tool that is best suited for carrying out such an estimation is the \index{Abel partial summation formula}\textit{Abel partial summation formula}, which today is a cornerstone of analytic number theory.
+	It does not seem easy to calculate $H$ accurately, however, we can make a decent attempt to estimate $H$. The tool that is best suited for carrying out such an estimation is the \index{Abel partial summation formula}\textit{Abel partial summation formula}. \textcite{abel_1826} states this formula which today is a cornerstone of analytic number theory.
 		\begin{theorem}[Abel partial summation formula]\label{thm:abel}
 			Let $\{a_{n}\}$ be a sequence of real numbers and $f$ be a continuous differentiable function in $[y,x]$. If the partial sums of $\{a_{n}\}$ is
 				\begin{align*}
