@@ -16,7 +16,7 @@
 			\sum_{n\leq x}\dfrac{1}{p}
 			& \sim \log{\sum_{n\leq x}\dfrac{1}{x}}
 		\end{align*}
-	Here, $\sim$ is the asymptotic equivalence we have already defined. Even though Euler is the main architect behind the development of $\zeta$, there are compelling reasons why it is called Riemann's zeta function. \textcite{riemann_1859} first considered $\zeta$ for complex $s$ instead of real $s$ only. For a complex $s$, we usually write $s=\omega+it$ where $\omega=\Re(s)$ is the real part of $s$ and $t=\Im(s)$ is the imaginary part of $s$.
+	Here, $\sim$ is the asymptotic equivalence we have already defined. Even though Euler is the main architect behind the development of $\zeta$, there are compelling reasons why it is called Riemann's zeta function. \textcite{riemann_1859} first considered $\zeta$ for complex $s$ instead of real $s$ only. By tradition, we write $s=\sigma+it$ where $\sigma=\Re(s)$ is the real part of $s$ and $t=\Im(s)$ is the imaginary part of $s$.
 		\begin{definition}[Dirichlet series]
 			For a complex number $s$, a \index{Dirichlet series}\textit{Dirichlet series} is a series of the form
 				\begin{align*}
@@ -28,7 +28,11 @@
 		\begin{align}
 			\sum_{i\geq 1}a_{n}e^{-\lambda_{n}s}\label{eqn:gendir}
 		\end{align}
-	where $(\lambda_{n})$ is an increasing sequence of real numbers. Following this, \textcite{hardy_riesz_1915} calls $\mathfrak{D}$ the \textit{ordinary Dirichlet series} when $\lambda_{n}=\log{n}$. \textcite{lejeune_1879} considers real values of $s$ and proves a number of important theorems. \textcite{jensen_1884,jensen_1888} discuss the first theorems where $s$ is complex involving the nature of convergence of \ref{eqn:gendir}. \textcite{cahen_1894} makes the \textit{first attempt to construct a systematic theory of the function} $\mathfrak{D}_{f}(s)$ which, \textit{although much of the analysis which it contains is open to serious criticism, has served---and possibly just for that reason---as the starting point of most of the later researches in the subject.} \textcite{jensen_1884} proves the following theorem of fundamental importance.
+	where $(\lambda_{n})$ is an increasing sequence of real numbers. Following this, \textcite{hardy_riesz_1915} calls $\mathfrak{D}$ the \textit{ordinary Dirichlet series} when $\lambda_{n}=\log{n}$. \textcite{lejeune_1879} considers real values of $s$ and proves a number of important theorems. \textcite{jensen_1884,jensen_1888} discuss the first theorems where $s$ is complex involving the nature of convergence of \ref{eqn:gendir}. \textcite{cahen_1894} makes the \textit{first attempt to construct a systematic theory of the function} $\mathfrak{D}_{f}(s)$ which, \textit{although much of the analysis which it contains is open to serious criticism, has served---and possibly just for that reason---as the starting point of most of the later researches in the subject.}
+		\begin{definition}[Convergence]
+			
+		\end{definition}
+	\textcite{jensen_1884} proves the following theorem of fundamental importance.
 		\begin{theorem}
 			If $\mathfrak{D}_{f}(s)$ is convergent for the complex number $s=\omega+it$, then it is convergent for any value of $s$ for which $\Re(s)>\omega$.
 		\end{theorem}

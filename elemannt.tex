@@ -1,7 +1,8 @@
-\documentclass[12pt,]{book}
+\documentclass[10pt,]{book}
 
 \usepackage{amsmath,amssymb,amsthm}
 %\usepackage[nodeprecatedcode,layout=true,nomultitoc,justified]{dnd}
+%\usepackage{afterpage}
 \usepackage{subfiles}
 \usepackage{hyperref}
 \usepackage{relsize}
@@ -51,7 +52,7 @@
 \setlength{\oddsidemargin}{.1in}
 \setlength{\evensidemargin}{.1in}
 \setlength{\topmargin}{-.1in}
-\setlength{\textheight}{9in}
+\setlength{\textheight}{8in}
 
 \newcommand{\lcm}{\mbox{lcm}}
 
@@ -142,9 +143,10 @@
 
 \begin{document}
 	\pagestyle{empty}
-    \relscale{1.1}
-    \includepdf[pages={-1}]{cover.pdf}
+    \relscale{1.3}
+    \includepdf[pages={1}]{cover.pdf}
     \AddToShipoutPictureBG{{\includegraphics{paper.jpg}}}
+    %\pagecolor{buff}%\afterpage{white}
     \maketitle
     \frontmatter
     \pagestyle{empty}
