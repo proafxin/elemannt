@@ -84,7 +84,9 @@
 						& = 0
 				\end{align}
 		\end{definition}
-	Some trivial examples are $1/x=o(1)$, $x=o(x^{2})$ and $2x^{2}\neq o(x^{2})$. It should be evident that having an estimate with respect to $O$ asymptotic formulas is more desirable than $o$ formulas. By nature, $O$ formulas give us a better understanding and a specific estimate whereas $o$ does not always say as much. Moreover, working with $O$ is a lot easier than working with $o$. For example,
+	Some trivial examples are $1/x=o(1)$, $x=o(x^{2})$ and $2x^{2}\neq o(x^{2})$.  \textcite[Page 883 (second volume is paged consecutively after first volume)]{landau_1909} states that the symbol $O$ had been first used by \textcite[Page 401]{bachmann_1894}. \textcite{hardy_1910} uses the notations $\prec$ and $\succ$ respectively but they are no longer in practice. \textcite{hardy_riesz_1915} adopted the notations small $o$ and big $O$ and today these are the primary notations for this purpose.
+	
+	It should be evident that having an estimate with respect to $O$ asymptotic formulas is more desirable than $o$ formulas. By nature, $O$ formulas give us a better understanding and a specific estimate whereas $o$ does not always say as much. Moreover, working with $O$ is a lot easier than working with $o$. For example,
 		\begin{align*}
 			\sum O(f(x))
 				& = O\left(\sum f(x)\right)\\
@@ -98,7 +100,7 @@
 			O(cf(x))
 				& = O(f(x))
 		\end{align*}
-	and so on. \textcite[Page 883 (second volume is paged consecutively after first volume)]{landau_1909} states that the symbol $O$ had been first used by \textcite[Page 401]{bachmann_1894}. \textcite{hardy_riesz_1915} adopted the notations small $o$ and big $O$.
+	and so on.
 		\begin{definition}[Equivalence]
 			Let $f$ and $g$ be two real or complex valued functions. We say that they are \textit{asymptotically equivalent} if
 				\begin{align*}
@@ -143,7 +145,7 @@
 	We have that $S_{k}(x)=x\left(x^{k}+O(x^{k-1})\right)+O(x^{k+1})=O(x^{k+1})$. Although weak, we get an estimate this way. On this note, an interested reader can try and prove that
 		\begin{align*}
 			(n+1)^{k+1}-1
-				& =\sum_{i=0}^{k}\binom{k+1}{i}\mathfrak{S}(n,k)
+				& =\sum_{i=0}^{k}\binom{k+1}{i}\mathfrak{S}(n,i)
 		\end{align*}
 	where $\mathfrak{S}(x,k)=\sum_{n\leq x}n^{k}$. This is known as the \index{Pascal identity}\textit{Pascal identity} (see \textcite{pascal_1964}, for an English translation, see \textcite{knoebel_laubenbacher_lodder_pengelley_2007}). \textcite[Chapter II, Theorem $1$]{lehmer_1900} proves that
 		\begin{align}
@@ -418,7 +420,7 @@
 						& = \dfrac{x^{k+1}}{k+1}\zeta(k+1)+O(x^{\max(1,k)})
 				\end{align*}
 		\end{theorem}
-	We leave the case when $k$ is a negative integer as an exercise. For our next function, let us consider a generalization of the Euler's totient function $\varphi(n)$.
+	We leave the case when $k$ is a negative integer as an exercise. Next, we consider a generalization of the Euler's totient function $\varphi(n)$. We will refrain from establishing the order of Jordan function for now.
 		\begin{align*}
 			\varphi(x,a)
 				& = \sum_{\substack{n\leq x\\\gcd(n,a)=1}}1
