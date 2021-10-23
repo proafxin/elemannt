@@ -1,27 +1,31 @@
-\setmainfont[FakeBold=3,BoldFont=OldStandard-Bold.otf,ItalicFont=ModernMT-ExtendedItalic.otf,BoldItalicFont=ModernMTStd-BoldItalic.otf,SmallCapsFont=OldStyleSeven-SC.otf]{ModernMT-Extended.otf}
-\setsansfont[%
-FakeBold=2,ItalicFont=NewCMSans10-Oblique.otf,BoldFont=NewCMSans10-Bold.otf,BoldItalicFont=NewCMSans10-BoldOblique.otf,
-SmallCapsFeatures={Numbers=OldStyle}]{NewCMSans10-Regular.otf}
-
-\setmonofont[%
-FakeBold=2,ItalicFont=NewCMMono10-Italic.otf,BoldFont=NewCMMono10-Bold.otf,BoldItalicFont=NewCMMono10-BoldOblique.otf,SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
-\setmathfont[FakeBold=3]{NewComputerModern Math}
-\setmathfont[range=it,FakeBold=3]{Old Standard Italic}
+\setmainfont[FakeBold=1,BoldFont=OldStandard-Bold.otf,ItalicFont=ModernMT-ExtendedItalic.otf,BoldItalicFont=ModernMTStd-BoldItalic.otf,SmallCapsFont=OldStyleSeven-SC.otf]{ModernMT-Extended.otf}
+\setsansfont[FakeBold=1,ItalicFont=NewCMSans10-Oblique.otf,BoldFont=NewCMSans10-Bold.otf,BoldItalicFont=NewCMSans10-BoldOblique.otf,SmallCapsFeatures={Numbers=OldStyle}]{NewCMSans10-Regular.otf}
+\setmonofont[FakeBold=1,ItalicFont=NewCMMono10-Italic.otf,BoldFont=NewCMMono10-Bold.otf,BoldItalicFont=NewCMMono10-BoldOblique.otf,SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
+\setmathfont[FakeBold=1,BoldFont={XITSMath-Bold.otf}]{NewCMMath-Book.otf}
+\setmathfont[range=it,FakeBold=1]{Old Standard Italic}
+\setmathfont[range={\prod},Scale=1.3]{STIX Two Math}
+\setmathfont[range={\sum},Scale=1.3,FakeBold=0]{Asana Math}
+\setmathfont[range={\int},Scale=1.3]{Asana Math}
 % texgyrepagella-math.otf
-\newfontfamily{\stm}{Garamond-Math.otf}
-\makeatletter
-\RenewDocumentCommand{\sum@}{}{\DOTSB\baskervillesum}
-\AtBeginDocument{\RenewDocumentCommand{\sum}{}{\mathop{\sum@}\slimits@}}
-\NewDocumentCommand{\baskervillesum}{}{%
-	\mathchoice
-	{\makebaskervillesum{2.5}}% displaystyle
-	{\makebaskervillesum{1.5}}% textstyle
-	{\makebaskervillesum{1}}% scriptstyle
-	{\makebaskervillesum{0.7}}% scriptscriptstyle
-}
-\NewDocumentCommand{\makebaskervillesum}{m}{\vcenter{\hbox{\scalebox{#1}{\stm Σ}}}}
-
+%\newfontfamily{\stm}{STIXMath-Regular.otf}
+%\makeatletter
+%\RenewDocumentCommand{\sum@}{}{\DOTSB\baskervillesum}
+%\AtBeginDocument{\RenewDocumentCommand{\sum}{}{\mathop{\sum@}\slimits@}}
+%\NewDocumentCommand{\baskervillesum}{}{%
+	%	\mathchoice
+	%	{\makebaskervillesum{2.6}}% displaystyle
+	%	{\makebaskervillesum{1.5}}% textstyle
+	%	{\makebaskervillesum{1}}% scriptstyle
+	%	{\makebaskervillesum{0.7}}% scriptscriptstyle
+	%}
+%\NewDocumentCommand{\makebaskervillesum}{m}{\vcenter{\hbox{\scalebox{#1}{\stm Σ}}}}
 \newfontfamily{\minion}{ModernMTStd-BoldItalic.otf}[NFSSFamily=pmn]
 \DeclareSymbolFont{alphabets}{\encodingdefault}{pmn}{m}{it}
 \SetSymbolFont{alphabets}{bold}{T1}{pmn}{b}{it}
 \DeclareMathSymbol{f}{\mathalpha}{alphabets}{"66}
+
+\newcommand{\getsc}[1]{%
+	\StrLeft{#1}{1}[\headtoken]%
+	\StrGobbleLeft{#1}{1}[\tailtokens]%
+	\MakeUppercase{\headtoken\scriptsize\tailtokens}%
+}
