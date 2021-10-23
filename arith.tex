@@ -207,7 +207,7 @@
 		\begin{proof}
 			
 		\end{proof}
-	It is not straightforward to realize how such a formula can be as influential as we are describing it to be. Notice that, the formula essentially converts a discreet sum into an integral, which occasionally may be calculable. If the integral is not calculable, we may be able to estimate its value sometimes. We will demonstrate these ideas next. It is worth mentioning that Ramanujan also used such a technique. For example, in \textcite[Page $83$, $\S4$]{aiyangar_hardy_vennkatesvara_seshu_aiyar_p_wilson_1927}, we can definitely see what can only be described as the formula itself. It is unclear if Ramanujan simply knew about this. Considering he shows the calculation instead of just mentioning the formula, it is certainly possible he came up with the idea on his own, possibly before he had been working on that particular paper. He essentially derives the partial summation formula while trying to express a sum of the form $\sum_{p\leq x}\phi(p)$ with respect to $\pi(x),\phi(x)$ and an integral where $\pi(x)$ is the number of primes not exceeding $x$. A consequence of \nameref{thm:abel} is the celebrated \index{Euler's summation formula}\textit{Euler's summation formula}.
+	It is not straightforward to realize how such a formula can be as influential as we are describing it to be. Notice that, the formula essentially converts a discreet sum into an integral, which occasionally may be calculable. If the integral is not calculable, we may be able to estimate its value sometimes. We should mention that \textcite[Page $83$, $\S4$]{aiyangar_hardy_vennkatesvara_seshu_aiyar_p_wilson_1927} also uses a method that can only be described as the partial summation formula. It is unclear if Ramanujan simply knew about this. Considering he shows the calculation instead of just mentioning the formula, it is certainly possible he came up with the idea on his own, possibly before he had been working on that particular paper. He essentially derives the partial summation formula while trying to express a sum of the form $\sum_{p\leq x}\phi(p)$ with respect to $\pi(x),\phi(x)$ and an integral where $\pi(x)$ is the number of primes not exceeding $x$. A consequence of \nameref{thm:abel} is the celebrated \index{Euler's summation formula}\textit{Euler's summation formula}.
 		\begin{theorem}[Euler's summation formula]\label{thm:eulersum}
 			Let $f$ be a continuous differentiable function in $[y,x]$. Then
 				\begin{align*}
@@ -356,7 +356,7 @@
 						& = \dfrac{1}{(k-1)!}x\log^{k-1}{x}+O\left(x\log^{k-2}{x}\right)
 				\end{align*}
 		\end{theorem}
-	The reason we do not write $T_{k}(x)$ as $O\left(x\log^{k-1}{x}\right)$ directly is because in this case, we already know what the constant multiplier of $x\log^{k-1}{x}$ is. Usually, we write $O(f(x))$ when we do not know what the constant multiplier of $f(x)$ is. \textcite[Page $2$]{landau_1912_0} states a sharper result.
+	The reason we do not write $T_{k}(x)$ as $O\left(x\log^{k-1}{x}\right)$ directly is because in this case, we already know the constant multiplier of $x\log^{k-1}{x}$ which is not ugly. Usually, we write $O(f(x))$ when we do not know what the constant multiplier of $f(x)$ is or when it gets too big to keep track of. \textcite[Page $2$]{landau_1912_0} states a sharper result.
 		\begin{align*}
 			T_{k}(x)
 				& = x\left(\sum_{m=0}^{k-1}b_{m}\log^{m}{x}\right)+O\left(x^{1-\frac{1}{k}}\right)+O\left(x^{1-\frac{1}{k}}\log^{k-2}{x}\right)
@@ -387,7 +387,7 @@
 			\sum_{n\leq x}\dfrac{1}{n^{s}}
 				& = \lfloor{x}\rfloor x^{-s}-\int\limits_{1}^{x}(t+O(1))f'(t)dt\\
 				& = x^{1-s}+O\left(x^{-s}\right)+s\int\limits_{1}^{x}t^{-s}dt+O\left(s\int\limits_{1}^{x}t^{-s-1}dt\right)\\
-				& = x^{1-s}+\dfrac{s}{1-s}\left(x^{1-s}-1\right)+O\left(\int\limits_{1}^{x}t^{-s-1}\right)\\
+				& = x^{1-s}+\dfrac{s}{1-s}\left(x^{1-s}-1\right)+O\left(\int\limits_{1}^{x}t^{-s-1}dt\right)\\
 				& = \dfrac{x^{1-s}}{1-s}+C+O(x^{-s})
 		\end{align*}
 	Similar to $\gamma$, we can take $x\to\infty$ and get the following result.
