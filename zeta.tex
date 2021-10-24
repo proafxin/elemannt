@@ -138,4 +138,19 @@
 		\begin{proof}
 			
 		\end{proof}
+	While discussing inversion, we should also mention \index{Dirichlet inverse}\textit{Dirichlet inverse}.
+		\begin{definition}[Dirichlet Inverse]
+			Let $f$ be an arithmetic function such that $f(1)\neq 0$. Then the Dirichlet inverse of $f$ is a function $g$ such that $f\ast g=I$ where $I$ is the \index{Identity function}\textit{identity function}
+				\begin{align*}
+					I(n)
+						& = \left\lfloor{\dfrac{1}{n}}\right\rfloor
+				\end{align*}
+			This inverse $g$ can be expressed recursively.
+				\begin{align*}
+					g(1)
+						& = \dfrac{1}{f(1)}\\
+					g(n)
+						& = -\dfrac{1}{f(1)}\sum_{\substack{d\mid n\\d<n}}f\left(\dfrac{n}{d}\right)g(d)
+				\end{align*}
+		\end{definition}
 \end{document}
