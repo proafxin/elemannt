@@ -29,3 +29,21 @@
 	\StrGobbleLeft{#1}{1}[\tailtokens]%
 	\MakeUppercase{\headtoken\scriptsize\tailtokens}%
 }
+
+\ifxetex
+\newtheorem{theorem}{{\getsc{Theorem}}}[chapter]
+\else
+\newtheorem{theorem}{{\textsc{Theorem}}}[chapter]
+\fi
+
+\ifxetex
+\author{\Large\textbf{\getsc{Masum} \getsc{Billal}}}
+\else
+\author{\Large\textbf{\textsc{Masum Billal}}}
+\fi
+
+\ifpdftex
+\fancyhead[R]{\small\textsc{Masum Billal}}
+\else
+\fancyhead[R]{\small\getsc{Masum} \getsc{Billal}}
+\fi

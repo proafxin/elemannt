@@ -76,30 +76,16 @@
 	\DeclareSymbolFont{alphabets}{\encodingdefault}{pmn}{m}{it}
 	\SetSymbolFont{alphabets}{bold}{T1}{pmn}{b}{it}
 	\DeclareMathSymbol{f}{\mathalpha}{alphabets}{"66}
-	
-	\newcommand{\getsc}[1]{%
-		\StrLeft{#1}{1}[\headtoken]%
-		\StrGobbleLeft{#1}{1}[\tailtokens]%
-		\MakeUppercase{\headtoken\scriptsize\tailtokens}%
-	}
 \fi
 
-\ifxetex
-	\newtheorem{theorem}{{\getsc{Theorem}}}[chapter]
-\else
-	\newtheorem{theorem}{{\textsc{Theorem}}}[chapter]
-\fi
+\newtheorem{theorem}{\scshape{Theorem}}
 \theoremstyle{definition}
-\newenvironment{definition}[1][]{\par\medskip\noindent \textbf{\ifthenelse{\isempty{#1}}{Definition.}{#1.}} \rmfamily}{\medskip}
+\newenvironment{definition}[1][]{\par\medskip\noindent \textsc{\textbf{{\ifthenelse{\isempty{#1}}{Definition.}{#1.}}}} \rmfamily}{\medskip}
 \newtheorem*{remark}{Remark}
 
 
 \title{\bfseries Introduction to Elementary Analytic Number Theory}
-\ifxetex
-	\author{\Large\textbf{\getsc{Masum} \getsc{Billal}}}
-\else
-	\author{\Large\textbf{\textsc{Masum Billal}}}
-\fi
+\author{\scshape Masum Billal}
 
 \renewcommand*{\chapterautorefname}{Chapter}
 \renewcommand*{\sectionautorefname}{Section}
@@ -112,11 +98,7 @@
 \setlength{\headheight}{52pt}
 
 %\fancyhead[RE]{\textit{\nouppercase{\leftmark}}}
-\ifpdftex
-	\fancyhead[R]{\small\textsc{Masum Billal}}
-\else
-	\fancyhead[R]{\small\getsc{Masum} \getsc{Billal}}
-\fi
+\fancyhead[R]{\small\textsc{Masum Billal}}
 \renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
 \fancyhead[C]{\small$\S$\thechapter. \ \scshape\leftmark}
 \fancyhead[L]{\thepage}
