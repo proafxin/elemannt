@@ -89,15 +89,14 @@
 	
 	%\def\ffamily{lmr}
 	
-	\newfontfamily{\custom}{ModernMT-Extended.otf}[FakeBold=1,ItalicFont=ModernMT-ExtendedItalic.otf]
+	\newfontfamily{\custom}{ModernMT-Extended.otf}[FakeBold=1,ItalicFont=ModernMT-ExtendedItalic.otf,BoldFont=OldStandard-Bold.otf]
 	
 	\makeatletter
-	\newcommand\myf[1]{{\XeTeXinterchartokenstate=0 
-			\custom#1}}
+	\newcommand\myf[1]{{\XeTeXinterchartokenstate=0 \custom#1}}
 	\makeatother
 \fi
 
-\newtheorem{theorem}{\scshape{Theorem}}
+\newtheorem{theorem}{\scshape{Theorem}}[chapter]
 \theoremstyle{definition}
 \newenvironment{definition}[1][]{\par\medskip\noindent \textsc{\textbf{{\ifthenelse{\isempty{#1}}{Definition.}{#1.}}}} \rmfamily}{\medskip}
 \newtheorem*{remark}{Remark}
@@ -136,7 +135,7 @@
 
 \begin{document}
 	\pagestyle{empty}
-    \relscale{1.2}
+    \relscale{1.1}
     \includepdf[pages={1}]{cover.pdf}
     %\AddToShipoutPictureBG{{\includegraphics{paper.jpg}}}
     %\pagecolor{buff}%\afterpage{white}
