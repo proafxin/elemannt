@@ -76,6 +76,25 @@
 	\DeclareSymbolFont{alphabets}{\encodingdefault}{pmn}{m}{it}
 	\SetSymbolFont{alphabets}{bold}{T1}{pmn}{b}{it}
 	\DeclareMathSymbol{f}{\mathalpha}{alphabets}{"66}
+	\XeTeXinterchartokenstate=1
+	
+	\newXeTeXintercharclass\fclass
+	
+	\XeTeXcharclass `\f \fclass
+	\XeTeXcharclass `\F \fclass
+	
+	\XeTeXinterchartoks 0 \fclass = {\myf}
+	\XeTeXinterchartoks 4095 \fclass = {\myf}
+	\XeTeXinterchartoks \fclass \fclass = {\myf}
+	
+	%\def\ffamily{lmr}
+	
+	\newfontfamily{\custom}{ModernMT-Extended.otf}[FakeBold=1,ItalicFont=ModernMT-ExtendedItalic.otf]
+	
+	\makeatletter
+	\newcommand\myf[1]{{\XeTeXinterchartokenstate=0 
+			\custom#1}}
+	\makeatother
 \fi
 
 \newtheorem{theorem}{\scshape{Theorem}}
