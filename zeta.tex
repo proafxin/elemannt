@@ -121,9 +121,18 @@
 				\end{align*}
 			where $\mathbb{D}$ is a set of positive integers such that if $d\mid n$ and $n\in\mathbb{D}$, then $d\in\mathbb{D}$.
 		\end{definition}
-	
+	Let us call such a set $\mathbb{D}$ \textit{divisor closed}.
 		\begin{theorem}[Dual M\"{o}bius Inversion]
-			Let $f$ be an arithmetic function and 
+			Let $f$ be an arithmetic function and $F$ be the summatory function
+				\begin{align*}
+					F(n)
+						& = \sum_{\substack{n\mid d\\d\in\mathbb{D}}}f(d)
+				\end{align*}
+			Then
+				\begin{align*}
+					f(n)
+						& = \sum_{\substack{n\mid d\\d\in\mathbb{D}}}\mu\left(\dfrac{d}{n}\right)f(d)
+				\end{align*}
 		\end{theorem}
 	
 		\begin{proof}
