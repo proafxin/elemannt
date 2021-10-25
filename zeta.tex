@@ -16,7 +16,7 @@
 			\sum_{n\leq x}\dfrac{1}{p}
 			& \sim \log{\sum_{n\leq x}\dfrac{1}{x}}
 		\end{align*}
-	Here, $\sim$ is the asymptotic equivalence we have already defined. Even though Euler is the main architect behind the development of $\zeta$, \textcite{riemann_1859} first considered $\zeta$ for complex $s$ instead of real $s$ only. By tradition, we write $s=\sigma+it$ where $\sigma=\Re(s)$ is the real part of $s$ and $t=\Im(s)$ is the imaginary part of $s$.
+	Here, $\sim$ is the asymptotic equivalence we have already defined. Even though Euler is the main architect behind the development of $\zeta$, \textcite{riemann_1859} is the first one to consider $\zeta$ for complex $s$ instead of real $s$ only. By tradition, we write $s=\sigma+it$ where $\sigma=\Re(s)$ is the real part of $s$ and $t=\Im(s)$ is the imaginary part of $s$.
 		\begin{definition}[Dirichlet series]
 			For a complex number $s$, a \index{Dirichlet series}\textit{Dirichlet series} is a series of the form
 				\begin{align*}
@@ -58,9 +58,9 @@
 			h(n)
 				& = \sum_{de=n}f(d)g(e)
 		\end{align*}
-	After a little observation, it seems quite obvious that this is indeed correct. In fact, this is what we call  \index{Dirichlet convolution}\textit{Dirichlet convolution} today.
+	After a little observation, it seems quite obvious that this is indeed correct. In fact, this is what we call  Dirichlet convolution today.
 		\begin{definition}[Dirichlet convolution]
-			For two arithmetic functions $f$ and $g$, the \textit{Dirichlet product} or \textit{Dirichlet convolution} (or sometimes, \textit{Dirichlet product}) of $f$ and $g$ is defined as
+			For two arithmetic functions $f$ and $g$, the \index{Dirichlet convolution}\textit{Dirichlet product} or \textit{Dirichlet convolution} (or sometimes, \textit{Dirichlet product}) of $f$ and $g$ is defined as
 				\begin{align*}
 					f\ast g
 						& = \sum_{d\mid n}f(d)g\left(\dfrac{n}{d}\right)
@@ -157,4 +157,10 @@
 						& = -\dfrac{1}{f(1)}\sum_{\substack{d\mid n\\d<n}}f\left(\dfrac{n}{d}\right)g(d)
 				\end{align*}
 		\end{definition}
+	We leave the following as exercise.
+		\begin{enumerate}
+			\item If $f$ is a multiplicative arithmetic function, then the Dirichlet inverse $f^{-1}$ is also multiplicative.
+			\item If $f$ and $f\ast g$ are multiplicative functions, then $g$ is also multiplicative.
+			\item $\sum_{d\mid n}\mu(d)=I(n)$.
+		\end{enumerate}
 \end{document}
