@@ -16,7 +16,7 @@
 \addbibresource[]{ref.bib}
 
 \usepackage{xifthen,fancyhdr,centernot,datetime}
-\usepackage[intoc]{nomencl}
+\usepackage{nomencl}
 \usepackage{tocloft}
 \renewcommand{\cftsecfont}{\scshape}
 \renewcommand{\cftchapfont}{\scshape}
@@ -65,8 +65,8 @@
 	\pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.1pt}
 	\makeatletter\let\normalrender\PdfRender@NormalColorHook\let\PdfRender@NormalColorHook\@empty\newcommand*{\textnormalrender}[1]{\begingroup\normalrender#1\endgroup}\makeatother
 \else
-	\setmainfont[FakeBold=1]{Old Standard}
-	\setmathfont[FakeBold=1,BoldFont={XITSMath-Bold.otf}]{NewCMMath-Book.otf}
+	\setmainfont[FakeBold=1.5]{Old Standard}
+	\setmathfont[FakeBold=1.5,BoldFont={XITSMath-Bold.otf}]{NewCMMath-Book.otf}
 	\setmathfont[range=it,FakeBold=1]{Old Standard Italic}
 	\setmathfont[range={\prod},Scale=1.1]{STIX Two Math}
 	\setmathfont[range={\sum},Scale=1.1,FakeBold=0]{Asana Math}
@@ -77,20 +77,13 @@
 	\SetSymbolFont{alphabets}{bold}{T1}{pmn}{b}{it}
 	\DeclareMathSymbol{f}{\mathalpha}{alphabets}{"66}
 	\XeTeXinterchartokenstate=1
-	
 	\newXeTeXintercharclass\fclass
-	
 	\XeTeXcharclass `\f \fclass
 	\XeTeXcharclass `\F \fclass
-	
 	\XeTeXinterchartoks 0 \fclass = {\myf}
 	\XeTeXinterchartoks 4095 \fclass = {\myf}
 	\XeTeXinterchartoks \fclass \fclass = {\myf}
-	
-	%\def\ffamily{lmr}
-	
-	\newfontfamily{\custom}{ModernMT-Extended.otf}[FakeBold=1,ItalicFont=ModernMT-ExtendedItalic.otf,BoldFont=OldStandard-Bold.otf]
-	
+	\newfontfamily{\custom}{ModernMT-Extended.otf}[FakeBold=1.5,ItalicFont=ModernMT-ExtendedItalic.otf,BoldFont=OldStandard-Bold.otf]
 	\makeatletter
 	\newcommand\myf[1]{{\XeTeXinterchartokenstate=0 \custom#1}}
 	\makeatother
