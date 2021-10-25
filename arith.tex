@@ -4,12 +4,17 @@
 	\chapter{Arithmetic Functions}\label{ch:arith}
 	In this chapter, we will discuss some generalized arithmetic functions and their asymptotic behavior. By asymptotic behavior, we mean that we want to understand how a function $f(x)$ grows as $x$ tends to infinity. A common way of analyzing growth of an arithmetic function $f$ is to consider the order of an arithmetic function.
 		\begin{definition}[Order of Arithmetic Function]
-			The order of an arithmetic function $f$ is defined by the asymptotic $\lim_{x\to\infty}f(x)$. A very common way of understanding growth of $x$ is to analyze the asymptotic of partial summation
+			The order of an arithmetic function $f$ is defined by the asymptotic $\lim_{x\to\infty}f(x)$. To understand the growth of $f$, we often analyze the asymptotic of partial summation
 				\begin{align*}
 					\lim\limits_{x\to\infty}\sum_{n\leq x}f(n)
 				\end{align*}
 		\end{definition}
-	
+	For example, the prime counting function is
+		\begin{align*}
+			\pi(x)
+				& = \sum_{n\leq x}C(n)
+		\end{align*}
+	where $C(n)$ is the characteristic function of, that is, $C(n)=1$ if $n$ is a prime otherwise $C(n)=0$. One of the biggest question we will try to answer is how $\lim_{x\to\infty}\pi(x)$ behaves.
 		\begin{definition}[Summatory Function]
 			For an arithmetic function $f$, the \index{Summatory function}\textit{summatory function} of $f$ is defined as
 				\begin{align*}
@@ -33,13 +38,13 @@
 	In this context, a very interesting way of analyzing growth is the \textit{normal order} of $f$. The concept of normal numbers arises from \textcite{hardy_aiyangar_1917}.
 		\begin{definition}[Normal Order]
 			Let $f$ and $F$ be arithmetic functions such that
-				\begin{align*}
-					(1-\epsilon)F(n)
-						& < f(n)<(1+\epsilon)F(n)
-				\end{align*}
+				\begin{align}
+					(1-\epsilon)F(n) 
+						& < f(n)<(1+\epsilon)F(n)\label{eqn:normal}
+				\end{align}
 			holds for \textit{almost} all $n\leq x$ as $x\to\infty$. Then we say that $F$ is the \index{Normal order}\textit{normal order} of $f$.
 		\end{definition}
-	A trivial example of normal order is that almost all positive integers not exceeding $x$ are composite if $x$ is sufficiently large.
+	A trivial(?) example of normal order is that almost all positive integers not exceeding $x$ are composite if $x$ is sufficiently large. We should probably elaborate on what we mean by \textit{almost} here. One such interpretation is that the number of positive integers not exceeding $x$ which are prime is very small compared to $x$. Similarly, $f$ is of order $F$ means that the number of positive integers $n$ not exceeding $x$ which do not satisfy \ref{eqn:normal} is very small compared to $x$.
 	
 	An interesting property in summatory functions is that
 		\begin{align*}
@@ -125,7 +130,7 @@
 				\end{align*}
 			and we denote it by $f\sim g$. So, we can say that $g$ is an asymptotic formula for $f$.
 		\end{definition}
-	An example is $x^{2}\sim x^{2}+x$. Note the following.
+	An example is $x^{2}\sim x^{2}+x$. Another example in connection with normal order is that $f$ is of order $F$ if the number of $n$ not satisfying \ref{eqn:normal} is $o(x)$. We can also say, the number of $n$ satisfying \ref{eqn:normal} is $\sim x$. Note the following.
 		\begin{align*}
 			f \sim g
 				& \iff |f(x)-g(x)|= o(g(x))
