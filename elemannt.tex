@@ -11,7 +11,7 @@
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
 %\footnote[50]{text}
 \hypersetup{pdfstartview=,pdfencoding=auto,}
-\usepackage[style=philosophy-verbose,backend=biber,sortcites=true,classical=true,scauthors=true, scauthorscite=true,scauthorsbib=true,volnumformat=strings,volumeformat=romansc,giveninits]{biblatex}
+\usepackage[style=philosophy-verbose,backend=biber,sortcites=true,classical=true,scauthors=true, scauthorscite=true,scauthorsbib=true,volnumformat=strings,volumeformat=romansc,]{biblatex}
 \addbibresource[]{ref.bib}
 
 \usepackage{xifthen,fancyhdr,centernot,datetime}
@@ -82,7 +82,7 @@
 	\XeTeXinterchartoks 0 \fclass = {\myf}
 	\XeTeXinterchartoks 4095 \fclass = {\myf}
 	\XeTeXinterchartoks \fclass \fclass = {\myf}
-	\newfontfamily{\custom}{ModernMT-Extended.otf}[FakeBold=1.5,ItalicFont=ModernMT-ExtendedItalic.otf,BoldFont=OldStandard-Bold.otf]
+	\newfontfamily{\custom}{ModernMT-Extended.otf}[FakeBold=1.5,ItalicFont=ModernMT-ExtendedItalic.otf,BoldFont=OldStandard-Bold.otf,SmallCapsFont={PlayfairDisplaySC-Regular.otf},SmallCapsFeatures={Letters=SmallCaps,Scale=.75}]
 	\makeatletter
 	\newcommand\myf[1]{{\XeTeXinterchartokenstate=0 \custom#1}}
 	\makeatother
