@@ -64,8 +64,8 @@
 	\pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.1pt}
 	\makeatletter\let\normalrender\PdfRender@NormalColorHook\let\PdfRender@NormalColorHook\@empty\newcommand*{\textnormalrender}[1]{\begingroup\normalrender#1\endgroup}\makeatother
 \else
-	\setmainfont[FakeBold=1.5]{Old Standard}
-	\setmathfont[FakeBold=1.5,BoldFont={XITSMath-Bold.otf}]{NewCMMath-Book.otf}
+	\setmainfont[FakeBold=1]{Old Standard}
+	\setmathfont[FakeBold=1,BoldFont={XITSMath-Bold.otf}]{NewCMMath-Book.otf}
 	\setmathfont[range=it,FakeBold=1]{Old Standard Italic}
 	\setmathfont[range={\prod},Scale=1.1]{STIX Two Math}
 	\setmathfont[range={\sum},Scale=1.1,FakeBold=0]{Asana Math}
@@ -82,7 +82,7 @@
 	\XeTeXinterchartoks 0 \fclass = {\myf}
 	\XeTeXinterchartoks 4095 \fclass = {\myf}
 	\XeTeXinterchartoks \fclass \fclass = {\myf}
-	\newfontfamily{\custom}{ModernMT-Extended.otf}[FakeBold=1.5,ItalicFont=ModernMT-ExtendedItalic.otf,BoldFont=OldStandard-Bold.otf,SmallCapsFont={PlayfairDisplaySC-Regular.otf},SmallCapsFeatures={Letters=SmallCaps,Scale=.75}]
+	\newfontfamily{\custom}{ModernMT-Extended.otf}[FakeBold=1,ItalicFont=ModernMT-ExtendedItalic.otf,BoldFont=OldStandard-Bold.otf,SmallCapsFont={PlayfairDisplaySC-Regular.otf},SmallCapsFeatures={Letters=SmallCaps,Scale=.77},BoldFeatures={SmallCapsFont=PlayfairDisplaySC-Black.otf}]
 	\makeatletter
 	\newcommand\myf[1]{{\XeTeXinterchartokenstate=0 \custom#1}}
 	\makeatother
