@@ -17,7 +17,7 @@
 			& \sim \log{\sum_{n\leq x}\dfrac{1}{x}}
 		\end{align*}
 	Here, $\sim$ is the asymptotic equivalence we have already defined. Even though Euler is the main architect behind the development of $\zeta$, \textcite{riemann_1859} is the first one to consider $\zeta$ for complex $s$ instead of real $s$ only. By tradition, we write $s=\sigma+it$ where $\sigma=\Re(s)$ is the real part of $s$ and $t=\Im(s)$ is the imaginary part of $s$.
-		\begin{definition}[Dirichlet series]
+		\begin{definition}[Dirichlet Series]
 			For a complex number $s$, a \index{Dirichlet series}\textit{Dirichlet series} is a series of the form
 				\begin{align*}
 					\mathfrak{D}_{a}(s)
@@ -28,7 +28,7 @@
 		\begin{align}
 			\sum_{n\geq 1}a_{n}e^{-\lambda_{n}s}\label{eqn:gendir}
 		\end{align}
-	where $(\lambda_{n})$ is an increasing sequence of real numbers. Following this, \textcite{hardy_riesz_1915} calls $\mathfrak{D}$ the \textit{ordinary Dirichlet series} when $\lambda_{n}=\log{n}$. \textcite{lejeune_1879} considers real values of $s$ and proves a number of important theorems. As Hardy states, \textcite{jensen_1884,jensen_1888} discusses the first theorems where $s$ is complex involving the nature of convergence of \ref{eqn:gendir}. \textcite{cahen_1894} makes the \textit{first attempt to construct a systematic theory of the function $\mathfrak{D}_{f}(s)$ although much of the analysis which it contains is open to serious criticism, has served---and possibly just for that reason---as the starting point of most of the later researches in the subject.}
+	where $(\lambda_{n})$ is a strictly increasing sequence of real numbers that tend to infinity. Following this, \textcite{hardy_riesz_1915} calls $\mathfrak{D}$ the \textit{ordinary Dirichlet series} when $\lambda_{n}=\log{n}$. \textcite{lejeune_1879} considers real values of $s$ and proves a number of important theorems. As Hardy states, \textcite{jensen_1884,jensen_1888} discusses the first theorems where $s$ is complex involving the nature of convergence of \ref{eqn:gendir}. \textcite{cahen_1894} makes the \textit{first attempt to construct a systematic theory of the function $\mathfrak{D}_{f}(s)$ although much of the analysis which it contains is open to serious criticism, has served---and possibly just for that reason---as the starting point of most of the later researches in the subject.}
 		\begin{definition}[Convergence]
 			
 		\end{definition}
@@ -92,7 +92,7 @@
 				& =
 					\begin{cases}
 						0& \mbox{ if }p^{2}\mid n\mbox{ for some prime }p\\
-						(-1)^{\omega(n)}
+						(-1)^{\omega(n)}& \mbox{ otherwise}
 					\end{cases}
 		\end{align*}
 	where $\omega(n)$ is the number of distinct prime divisors of $n$. On the other hand, $\Omega(n)$ is the total number of prime divisors of $n$. So, $\omega(12)=2$ whereas $\Omega(12)=3$.
@@ -132,7 +132,7 @@
 					F(n)
 						& = \sum_{\substack{n\mid d\\d\in\mathbb{D}}}f(d)
 				\end{align*}
-			Then
+			where $\mathbb{D}$ is a divisor closed set. Then
 				\begin{align*}
 					f(n)
 						& = \sum_{\substack{n\mid d\\d\in\mathbb{D}}}\mu\left(\dfrac{d}{n}\right)f(d)

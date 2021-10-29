@@ -14,7 +14,7 @@
 			\pi(x)
 				& = \sum_{n\leq x}C(n)
 		\end{align*}
-	where $C(n)$ is the characteristic function of, that is, $C(n)=1$ if $n$ is a prime otherwise $C(n)=0$. One of the biggest question we will try to answer is how $\lim_{x\to\infty}\pi(x)$ behaves.
+	where $C(n)$ is the characteristic function of, that is, $C(n)=1$ if $n$ is a prime otherwise $C(n)=0$. One of the biggest questions we will try to answer is how $\lim_{x\to\infty}\pi(x)$ behaves.
 		\begin{definition}[Summatory Function]
 			For an arithmetic function $f$, the \index{Summatory function}\textit{summatory function} of $f$ is defined as
 				\begin{align*}
@@ -44,7 +44,7 @@
 				\end{align}
 			holds for \textit{almost} all $n\leq x$ as $x\to\infty$. Then we say that $F$ is the \index{Normal order}\textit{normal order} of $f$.
 		\end{definition}
-	A trivial(?) example of normal order is that almost all positive integers not exceeding $x$ are composite if $x$ is sufficiently large. We should probably elaborate on what we mean by \textit{almost} here. One such interpretation is that the number of positive integers not exceeding $x$ which are prime is very small compared to $x$. Similarly, $f$ is of order $F$ means that the number of positive integers $n$ not exceeding $x$ which do not satisfy \ref{eqn:normal} is very small compared to $x$.
+	A trivial(?) example of normal order is that almost all positive integers not exceeding $x$ are composite if $x$ is sufficiently large. We should probably elaborate on what we mean by \textit{almost} here. One interpretation is that the number of positive integers not exceeding $x$ which are prime is very small compared to $x$. Similarly, $f$ is of order $F$ means that the number of positive integers $n$ not exceeding $x$ which do not satisfy \ref{eqn:normal} is very small compared to $x$.
 	
 	An interesting property in summatory functions is that
 		\begin{align*}
@@ -139,7 +139,7 @@
 		\begin{definition}
 			If $f$ and $g$ are functions such that both $f(x)\ll g(x)$ and $g(x)\ll f(x)$ hold, then we write $f\asymp g$ and say that $f$ and $g$ have the \textit{same order of magnitude}.
 		\end{definition}\par
-	Now, we are interested in the general number of divisors and general sum of divisors. Let us define the cumulative sum of these functions.
+	Now, we are interested in the order of general number of divisors and general sum of divisors. Let us define the cumulative sum of these functions.
 		\begin{align*}
 			S_{k}(x)
 				& = \sum_{n\leq x}\sigma_{k}(n)\\
@@ -441,13 +441,13 @@
 						& = \dfrac{x^{k+1}}{k+1}\zeta(k+1)+O(x^{\max(1,k)})
 				\end{align*}
 		\end{theorem}
-	We leave the case when $k$ is a negative integer as an exercise. Next, we consider a generalization of the Euler's totient function $\varphi(n)$. We will refrain from establishing the order of Jordan function for now.
+	We leave the case when $k$ is a negative integer as an exercise. Next, we consider a generalization of the Euler's totient function $\varphi(n)$.
 		\begin{align*}
 			\varphi(x,a)
 				& = \sum_{\substack{n\leq x\\\gcd(n,a)=1}}1
 		\end{align*}
 	For a positive integer $n$, $\varphi(n)=\varphi(n,n)$ and \index{Jordan function}\textit{Jordan function} is a generalization of $\varphi$.
-		\begin{definition}[Jordan function]
+		\begin{definition}[Jordan Function]
 			Let $n$ and $k$ be positive integers. Then the Jordan function $J_{k}(n)$ is the number of $k$ tuples of positive integers not exceeding $n$ that are relatively prime to $n$.
 				\begin{align*}
 					J_{k}(n)
