@@ -59,8 +59,8 @@
 				& = \sum_{de=n}f(d)g(e)
 		\end{align*}
 	After a little observation, it seems quite obvious that this is indeed correct. In fact, this is what we call  Dirichlet convolution today.
-		\begin{definition}[Dirichlet convolution]
-			For two arithmetic functions $f$ and $g$, the \index{Dirichlet convolution}\textit{Dirichlet product} or \textit{Dirichlet convolution} (or sometimes, \textit{Dirichlet product}) of $f$ and $g$ is defined as
+		\begin{definition}[Dirichlet Convolution]
+			For two arithmetic functions $f$ and $g$, the \index{Dirichlet convolution}\textit{Dirichlet product} or \textit{Dirichlet convolution} of $f$ and $g$ is defined as
 				\begin{align*}
 					f\ast g
 						& = \sum_{d\mid n}f(d)g\left(\dfrac{n}{d}\right)
@@ -75,7 +75,7 @@
 			
 		\end{proof}
 	
-		\begin{theorem}[Associativity of Dirichlet convolution]\label{thm:convass}
+		\begin{theorem}[Associativity of Dirichlet Convolution]\label{thm:convass}
 			Dirichlet convolution is associative. That is, if $f,g$ and $h$ are arithmetic functions, then
 				\begin{align*}
 					(f\ast g)\ast h
