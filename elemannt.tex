@@ -82,7 +82,7 @@
 	\XeTeXinterchartoks 0 \fclass = {\myf}
 	\XeTeXinterchartoks 4095 \fclass = {\myf}
 	\XeTeXinterchartoks \fclass \fclass = {\myf}
-	\newfontfamily{\custom}{ModernMT-Extended.otf}[FakeBold=1,ItalicFont=ModernMT-ExtendedItalic.otf,BoldFont=OldStandard-Bold.otf,SmallCapsFont={PlayfairDisplaySC-Regular.otf},SmallCapsFeatures={Letters=SmallCaps,Scale=.8},BoldFeatures={SmallCapsFont=OldStandard-Bold.otf}]
+	\newfontfamily{\custom}{ModernMT-Extended.otf}[FakeBold=1,ItalicFont=ModernMT-ExtendedItalic.otf,BoldFont=OldStandard-Bold.otf,SmallCapsFont={PlayfairDisplaySC-Regular.otf},SmallCapsFeatures={Letters=SmallCaps,Scale=.85},BoldFeatures={SmallCapsFont=NewCaledonia-BoldSC.otf,Scale=MatchUppercase}]
 	\makeatletter
 	\newcommand\myf[1]{{\XeTeXinterchartokenstate=0 \custom#1}}
 	\makeatother
@@ -90,7 +90,7 @@
 
 \newtheorem{theorem}{\scshape{Theorem}}[chapter]
 \theoremstyle{definition}
-\newenvironment{definition}[1][]{\par\medskip\noindent \textsc{\textbf{{\ifthenelse{\isempty{#1}}{Definition.}{#1.}}}} \rmfamily}{\medskip}
+\newenvironment{definition}[1][]{\par\medskip\noindent \textbf{\textsc{{\ifthenelse{\isempty{#1}}{Definition.}{#1.}}}} \rmfamily}{\medskip}
 \newtheorem*{remark}{Remark}
 
 
@@ -129,7 +129,7 @@
 	\pagestyle{empty}
     \relscale{1.1}
     %\includepdf[pages={1}]{cover.pdf}
-    %\AddToShipoutPictureBG{{\includegraphics{paper.jpg}}}
+    \AddToShipoutPictureBG{{\includegraphics{paper.jpg}}}
     %\pagecolor{buff}%\afterpage{white}
     \maketitle
     \frontmatter

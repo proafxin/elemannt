@@ -157,6 +157,14 @@
 						& = -\dfrac{1}{f(1)}\sum_{\substack{d\mid n\\d<n}}f\left(\dfrac{n}{d}\right)g(d)
 				\end{align*}
 		\end{definition}
+	\textcite[Theorem 2.2]{haukkanen_2000} proves the following closed formula to find the Dirichlet inverse of an arithmetic function $f$ which we do not prove here.
+		\begin{theorem}
+			Let $f$ be an arithmetic function such that $f(1)=1$. Then the Dirichlet inverse of $f$ is
+				\begin{align*}
+					f^{-1}(n)
+						& = \sum_{k=1}^{\Omega(n)}(-1)^{k}\sum_{\substack{d_{1}\cdots d_{k}=n\\d_{1},\ldots,d_{k{>1}}}}f(d_{1})\cdots f(d_{k})
+				\end{align*}
+		\end{theorem}
 	We leave the following as exercise.
 		\begin{enumerate}
 			\item If $f$ is a multiplicative arithmetic function, then the Dirichlet inverse $f^{-1}$ is also multiplicative.
