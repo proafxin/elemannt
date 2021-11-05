@@ -64,28 +64,20 @@
 	\pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.1pt}
 	\makeatletter\let\normalrender\PdfRender@NormalColorHook\let\PdfRender@NormalColorHook\@empty\newcommand*{\textnormalrender}[1]{\begingroup\normalrender#1\endgroup}\makeatother
 \else
-	\setmainfont[FakeBold=1]{Old Standard}
+	%\setmainfont[FakeBold=1]{Old Standard}
+	\setmainfont[FakeBold=1,ItalicFont=ModernMT-ExtendedItalic.otf,BoldItalicFont=OldStandard-BoldItalic.otf,BoldFont=OldStandard-Bold.otf]{OldStandard-Regular.otf}
+	
 	\setmathfont[FakeBold=1,BoldFont={XITSMath-Bold.otf}]{NewCMMath-Book.otf}
 	\setmathfont[range=it,FakeBold=1]{Old Standard Italic}
 	\setmathfont[range={\prod},Scale=1.1]{STIX Two Math}
-	\setmathfont[range={\sum},Scale=1.1]{Asana Math}
+	\setmathfont[range={\sum},Scale=1.2]{Asana Math}
 	\setmathfont[range={\int},Scale=1]{Asana Math}
 	
-	\newfontfamily{\minion}{ModernMTStd-BoldItalic.otf}[NFSSFamily=pmn]
+	\newfontfamily{\minion}{ModernMT-ExtendedItalic.otf}[NFSSFamily=pmn,FakeBold=1]
 	\DeclareSymbolFont{alphabets}{\encodingdefault}{pmn}{m}{it}
 	\SetSymbolFont{alphabets}{bold}{T1}{pmn}{b}{it}
 	\DeclareMathSymbol{f}{\mathalpha}{alphabets}{"66}
-	\XeTeXinterchartokenstate=1
-	\newXeTeXintercharclass\fclass
-	\XeTeXcharclass `\f \fclass
-	\XeTeXcharclass `\F \fclass
-	\XeTeXinterchartoks 0 \fclass = {\myf}
-	\XeTeXinterchartoks 4095 \fclass = {\myf}
-	\XeTeXinterchartoks \fclass \fclass = {\myf}
-	\newfontfamily{\custom}{ModernMT-Extended.otf}[FakeBold=1,ItalicFont=ModernMT-ExtendedItalic.otf,BoldFont=OldStandard-Bold.otf,SmallCapsFont={PlayfairDisplaySC-Regular.otf},SmallCapsFeatures={Letters=SmallCaps,Scale=.85},BoldFeatures={SmallCapsFont=NewCaledonia-BoldSC.otf,Scale=MatchUppercase}]
-	\makeatletter
-	\newcommand\myf[1]{{\XeTeXinterchartokenstate=0 \custom#1}}
-	\makeatother
+	
 \fi
 
 \newtheorem{theorem}{\scshape{Theorem}}[chapter]
