@@ -65,15 +65,21 @@
 	%\pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.1pt}
 	%\makeatletter\let\normalrender\PdfRender@NormalColorHook\let\PdfRender@NormalColorHook\@empty\newcommand*{\textnormalrender}[1]{\begingroup\normalrender#1\endgroup}\makeatother
 \else
-	\setmainfont[FakeBold=1,ItalicFont=ModernMT-ExtendedItalic.otf,BoldItalicFont=OldStandard-BoldItalic.otf,BoldFont=OldStandard-Bold.otf,]{OldStandard-Regular.otf}
-	\setmathfont[FakeBold=1,]{NewCMMath-Book.otf}
-	\setmathfont[range=it,FakeBold=1]{Old Standard Italic}
-	\setmathfont[range={\symbb,\symfrak},FakeBold=1]{Asana Math}
-	\setmathfont[range={\prod,\sum,\int},Scale=1.6,]{Old Standard Italic}
+	\newfontfamily\headingfont[]{BaskervilleF-BoldItalic.otf}
+	\usepackage{titlesec}
+	\titleformat{\chapter}[display]{\huge\headingfont}{\chaptertitlename\ \thechapter}{20pt}{\Huge\headingfont}
+	\titleformat*{\section}{\Large\headingfont}
+	\newcommand{\fakebold}{2}
+	\setmainfont[FakeBold=\fakebold,ItalicFont=ModernMT-ExtendedItalic.otf,BoldItalicFont=OldStandard-BoldItalic.otf,BoldFont=OldStandard-Bold.otf,BoldFeatures={FakeBold=0},BoldItalicFeatures={FakeBold=0}]{OldStandard-Regular.otf}
+	\setmathfont[FakeBold=\fakebold,]{NewCMMath-Book.otf}
+	\setmathfont[range=it,FakeBold=\fakebold]{Old Standard Italic}
+	\setmathfont[range={\symfrak},FakeBold=\fakebold]{Asana Math}
+	\setmathfont[range={\int},Scale=1.6,]{Old Standard Italic}
+	\setmathfont[range={\sum,\prod},Scale=1.6]{Old Standard}
 	
 	\usepackage{mathspec}
-	\setmathsfont(Digits)[Scale=MatchUppercase,FakeBold=1]{Old Standard Italic}
-	\setmathsfont(Latin)[Uppercase=Italic,Lowercase=Italic,FakeBold=1,Scale=MatchUppercase]{ModernMT-ExtendedItalic.otf}
+	\setmathsfont(Digits)[Scale=MatchUppercase,FakeBold=\fakebold]{Old Standard Italic}
+	\setmathsfont(Latin)[Uppercase=Italic,Lowercase=Italic,FakeBold=\fakebold,Scale=MatchUppercase]{ModernMT-ExtendedItalic.otf}
 	\defaultfontfeatures{Mapping=tex-text,Ligatures=Tex}
 \fi
 
@@ -83,8 +89,9 @@
 \newtheorem*{remark}{Remark}
 
 
-\title{\bfseries Introduction to Elementary Analytic Number Theory}
-\author{\scshape Masum Billal}
+\title{{\itshape Introduction to}\\\bfseries ELEMENTARY ANALYTIC NUMBER THEORY}
+\author{\bfseries MASUM BILLAL}
+\date{}
 
 \renewcommand*{\chapterautorefname}{Chapter}
 \renewcommand*{\sectionautorefname}{Section}
