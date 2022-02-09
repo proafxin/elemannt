@@ -14,7 +14,7 @@
 			\pi(x)
 				& = \sum_{n\leq x}C(n)
 		\end{align*}
-	where $C(n)$ is the characteristic function of, that is, $C(n)=1$ if $n$ is a prime otherwise $C(n)=0$. One of the biggest questions we will try to answer is how $\lim_{x\to\infty}\pi(x)$ behaves.
+	where $C(n)$ is the characteristic function of $n$, that is, $C(n)=1$ if $n$ is a prime otherwise $C(n)=0$. One of the biggest questions we will try to answer is how $\lim_{x\to\infty}\pi(x)$ behaves.
 		\begin{definition}[Summatory Function]
 			For an arithmetic function $f$, the \index{Summatory function}\textit{summatory function} of $f$ is defined as
 				\begin{align*}
@@ -54,7 +54,12 @@
 		\end{align*}
 	Here, the last equation is true because there are $\lfloor{n/i}\rfloor$ multiples of $i$ not exceeding $n$.
 	\section{Order of Arithmetic Functions}
-	Recall that the number of divisor function $\tau(n)=\sum_{ab=n}1$. We can generalize this as follows.
+	Recall that the number of divisor function 
+		\begin{align*}
+			\tau(n)
+				&  =\sum_{ab=n}1
+		\end{align*}
+	We can generalize this as follows.
 		\begin{definition}[Generalized Number of Divisors]
 			The \index{Generalized number of divisor}\textit{generalized number of divisor} function is defined as
 				\begin{align*}
@@ -269,11 +274,11 @@
 		\end{align*}
 	Then the number of pairs in this case is
 		\begin{align*}
-			\sum_{b\leq \sqrt{x}}\left\lfloor{\dfrac{x}{b}}\right\rfloor-\sqrt{x}
+			\sum_{b\leq \sqrt{x}}\left\lfloor{\dfrac{x}{b}}\right\rfloor-\lfloor{\sqrt{x}}\rfloor
 		\end{align*}
 	Thus, the total number of such pairs is
 		\begin{align}
-			\sum_{a\leq \sqrt{x}}\left\lfloor{\dfrac{x}{a}}\right\rfloor+\sum_{b\leq \sqrt{x}}\left(\left\lfloor{\dfrac{x}{b}}\right\rfloor-\sqrt{x}\right)
+			\sum_{a\leq \sqrt{x}}\left\lfloor{\dfrac{x}{a}}\right\rfloor+\sum_{b\leq \sqrt{x}}\left(\left\lfloor{\dfrac{x}{b}}\right\rfloor-\lfloor{\sqrt{x}}\rfloor\right)
 				& = 2\sum_{n\leq \sqrt{x}}\left\lfloor{\dfrac{x}{n}}\right\rfloor-\lfloor{x}\rfloor^{2}\label{eqn:totdiv}
 		\end{align}
 	For getting past this sum, we have to deal with the sum
@@ -338,7 +343,7 @@
 				\end{align*}
 			where $\gamma$ is the Euler-Mascheroni constant.
 		\end{theorem}
-	Then Dirichlet's theorem on $\tau$ can be restated as \textit{the average order of $\tau$ is }$O(\log{x})$. \textcite{aiyangar_hardy_vennkatesvara_seshu_aiyar_p_wilson_1927} points out in his paper that the error term $O(1/\sqrt{x})$ in Dirichlet's theorem can be improved to $O\left(x^{-\frac{2}{3}+\epsilon}\right)$ or $O\left(x^{-2/3}\log{x}\right)$ as \textcite[Page $689$]{landau_1912} shows.
+	Then Dirichlet's theorem on $\tau$ can be restated as \textit{the average order of $\tau$ is }$O(\log{x})$. \textcite{aiyangar_hardy_vennkatesvara_seshu_aiyar_p_wilson_1927} points out in his paper that the error term $O(1/\sqrt{x})$ in Dirichlet's theorem can be improved to $O\left(x^{-2/3+\epsilon}\right)$ or $O\left(x^{-2/3}\log{x}\right)$ as \textcite[Page $689$]{landau_1912} shows.
 	
 	We can now get back to estimating $T$. Using \nameref{thm:abel}, we were able to deduce
 		\begin{align*}
