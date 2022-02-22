@@ -3,17 +3,15 @@
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage[left=.8in,right=.8in,top=.5in,]{geometry}
 
-%\usepackage{afterpage}
 \usepackage{subfiles}
 \usepackage{hyperref}
 \usepackage{relsize}
 
-%\footnote[50]{text}
 \hypersetup{pdfstartview=,pdfencoding=auto,}
 \usepackage[style=philosophy-verbose,backend=biber,sortcites=true,classical=true,scauthors=true, scauthorscite=true,scauthorsbib=true,volnumformat=strings,volumeformat=romansc,]{biblatex}
 \addbibresource[]{ref.bib}
 
-\usepackage{xifthen,fancyhdr,centernot,datetime}
+\usepackage{xifthen,fancyhdr}
 \usepackage{nomencl}
 \usepackage{tocloft}
 \renewcommand{\cftsecfont}{\scshape}
@@ -27,16 +25,12 @@
 
 
 \ifxetex
-	%\usepackage{mathspec}
 	\usepackage[no-math]{fontspec}
 	\usepackage{unicode-math}
 \else
 	\usepackage[LGR,T2A,LY1]{fontenc}
-	%\usepackage{OldStandard}
-	%\usepackage[noamssymbols,baskervillef]{newtxmath}
-	\usepackage{mlmodern}
-	%\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,]{microtype}
-	%\usepackage{pdfrender, xcolor}
+	\usepackage{OldStandard}
+	\usepackage{pdfrender, xcolor}
 \fi
 % ö,ő,Ü
 
@@ -47,29 +41,15 @@
 \makeindex
 \makeglossaries
 
-%amsart setting
-%\setlength{\textwidth}{360pt}
-%\setlength{\textheight}{615pt}
-%amazon setting
-%\setlength{\textwidth}{6.5in}
-%\setlength{\oddsidemargin}{.1in}
-%\setlength{\evensidemargin}{.1in}
-%\setlength{\topmargin}{-.1in}
-%\setlength{\textheight}{8in}
 
 \newcommand{\lcm}{\mbox{lcm}}
 
 \ifpdftex
-	%\microtypecontext{spacing=nonfrench}
-	%\pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.1pt}
-	%\makeatletter\let\normalrender\PdfRender@NormalColorHook\let\PdfRender@NormalColorHook\@empty\newcommand*{\textnormalrender}[1]{\begingroup\normalrender#1\endgroup}\makeatother
+	\pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.1pt}
+	\makeatletter\let\normalrender\PdfRender@NormalColorHook\let\PdfRender@NormalColorHook\@empty\newcommand*{\textnormalrender}[1]{\begingroup\normalrender#1\endgroup}\makeatother
 \else
-	\newfontfamily\headingfont[]{BaskervilleF-BoldItalic.otf}
-	%\usepackage{titlesec}
-	%\titleformat{\chapter}[display]{\huge\headingfont}{\chaptertitlename\ \thechapter}{20pt}{\Huge\headingfont}
-	%\titleformat*{\section}{\Large\headingfont}
 	\newcommand{\fakebold}{2}
-	\setmainfont[FakeBold=\fakebold,ItalicFont=ModernMT-ExtendedItalic.otf,BoldItalicFont=OldStandard-BoldItalic.otf,BoldFont=OldStandard-Bold.otf,BoldFeatures={FakeBold=0},BoldItalicFeatures={FakeBold=0}]{OldStandard-Regular.otf}
+	\setmainfont[FakeBold=\fakebold,ItalicFont=ModernMT-ExtendedItalic.otf,BoldItalicFont=OldStandard-BoldItalic.otf,SmallCapsFont={OldStandard-Regular.otf},SmallCapsFeatures={Letters=SmallCaps,FakeBold=\fakebold},BoldFont=OldStandard-Bold.otf,BoldFeatures={FakeBold=0},BoldItalicFeatures={FakeBold=0}]{OldStandard-Regular.otf}
 	\setmathfont[FakeBold=\fakebold,]{NewCMMath-Book.otf}
 	\setmathfont[range=it,FakeBold=\fakebold]{Old Standard Italic}
 	\setmathfont[range={\symfrak},FakeBold=\fakebold]{Asana Math}
@@ -99,33 +79,18 @@
 
 \pagestyle{fancyplain}
 \fancyhf{}
-%\fancyhead[C]{\rule{.5\textwidth}{4\baselineskip}}
 \setlength{\headheight}{52pt}
 
-%\fancyhead[RE]{\textit{\nouppercase{\leftmark}}}
 \fancyhead[R]{\small\textsc{Masum Billal}}
 \renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
 \fancyhead[C]{\small$\S$\thechapter. \ \scshape\leftmark}
 \fancyhead[L]{\thepage}
-%\fancyhead[LE]{$\S$\thechapter}
-%\fancyhead[RO]{$\S$\thesection}
-%\fancyfoot[LE]{\thepage}
-%\fancyfoot[LO]{\thepage}
 \renewcommand{\headrulewidth}{.1pt} % remove lines as well
-%\renewcommand{\footrulewidth}{.1pt}
-
-\usepackage{graphicx}
-\usepackage{eso-pic}
-\usepackage{ifthen}
 
 \defbibfilter{books}{type=book or type=inbook}
 
 \begin{document}
 	\pagestyle{empty}
-    %\relscale{1.1}
-    %\includepdf[pages={1}]{cover.pdf}
-    %\AddToShipoutPictureBG{{\includegraphics{paper.jpg}}}
-    %\pagecolor{buff}%\afterpage{white}
     \maketitle
     \frontmatter
     \pagestyle{empty}
@@ -134,29 +99,12 @@
     \printnomenclature
     \mainmatter
     \pagestyle{fancyplain}
-    %\begin{refsection}
-		\subfile{arith.tex}
-		\subfile{zeta.tex}
-		\subfile{dirichlet.tex}
-		%\subfile{hyperbola.tex}
-        %\printbibliography[title=Works Cited In \nameref{ch:arith},]
-    %\end{refsection}
-
-	%\begin{refsection}
-		
-	%\end{refsection}
-
-	%\begin{refsection}
-		\subfile{tchebycheff.tex}
-	%\end{refsection}
-
-	%\begin{refsection}
-		\subfile{sieve.tex}
-	%\end{refsection}
-
-	%\begin{refsection}
-		\subfile{prime.tex}
-	%\end{refsection}
+	\subfile{arith.tex}
+	\subfile{zeta.tex}
+	\subfile{dirichlet.tex}
+	\subfile{tchebycheff.tex}
+	\subfile{sieve.tex}
+	\subfile{prime.tex}
 
 	\backmatter
 	\printbibliography[type=article,title=Articles,heading=bibnumbered]
