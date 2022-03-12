@@ -24,7 +24,6 @@
 \usepackage{iftex}
 \usepackage{xstring}
 
-
 \ifxetex
 	\usepackage[no-math]{fontspec}
 	\usepackage{unicode-math}
@@ -54,12 +53,14 @@
 	\setmathfont[FakeBold=\fakebold,]{NewCMMath-Book.otf}
 	\setmathfont[range=it,FakeBold=\fakebold]{Old Standard Italic}
 	\setmathfont[range={\symfrak},FakeBold=\fakebold]{Asana Math}
-	\setmathfont[range={\int},Scale=2,]{Old Standard Italic}
+	\setmathfont[range={\int},Scale=\fakebold,]{Old Standard Italic}
 	\setmathfont[range={\sum,\prod},Scale=1.7]{Old Standard Italic}
-	
+	\usepackage{accents}
+	%\renewcommand{\H}[1]{\ifthenelse{\equal{\f@shape}{it}}{\upaccent{\aboxshift{\char"13}}{#1}}{}
+	%\renewcommand{\H}[1]{\upaccent{\aboxshift{\char"13}}{#1}}
 	\usepackage{mathspec}
-	\setmathsfont(Digits)[Scale=MatchUppercase,FakeBold=\fakebold]{Old Standard}
-	\setmathsfont(Latin)[Uppercase=Italic,Lowercase=Italic,FakeBold=\fakebold,Scale=MatchUppercase]{ModernMT-ExtendedItalic.otf}
+	\setmathsfont(Digits)[Scale=MatchUppercase,FakeBold=\fakebold]{ModernMTStd-Extended.otf}
+	\setmathsfont(Latin)[Uppercase=Italic,Lowercase=Italic,FakeBold=\fakebold,Scale=MatchUppercase]{ModernMTStd-ExtendedItalic.otf}
 	\defaultfontfeatures{Mapping=tex-text,Ligatures=Tex}
 \fi
 
@@ -87,13 +88,18 @@
 \renewcommand{\headrulewidth}{.1pt} % remove lines as well
 
 \titleformat{\chapter}[display]{\bfseries\scshape\Huge}{}{1ex}{\centering\titlerule\vspace{1ex}}[\vspace{1ex}\titlerule]
-\titleformat{\section}[display]{\bfseries\scshape\LARGE}{}{1ex}{\centering$\S$\ifthenelse{\value{section}>0}{\thesection}{}\;}[\titlerule]
-\titleformat{\subsection}[display]{\bfseries\scshape\Large}{}{1ex}{\centering$\S$\ifthenelse{\value{section}>0}{\thesection}{}\;}[\titlerule]
+\titleformat{\section}[display]{\bfseries\scshape\Large}{}{1ex}{\centering$\S$\ifthenelse{\value{section}>0}{\thesection}{}\;}[\titlerule]
+\titleformat{\subsection}[display]{\bfseries\scshape\large}{}{1ex}{\centering$\S$\ifthenelse{\value{section}>0}{\thesubsection}{}\;}[\titlerule]
 
 \defbibfilter{books}{type=book or type=inbook}
 
+\usepackage{graphicx}
+\usepackage{eso-pic}
+\usepackage{ifthen}
+
 \begin{document}
 	\pagestyle{empty}
+	\AddToShipoutPictureBG{{\includegraphics{paper.jpg}}}
 	\maketitle
     \frontmatter
     \tableofcontents
