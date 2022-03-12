@@ -55,9 +55,10 @@
 	\setmathfont[range={\symfrak},FakeBold=\fakebold]{Asana Math}
 	\setmathfont[range={\int},Scale=\fakebold,]{Old Standard Italic}
 	\setmathfont[range={\sum,\prod},Scale=1.7]{Old Standard Italic}
-	\usepackage{accents}
-	%\renewcommand{\H}[1]{\ifthenelse{\equal{\f@shape}{it}}{\upaccent{\aboxshift{\char"13}}{#1}}{}
-	%\renewcommand{\H}[1]{\upaccent{\aboxshift{\char"13}}{#1}}
+	\newfontfamily{\mtmext}[FakeBold=\fakebold]{Old Standard}
+	\newcommand*{\customaccent}[1]{\mtmext\selectfont #1}
+	\newcommand{\fH}[1]{\rmfamily\H{\customaccent{#1}}}
+
 	\usepackage{mathspec}
 	\setmathsfont(Digits)[Scale=MatchUppercase,FakeBold=\fakebold]{ModernMTStd-Extended.otf}
 	\setmathsfont(Latin)[Uppercase=Italic,Lowercase=Italic,FakeBold=\fakebold,Scale=MatchUppercase]{ModernMTStd-ExtendedItalic.otf}
@@ -85,7 +86,7 @@
 \rhead{ \fancyplain{}{\small\textit{{Masum Billal}}} }
 \lhead{ \fancyplain{}{\small$\S$\thechapter. \ \textsc{\leftmark}} }
 \rfoot{ \fancyplain{}{\thepage}}
-\renewcommand{\headrulewidth}{.1pt} % remove lines as well
+%\renewcommand{\headrulewidth}{.1pt} % remove lines as well
 
 \titleformat{\chapter}[display]{\bfseries\scshape\Huge}{}{1ex}{\centering\titlerule\vspace{1ex}}[\vspace{1ex}\titlerule]
 \titleformat{\section}[display]{\bfseries\scshape\Large}{}{1ex}{\centering$\S$\ifthenelse{\value{section}>0}{\thesection}{}\;}[\titlerule]
