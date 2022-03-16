@@ -2,12 +2,11 @@
 
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage[left=.8in,right=.8in,top=.5in,]{geometry}
-
+\usepackage{xcolor}
 \usepackage{subfiles}
 \usepackage{hyperref}
 \usepackage{relsize}
-
-\hypersetup{pdfstartview=,pdfencoding=auto,}
+\hypersetup{colorlinks,citecolor=teal,linktocpage,linkcolor=cyan,pdfstartview=,pdfencoding=auto,}
 \usepackage[style=philosophy-verbose,backend=biber,sortcites=true,classical=true,scauthors=true, scauthorscite=true,scauthorsbib=true,volnumformat=strings,volumeformat=romansc,]{biblatex}
 \addbibresource[]{ref.bib}
 
@@ -30,7 +29,7 @@
 \else
 	\usepackage[LGR,T2A,LY1]{fontenc}
 	\usepackage{OldStandard}
-	\usepackage{pdfrender, xcolor}
+	\usepackage{pdfrender}
 \fi
 % ö,ő,Ü
 
@@ -49,19 +48,18 @@
 	\makeatletter\let\normalrender\PdfRender@NormalColorHook\let\PdfRender@NormalColorHook\@empty\newcommand*{\textnormalrender}[1]{\begingroup\normalrender#1\endgroup}\makeatother
 \else
 	\newcommand{\fakebold}{2}
-	\setmainfont[FakeBold=\fakebold,ItalicFont=ModernMT-ExtendedItalic.otf,BoldItalicFont=OldStandard-BoldItalic.otf,SmallCapsFont={OldStandard-Regular.otf},SmallCapsFeatures={Letters=SmallCaps,FakeBold=\fakebold,RawFeature=+smcp},BoldFont=OldStandard-Bold.otf,BoldFeatures={FakeBold=0,SmallCapsFont=OldStandard-Bold.otf,SmallCapsFeatures={RawFeature=+smcp}},BoldItalicFeatures={FakeBold=0}]{ModernMTStd-Extended.otf}
+	\setmainfont[FakeBold=\fakebold,ItalicFont=ModernMT-ExtendedItalic.otf,ItalicFeatures={FakeBold=\fakebold},BoldItalicFont=OldStandard-BoldItalic.otf,SmallCapsFont={OldStandard-Regular.otf},SmallCapsFeatures={Letters=SmallCaps,FakeBold=\fakebold,RawFeature=+smcp},BoldFont=OldStandard-Bold.otf,BoldFeatures={FakeBold=\fakebold,SmallCapsFont=OldStandard-Regular.otf,SmallCapsFeatures={RawFeature=+smcp,Color=992211}},BoldItalicFeatures={FakeBold=0}]{ModernMT-Extended-OldStandard.otf}
 	\setmathfont[FakeBold=\fakebold,]{NewCMMath-Book.otf}
-	\setmathfont[range=it,FakeBold=\fakebold]{Old Standard Italic}
-	\setmathfont[range={\symfrak},FakeBold=\fakebold]{Asana Math}
-	\setmathfont[range={\int},Scale=\fakebold,]{Old Standard Italic}
-	\setmathfont[range={\sum,\prod},Scale=1.7]{Old Standard Italic}
-	\newfontfamily{\mtmext}[FakeBold=\fakebold]{Old Standard}
-	\newcommand*{\customaccent}[1]{\mtmext\selectfont #1}
-	\newcommand{\fH}[1]{\rmfamily\H{\customaccent{#1}}}
-
-	\usepackage{mathspec}
-	\setmathsfont(Digits)[Scale=MatchUppercase,FakeBold=\fakebold]{ModernMTStd-Extended.otf}
-	\setmathsfont(Latin)[Uppercase=Italic,Lowercase=Italic,FakeBold=\fakebold,Scale=MatchUppercase]{ModernMTStd-ExtendedItalic.otf}
+	\setmathfont[FakeBold=\fakebold,range={"0000,"FFFF}]{Old Standard}
+	\setmathfont[range={it},FakeBold=\fakebold]{ModernMT-ExtendedItalic-OldStandard-Italic.otf}
+	\setmathfont[range={up/{num}},FakeBold=\fakebold]{ModernMT-Extended-OldStandard.otf}
+	\setmathfont[range={\symfrak,},FakeBold=\fakebold]{Asana Math}
+	\setmathfont[range={\int},Scale=1.6,]{Old Standard Italic}
+	\setmathfont[range={\sum,\prod},Scale=1.4]{Old Standard}
+	%\setmathfont[range={"005B,"005D,"0028,"0029,"007B,"007D},FakeBold=0]{Asana Math}
+	%\usepackage{mathspec}
+	%\setmathsfont(Digits)[Scale=MatchUppercase,FakeBold=\fakebold]{ModernMTStd-Extended.otf}
+	%\setmathsfont(Latin)[Uppercase=Italic,Lowercase=Italic,FakeBold=\fakebold,Scale=MatchUppercase]{ModernMTStd-ExtendedItalic.otf}
 	\defaultfontfeatures{Mapping=tex-text,Ligatures=Tex}
 \fi
 
@@ -88,19 +86,18 @@
 \rfoot{ \fancyplain{}{\thepage}}
 %\renewcommand{\headrulewidth}{.1pt} % remove lines as well
 
-\titleformat{\chapter}[display]{\bfseries\scshape\Huge}{}{1ex}{\centering\titlerule\vspace{1ex}}[\vspace{1ex}\titlerule]
-\titleformat{\section}[display]{\bfseries\scshape\Large}{}{1ex}{\centering$\S$\ifthenelse{\value{section}>0}{\thesection}{}\;}[\titlerule]
-\titleformat{\subsection}[display]{\bfseries\scshape\large}{}{1ex}{\centering$\S$\ifthenelse{\value{section}>0}{\thesubsection}{}\;}[\titlerule]
+\titleformat{\chapter}[display]{\bfseries\scshape\Huge}{}{1ex}{\centering\titlerule\vspace{1ex}$\S$\thechapter.\;}[\vspace{1ex}\titlerule]
+\titleformat{\section}[display]{\bfseries\scshape\LARGE}{}{1ex}{\centering\ifthenelse{\value{section}>0}{$\S\S$\thesection\;}{}}[\titlerule]
+\titleformat{\subsection}[display]{\bfseries\scshape\Large}{}{1ex}{\centering\ifthenelse{\value{section}>0}{$\S\S\S$\thesection\;}{}}[\titlerule]
 
 \defbibfilter{books}{type=book or type=inbook}
 
 \usepackage{graphicx}
 \usepackage{eso-pic}
-\usepackage{ifthen}
 
 \begin{document}
 	\pagestyle{empty}
-	\AddToShipoutPictureBG{{\includegraphics{paper.jpg}}}
+	%\AddToShipoutPictureBG{{\includegraphics{paper.jpg}}}
 	\maketitle
     \frontmatter
     \tableofcontents

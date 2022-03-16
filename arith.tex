@@ -39,13 +39,13 @@
 		\begin{definition}[Normal Order]
 			Let $f$ and $F$ be arithmetic functions such that
 				\begin{align}
-					(1-\epsilon)F(n) 
+					(1-\epsilon)F(n)
 						& < f(n)<(1+\epsilon)F(n)\label{eqn:normal}
 				\end{align}
 			holds for \textit{almost} all $n\leq x$ as $x\to\infty$. Then we say that $F$ is the \index{Normal order}\textit{normal order} of $f$.
 		\end{definition}
 	A trivial(?) example of normal order is that almost all positive integers not exceeding $x$ are composite if $x$ is sufficiently large. We should probably elaborate on what we mean by \textit{almost} here. One interpretation is that the number of positive integers not exceeding $x$ which are prime is very small compared to $x$. Similarly, $f$ is of order $F$ means that the number of positive integers $n$ not exceeding $x$ which do not satisfy \ref{eqn:normal} is very small compared to $x$.
-	
+
 	An interesting property in summatory functions is that
 		\begin{align*}
 			\sum_{i=1}^{n}F(i)
@@ -54,7 +54,7 @@
 		\end{align*}
 	Here, the last equation is true because there are $\lfloor{n/i}\rfloor$ multiples of $i$ not exceeding $n$.
 	\section{Order of Arithmetic Functions}
-	Recall that the number of divisor function 
+	Recall that the number of divisor function
 		\begin{align*}
 			\tau(n)
 				&  =\sum_{ab=n}1
@@ -66,7 +66,7 @@
 					\tau_{k}(n)
 						& = \sum_{d_{1}\cdots d_{k}=n}1
 				\end{align*}
-			So $\tau_{k}(n)$ is the number of ways to write $n$ as a product of $k$ positive integers. 
+			So $\tau_{k}(n)$ is the number of ways to write $n$ as a product of $k$ positive integers.
 		\end{definition}
 	Similarly, we can take the sum of divisor function and generalize it.
 		\begin{definition}[Generalized Sum of Divisors]
@@ -111,7 +111,7 @@
 				\end{align}
 		\end{definition}
 	Some trivial examples are $1/x=o(1)$, $x=o(x^{2})$ and $2x^{2}\neq o(x^{2})$.  \textcite[Page 883 (second volume is paged consecutively after first volume)]{landau_1909} states that the symbol $O$ had been first used by \textcite[Page 401]{bachmann_1894}. \textcite{hardy_1910} uses the notations $\prec$ and $\succ$ respectively but they are no longer in practice. \textcite{hardy_riesz_1915} adopted the notations small $o$ and big $O$ and today these are the primary notations for this purpose.
-	
+
 	It should be evident that having an estimate with respect to $O$ asymptotic formulas is more desirable than $o$ formulas. By nature, $O$ formulas give us a better understanding and a specific estimate whereas $o$ does not always say as much. Moreover, working with $O$ is a lot easier than working with $o$. For example,
 		\begin{align*}
 			\sum O(f(x))
@@ -179,7 +179,7 @@
 				& = \dfrac{x^{k+1}}{k+1}+\Delta\label{eqn:lehmers}
 		\end{align}
 	where $|\Delta|\leq x^{k}$. The reader may also be interested in \textcite{kieren_macmillan_jonathan_sondow_2011}.
-	
+
 	We shall try to estimate $T$ in a similar fashion. First, see that
 		\begin{align*}
 			\tau_{k}(n)
@@ -229,9 +229,9 @@
 						& = A(x)f(x)-\int\limits_{1}^{x}A(t)f'(t)dt
 				\end{align*}
 		\end{theorem}
-		
+
 		\begin{proof}
-			
+
 		\end{proof}
 	It is not straightforward to realize how such a formula can be as influential as we are describing it to be. Notice that, the formula essentially converts a discreet sum into an integral, which occasionally may be calculable. If the integral is not calculable, we may be able to estimate its value sometimes. We should mention that \textcite[Page $83$, $\S4$]{aiyangar_hardy_vennkatesvara_seshu_aiyar_p_wilson_1927} also uses a method that can only be described as the partial summation formula. It is unclear if Ramanujan simply knew about this. Considering he shows the calculation instead of just mentioning the formula, it is certainly possible he came up with the idea on his own, possibly before he had been working on that particular paper. He essentially derives the partial summation formula while trying to express a sum of the form
 		\begin{align*}
@@ -246,9 +246,9 @@
 				\end{align*}
 			where $\{t\}=t-\lfloor{t}\rfloor$ is the fractional part of $t$.
 		\end{theorem}
-	
+
 		\begin{proof}
-			
+
 		\end{proof}
 	As an application of \nameref{thm:eulersum}, we can derive a result similar to \ref{eqn:lehmers} taking  $f(n)=n^{k}$ for $k\geq 0$.
 		\begin{align*}
@@ -348,7 +348,7 @@
 			where $\gamma$ is the Euler-Mascheroni constant.
 		\end{theorem}
 	Then Dirichlet's theorem on $\tau$ can be restated as \textit{the average order of $\tau$ is }$O(\log{x})$. \textcite{aiyangar_hardy_vennkatesvara_seshu_aiyar_p_wilson_1927} points out in his paper that the error term $O(1/\sqrt{x})$ in Dirichlet's theorem can be improved to $O\left(x^{-2/3+\epsilon}\right)$ or $O\left(x^{-2/3}\log{x}\right)$ as \textcite[Page $689$]{landau_1912} shows.
-	
+
 	We can now get back to estimating $T$. Using \nameref{thm:abel}, we were able to deduce
 		\begin{align*}
 			T_{k}(x)
