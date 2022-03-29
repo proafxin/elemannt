@@ -2,6 +2,17 @@
 
 \begin{document}
 	\chapter{Bertrand to Tchebycheff}
+	We said before that \textit{almost} all natural numbers are composite. A major objective of this book is to discuss how often the primes occur. The same question has bugged mathematicians for a centuries. It was Gauss who first observed that the change in the distribution of primes in every interval $[x,x+1000]$ was around $1/\log{x}$. Thus, the rough estimate
+		\begin{align*}
+			\pi(x)
+				& = \int\limits_{2}^{x}\dfrac{1}{\log{t}}dt
+		\end{align*}
+	was made which is now known as \index{Logarithmic integral}\textit{logarithmic integral}. Gauss conjectured (see \textcite[Page 37]{landau_1911}) around 1792 or 1793 that
+		\begin{align*}
+			\lim\limits_{x\to\infty}\dfrac{\pi(x)}{\dfrac{x}{\log{x}}}
+				& = 1
+		\end{align*}
+	\textcite{tchebycheff_1852} is the first one to make any substantial progress on the matter.
 		\begin{definition}[Tchebycheff's theta function]
 			Tchebycheff function of the first kind or \index{Tchebycheff's theta function}\textit{Tchebycheff's theta function} is defined as
 				\begin{align*}
@@ -9,7 +20,7 @@
 						& = \sum_{p\leq x}\log{p}
 				\end{align*}
 		\end{definition}
-	
+
 		\begin{definition}[Tchebycheff's psi function]
 			Tchebycheff function of the second kind or \index{Tchebycheff's psi function}\textit{Tchebycheff's psi function} is defined as
 				\begin{align*}

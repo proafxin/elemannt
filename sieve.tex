@@ -2,5 +2,17 @@
 
 \begin{document}
 	\chapter[Sieve Theory]{A Modest Introduction to Sieve Theory}
-
+	A composite positive integer $n$ has at least one prime factor not exceeding $\sqrt{x}$. Thus, the number of primes in the interval $[\sqrt{x},x]$ is
+		\begin{align*}
+			\pi(x)-\pi(\sqrt{x})+1
+				& = \floor{x}-\sum_{p\leq x}\floor{\dfrac{x}{p}}+\sum_{p_{1}<p_{2}\leq x}\floor{\dfrac{x}{p_{1}p_{2}}}-\sum_{p_{1}<p_{2}<p_{3}\leq x}\floor{\dfrac{x}{p_{1}p_{2}p_{3}}}+\ldots\\
+				& = \sum_{n\leq x}\mu(n)\floor{\dfrac{x}{n}}
+		\end{align*}
+	Now, $\floor{x}=x+O(1)$, so
+		\begin{align*}
+			\pi(x)-\pi(\sqrt{x})+1
+				& = x\sum_{\substack{n\leq x\\\rho(n)\leq \sqrt{x}}}\dfrac{\mu(n)}{n}+O\firb{\sum_{\substack{n\leq x\\\rho(n)\leq\sqrt{x}}}\mu(n)}\\
+				& = x\prod_{p\leq\sqrt{x}}\firb{1-\dfrac{1}{p}}+O(2^{\pi(\sqrt{x})})
+		\end{align*}
+	The last line is true since there are $\pi(\sqrt{x})$ primes not exceeding $\sqrt{x}$ and $|\mu(n)|=1$ for all square-free $n\leq x$ such that $\rho(n)\leq\sqrt{x}$. However, this is not particularly useful.
 \end{document}
