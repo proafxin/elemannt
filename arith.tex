@@ -50,7 +50,7 @@
 		\begin{align*}
 			\sum_{i=1}^{n}F(i)
 				& = \sum_{i=1}^{n}\sum_{d\mid i}f(d)\\
-				& = \sum_{i=1}^{n}\left\lfloor{\frac{n}{i}}\right\rfloor f(i)
+				& = \sum_{i=1}^{n}\floor{\frac{n}{i}}f(i)
 		\end{align*}
 	Here, the last equation is true because there are $\lfloor{n/i}\rfloor$ multiples of $i$ not exceeding $n$.
 	\section{Order of Some Arithmetic Functions}
@@ -115,9 +115,9 @@
 	It should be evident that having an estimate with respect to $O$ asymptotic formulas is more desirable than $o$ formulas. By nature, $O$ formulas give us a better understanding and a specific estimate whereas $o$ does not always say as much. Moreover, working with $O$ is a lot easier than working with $o$. For example,
 		\begin{align*}
 			\sum O(f(x))
-				& = O\left(\sum f(x)\right)\\
+				& = O\parenthesis{\sum f(x)}\\
 			\int O(f(x))dx
-				& = O\left(\int f(x)dx\right)
+				& = O\parenthesis{\int f(x)dx}
 		\end{align*}
 	Or consider the possibility that we can very easily deal with constants that would otherwise pop up here and there unnecessarily. With the help of $O$,
 		\begin{align*}
@@ -155,20 +155,20 @@
 		\begin{align*}
 			S_{k}(x)
 				& = \sum_{n\leq x}\sum_{d\mid n}d^{k}\\
-				& = \sum_{n\leq x}\left\lfloor{\frac{x}{n}}\right\rfloor n^{k}\\
-				& = \sum_{n\leq x}\left(\frac{x}{n}+O(1)\right)n^{k}\\
-				& = x\sum_{n\leq x}n^{k-1}+O\left(\sum_{n\leq x}n^{k}\right)
+				& = \sum_{n\leq x}\floor{\frac{x}{n}} n^{k}\\
+				& = \sum_{n\leq x}\parenthesis{\frac{x}{n}+O(1)}n^{k}\\
+				& = x\sum_{n\leq x}n^{k-1}+O\parenthesis{\sum_{n\leq x}n^{k}}
 		\end{align*}
 	We can use this to establish an asymptotic for $T_{k}(x)$ if we can establish the asymptotic of $A_{2}(x)$. We will get to that in a moment. First, let us take care of the summation within the big O bracket. We have the trivial inequality that
 		\begin{align*}
 			\sum_{n\leq x}n^{k}
 				& \leq \sum_{n\leq x}x^{k}\\
 				& = x^{k}\sum_{n\leq x}1\\
-				& = \lfloor{x}\rfloor x^{k}\\
+				& = \floor{x} x^{k}\\
 				& = (x+O(1))x^{k}\\
 				& = x^{k+1}+O(x^{k})
 		\end{align*}
-	We have that $S_{k}(x)=x\left(x^{k}+O(x^{k-1})\right)+O(x^{k+1})=O(x^{k+1})$. Although weak, we get an estimate this way. On this note, an interested reader can try and prove that
+	We have that $S_{k}(x)=x\parenthesis{x^{k}+O(x^{k-1})}+O(x^{k+1})=O(x^{k+1})$. Although weak, we get an estimate this way. On this note, an interested reader can try and prove that
 		\begin{align*}
 			(n+1)^{k+1}-1
 				& =\sum_{i=0}^{k}\binom{k+1}{i}\mathfrak{S}(n,i)
@@ -185,7 +185,7 @@
 			\tau_{k}(n)
 				& = \sum_{d_{1}\cdots d_{k}=n}1\\
 				& = \sum_{d_{k}\mid n}\sum_{d_{1}\cdots d_{k-1}=n/d_{k}}1\\
-				& = \sum_{d\mid n}\tau_{k-1}\left(\frac{n}{d}\right)
+				& = \sum_{d\mid n}\tau_{k-1}\parenthesis{\frac{n}{d}}
 		\end{align*}
 	Note that the two sets $\{d:d\mid n\}$ and $\{n/d:d\mid n\}$ are actually the same. So, we get
 		\begin{align*}
@@ -197,9 +197,9 @@
 			T_{k}(x)
 				& = \sum_{n\leq x}\tau_{k}(n)\\
 				& = \sum_{n\leq x}\sum_{d\mid n}\tau_{k-1}(d)\\
-				& = \sum_{n\leq x}\left\lfloor{\frac{x}{n}}\right\rfloor\tau_{k-1}(n)\\
-				& = \sum_{n\leq x}\left(\frac{x}{n}+O(1)\right)\tau_{k-1}(n)\\
-				& = x\sum_{n\leq x}\frac{\tau_{k-1}(n)}{n}+O\left(\sum_{n\leq x}\tau_{k-1}(n)\right)
+				& = \sum_{n\leq x}\floor{\frac{x}{n}}\tau_{k-1}(n)\\
+				& = \sum_{n\leq x}\parenthesis{\frac{x}{n}+O(1)}\tau_{k-1}(n)\\
+				& = x\sum_{n\leq x}\frac{\tau_{k-1}(n)}{n}+O\parenthesis{\sum_{n\leq x}\tau_{k-1}(n)}
 		\end{align*}
 	Thus, we have the recursive result
 		\begin{align*}
@@ -254,8 +254,8 @@
 		\begin{align*}
 			\mathfrak{S}_{k}(x)
 				& = \sum_{n\leq x}n^{k}\\
-				& = \int\limits_{1}^{x}t^{k}dt+k\int\limits_{1}^{x}t^{k-1}(t-\lfloor{t}\rfloor)dt+1-(x-\lfloor{x}\rfloor)x^{k}\\
-				& = \frac{x^{k+1}}{k+1}-\frac{1}{k+1}+O\left(k\int\limits_{1}^{x}t^{k-1}dt\right)+O(x^{k})\\
+				& = \int\limits_{1}^{x}t^{k}dt+k\int\limits_{1}^{x}t^{k-1}(t-\floor{t})dt+1-(x-\floor{x})x^{k}\\
+				& = \frac{x^{k+1}}{k+1}-\frac{1}{k+1}+O\parenthesis{k\int\limits_{1}^{x}t^{k-1}dt}+O(x^{k})\\
 				& = \frac{x^{k+1}}{k+1}+O(x^{k})
 		\end{align*}
 	Setting $a_{n}=\tau_{k-1}(n)$ and $f(n)=1/n$ in \nameref{thm:abel}, we get
@@ -266,29 +266,29 @@
 	Thus, we have a result where we can inductively get to the final expression. First, let us see the case $k=2$.
 		\begin{align*}
 			\sum_{n\leq x}\tau(n)
-				& = \sum_{n\leq x}\left\lfloor{\frac{x}{n}}\right\rfloor
+				& = \sum_{n\leq x}\floor{\frac{x}{n}}
 		\end{align*}
 	Clearly, this is just the number of pairs $(a,b)$ such that $ab\leq x$. We can divide the pairs in two classes. In the first class, $1\leq a\leq \sqrt{x}$ and in the second one, $a>\sqrt{x}$. In the first case, for a fixed $a$, there are $\lfloor{x/a}\rfloor$ possible choices for a valid value of $b$. So, the number of pairs in the first case is
 		\begin{align*}
-			\sum_{a\leq \sqrt{x}}\left\lfloor{\frac{x}{a}}\right\rfloor
+			\sum_{a\leq \sqrt{x}}\floor{\frac{x}{a}}
 		\end{align*}
 	In the second case, since $a>\sqrt{x}$ and $b\leq x/a$, we must have $b\leq \sqrt{x}$. For a fixed $b$, there are $\lfloor{x/b}\rfloor-\sqrt{x}$ choices for a valid value of $a$, the choices namely are
 		\begin{align*}
-			\lfloor{x}\rfloor+1,\ldots,\left\lfloor{\frac{x}{b}}\right\rfloor
+			\lfloor{x}\rfloor+1,\ldots,\floor{\frac{x}{b}}
 		\end{align*}
 	Then the number of pairs in this case is
 		\begin{align*}
-			\sum_{b\leq \sqrt{x}}\left\lfloor{\frac{x}{b}}\right\rfloor-\lfloor{\sqrt{x}}\rfloor
+			\sum_{b\leq \sqrt{x}}\floor{\frac{x}{b}}-\floor{\sqrt{x}}
 		\end{align*}
 	Thus, the total number of such pairs is
 		\begin{align}
-			\sum_{a\leq \sqrt{x}}\left\lfloor{\frac{x}{a}}\right\rfloor+\sum_{b\leq \sqrt{x}}\left(\left\lfloor{\frac{x}{b}}\right\rfloor-\lfloor{\sqrt{x}}\rfloor\right)
-				& = 2\sum_{n\leq \sqrt{x}}\left\lfloor{\frac{x}{n}}\right\rfloor-\lfloor{x}\rfloor^{2}\label{eqn:totdiv}
+			\sum_{a\leq \sqrt{x}}\floor{\frac{x}{a}}+\sum_{b\leq \sqrt{x}}\parenthesis{\floor{\frac{x}{b}}-\floor{\sqrt{x}}}
+				& = 2\sum_{n\leq \sqrt{x}}\floor{\frac{x}{n}}-\floor{x}^{2}\label{eqn:totdiv}
 		\end{align}
 	For getting past this sum, we have to deal with the sum
 		\begin{align*}
-			\sum_{n\leq \sqrt{x}}\left\lfloor{x/n}\right\rfloor
-				& = \sum_{n\leq \sqrt{x}}\left(\frac{x}{n}+O(1)\right)\\
+			\sum_{n\leq \sqrt{x}}\floor{x/n}
+				& = \sum_{n\leq \sqrt{x}}\parenthesis{\frac{x}{n}+O(1)}\\
 				& = x\sum_{n\leq \sqrt{x}}\frac{1}{n}+O(\sqrt{x})\\
 				& = xH(\sqrt{x})+O(\sqrt{x})
 		\end{align*}
@@ -300,15 +300,15 @@
 	Here, $A(x)=\lfloor{x}\rfloor=x+O(1)$. Using this,
 		\begin{align*}
 			H(x)
-				& =  1+O\left(\frac{1}{x}\right)+\int\limits_{1}^{x}\left(\frac{1}{t}+\frac{O(1)}{t^{2}}\right)dt\\
-				& = 1+O\left(\frac{1}{x}\right)+\int\limits_{1}^{x}\frac{1}{t}dt+O\left(\int\limits_{1}^{x}\frac{1}{t^{2}}dt\right)\\
-				& = 1+O\left(\frac{1}{x}\right)+\log{x}+O\left(1-\frac{1}{x}\right)
+				& = 1+O\parenthesis{\frac{1}{x}}+\int\limits_{1}^{x}\parenthesis{\frac{1}{t}+\frac{O(1)}{t^{2}}}dt\\
+				& = 1+O\parenthesis{\frac{1}{x}}+\int\limits_{1}^{x}\frac{1}{t}dt+O\parenthesis{\int\limits_{1}^{x}\frac{1}{t^{2}}dt}\\
+				& = 1+O\parenthesis{\frac{1}{x}}+\log{x}+O\parenthesis{1-\frac{1}{x}}
 		\end{align*}
 	Thus, we have the following result.
 		\begin{theorem}\label{thm:harmonicsum}
 				\begin{align*}
 					H(x)
-						& = \log{x}+C+O\left(\frac{1}{x}\right)
+						& = \log{x}+C+O\parenthesis{\frac{1}{x}}
 				\end{align*}
 			where $C$ is a constant.
 		\end{theorem}
@@ -322,16 +322,16 @@
 		\end{theorem}
 	This constant $\gamma$ is now known as \index{Euler-Mascheroni constant}\textit{Euler's constant} or \textit{Euler-Mascheroni's constant}, although, neither Euler nor Mascheroni used the notation $\gamma$ for this constant. \textcite{euler_1740} (republished in \textcite{euler_2020}) used $C$ and $O$ in his original paper. \textcite{mascheroni_1790} used $A$ and $a$. Today it is not known whether $\gamma$ is even irrational. For now, we will not require the use of $\gamma$, so we will use \autoref{thm:harmonicsum}. Applying this, we have
 		\begin{align*}
-			\sum_{n\leq \sqrt{x}}\left\lfloor{\frac{x}{n}}\right\rfloor
+			\sum_{n\leq \sqrt{x}}\floor{\frac{x}{n}}
 				& = xH(\sqrt{x})+O(\sqrt{x})\\
-				& = x\left(C+\log{\sqrt{x}}+O\left(\frac{1}{\sqrt{x}}\right)\right)+O(\sqrt{x})\\
-				& = \frac{1}{2}x\log{x}+Cx+O\left(\frac{x}{\sqrt{x}}\right)+O(\sqrt{x})\\
+				& = x\parenthesis{C+\log{\sqrt{x}}+O\parenthesis{\frac{1}{\sqrt{x}}}}+O(\sqrt{x})\\
+				& = \frac{1}{2}x\log{x}+Cx+O\parenthesis{\frac{x}{\sqrt{x}}}+O(\sqrt{x})\\
 				& = \frac{1}{2}x\log{x}+O(x)
 		\end{align*}
 	We can now use this to get
 		\begin{align*}
 			\sum_{n\leq x}\tau(n)
-				& = 2\sum_{n\leq \sqrt{x}}\left\lfloor{x/n}\right\rfloor-\lfloor{\sqrt{x}}\rfloor^{2}\\
+				& = 2\sum_{n\leq \sqrt{x}}\floor{x/n}-\floor{\sqrt{x}}^{2}\\
 				& = x\log{x}+O(x)
 		\end{align*}
 	Thus, we get the following result.
@@ -343,29 +343,29 @@
 		\begin{theorem}[Dirichlet's average order of $\tau$ theorem]\label{thm:dirtau}
 				\begin{align*}
 					\frac{\sum_{n\leq x}\tau(n)}{x}
-						& = \log{x}+2\gamma-1+O\left(\frac{1}{\sqrt{x}}\right)
+						& = \log{x}+2\gamma-1+\bigo{\frac{1}{\sqrt{x}}}
 				\end{align*}
 			where $\gamma$ is the Euler-Mascheroni constant.
 		\end{theorem}
-	Then Dirichlet's theorem on $\tau$ can be restated as \textit{the average order of $\tau$ is }$O(\log{x})$. \textcite{aiyangar_hardy_vennkatesvara_seshu_aiyar_p_wilson_1927} points out in his paper that the error term $O(1/\sqrt{x})$ in Dirichlet's theorem can be improved to $O\left(x^{-2/3+\epsilon}\right)$ or $O\left(x^{-2/3}\log{x}\right)$ as \textcite[Page $689$]{landau_1912} shows.
+	Then Dirichlet's theorem on $\tau$ can be restated as \textit{the average order of $\tau$ is }$O(\log{x})$. \textcite{aiyangar_hardy_vennkatesvara_seshu_aiyar_p_wilson_1927} points out in his paper that the error term $O(1/\sqrt{x})$ in Dirichlet's theorem can be improved to $\bigo{x^{-2/3+\epsilon}}$ or $\bigo{x^{-2/3}\log{x}}$ as \textcite[Page $689$]{landau_1912} shows.
 
 	We can now get back to estimating $T$. Using \nameref{thm:abel}, we were able to deduce
 		\begin{align*}
 			T_{k}(x)
-				& = O\left(T_{k-1}(x)\right)+x\int\limits_{1}^{x}\frac{T_{k-1}(t)}{t^{2}}dt
+				& = \bigo{T_{k-1}(x)}+x\int\limits_{1}^{x}\frac{T_{k-1}(t)}{t^{2}}dt
 		\end{align*}
 	Using \nameref{thm:dirtau}, $T(x)=x\log{x}+O(x)$, so
 		\begin{align*}
 			T_{3}(x)
 				& = O(T(x))+x\int\limits_{1}^{x}\frac{T(t)}{t^{2}}dt\\
 				& = O(x\log{x})+x\int\limits_{1}^{x}\frac{\log{t}+O(1)}{t}dt\\
-				& = O(x\log{x})+x\int\limits_{1}^{x}\frac{\log{t}}{t}dt+xO\left(\int\limits_{1}^{x}\frac{1}{t}dt\right)\\
+				& = O(x\log{x})+x\int\limits_{1}^{x}\frac{\log{t}}{t}dt+x\bigo{\int\limits_{1}^{x}\frac{1}{t}dt}\\
 				& = O(x\log{x})+x\int\limits_{1}^{x}\frac{\log{t}}{t}dt
 		\end{align*}
 	Using integration by parts,
 		\begin{align*}
 			\int\frac{\log{t}}{t}dt
-				& = \log{t}\int\frac{1}{t}-\int\left(\frac{1}{t}\int\frac{1}{t}dt\right)dt\\
+				& = \log{t}\int\frac{1}{t}-\int\parenthesis{\frac{1}{t}\int\frac{1}{t}dt}dt\\
 				& = \log^{2}{t}-\int\frac{\log{t}}{t}dt
 		\end{align*}
 	Thus, we get
@@ -383,22 +383,22 @@
 			Let $k$ be a positive integer. Then
 				\begin{align*}
 					T_{k}(x)
-						& = \frac{1}{(k-1)!}x\log^{k-1}{x}+O\left(x\log^{k-2}{x}\right)
+						& = \frac{1}{(k-1)!}x\log^{k-1}{x}+\bigo{x\log^{k-2}{x}}
 				\end{align*}
 		\end{theorem}
-	The reason we do not write $T_{k}(x)$ as $O\left(x\log^{k-1}{x}\right)$ directly is because in this case, we already know the constant multiplier of $x\log^{k-1}{x}$ which is not ugly. Usually, we write $O(f(x))$ when we do not know what the constant multiplier of $f(x)$ is or when it gets too big to keep track of. \textcite[Page $2$]{landau_1912_0} states a sharper result.
+	The reason we do not write $T_{k}(x)$ as $\bigo{x\log^{k-1}{x}}$ directly is because in this case, we already know the constant multiplier of $x\log^{k-1}{x}$ which is not ugly. Usually, we write $O(f(x))$ when we do not know what the constant multiplier of $f(x)$ is or when it gets too big to keep track of. \textcite[Page $2$]{landau_1912_0} states a sharper result.
 		\begin{align*}
 			T_{k}(x)
-				& = x\left(\sum_{m=0}^{k-1}b_{m}\log^{m}{x}\right)+O\left(x^{1-\frac{1}{k}}\right)+O\left(x^{1-\frac{1}{k}}\log^{k-2}{x}\right)
+				& = x\parenthesis{\sum_{m=0}^{k-1}b_{m}\log^{m}{x}}+\bigo{x^{1-\frac{1}{k}}}+\bigo{x^{1-\frac{1}{k}}\log^{k-2}{x}}
 		\end{align*}
 	Let us now turn our attention to improving the asymptotic of $S_{k}(x)$.
 		\begin{align*}
 			S_{k}(x)
 				& = \sum_{n\leq x}\sum_{d\mid n}d^{k}\\
 				& = \sum_{n\leq x}\sum_{m\leq x/n}m^{k}\\
-				& = \sum_{n\leq x}\mathfrak{S}_{k}\left(\frac{x}{n}\right)\\
-				& = \sum_{n\leq x}\frac{x^{k+1}}{(k+1)n^{k+1}}+O\left(\frac{x^{k}}{n^{k}}\right)\\
-				& = \frac{x^{k+1}}{k+1}\sum_{n\leq x}\frac{1}{n^{k+1}}+O\left(x^{k}\sum_{n\leq x}\frac{1}{n^{k}}\right)
+				& = \sum_{n\leq x}\mathfrak{S}_{k}\parenthesis{\frac{x}{n}}\\
+				& = \sum_{n\leq x}\frac{x^{k+1}}{(k+1)n^{k+1}}+\bigo{\frac{x^{k}}{n^{k}}}\\
+				& = \frac{x^{k+1}}{k+1}\sum_{n\leq x}\frac{1}{n^{k+1}}+\bigo{x^{k}\sum_{n\leq x}\frac{1}{n^{k}}}
 		\end{align*}
 	Here, we can see that the function
 		\begin{align*}
@@ -412,12 +412,12 @@
 						& = \sum_{n\geq 1}\frac{1}{n^{s}}
 				\end{align*}
 		\end{definition}
-	We will discuss zeta function in details in \autoref{sec:zeta}. For now, let us establish a result similar to \nameref{thm:dirtau} for partial sums of $\zeta$. Setting $f(n):=n^{-s}$ and $a_{n}=1$ in \nameref{thm:abel}, $A(x)=\lfloor{x}\rfloor=x+O(1)$ and
+	We will discuss zeta function in details in \autoref{sec:zeta}. For now, let us establish a result similar to \nameref{thm:dirtau} for partial sums of $\zeta$. Setting $f(n):=n^{-s}$ and $a_{n}=1$ in \nameref{thm:abel}, $A(x)=\floor{x}=x+O(1)$ and
 		\begin{align*}
 			\sum_{n\leq x}\frac{1}{n^{s}}
-				& = \lfloor{x}\rfloor x^{-s}-\int\limits_{1}^{x}(t+O(1))f'(t)dt\\
-				& = x^{1-s}+O\left(x^{-s}\right)+s\int\limits_{1}^{x}t^{-s}dt+O\left(s\int\limits_{1}^{x}t^{-s-1}dt\right)\\
-				& = x^{1-s}+\frac{s}{1-s}\left(x^{1-s}-1\right)+O\left(\int\limits_{1}^{x}t^{-s-1}dt\right)\\
+				& = \floor{x}x^{-s}-\int\limits_{1}^{x}(t+O(1))f'(t)dt\\
+				& = x^{1-s}+\bigo{x^{-s}}+s\int\limits_{1}^{x}t^{-s}dt+\bigo{s\int\limits_{1}^{x}t^{-s-1}dt}\\
+				& = x^{1-s}+\frac{s}{1-s}\parenthesis{x^{1-s}-1}+\bigo{\int\limits_{1}^{x}t^{-s-1}dt}\\
 				& = \frac{x^{1-s}}{1-s}+C+O(x^{-s})
 		\end{align*}
 	Similar to $\gamma$, we can take $x\to\infty$ and get the following result.
@@ -430,16 +430,16 @@
 			where $C$ is a constant similar to Euler-Mascheroni constant dependent on $s$ and
 				\begin{align*}
 					C
-						& = \lim\limits_{x\to\infty}\left(\sum_{n\leq x}\frac{1}{n^{s}}-\frac{x^{1-s}}{1-s}\right)
+						& = \lim\limits_{x\to\infty}\parenthesis{\sum_{n\leq x}\frac{1}{n^{s}}-\frac{x^{1-s}}{1-s}}
 				\end{align*}
 			Furthermore, if $0<s<1$, then $C=\zeta(s)$ since $x^{1-s}\to 0$.
 		\end{theorem}
 	We can now get back to estimating $S_{k}(x)$.
 		\begin{align*}
 			S_{k}(x)
-				& = \frac{x^{k+1}}{k+1}\sum_{n\leq x}\frac{1}{n^{k+1}}+O\left(x^{k}\sum_{n\leq x}\frac{1}{n^{k}}\right)\\
-				& = \frac{x^{k+1}}{k+1}\left(\frac{x^{-k}}{-k}+\zeta(k+1)+O(x^{-k-1})\right)+O\left(x^{k}\left(\frac{x^{1-k}}{1-k}+\zeta(k)+O(x^{-k})\right)\right)\\
-				& = \frac{x}{-k(k+1)}+\frac{x^{k+1}}{k+1}\zeta(k+1)+O(x^{k+1-k-1})+O\left(\frac{x}{1-k}+x^{k}\zeta(k)+O(1)\right)\\
+				& = \frac{x^{k+1}}{k+1}\sum_{n\leq x}\frac{1}{n^{k+1}}+\bigo{x^{k}\sum_{n\leq x}\frac{1}{n^{k}}}\\
+				& = \frac{x^{k+1}}{k+1}\parenthesis{\frac{x^{-k}}{-k}+\zeta(k+1)+O(x^{-k-1})}+\bigo{x^{k}\parenthesis{\frac{x^{1-k}}{1-k}+\zeta(k)+O(x^{-k})}}\\
+				& = \frac{x}{-k(k+1)}+\frac{x^{k+1}}{k+1}\zeta(k+1)+O(x^{k+1-k-1})+\parenthesis{\frac{x}{1-k}+x^{k}\zeta(k)+O(1)}\\
 				& = \frac{x^{k+1}}{k+1}\zeta(k+1)+O(x)+O(1)+O(x+x^{k})
 		\end{align*}
 	From this, we finally get the following.
@@ -475,7 +475,7 @@
 	\textcite[Theorem VI]{lehmer_1900} proves the following which he calls the \textit{fundamental theorem}.
 		\begin{align}
 			J_{k}(mn)
-				& = J_{k}(n)\prod_{p^{e}\parallel m}\left(p^{ke}-p^{k(e-1)}\lambda(n,p)\right)\label{thm:lehfund}
+				& = J_{k}(n)\prod_{p^{e}\parallel m}\parenthesis{p^{ke}-p^{k(e-1)}\lambda(n,p)}\label{thm:lehfund}
 		\end{align}
 	where $\lambda(n,p)=0$ if $p\mid n$ otherwise $\lambda(n,p)=1$. We leave the proof of this result and the following to the reader.
 		\begin{align*}

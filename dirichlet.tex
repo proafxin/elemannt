@@ -7,19 +7,19 @@
     We proved before that
     	\begin{align*}
     		\sum\limits_{n\leq x}\tau(n)
-    			& = 2\sum\limits_{n\leq \sqrt{x}}\left\lfloor{\dfrac{x}{n}}\right\rfloor-\lfloor{\sqrt{x}}\rfloor^{2}
+    			& = 2\sum\limits_{n\leq \sqrt{x}}\floor{\dfrac{x}{n}}-\floor{\sqrt{x}}^{2}
     	\end{align*}
     In a similar manner, we can also prove the following.
     	\begin{align*}
     		\sum\limits_{n\leq x}\sigma(n)
-    			& = \dfrac{1}{2}\left(\sum\limits_{n\leq \sqrt{x}}\left\lfloor{\dfrac{x}{n}}\right\rfloor+\sum\limits_{n\leq \sqrt{x}}(2n+1)\left\lfloor{\dfrac{x}{n}}\right\rfloor-\lfloor{\sqrt{x}}\rfloor^{2}-\lfloor{\sqrt{x}}\rfloor^{3}\right)
+    			& = \dfrac{1}{2}\parenthesis{\sum\limits_{n\leq \sqrt{x}}\floor{\dfrac{x}{n}}+\sum\limits_{n\leq \sqrt{x}}(2n+1)\floor{\dfrac{x}{n}}-\floor{\sqrt{x}}^{2}-\floor{\sqrt{x}}^{3}}
     	\end{align*}
     Note that, in both cases, we are able to express the partial sum of a multiplicative function up to $x$ in terms of a combination of some partial sums of some other functions up to $\sqrt{x}$. The generalization of this method is known as the \index{Dirichlet hyperbola method}\textit{Dirichlet hyperbola method}.
     	\begin{theorem}[Dirichlet Hyperbola Method]\label{thm:hyperbola}
     		Let $f$ and $g$ be arithmetic functions. If $h$ is the Dirichlet convolution of $f$ and $g$, then
     			\begin{align*}
     				\sum\limits_{n\leq x}h(n)
-    					& = \sum\limits_{n\leq a}f(n)G\left(\dfrac{x}{n}\right)+\sum\limits_{n\leq b}g(n)F\left(\dfrac{x}{n}\right)-F(a)G(b)
+    					& = \sum\limits_{n\leq a}f(n)G\parenthesis{\dfrac{x}{n}}+\sum\limits_{n\leq b}g(n)F\parenthesis{\dfrac{x}{n}}-F(a)G(b)
     			\end{align*}
     		where $F$ and $G$ are the partial sums of $f$ and $g$ respectively.
     			\begin{align*}
@@ -31,13 +31,13 @@
     		Specially when $a=b$,
     			\begin{align*}
     				\sum\limits_{de\leq x}f(d)g(e)
-    					& = \sum\limits_{n\leq \sqrt{x}}\left(f(n)G\left(\dfrac{x}{n}\right)+g(n)F\left(\dfrac{x}{n}\right)\right)-F(\sqrt{x})G(\sqrt{x})
+    					& = \sum\limits_{n\leq \sqrt{x}}\parenthesis{f(n)G\parenthesis{\dfrac{x}{n}}+g(n)F\parenthesis{\dfrac{x}{n}}}-F(\sqrt{x})G(\sqrt{x})
     			\end{align*}
     	\end{theorem}
     Next, we will discuss generalizations of Dirichlet convolution. Let $f$ and $g$ be arithmetic functions such that $g(x)=0$ if $0<x<1$. Then the \index{general convolution}\textit{general convolution} of $f$ and $g$ is
     	\begin{align*}
     		f\circ g(x)
-    			& = \sum\limits_{n\leq x}f(n)g\left(\dfrac{x}{n}\right)
+    			& = \sum\limits_{n\leq x}f(n)g\parenthesis{\dfrac{x}{n}}
     	\end{align*}
     We can easily prove the following.
     	\begin{theorem}[General convolution theorem]\label{thm:genconv}
@@ -52,12 +52,12 @@
     		Let $f,g$ be an arithmetic functions and $f^{-1}$ be the Dirichlet inverse of $f$. If
     			\begin{align*}
     				G(x)
-    					& = \sum\limits_{n\leq x}f(n)g\left(\dfrac{x}{n}\right)
+    					& = \sum\limits_{n\leq x}f(n)g\parenthesis{\dfrac{x}{n}}
     			\end{align*}
     		then
     			\begin{align*}
     				g(x)
-    					& = \sum\limits_{n\leq x}f^{-1}(n)G\left(\dfrac{x}{n}\right)
+    					& = \sum\limits_{n\leq x}f^{-1}(n)G\parenthesis{\dfrac{x}{n}}
     			\end{align*}
     	\end{theorem}
 \end{document}

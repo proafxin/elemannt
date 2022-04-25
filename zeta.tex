@@ -63,7 +63,7 @@
 			For two arithmetic functions $f$ and $g$, the \index{Dirichlet convolution}\textit{Dirichlet product} or \textit{Dirichlet convolution} of $f$ and $g$ is defined as
 				\begin{align*}
 					f\ast g
-						& = \sum_{d\mid n}f(d)g\left(\dfrac{n}{d}\right)
+						& = \sum_{d\mid n}f(d)g\parenthesis{\dfrac{n}{d}}
 				\end{align*}
 		\end{definition}
 	
@@ -105,7 +105,7 @@
 			Then
 				\begin{align*}
 					f(n)
-						& = \sum_{d\mid n}\mu(d)F\left(\dfrac{n}{d}\right)
+						& = \sum_{d\mid n}\mu(d)F\parenthesis{\dfrac{n}{d}}
 				\end{align*}
 		\end{theorem}
 		
@@ -121,7 +121,7 @@
 			Let $f$ and $g$ be arithmetic functions. Then the dual convolution of $f$ and $g$ is the arithmetic function $h$ defined as
 				\begin{align*}
 					h(n)
-						& = \sum_{\substack{n\mid d\\d\in\mathbb{D}}}f(d)g\left(\dfrac{d}{n}\right)
+						& = \sum_{\substack{n\mid d\\d\in\mathbb{D}}}f(d)g\parenthesis{\dfrac{d}{n}}
 				\end{align*}
 			where $\mathbb{D}$ is a divisor closed set.
 		\end{definition}
@@ -135,7 +135,7 @@
 			where $\mathbb{D}$ is a divisor closed set. Then
 				\begin{align*}
 					f(n)
-						& = \sum_{\substack{n\mid d\\d\in\mathbb{D}}}\mu\left(\dfrac{d}{n}\right)f(d)
+						& = \sum_{\substack{n\mid d\\d\in\mathbb{D}}}\mu\parenthesis{\dfrac{d}{n}}f(d)
 				\end{align*}
 		\end{theorem}
 	
@@ -147,14 +147,14 @@
 			Let $f$ be an arithmetic function such that $f(1)\neq 0$. Then the \index{Dirichlet inverse}\textit{Dirichlet inverse} of $f$ is a function $g$ such that $f\ast g=I$ where $I$ is the \index{Identity function}\textit{identity function}
 				\begin{align*}
 					I(n)
-						& = \left\lfloor{\dfrac{1}{n}}\right\rfloor
+						& = \floor{\dfrac{1}{n}}
 				\end{align*}
 			This inverse $g$ can be expressed recursively.
 				\begin{align*}
 					g(1)
 						& = \dfrac{1}{f(1)}\\
 					g(n)
-						& = -\dfrac{1}{f(1)}\sum_{\substack{d\mid n\\d<n}}f\left(\dfrac{n}{d}\right)g(d)
+						& = -\dfrac{1}{f(1)}\sum_{\substack{d\mid n\\d<n}}f\parenthesis{\dfrac{n}{d}}g(d)
 				\end{align*}
 		\end{definition}
 	\textcite[Theorem 2.2]{haukkanen_2000} proves the following closed formula to find the Dirichlet inverse of an arithmetic function $f$ which we do not prove here.
