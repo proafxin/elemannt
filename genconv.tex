@@ -1,0 +1,246 @@
+\documentclass[elemannt.tex]{subfile}
+
+\begin{document}
+	\section{Generalization of Generalized Convolution}
+	Let $\mathbf{x}=(x_{1},\ldots,x_{k})$ and $\mathbf{a}=(a_{1},\ldots,a_{n})$ be vectors of positive real numbers. $\{\sqrt[\mathbf{a}]{\mathbf{x}}\}$ denotes the largest positive integer $n$ for which $n^{a_{i}}\leq x_{i}$ for some $1\leq i\leq k$. That is,
+		\begin{align*}
+			\max\{\sqrt[\mathbf{a}]{\mathbf{x}}\}
+				& = \max\{\floor{\sqrt[a_{1}]{x_{1}}},\ldots,\floor{\sqrt[a_{k}]{x_{k}}}\}
+		\end{align*}
+	For a positive integer $n$, let $n^{\mathbf{a}}\leq\mathbf{x}$ denote that $n\leq\{\sqrt[\mathbf{a}]{\mathbf{x}}\}$. 
+	
+	Let $f$ be a real or complex valued function defined in $k$ variables. For a vector of positive real numbers $\mathbf{a}$, let $\mathbf{x}/\mathbf{a}$ denote the vector $(x_{1}/a_{1},\ldots,x_{k}/a_{1})$, $\floor{\mathbf{x}/\mathbf{a}}$ denote the vector $(\floor{x_{1}/a_{1}},\ldots,\floor{x_{k}/a_{k}})$ and
+		\begin{align*}
+			f(\mathbf{x})
+				& = f(x_{1},\ldots,x_{k})\\
+			f\left(\dfrac{\mathbf{x}}{n^{\mathbf{a}}}\right)
+				& = f\left(\dfrac{x_{1}}{n^{a_{1}}},\ldots,\dfrac{x_{k}}{n^{a_{k}}}\right)\\
+			f\left(\left\lfloor\dfrac{\mathbf{x}}{n^{\mathbf{a}}}\right\rfloor\right)
+				& = f\parenthesis{\floor{\dfrac{x_{1}}{n^{a_{1}}}},\ldots,\floor{\dfrac{x_{k}}{n^{a_{k}}}}}
+		\end{align*}
+	Recall that the \textit{identity function} $I(n)$ is
+		\begin{align*}
+			I(n)
+				& = \floor{\dfrac{1}{n}}
+		\end{align*}
+	for a positive integer $n$. So,
+		\begin{align*}
+			I(n)
+				& =
+				\begin{cases}
+					1 & \mbox{if }n=1\\
+					0 & \mbox{otherwise}
+				\end{cases}
+		\end{align*}
+	Let the generalized convolution of an arithmetic function $\alpha$ and a function $f$ defined for $k$ real numbers and a positive integer $a$ be
+		\begin{align}
+			(\alpha\bullet f)(\mathbf{x}, \mathbf{a})
+				& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}\alpha(n)f\left(\dfrac{\mathbf{x}}{n^{\mathbf{a}}}\right)\label{eqn:genconv}
+		\end{align}
+	We have the next theorem about the associativity of $\bullet$ convolution.
+		\begin{theorem}[Associativity of generalized convolution]\label{thm:genassociativity}
+			Let $\mathbf{x}$ be a vector of $k$ positive real numbers, $\alpha,\beta$ be arithmetic functions, $a$ be a fixed positive integer and $f(x_{1},\ldots,x_{k})$ be a real or complex valued multivariate function. Then
+				\begin{align*}
+					(\alpha\bullet(\beta\bullet f))(\mathbf{x}, \mathbf{a})
+						& = ((\alpha\ast\beta)\bullet f)(\mathbf{x}, \mathbf{a})
+				\end{align*}
+			where $f\ast g$ is the usual Dirichlet convolution of arithmetic functions $f$ and $g$.
+				\begin{proof}
+					From the definition,
+						\begin{align*}
+							(\beta\bullet f)(\mathbf{x},\mathbf{a})
+								& = \sum_{m^{\mathbf{a}}\leq\mathbf{x}}\beta(m)\parenthesis{\dfrac{x_{1}}{m^{a_{1}}},\ldots,\dfrac{x_{k}}{m^{a_{k}}}}\\
+							(\alpha\bullet(\beta\bullet f))(\mathbf{x}, \mathbf{a})
+								& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}\alpha(n)\parenthesis{(\beta\bullet f)\parenthesis{\dfrac{\mathbf{x}}{n^{\mathbf{a}}},\mathbf{a}}}\\
+								& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}\alpha(n)\parenthesis{(\beta\bullet f)\parenthesis{\dfrac{x_{1}}{n^{a_{1}}},\ldots,\dfrac{x_{k}}{n^{a_{k}}}}}\\
+								& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}\alpha(n)\sum_{m^{a}\leq{\mathbf{x}/n^{\mathbf{a}}}}\beta(m)f\parenthesis{\dfrac{x_{1}}{m^an^a},\ldots,\dfrac{x_{k}}{m^an^a}}
+						\end{align*}
+					We can collect the $m$ and $n$ together and write
+						\begin{align*}
+							(\alpha\bullet(\beta\bullet f))(\mathbf{x},\mathbf{a})
+								& = \sum_{(mn)^{\mathbf{a}}\leq\mathbf{x}}\alpha(n)\beta(m)f\parenthesis{\dfrac{x_{1}}{m^{a}n^{a}},\ldots,\dfrac{x_{k}}{m^{a_{k}}n^{a_{k}}}}\\
+								& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}\parenthesis{\sum_{d\mid n}\alpha(d)\beta\parenthesis{\dfrac{n}{d}}}\parenthesis{\dfrac{x_{1}}{n^{a_{1}}},\ldots,\dfrac{x_{k}}{n^{a_{k}}}}\\
+								& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}(\alpha\ast\beta)f\parenthesis{\dfrac{\mathbf{x}}{n^{\mathbf{a}}}}\\
+								& = (\alpha\ast\beta)\bullet f(\mathbf{x},\mathbf{a})
+						\end{align*}
+				\end{proof}
+		\end{theorem}
+	
+		\begin{theorem}[Inversion of generalized convolution]\label{thm:geninverse}
+			Let $\alpha$ be an arithmetic function and $f$ be a real or complex valued multivariate function. If
+				\begin{align*}
+					g(\mathbf{x}, \mathbf{a})
+						& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}\alpha(n)f(\mathbf{x}, \mathbf{a})
+				\end{align*}
+			and $\alpha^{-1}$ is the Dirichlet inverse of $\alpha$, then
+				\begin{align*}
+					f(\mathbf{x}, \mathbf{a})
+						& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}\alpha^{-1}(n)g\left(\dfrac{\mathbf{x}}{n^{\mathbf{a}}}\right)
+				\end{align*}
+			
+				\begin{proof}
+					First, we see that
+						\begin{align*}
+							(I\bullet f)(\mathbf{x},\mathbf{a})
+								& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}I(n)f(\mathbf{x},\mathbf{a})\\
+								& = I(1)f(\mathbf{x},\mathbf{a})+\sum_{\substack{n^{\mathbf{a}}\leq{\mathbf{x}}\\n>1}}I(n)f(\mathbf{x},a\mathbf{a})\\
+								& = f(\mathbf{x},\mathbf{a})
+						\end{align*}
+					Since $g=\alpha\bullet f$, we will use \autoref{thm:genassociativity} on $\alpha^{-1}$ and $g$. We have
+						\begin{align*}
+							(\alpha^{-1}\bullet(\alpha\bullet f))(\mathbf{x},\mathbf{a})
+								& = ((\alpha^{-1}\ast\alpha)\bullet f)(\mathbf{x},\mathbf{a})
+						\end{align*}
+					From the definition of Dirichlet inverse, $\alpha^{-1}\ast\alpha=I$. So, we have
+						\begin{align*}
+							(\alpha^{-1}\bullet g)(\mathbf{x},\mathbf{a})
+								& = (\alpha^{-1}\bullet(\alpha\bullet f))(\mathbf{x},\mathbf{a})\\
+								& = ((\alpha^{-1}\ast\alpha)\bullet f)(\mathbf{x}, \mathbf{a})\\
+								& = (I\bullet f)(\mathbf{x},\mathbf{a})\\
+								& = f(\mathbf{x},\mathbf{a})
+						\end{align*}
+					Thus, we have the theorem.
+				\end{proof}
+		\end{theorem}
+	If we set $\mathbf{a}=(1),k=1$ and $\mathbf{x}=(x)$ for a real number $x$ in \autoref{thm:genassociativity} and \autoref{thm:geninverse}, we have the usual generalized convolution and inverse convolution.
+		\begin{theorem}
+			Let $f$ and $g$ be arithmetic functions and $h=f\ast g$. If
+				\begin{align*}
+					F(\mathbf{x}, \mathbf{a})
+						& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}f(n)\\
+					G(\mathbf{x}, \mathbf{a})
+						& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}g(n)\\
+					H(\mathbf{x}, \mathbf{a})
+						& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}h(n)
+				\end{align*}
+			then we have
+				\begin{align*}
+					H(\mathbf{x}, \mathbf{a})
+						& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}f(n)\parenthesis{\dfrac{\mathbf{x}}{n^{\mathbf{a}}},\mathbf{a}}\\
+						& =\sum_{n^{\mathbf{a}}\leq\mathbf{x}}g(n)F\left(\dfrac{\mathbf{x}}{n^{\mathbf{a}}},\mathbf{a}\right)
+				\end{align*}
+			
+				\begin{proof}
+					We can write $H$ as follows.
+						\begin{align*}
+							H(\mathbf{x}, \mathbf{a})
+								& = \sum_{n^{\mathbf{a}}\leq(\mathbf{x})}h(n)\\
+								& = \sum_{(de)^{\mathbf{a}}\leq\mathbf{x}}f(d)g(e)\\
+								& = \sum_{d^{\mathbf{a}}\leq\mathbf{x}}f(d)\sum_{e^{\mathbf{a}}\leq\mathbf{x}/d^{\mathbf{a}}}g(e)\\
+								& = \sum_{d^{\mathbf{a}}\leq\mathbf{x}}f(d)G\parenthesis{\dfrac{\mathbf{x}}{d^{\mathbf{a}}},\mathbf{a}}
+						\end{align*}
+					We can prove the other part similarly by fixing $e$ and letting $d$ run through for $f$ instead of $g$.
+				\end{proof}
+		\end{theorem}
+	As a corollary, we have the following theorem.
+		\begin{theorem}
+			Let $f$ be an arithmetic function. If
+				\begin{align*}
+					F(\mathbf{x},\mathbf{a})
+						& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}f(n)
+				\end{align*}
+			then we have
+				\begin{align*}
+					\sum_{n\leq\sqrt[\mathbf{a}]{\mathbf{x}}}\sum_{d\mid n}f(d)
+						& = \sum_{n\leq\sqrt[\mathbf{a}]{\mathbf{x}}}\floor{\dfrac{\sqrt[\mathbf{a}]{\mathbf{x}}}{n}} f(n)=\sum_{n^{\mathbf{a}}\leq\mathbf{x}}F\parenthesis{\dfrac{\sqrt[\mathbf{a}]{\mathbf{x}}}{n}}
+				\end{align*}
+		\end{theorem}
+	\section{Results Using Generalized Convolution}
+	In this section, let $s$ be a fixed positive integer and $f$ be defined as
+		\begin{align*}
+			f(\mathbf{x})
+			& = \prod_{i=1}^{k}\floor{x_{i}}
+		\end{align*}
+	For Jordan function $J_{s}(n)$, we will omit the index $s$ because the context is clear. Moreover, define the function $u$ as
+		\begin{align*}
+			u(n)
+				& = n^s
+		\end{align*}
+	From \autoref{eqn:jordansummatory},
+		\begin{align*}
+			\prod_{d\mid n}J(d)
+				& = n^{s}
+		\end{align*}
+	Using M\"{o}bius inversion, we also get that
+		\begin{align}
+			\mu\ast u
+				& = J\label{eqn:inversejordan}
+		\end{align}
+	
+		\begin{theorem}
+			Let $F(\mathbf{x})$ be the number of vectors of positive integers $(a_{1},\ldots,a_{k})$ such that $1\leq a_i\leq x_i$ and $\gcd(a_{1},\ldots,a_{k})=1$. 
+			then we have
+				\begin{align*}
+					F(\mathbf{x})
+						& = (\mu\bullet f)(\mathbf{x},\mathbf{1})
+				\end{align*}
+		\end{theorem}
+	
+		\begin{proof}
+			The total number of vectors such that $1\leq a_i\leq x_i$ is $x_{1}\cdots x_{k}$. Consider an arbitrary vector $(a_{1},\ldots,a_{k})$. If $g=\gcd(a_{1},\ldots,a_{k})>1$, then every $a_i$ has to be divisible by $g$. Then the number of such vectors is
+				\begin{align*}
+					t(g)
+						& = \parenthesis{\dfrac{\mathbf{a}}{g}}\\
+						& = \floor{\dfrac{a_{1}}{g}}\cdots\floor{\dfrac{a_{k}}{g}}
+				\end{align*}
+			We can see that the $t(p)$ vectors which has all elements divisible by $p$ also has all vectors which are divisible by a multiple of $p$. So, if $g$ is composite, and has $r$ prime factors, every vector of the $t(g)$ vectors is also divisible by any of those $r$ prime factors. Using a simple principle of inclusion and exclusion, we see that the number of vectors divisible by $g$ has the sign $\mu(g)$. So, the total number of vectors where they have a common factor other than $1$ is
+				\begin{align*}
+					\sum_{2\leq g\leq\min(\mathbf{x})}\mu(g)\floor{\dfrac{x_{1}}{g}}\cdots\floor{\dfrac{x_{k}}{g}}
+				\end{align*}
+			Then the number of vectors where $\gcd(a_{1},\ldots,a_{k})=1$ is
+				\begin{align*}
+					x_{1}\cdots x_{k}+\left(\sum_{2\leq g\leq\min(\mathbf{x})}\mu(g)\left\lfloor\dfrac{x_{1}}{g}\right\rfloor\cdots\left\lfloor\dfrac{x_{k}}{g}\right\rfloor\right)
+						& = \sum_{n\leq\min(\mathbf{x})}\mu(n)f(\mathbf{x},\mathbf{1})
+				\end{align*}
+			Thus, we have the result.
+		\end{proof}
+	As a consequence of this result, we can prove the next result using the fact that the number of non-decreasing sequences $(a_{1},\ldots,a_{k})$ such that $1\leq a_i\leq a_{i+1}\leq n$ is $\binom{n+k-1}{k}$.
+		\begin{theorem}
+			Let $B(n,k)$ be the number of vectors of non-decreasing sequences $(a_{1},\ldots,a_{k})$ such that $1\leq a_{1}\leq\ldots\leq a_{k}\leq n$ and $\gcd(a_{1},\ldots,a_{k})=1$. If for a positive integer $m$, $\mathbf{m}=\underbrace{(m,\ldots,m)}_{k\mbox{ times}}$ and
+				\begin{align*}
+					f(\mathbf{m})
+						& = \binom{m+k-1}{k}
+				\end{align*}
+			then we have
+				\begin{align*}
+					B(n,k)
+						& = (\mu\bullet f)(\mathbf{n},\mathbf{1})
+				\end{align*}
+		\end{theorem}
+	
+		\begin{theorem}
+			Let $S$ be the sum
+				\begin{align*}
+					S(\mathbf{x})
+						& = \sum_{1\leq a_i\leq x_i}g(\mathbf{a})^{s}
+				\end{align*}
+			where $g(\mathbf{a})=\gcd(a_{1},\ldots,a_{k})$ for the vector of positive integers $\mathbf{a}=(a_{1},\ldots,a_{k})$. Then we have
+				\begin{align*}
+					S(\mathbf{x})
+						& = \sum_{n\leq\mathbf{x}}J(n, s)\prod_{i=1}^{k}\left\lfloor\dfrac{x_i}{n}\right\rfloor\\
+						& = \sum_{n\leq\mathbf{x}}\mu(n)\left(\sum_{i\leq\mathbf{x}/n}i^{s}\prod_{j=1}^{k}\left\lfloor\dfrac{x_j}{ni}\right\rfloor\right)
+				\end{align*}
+			
+				\begin{proof}
+					The second portion of the equation follows from \autoref{thm:genassociativity} and \ref{eqn:inversejordan}.
+						\begin{align*}
+							(J\bullet f)(\mathbf{x},\mathbf{1})
+								& = (\mu\bullet (u\bullet f))(\mathbf{x},\mathbf{1})
+						\end{align*}
+					So, we will only prove the first portion. Consider the vector $(a_{1},\ldots,a_{k})$ and $g=\gcd(a_{1},\ldots,a_{k})$. Letting $a_i=gb_i$, we have that $\gcd(b_{1},\ldots,b_{k})=1$. The number of such vectors is $(\mu\bullet f)(\mathbf{x},\mathbf{1})$. Each of these vectors contribute $g^{s}$ to the sum, so for a particular $g$, the contribution of $g$ in the sum is
+						\begin{align*}
+							g^{s}(\mu\bullet f)(\mathbf{x},\mathbf{1})
+						\end{align*}
+					Then by the principle of inclusion and exclusion, we have that
+						\begin{align*}
+							S(\mathbf{x})
+								& = \sum_{n\leq\mathbf{x}}n^{s}(\mu\bullet f)(\mathbf{x},\mathbf{1})\\
+								& = (u\bullet(\mu\bullet f))(\mathbf{x},\mathbf{1})
+						\end{align*}
+				\end{proof}
+		\end{theorem}
+		
+		\begin{remark}
+			We could prove this result without using $\bullet$ convolution as well. For example, in the case $s=1$, if $d\mid g$ and $d<g$, then $g$ has already appeared in the vectors of $d$. Thus, we cannot consider any $d$ that shares a common factor with $g$. $n\leq g$ will contribute a new sum to the vectors only if $\gcd(n,g)=1$. So, the total sum of $g(\mathbf{a})$ with $\gcd(a_{1},\ldots,a_{k})=g$ is $\varphi(g)$. Generalizing this for arbitrary $s$, we can easily see that the contributed sum for $g$ is $J(g)\sum_{n\leq\min(\mathbf{x})/g}f(\mathbf{x}/n)$.
+		\end{remark}
+\end{document}

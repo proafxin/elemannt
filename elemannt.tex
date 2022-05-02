@@ -5,15 +5,14 @@
 \usepackage{xcolor,color,fancyhdr}
 \usepackage{subfiles}
 \usepackage{hyperref,titlesec,xifthen,iftex,authoraftertitle}
-
-\usepackage[style=philosophy-verbose,backend=biber,sortcites=true,classical=true,scauthors=true, scauthorscite=true,scauthorsbib=true,volnumformat=strings,volumeformat=romansc,]{biblatex}
+\usepackage{glossaries-extra}
+\usepackage[bibstyle=philosophy-modern,citestyle=philosophy-verbose,backend=biber,autopunct,sortcites,]{biblatex}
 
 \hypersetup{linktocpage,unicode,pdfencoding=auto,}
 \DeclareNameAlias{sortname}{given-family}
 \interfootnotelinepenalty=10000
 
 \ifxetex
-	\usepackage[no-math]{fontspec}
 	\usepackage{unicode-math}
 	\newcommand{\fakebold}{1}
 	\newcommand{\scale}{1}
@@ -22,8 +21,13 @@
 	\setsansfont[FakeBold=1,Scale=\scale]{Latin Modern Sans}
 	\setmonofont[FakeBold=1,Scale=\scale]{Latin Modern Mono}
 	\setmathfont[FakeBold=\fakemathbold,Scale=\scale]{NewCMMath-Book.otf}
-	\setmathfont[range={it},FakeBold=\fakemathbold,Scale=\scale]{ModernMT-ExtendedItalic-New.otf}
-	\setmathfont[range={\partial},FakeBold=\fakebold]{OldStandard-Regular.otf}
+	\setmathfont[range={it,},FakeBold=\fakemathbold,Scale=\scale]{ModernMT-ExtendedItalic-New.otf}
+	\setmathfont[range={up,},FakeBold=\fakemathbold,Scale=\scale]{ModernMT-Extended-New.otf}
+	\setmathfont{latinmodern-math.otf}[range=bfup,FakeBold=\fakemathbold]
+	\setmathfont{ModernMT-ExtendedItalic-New.otf}[range=bfit,FakeBold=\fakemathbold]
+	\setmathfont{texgyrepagella-math.otf}[range={"0028,"0029,"005B,"005D,"007B,"007D,}]
+	\setmathfont{OldStandard-Regular.otf}[range={\partial},FakeBold=\fakemathbold]
+	
 	\newfontfamily{\bask}{ModernExtT-Theano.otf}
 	\makeatletter
 	\RenewDocumentCommand{\sum@}{}{\DOTSB\baskervillesum}
@@ -55,7 +59,7 @@
 	\NewDocumentCommand{\makebaskervilleprod}{m}{%
 		\vcenter{\hbox{\scalebox{#1}{\bask ∏}}}%
 	}
-	\newfontfamily\intfont{OldStandard-Italic.otf}
+	\newfontfamily\intfont{Old Standard Italic}
 	\makeatletter
 	\NewDocumentCommand{\int@}{}{\DOTSB\baskervilleint}
 	\AtBeginDocument{%
@@ -87,7 +91,7 @@
 \renewcommand{\cftsubsecfont}{\normalsize\normalfont\scshape}
 \renewcommand{\cftpartfont}{\normalsize\normalfont\scshape\bfseries}
 
-\usepackage[toc,nopostdot,nonumberlist,automake=true]{glossaries}
+\usepackage[toc,nopostdot,]{glossaries}
 \usepackage{makeidx}
 
 \usepackage{nomencl}
@@ -105,14 +109,21 @@
 \theoremstyle{definition}
 \newenvironment{definition}[1][]{\par\medskip\noindent \textsc{\textbf{{\ifthenelse{\isempty{#1}}{Definition.}{#1.}}}} \rmfamily}{\medskip}
 
-\newcommand{\lcm}{\mbox{lcm}}
 \newcommand{\floor}[1]{\left\lfloor{#1}\right\rfloor}
 \newcommand{\ceiling}[1]{\left\lceil{#1}\right\rceil}
 \newcommand{\parenthesis}[1]{\left(#1\right)}
 \newcommand{\curlybrace}[1]{\left\{#1\right\}}
 \newcommand{\squarebracket}[1]{\left[#1\right]}
-\newcommand{\rad}{\mbox{rad}}
 \newcommand{\bigo}[1]{O\parenthesis{#1}}
+\newcommand{\smallo}[1]{o\parenthesis{#1}}
+\newcommand{\ffirst}[1]{f\parenthesis{#1}}
+\newcommand{\F}[1]{\mathbb{F}_{#1}}
+\newcommand{\Q}[1]{\mathbb{Q}_{#1}}
+\newcommand{\Z}[1]{\mathbb{Z}_{#1}}
+\DeclareMathOperator{\rad}{rad}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
 
 \renewcommand*{\chapterautorefname}{Chapter}
 \renewcommand*{\sectionautorefname}{Section}
@@ -127,8 +138,8 @@
 
 \newtheorem*{remark}{Remark}
 
-\title{{\itshape Introduction to}\\ ELEMENTARY ANALYTIC NUMBER THEORY}
-\author{ MASUM BILLAL}
+\title{ELEMENTARY ANALYTIC NUMBER THEORY}
+\author{Masum Billal}
 \date{}
 \defbibfilter{books}{type=book or type=inbook}
 
@@ -154,15 +165,15 @@
 	\subfile{arith.tex}
 	\subfile{zeta.tex}
 	\subfile{dirichlet.tex}
+	\subfile{genconv.tex}
 	\subfile{tchebycheff.tex}
 	\subfile{sieve.tex}
 	\subfile{prime.tex}
 
 	\backmatter
+	\printglossary[title=Glossary,]
 	\printbibliography[type=article,title=Articles,heading=bibnumbered]
 	\printbibliography[filter=books,title=Books,heading=bibnumbered]
 	%\printbibliography[type=inbook,title=Chapters/Sections in Books,heading=bibnumbered]
-    \printglossary[type=\acronymtype,title={List of Acronyms}]
-    \printglossary[title=Glossary,]
     \printindex
 \end{document}
