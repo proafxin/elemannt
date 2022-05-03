@@ -18,25 +18,14 @@
 			f\left(\left\lfloor\dfrac{\mathbf{x}}{n^{\mathbf{a}}}\right\rfloor\right)
 				& = f\parenthesis{\floor{\dfrac{x_{1}}{n^{a_{1}}}},\ldots,\floor{\dfrac{x_{k}}{n^{a_{k}}}}}
 		\end{align*}
-	Recall that the \textit{identity function} $I(n)$ is
-		\begin{align*}
-			I(n)
-				& = \floor{\dfrac{1}{n}}
-		\end{align*}
-	for a positive integer $n$. So,
-		\begin{align*}
-			I(n)
-				& =
-				\begin{cases}
-					1 & \mbox{if }n=1\\
-					0 & \mbox{otherwise}
-				\end{cases}
-		\end{align*}
-	Let the generalized convolution of an arithmetic function $\alpha$ and a function $f$ defined for $k$ real numbers and a positive integer $a$ be
-		\begin{align}
-			(\alpha\bullet f)(\mathbf{x}, \mathbf{a})
-				& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}\alpha(n)f\left(\dfrac{\mathbf{x}}{n^{\mathbf{a}}}\right)\label{eqn:genconv}
-		\end{align}
+	
+		\begin{definition}[Generalized Convolution]
+			Let the generalized convolution of an arithmetic function $\alpha$ and a function $f$ defined for $k$ real numbers and a positive integer $a$ be
+				\begin{align}
+					(\alpha\bullet f)(\mathbf{x}, \mathbf{a})
+						& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}\alpha(n)f\left(\dfrac{\mathbf{x}}{n^{\mathbf{a}}}\right)\label{eqn:genconv}
+				\end{align}
+		\end{definition}
 	We have the next theorem about the associativity of $\bullet$ convolution.
 		\begin{theorem}[Associativity of generalized convolution]\label{thm:genassociativity}
 			Let $\mathbf{x}$ be a vector of $k$ positive real numbers, $\alpha,\beta$ be arithmetic functions, $a$ be a fixed positive integer and $f(x_{1},\ldots,x_{k})$ be a real or complex valued multivariate function. Then
@@ -59,7 +48,7 @@
 						\begin{align*}
 							(\alpha\bullet(\beta\bullet f))(\mathbf{x},\mathbf{a})
 								& = \sum_{(mn)^{\mathbf{a}}\leq\mathbf{x}}\alpha(n)\beta(m)f\parenthesis{\dfrac{x_{1}}{m^{a}n^{a}},\ldots,\dfrac{x_{k}}{m^{a_{k}}n^{a_{k}}}}\\
-								& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}\parenthesis{\sum_{d\mid n}\alpha(d)\beta\parenthesis{\dfrac{n}{d}}}\parenthesis{\dfrac{x_{1}}{n^{a_{1}}},\ldots,\dfrac{x_{k}}{n^{a_{k}}}}\\
+								& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}\parenthesis{\sum_{d\mid n}\alpha(d)\beta\parenthesis{\dfrac{n}{d}}}f\parenthesis{\dfrac{x_{1}}{n^{a_{1}}},\ldots,\dfrac{x_{k}}{n^{a_{k}}}}\\
 								& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}(\alpha\ast\beta)f\parenthesis{\dfrac{\mathbf{x}}{n^{\mathbf{a}}}}\\
 								& = (\alpha\ast\beta)\bullet f(\mathbf{x},\mathbf{a})
 						\end{align*}
@@ -142,11 +131,11 @@
 			then we have
 				\begin{align*}
 					\sum_{n\leq\sqrt[\mathbf{a}]{\mathbf{x}}}\sum_{d\mid n}f(d)
-						& = \sum_{n\leq\sqrt[\mathbf{a}]{\mathbf{x}}}\floor{\dfrac{\sqrt[\mathbf{a}]{\mathbf{x}}}{n}} f(n)=\sum_{n^{\mathbf{a}}\leq\mathbf{x}}F\parenthesis{\dfrac{\sqrt[\mathbf{a}]{\mathbf{x}}}{n}}
+						& = \sum_{n\leq\sqrt[\mathbf{a}]{\mathbf{x}}}\floor{\dfrac{\sqrt[\mathbf{a}]{\mathbf{x}}}{n}} f(n)\\
+						& =\sum_{n^{\mathbf{a}}\leq\mathbf{x}}F\parenthesis{\dfrac{\sqrt[\mathbf{a}]{\mathbf{x}}}{n}}
 				\end{align*}
 		\end{theorem}
-	\section{Results Using Generalized Convolution}
-	In this section, let $s$ be a fixed positive integer and $f$ be defined as
+	We will now see some applications of generalized convolution $\bullet$. Let $s$ be a fixed positive integer and $f$ be defined as
 		\begin{align*}
 			f(\mathbf{x})
 			& = \prod_{i=1}^{k}\floor{x_{i}}
@@ -166,81 +155,73 @@
 			\mu\ast u
 				& = J\label{eqn:inversejordan}
 		\end{align}
+	Let $F(\mathbf{x})$ be the number of vectors of positive integers $(a_{1},\ldots,a_{k})$ such that $1\leq a_i\leq x_i$ and $\gcd(a_{1},\ldots,a_{k})=1$. 
+	Then we have
+		\begin{align*}
+			F(\mathbf{x})
+				& = (\mu\bullet f)(\mathbf{x},\mathbf{1})
+		\end{align*}
+
+	The total number of vectors such that $1\leq a_i\leq x_i$ is $x_{1}\cdots x_{k}$. Consider an arbitrary vector $(a_{1},\ldots,a_{k})$. If $g=\gcd(a_{1},\ldots,a_{k})>1$, then every $a_i$ has to be divisible by $g$. Then the number of such vectors is
+		\begin{align*}
+			t(g)
+				& = \parenthesis{\dfrac{\mathbf{a}}{g}}\\
+				& = \floor{\dfrac{a_{1}}{g}}\cdots\floor{\dfrac{a_{k}}{g}}
+		\end{align*}
+	We can see that the $t(p)$ vectors which has all elements divisible by $p$ also has all vectors which are divisible by a multiple of $p$. So, if $g$ is composite, and has $r$ prime factors, every vector of the $t(g)$ vectors is also divisible by any of those $r$ prime factors. Using a simple principle of inclusion and exclusion, we see that the number of vectors divisible by $g$ has the sign $\mu(g)$. So, the total number of vectors where they have a common factor other than $1$ is
+		\begin{align*}
+			\sum_{2\leq g\leq\min(\mathbf{x})}\mu(g)\floor{\dfrac{x_{1}}{g}}\cdots\floor{\dfrac{x_{k}}{g}}
+		\end{align*}
+	Then the number of vectors where $\gcd(a_{1},\ldots,a_{k})=1$ is
+		\begin{align*}
+			x_{1}\cdots x_{k}+\parenthesis{\sum_{2\leq g\leq\min(\mathbf{x})}\mu(g)\floor{\dfrac{x_{1}}{g}}\cdots\floor{\dfrac{x_{k}}{g}}}
+				& = \sum_{n\leq\min(\mathbf{x})}\mu(n)f(\mathbf{x},\mathbf{1})
+		\end{align*}
+	Thus, we have the result. As a consequence of this result, we can prove the next result using the fact that the number of non-decreasing sequences $(a_{1},\ldots,a_{k})$ such that $1\leq a_i\leq a_{i+1}\leq n$ is $\binom{n+k-1}{k}$.
 	
-		\begin{theorem}
-			Let $F(\mathbf{x})$ be the number of vectors of positive integers $(a_{1},\ldots,a_{k})$ such that $1\leq a_i\leq x_i$ and $\gcd(a_{1},\ldots,a_{k})=1$. 
-			then we have
-				\begin{align*}
-					F(\mathbf{x})
-						& = (\mu\bullet f)(\mathbf{x},\mathbf{1})
-				\end{align*}
-		\end{theorem}
-	
-		\begin{proof}
-			The total number of vectors such that $1\leq a_i\leq x_i$ is $x_{1}\cdots x_{k}$. Consider an arbitrary vector $(a_{1},\ldots,a_{k})$. If $g=\gcd(a_{1},\ldots,a_{k})>1$, then every $a_i$ has to be divisible by $g$. Then the number of such vectors is
-				\begin{align*}
-					t(g)
-						& = \parenthesis{\dfrac{\mathbf{a}}{g}}\\
-						& = \floor{\dfrac{a_{1}}{g}}\cdots\floor{\dfrac{a_{k}}{g}}
-				\end{align*}
-			We can see that the $t(p)$ vectors which has all elements divisible by $p$ also has all vectors which are divisible by a multiple of $p$. So, if $g$ is composite, and has $r$ prime factors, every vector of the $t(g)$ vectors is also divisible by any of those $r$ prime factors. Using a simple principle of inclusion and exclusion, we see that the number of vectors divisible by $g$ has the sign $\mu(g)$. So, the total number of vectors where they have a common factor other than $1$ is
-				\begin{align*}
-					\sum_{2\leq g\leq\min(\mathbf{x})}\mu(g)\floor{\dfrac{x_{1}}{g}}\cdots\floor{\dfrac{x_{k}}{g}}
-				\end{align*}
-			Then the number of vectors where $\gcd(a_{1},\ldots,a_{k})=1$ is
-				\begin{align*}
-					x_{1}\cdots x_{k}+\left(\sum_{2\leq g\leq\min(\mathbf{x})}\mu(g)\left\lfloor\dfrac{x_{1}}{g}\right\rfloor\cdots\left\lfloor\dfrac{x_{k}}{g}\right\rfloor\right)
-						& = \sum_{n\leq\min(\mathbf{x})}\mu(n)f(\mathbf{x},\mathbf{1})
-				\end{align*}
-			Thus, we have the result.
-		\end{proof}
-	As a consequence of this result, we can prove the next result using the fact that the number of non-decreasing sequences $(a_{1},\ldots,a_{k})$ such that $1\leq a_i\leq a_{i+1}\leq n$ is $\binom{n+k-1}{k}$.
-		\begin{theorem}
-			Let $B(n,k)$ be the number of vectors of non-decreasing sequences $(a_{1},\ldots,a_{k})$ such that $1\leq a_{1}\leq\ldots\leq a_{k}\leq n$ and $\gcd(a_{1},\ldots,a_{k})=1$. If for a positive integer $m$, $\mathbf{m}=\underbrace{(m,\ldots,m)}_{k\mbox{ times}}$ and
-				\begin{align*}
-					f(\mathbf{m})
-						& = \binom{m+k-1}{k}
-				\end{align*}
-			then we have
-				\begin{align*}
-					B(n,k)
-						& = (\mu\bullet f)(\mathbf{n},\mathbf{1})
-				\end{align*}
-		\end{theorem}
-	
-		\begin{theorem}
-			Let $S$ be the sum
-				\begin{align*}
-					S(\mathbf{x})
-						& = \sum_{1\leq a_i\leq x_i}g(\mathbf{a})^{s}
-				\end{align*}
-			where $g(\mathbf{a})=\gcd(a_{1},\ldots,a_{k})$ for the vector of positive integers $\mathbf{a}=(a_{1},\ldots,a_{k})$. Then we have
-				\begin{align*}
-					S(\mathbf{x})
-						& = \sum_{n\leq\mathbf{x}}J(n, s)\prod_{i=1}^{k}\left\lfloor\dfrac{x_i}{n}\right\rfloor\\
-						& = \sum_{n\leq\mathbf{x}}\mu(n)\left(\sum_{i\leq\mathbf{x}/n}i^{s}\prod_{j=1}^{k}\left\lfloor\dfrac{x_j}{ni}\right\rfloor\right)
-				\end{align*}
-			
-				\begin{proof}
-					The second portion of the equation follows from \autoref{thm:genassociativity} and \ref{eqn:inversejordan}.
-						\begin{align*}
-							(J\bullet f)(\mathbf{x},\mathbf{1})
-								& = (\mu\bullet (u\bullet f))(\mathbf{x},\mathbf{1})
-						\end{align*}
-					So, we will only prove the first portion. Consider the vector $(a_{1},\ldots,a_{k})$ and $g=\gcd(a_{1},\ldots,a_{k})$. Letting $a_i=gb_i$, we have that $\gcd(b_{1},\ldots,b_{k})=1$. The number of such vectors is $(\mu\bullet f)(\mathbf{x},\mathbf{1})$. Each of these vectors contribute $g^{s}$ to the sum, so for a particular $g$, the contribution of $g$ in the sum is
-						\begin{align*}
-							g^{s}(\mu\bullet f)(\mathbf{x},\mathbf{1})
-						\end{align*}
-					Then by the principle of inclusion and exclusion, we have that
-						\begin{align*}
-							S(\mathbf{x})
-								& = \sum_{n\leq\mathbf{x}}n^{s}(\mu\bullet f)(\mathbf{x},\mathbf{1})\\
-								& = (u\bullet(\mu\bullet f))(\mathbf{x},\mathbf{1})
-						\end{align*}
-				\end{proof}
-		\end{theorem}
+	Let $B(n,k)$ be the number of vectors of non-decreasing sequences $(a_{1},\ldots,a_{k})$ such that $1\leq a_{1}\leq\ldots\leq a_{k}\leq n$ and $\gcd(a_{1},\ldots,a_{k})=1$. If for a positive integer $m$, $\mathbf{m}=\underbrace{(m,\ldots,m)}_{k\mbox{ times}}$ and
+		\begin{align*}
+			f(\mathbf{m})
+				& = \binom{m+k-1}{k}
+		\end{align*}
+	then we have
+		\begin{align*}
+			B(n,k)
+				& = (\mu\bullet f)(\mathbf{n},\mathbf{1})
+		\end{align*}
+
+	Next, let $S$ be the sum
+		\begin{align*}
+			S(\mathbf{x})
+				& = \sum_{1\leq a_i\leq x_i}g(\mathbf{a})^{s}
+		\end{align*}
+	where $g(\mathbf{a})=\gcd(a_{1},\ldots,a_{k})$ for the vector of positive integers $\mathbf{a}=(a_{1},\ldots,a_{k})$. Then we have
+		\begin{align*}
+			S(\mathbf{x})
+				& = \sum_{n\leq\mathbf{x}}J(n, s)\prod_{i=1}^{k}\left\lfloor\dfrac{x_i}{n}\right\rfloor\\
+				& = \sum_{n\leq\mathbf{x}}\mu(n)\left(\sum_{i\leq\mathbf{x}/n}i^{s}\prod_{j=1}^{k}\left\lfloor\dfrac{x_j}{ni}\right\rfloor\right)
+		\end{align*}
+		
+	The second portion of the equation follows from \autoref{thm:genassociativity} and \ref{eqn:inversejordan}.
+		\begin{align*}
+			(J\bullet f)(\mathbf{x},\mathbf{1})
+				& = (\mu\bullet (u\bullet f))(\mathbf{x},\mathbf{1})
+		\end{align*}
+	So, we will only prove the first portion. Consider the vector $(a_{1},\ldots,a_{k})$ and $g=\gcd(a_{1},\ldots,a_{k})$. Letting $a_i=gb_i$, we have that $\gcd(b_{1},\ldots,b_{k})=1$. The number of such vectors is $(\mu\bullet f)(\mathbf{x},\mathbf{1})$. Each of these vectors contribute $g^{s}$ to the sum, so for a particular $g$, the contribution of $g$ in the sum is
+		\begin{align*}
+			g^{s}(\mu\bullet f)(\mathbf{x},\mathbf{1})
+		\end{align*}
+	Then by the principle of inclusion and exclusion, we have that
+		\begin{align*}
+			S(\mathbf{x})
+				& = \sum_{n\leq\mathbf{x}}n^{s}(\mu\bullet f)(\mathbf{x},\mathbf{1})\\
+				& = (u\bullet(\mu\bullet f))(\mathbf{x},\mathbf{1})
+		\end{align*}
 		
 		\begin{remark}
-			We could prove this result without using $\bullet$ convolution as well. For example, in the case $s=1$, if $d\mid g$ and $d<g$, then $g$ has already appeared in the vectors of $d$. Thus, we cannot consider any $d$ that shares a common factor with $g$. $n\leq g$ will contribute a new sum to the vectors only if $\gcd(n,g)=1$. So, the total sum of $g(\mathbf{a})$ with $\gcd(a_{1},\ldots,a_{k})=g$ is $\varphi(g)$. Generalizing this for arbitrary $s$, we can easily see that the contributed sum for $g$ is $J(g)\sum_{n\leq\min(\mathbf{x})/g}f(\mathbf{x}/n)$.
+			We could prove this result without using $\bullet$ convolution as well. For example, in the case $s=1$, if $d\mid g$ and $d<g$, then $g$ has already appeared in the vectors of $d$. Thus, we cannot consider any $d$ that shares a common factor with $g$. $n\leq g$ will contribute a new sum to the vectors only if $\gcd(n,g)=1$. So, the total sum of $g(\mathbf{a})$ with $\gcd(a_{1},\ldots,a_{k})=g$ is $\varphi(g)$. Generalizing this for arbitrary $s$, we can easily see that the contributed sum for $g$ is
+				\begin{align*}
+					J(g)\sum_{n\leq\min(\mathbf{x})/g}f(\mathbf{x}/n)
+				\end{align*}
 		\end{remark}
 \end{document}

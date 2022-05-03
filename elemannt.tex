@@ -5,10 +5,9 @@
 \usepackage{xcolor,color,fancyhdr}
 \usepackage{subfiles}
 \usepackage{hyperref,titlesec,xifthen,iftex,authoraftertitle}
-\usepackage{glossaries-extra}
 \usepackage[bibstyle=philosophy-modern,citestyle=philosophy-verbose,backend=biber,autopunct,sortcites,]{biblatex}
 
-\hypersetup{linktocpage,unicode,pdfencoding=auto,}
+\hypersetup{linktocpage,unicode,pdfencoding=auto,pdfstartview=,allcolors=black,anchorcolor=black,allbordercolors=black,hidelinks}
 \DeclareNameAlias{sortname}{given-family}
 \interfootnotelinepenalty=10000
 
@@ -20,15 +19,15 @@
 	\setmainfont[FakeBold=\fakebold,ItalicFont=ModernMT-ExtendedItalic-New.otf,ItalicFeatures={FakeBold=\fakebold,Scale=\scale},BoldItalicFont=ModernMT-ExtendedItalic-New.otf,SmallCapsFont={OldStandard-Regular.otf},SmallCapsFeatures={Letters=SmallCaps,FakeBold=\fakebold,RawFeature=+smcp,Scale=\scale},BoldFont=OldStandard-Bold.otf,BoldFeatures={FakeBold=0,Scale=\scale,SmallCapsFont=OldStandard-Bold.otf,SmallCapsFeatures={RawFeature=+smcp,Scale=\scale}},BoldItalicFeatures={FakeBold=3},]{ModernMT-Extended-New.otf}
 	\setsansfont[FakeBold=1,Scale=\scale]{Latin Modern Sans}
 	\setmonofont[FakeBold=1,Scale=\scale]{Latin Modern Mono}
-	\setmathfont[FakeBold=\fakemathbold,Scale=\scale]{NewCMMath-Book.otf}
+	\setmathfont[FakeBold=\fakemathbold,Scale=\scale]{latinmodern-math.otf}
 	\setmathfont[range={it,},FakeBold=\fakemathbold,Scale=\scale]{ModernMT-ExtendedItalic-New.otf}
 	\setmathfont[range={up,},FakeBold=\fakemathbold,Scale=\scale]{ModernMT-Extended-New.otf}
 	\setmathfont{latinmodern-math.otf}[range=bfup,FakeBold=\fakemathbold]
 	\setmathfont{ModernMT-ExtendedItalic-New.otf}[range=bfit,FakeBold=\fakemathbold]
-	\setmathfont{texgyrepagella-math.otf}[range={"0028,"0029,"005B,"005D,"007B,"007D,}]
+	\setmathfont{NewCMMath-Regular.otf}[range={"0028,"0029,"005B,"005D,"007B,"007D,}]%NewCMMath-Regular.otf,texgyrepagella-math.otf
 	\setmathfont{OldStandard-Regular.otf}[range={\partial},FakeBold=\fakemathbold]
 	
-	\newfontfamily{\bask}{ModernExtT-Theano.otf}
+	\newfontfamily{\sumfont}{lmromanslant17-regular.otf}% GFSSolomos.otf,lmroman17-regular.otf,lmromanslant17-regular.otf
 	\makeatletter
 	\RenewDocumentCommand{\sum@}{}{\DOTSB\baskervillesum}
 	\AtBeginDocument{%
@@ -36,14 +35,15 @@
 	}
 	\NewDocumentCommand{\baskervillesum}{}{%
 		\mathchoice
-		{\makebaskervillesum{1.8}}% displaystyle
-		{\makebaskervillesum{1.2}}% textstyle
+		{\makebaskervillesum{2}}% displaystyle
+		{\makebaskervillesum{1.5}}% textstyle
 		{\makebaskervillesum{1}}% scriptstyle
 		{\makebaskervillesum{0.7}}% scriptscriptstyle
 	}
 	\NewDocumentCommand{\makebaskervillesum}{m}{%
-		\vcenter{\hbox{\scalebox{#1}{\bask Σ}}}%
+		\vcenter{\hbox{\scalebox{#1}{\sumfont Σ}}}%
 	}
+	\newfontfamily{\prodfont}{ModernExtT-Theano.otf}%OldStandard-Italic.otf,ModernExtT-Theano.otf
 	\makeatletter
 	\RenewDocumentCommand{\prod@}{}{\DOTSB\baskervilleprod}
 	\AtBeginDocument{%
@@ -51,15 +51,15 @@
 	}
 	\NewDocumentCommand{\baskervilleprod}{}{%
 		\mathchoice
-		{\makebaskervilleprod{1.5}}% displaystyle
-		{\makebaskervilleprod{1.2}}% textstyle
+		{\makebaskervilleprod{1.8}}% displaystyle
+		{\makebaskervilleprod{1.3}}% textstyle
 		{\makebaskervilleprod{1}}% scriptstyle
 		{\makebaskervilleprod{0.7}}% scriptscriptstyle
 	}
 	\NewDocumentCommand{\makebaskervilleprod}{m}{%
-		\vcenter{\hbox{\scalebox{#1}{\bask ∏}}}%
+		\vcenter{\hbox{\scalebox{#1}{\prodfont ∏}}}%
 	}
-	\newfontfamily\intfont{Old Standard Italic}
+	\newfontfamily\intfont{latinmodern-math.otf}% OldStandard-Italic.otf,,Erewhon-Math.otf
 	\makeatletter
 	\NewDocumentCommand{\int@}{}{\DOTSB\baskervilleint}
 	\AtBeginDocument{%
@@ -67,8 +67,8 @@
 	}
 	\NewDocumentCommand{\baskervilleint}{}{%
 		\mathchoice
-		{\makebaskervilleint{1.5}}% displaystyle
-		{\makebaskervilleint{1.2}}% textstyle
+		{\makebaskervilleint{1.4}}% displaystyle
+		{\makebaskervilleint{1.1}}% textstyle
 		{\makebaskervilleint{1}}% scriptstyle
 		{\makebaskervilleint{0.7}}% scriptscriptstyle
 	}
@@ -77,11 +77,12 @@
 	}
 	\defaultfontfeatures{Mapping=tex-text,Ligatures=Tex}
 \else
-	%\usepackage{pdfrender, xcolor}
-	\renewcommand*\rmdefault{cmdh}
+	\usepackage{pdfrender, xcolor}
 	\usepackage[T1]{fontenc}
-	%\pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.1pt}
-	%\makeatletter\let\normalrender\PdfRender@NormalColorHook\let\PdfRender@NormalColorHook\@empty\newcommand*{\textnormalrender}[1]{\begingroup\normalrender#1\endgroup}\makeatother
+	\usepackage{baskervillef}
+	\usepackage[baskerville]{newtxmath}
+	\pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.2pt}
+	\makeatletter\let\normalrender\PdfRender@NormalColorHook\let\PdfRender@NormalColorHook\@empty\newcommand*{\textnormalrender}[1]{\begingroup\normalrender#1\endgroup}\makeatother
 \fi
 
 \renewcommand{\contentsname}{\centering\bfseries\scshape Contents}
@@ -91,7 +92,7 @@
 \renewcommand{\cftsubsecfont}{\normalsize\normalfont\scshape}
 \renewcommand{\cftpartfont}{\normalsize\normalfont\scshape\bfseries}
 
-\usepackage[toc,nopostdot,]{glossaries}
+\usepackage[toc,nopostdot,automake=true,nonumberlist,order=word]{glossaries}
 \usepackage{makeidx}
 
 \usepackage{nomencl}
@@ -101,7 +102,7 @@
 \makeindex
 \makeglossaries
 
-\titleformat{\chapter}[display]{\bfseries\scshape\Huge}{}{1ex}{\centering\titlerule\vspace{1ex}\ifthenelse{\value{chapter}>0}{$\S\S$\thechapter\;}{}}[\vspace{1ex}\titlerule]
+\titleformat{\chapter}[display]{\bfseries\scshape\Huge}{}{1ex}{\centering\titlerule\vspace{1ex}\ifthenelse{\value{chapter}>0}{$\S$\thechapter\;}{}}[\vspace{1ex}\titlerule]
 \titleformat{\section}[display]{\bfseries\scshape\LARGE}{}{1ex}{\centering\ifthenelse{\value{section}>0}{$\S\S$\thesection\;}{}}[\titlerule]
 \titleformat{\subsection}[display]{\bfseries\scshape\Large}{}{1ex}{\centering\ifthenelse{\value{section}>0}{$\S\S\S$\thesection\;}{}}[\titlerule]
 
@@ -115,11 +116,8 @@
 \newcommand{\curlybrace}[1]{\left\{#1\right\}}
 \newcommand{\squarebracket}[1]{\left[#1\right]}
 \newcommand{\bigo}[1]{O\parenthesis{#1}}
-\newcommand{\smallo}[1]{o\parenthesis{#1}}
-\newcommand{\ffirst}[1]{f\parenthesis{#1}}
+\DeclareMathOperator{\ord}{ord}
 \newcommand{\F}[1]{\mathbb{F}_{#1}}
-\newcommand{\Q}[1]{\mathbb{Q}_{#1}}
-\newcommand{\Z}[1]{\mathbb{Z}_{#1}}
 \DeclareMathOperator{\rad}{rad}
 \DeclareMathOperator{\lcm}{lcm}
 \DeclareMathOperator{\GL}{GL}
@@ -136,16 +134,15 @@
 \lhead{ \fancyplain{}{\small$\S$\thechapter. \ \textsc{\leftmark}} }
 \rfoot{ \fancyplain{}{\thepage}}
 
-\newtheorem*{remark}{Remark}
+\newtheorem*{remark}{\textit{Remark}}
 
 \title{ELEMENTARY ANALYTIC NUMBER THEORY}
 \author{Masum Billal}
 \date{}
 \defbibfilter{books}{type=book or type=inbook}
 
-\usepackage{graphicx,pagecolor}
-\usepackage{eso-pic}
-\definecolor{platinum}{rgb}{0.9, 0.89, 0.89}
+\usepackage{graphicx,}
+%\usepackage{eso-pic}
 
 \addbibresource{ref.bib}
 \subfile{glossary.tex}
@@ -169,7 +166,7 @@
 	\subfile{tchebycheff.tex}
 	\subfile{sieve.tex}
 	\subfile{prime.tex}
-
+	
 	\backmatter
 	\printglossary[title=Glossary,]
 	\printbibliography[type=article,title=Articles,heading=bibnumbered]
