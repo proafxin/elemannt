@@ -3,7 +3,7 @@
 \begin{document}
 	\section{Dirichlet Series and Dirichlet Convolution}\label{sec:zeta}
 	We encountered $\zeta$ when we tried to develop an asymptotic for $S_{k}(x)$. The function $\zeta$ has quite a rich history. Today $\zeta$ is mostly called Riemann's zeta function, however, Euler is the first one to investigate this function. Euler started working on $\zeta$ around $1730$. During that period, the value of $\zeta(2)$ was unknown and of high interest among prominent mathematicians. \textcite{ayoub_1974} is a very good read on this subject. Euler's first contribution in this matter is \textcite{euler_1738} where he proves that $\zeta(2)\approx 1.644934$. The paper was first presented to the St. Petersburg Academy on March 5, $1731$ and republished in \textcite{euler_2020_a}. \textcite{euler_1744} (republished in \textcite{euler_2020_b}) proves the following fundamental result which essentially gives a new proof of infinitude of primes.
-		\begin{theorem}[Euler's identity]
+		\begin{theorem}[Euler Product Identity]\label{thm:eulerprod}
 			Let $s$ be a positive integer. Then
 				\begin{align*}
 					\zeta(s)
@@ -29,13 +29,26 @@
 			\sum_{n\geq 1}a_{n}e^{-\lambda_{n}s}\label{eqn:gendir}
 		\end{align}
 	where $(\lambda_{n})$ is a strictly increasing sequence of real numbers that tend to infinity. Following this, \textcite{hardy_riesz_1915} calls $\mathfrak{D}$ the \textit{ordinary Dirichlet series} when $\lambda_{n}=\log{n}$. \textcite{lejeune_1879} considers real values of $s$ and proves a number of important theorems. As Hardy states, \textcite{jensen_1884,jensen_1888} discusses the first theorems where $s$ is complex involving the nature of convergence of \ref{eqn:gendir}. \textcite{cahen_1894} makes the \textit{first attempt to construct a systematic theory of the function $\mathfrak{D}_{f}(s)$ although much of the analysis which it contains is open to serious criticism, has served---and possibly just for that reason---as the starting point of most of the later researches in the subject.}
-		\begin{definition}[Convergence]
-			
+		\begin{definition}[Euler Product]
+			Let $s$ be a complex number and $f$ be a bounded multiplicative function. Then \index{Euler Product}\textit{Euler product} is a special case of Dirichlet series that can be written as
+				\begin{align*}
+					\prod_{p}\sum_{i\geq 1}\dfrac{f(p^{i})}{p^{is}}
+				\end{align*}
+			where $p$ extends over all primes. From the fundamental theorem of arithmetic,
+				\begin{align*}
+					\sum_{n\geq 1}\dfrac{f(n)}{n^{s}}
+						& = \prod_{p}\sum_{i\geq 1}\dfrac{f(p^{i})}{p^{is}}
+				\end{align*}
+			If $f$ is completely multiplicative, then the sum inside the product becomes a geometric series and we have
+				\begin{align*}
+					\sum_{n\geq 1}\dfrac{f(n)}{n^{s}}
+						& = \prod_{p}\dfrac{1}{1-\dfrac{f(p)}{p^{s}}}
+				\end{align*}
 		\end{definition}
-	\textcite{jensen_1884} proves the following theorem of fundamental importance.
-		\begin{theorem}
-			Suppose $\mathfrak{D}_{f}(s)$ is convergent for the complex number $s=\omega+it$, then it is convergent for any value of $s$ for which $\Re(s)>\omega$.
-		\end{theorem}
+	%\textcite{jensen_1884} proves the following theorem of fundamental importance.
+		%\begin{theorem}
+		%	Suppose $\mathfrak{D}_{f}(s)$ is convergent for the complex number $s=\omega+it$, then it is convergent for any value of $s$ for which $\Re(s)>\omega$.
+	%	\end{theorem}
 	Consider the Dirichlet series for two arithmetic functions $f$ and $g$.
 		\begin{align*}
 			\mathfrak{D}_{f}(s)

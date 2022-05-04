@@ -2,4 +2,71 @@
 
 \begin{document}
 	\chapter{Theorems on Prime Numbers}\label{ch:primes}
+	We will start with the sum of reciprocals of primes. \textcite{euler_1737} proved that the sum of reciprocals of all primes diverges although his method was a bit questionable.
+		\begin{theorem}[Divergence of sum of reciprocals of primes]
+			The sum
+				\begin{align*}
+					\sum_{p}\dfrac{1}{p}
+						& = \dfrac{1}{2}+\dfrac{1}{3}+\dfrac{1}{5}+\ldots
+				\end{align*}
+			where the sum is taken over all primes diverges.
+		\end{theorem}
+	This proof is due to \textcite[Part Two. Chapter I, Theorem 114]{landau_1969}(this is a translation of \textcite{landau_1927}. It contains the second half of the first volume and volumes 2 and 3.).
+		\begin{proof}
+			From \nameref{thm:harmonicsum}, we already know that
+				\begin{align*}
+					\sum_{n\geq 1}\dfrac{1}{n}
+						& = \prod_{p}\dfrac{1}{1-\dfrac{1}{p}}
+				\end{align*}
+			and that this sum diverges. Now,
+				\begin{align*}
+					\log\parenthesis{\sum_{n\geq 1}\dfrac{1}{n}}
+						& = \sum_{p}\parenthesis{-\log\parenthesis{1-\dfrac{1}{p}}}
+				\end{align*}
+			Setting $\eta:=1/p$ and using
+				\begin{align*}
+					\log\parenthesis{1-x}
+						& = -x-\dfrac{x^{2}}{2}-\dfrac{x^{3}}{3}-\ldots
+				\end{align*}
+			we have
+				\begin{align*}
+					\log\parenthesis{\sum_{n\geq 1}\dfrac{1}{n}}
+						& = \sum_{p}\parenthesis{\eta+\dfrac{\eta^{2}}{2}+\dfrac{\eta^{3}}{3}+\ldots}\\
+						& < \sum_{p}\parenthesis{\eta+\eta^{2}+\ldots}\\
+						& = \sum_{p}\dfrac{\eta}{1-\eta}\\
+						& < 2\sum_{p}\eta\\
+						& = 2\sum_{p}\dfrac{1}{p}
+				\end{align*}
+			If $\sum_{p}\frac{1}{p}$ does not diverge, then
+				\begin{align*}
+					\log\parenthesis{\sum_{n\geq 1}\dfrac{1}{n}}
+						& < C
+				\end{align*}
+			for a constant $C$. Thus,
+				\begin{align*}
+					\sum_{n\geq 1}\dfrac{1}{n}
+						& <e^{C}
+				\end{align*}
+			and does not converge either. This is impossible. So, the original sum must diverge.
+		\end{proof}
+	\textcite{mertens_1874} actually proved that
+		\begin{align*}
+			\sum_{p\leq x}\dfrac{1}{p}
+				& = \log{\log{x}}
+		\end{align*}
+	This is the first formal proof since Euler's method wasn't exactly clean. \textcite[Page 228]{euler_1748} uses
+		\begin{align*}
+			\log\parenthesis{\dfrac{1}{1-x}}
+				& = \sum_{n\geq 1}\dfrac{x^{n}}{n}
+		\end{align*}
+	and sets $x:=1$ to conclude
+		\begin{align*}
+			\sum_{n\geq 1}\dfrac{1}{n}
+				& = \infty
+		\end{align*}
+	This is indeed true, however, Euler's statement is vague. Today it is known that
+		\begin{align*}
+			\sum_{p\leq x}\dfrac{1}{p}
+				& \geq \log{\log\parenthesis{x+1}}-\dfrac{\pi^{2}}{6}
+		\end{align*}
 \end{document}

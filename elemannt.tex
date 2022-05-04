@@ -20,15 +20,17 @@
 	\setsansfont[FakeBold=1,Scale=\scale]{Latin Modern Sans}
 	\setmonofont[FakeBold=1,Scale=\scale]{Latin Modern Mono}
 	\setmathfont[FakeBold=\fakemathbold,Scale=\scale]{latinmodern-math.otf}
+	
 	\setmathfont[range={it,},FakeBold=\fakemathbold,Scale=\scale]{ModernMT-ExtendedItalic-New.otf}
 	\setmathfont[range={up,},FakeBold=\fakemathbold,Scale=\scale]{ModernMT-Extended-New.otf}
-	\setmathfont{texgyrepagella-math.otf}[range={bb},FakeBold=\fakemathbold]
 	\setmathfont{latinmodern-math.otf}[range={bfup,},FakeBold=\fakemathbold]
-	\setmathfont{ModernMT-ExtendedItalic-New.otf}[range=bfit,FakeBold=\fakemathbold]
-	\setmathfont{texgyrepagella-math.otf}[range={"0028,"0029,"005B,"005D,"007B,"007D,bb},FakeBold=0]% NewCMMath-Regular.otf,texgyrepagella-math.otf
-	\setmathfont{OldStandard-Regular.otf}[range={\partial,},FakeBold=\fakemathbold]
+	\setmathfont{ModernMT-ExtendedItalic-New.otf}[range={bfit,},FakeBold=\fakemathbold]
+	\setmathfont{texgyrepagella-math.otf}[range={"0028,"0029,"005B,"005D,"007B,"007D,},FakeBold=0]% NewCMMath-Regular.otf,texgyrepagella-math.otf
+	\setmathfont{OldStandard-Regular.otf}[range={\partial,"00A7,},FakeBold=\fakemathbold]
+	\setmathfont{NewCMMath-Book.otf}[range={bb,},FakeBold=\fakemathbold]
+	\setmathfont{Theano Didot Regular V1.otf}[range={"03BB},FakeBold=\fakemathbold]
 	
-	\newfontfamily{\sumfont}{lmromanslant17-regular.otf}[FakeBold=0]% GFSSolomos.otf,lmroman17-regular.otf,lmromanslant17-regular.otf
+	\newfontfamily{\sumfont}{Theano Didot Regular V1.otf}[FakeBold=0]% GFSSolomos.otf,lmroman17-regular.otf,lmromanslant17-regular.otf
 	\makeatletter
 	\RenewDocumentCommand{\sum@}{}{\DOTSB\baskervillesum}
 	\AtBeginDocument{%
@@ -134,7 +136,7 @@
 \rhead{ \fancyplain{}{\small\textit{{\MyAuthor}}} }
 \lhead{ \fancyplain{}{\small$\S$\thechapter. \ \textsc{\leftmark}} }
 \rfoot{ \fancyplain{}{\thepage}}
-
+\setlength{\headheight}{15pt}
 \newtheorem*{remark}{\textit{Remark}}
 
 \title{ELEMENTARY ANALYTIC NUMBER THEORY}
@@ -165,8 +167,8 @@
 	\subfile{dirichlet.tex}
 	\subfile{genconv.tex}
 	\subfile{tchebycheff.tex}
-	\subfile{sieve.tex}
 	\subfile{prime.tex}
+	\subfile{sieve.tex}
 	
 	\backmatter
 	\printglossary[title=Glossary,]
