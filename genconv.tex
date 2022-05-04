@@ -1,13 +1,13 @@
 \documentclass[elemannt.tex]{subfile}
 
 \begin{document}
-	\section{Generalization of Generalized Convolution}
+	\section{Generalization of General Convolution}
 	Let $\mathbf{x}=(x_{1},\ldots,x_{k})$ and $\mathbf{a}=(a_{1},\ldots,a_{n})$ be vectors of positive real numbers. $\{\sqrt[\mathbf{a}]{\mathbf{x}}\}$ denotes the largest positive integer $n$ for which $n^{a_{i}}\leq x_{i}$ for some $1\leq i\leq k$. That is,
 		\begin{align*}
 			\max\{\sqrt[\mathbf{a}]{\mathbf{x}}\}
 				& = \max\{\floor{\sqrt[a_{1}]{x_{1}}},\ldots,\floor{\sqrt[a_{k}]{x_{k}}}\}
 		\end{align*}
-	For a positive integer $n$, let $n^{\mathbf{a}}\leq\mathbf{x}$ denote that $n\leq\{\sqrt[\mathbf{a}]{\mathbf{x}}\}$. 
+	For a positive integer $n$, let $n^{\mathbf{a}}\leq\mathbf{x}$ denote that $n\leq\max\{\sqrt[\mathbf{a}]{\mathbf{x}}\}$. 
 	
 	Let $f$ be a real or complex valued function defined in $k$ variables. For a vector of positive real numbers $\mathbf{a}$, let $\mathbf{x}/\mathbf{a}$ denote the vector $(x_{1}/a_{1},\ldots,x_{k}/a_{1})$, $\floor{\mathbf{x}/\mathbf{a}}$ denote the vector $(\floor{x_{1}/a_{1}},\ldots,\floor{x_{k}/a_{k}})$ and
 		\begin{align*}
@@ -27,7 +27,7 @@
 				\end{align}
 		\end{definition}
 	We have the next theorem about the associativity of $\bullet$ convolution.
-		\begin{theorem}[Associativity of generalized convolution]\label{thm:genassociativity}
+		\begin{theorem}[Associativity of Generalized Convolution]\label{thm:genassociativity}
 			Let $\mathbf{x}$ be a vector of $k$ positive real numbers, $\alpha,\beta$ be arithmetic functions, $a$ be a fixed positive integer and $f(x_{1},\ldots,x_{k})$ be a real or complex valued multivariate function. Then
 				\begin{align*}
 					(\alpha\bullet(\beta\bullet f))(\mathbf{x}, \mathbf{a})
@@ -55,7 +55,7 @@
 				\end{proof}
 		\end{theorem}
 	
-		\begin{theorem}[Inversion of generalized convolution]\label{thm:geninverse}
+		\begin{theorem}[Inversion of Generalized Convolution]\label{thm:geninverse}
 			Let $\alpha$ be an arithmetic function and $f$ be a real or complex valued multivariate function. If
 				\begin{align*}
 					g(\mathbf{x}, \mathbf{a})
@@ -72,10 +72,10 @@
 						\begin{align*}
 							(I\bullet f)(\mathbf{x},\mathbf{a})
 								& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}I(n)f(\mathbf{x},\mathbf{a})\\
-								& = I(1)f(\mathbf{x},\mathbf{a})+\sum_{\substack{n^{\mathbf{a}}\leq{\mathbf{x}}\\n>1}}I(n)f(\mathbf{x},a\mathbf{a})\\
+								& = I(1)f(\mathbf{x},\mathbf{a})+\sum_{\substack{n^{\mathbf{a}}\leq{\mathbf{x}}\\n>1}}I(n)f(\mathbf{x},\mathbf{a})\\
 								& = f(\mathbf{x},\mathbf{a})
 						\end{align*}
-					Since $g=\alpha\bullet f$, we will use \autoref{thm:genassociativity} on $\alpha^{-1}$ and $g$. We have
+					Since $g=\alpha\bullet f$, we will use \nameref{thm:genassociativity} on $\alpha^{-1}$ and $g$. We have
 						\begin{align*}
 							(\alpha^{-1}\bullet(\alpha\bullet f))(\mathbf{x},\mathbf{a})
 								& = ((\alpha^{-1}\ast\alpha)\bullet f)(\mathbf{x},\mathbf{a})
@@ -91,7 +91,7 @@
 					Thus, we have the theorem.
 				\end{proof}
 		\end{theorem}
-	If we set $\mathbf{a}=(1),k=1$ and $\mathbf{x}=(x)$ for a real number $x$ in \autoref{thm:genassociativity} and \autoref{thm:geninverse}, we have the usual generalized convolution and inverse convolution.
+	If we set $\mathbf{a}=(1),k=1$ and $\mathbf{x}=(x)$ for a real number $x$ in \nameref{thm:genassociativity} and \nameref{thm:geninverse}, we have the usual \nameref{thm:genconv} and \nameref{thm:geninverse}.
 		\begin{theorem}
 			Let $f$ and $g$ be arithmetic functions and $h=f\ast g$. If
 				\begin{align*}
@@ -150,7 +150,7 @@
 			\prod_{d\mid n}J(d)
 				& = n^{s}
 		\end{align*}
-	Using M\"{o}bius inversion, we also get that
+	Using \nameref{thm:mobinv}, we also get that
 		\begin{align}
 			\mu\ast u
 				& = J\label{eqn:inversejordan}
@@ -201,8 +201,7 @@
 				& = \sum_{n\leq\mathbf{x}}J(n, s)\prod_{i=1}^{k}\left\lfloor\dfrac{x_i}{n}\right\rfloor\\
 				& = \sum_{n\leq\mathbf{x}}\mu(n)\left(\sum_{i\leq\mathbf{x}/n}i^{s}\prod_{j=1}^{k}\left\lfloor\dfrac{x_j}{ni}\right\rfloor\right)
 		\end{align*}
-		
-	The second portion of the equation follows from \autoref{thm:genassociativity} and \ref{eqn:inversejordan}.
+	The second portion of the equation follows from \nameref{thm:genassociativity} and \autoref{eqn:inversejordan}.
 		\begin{align*}
 			(J\bullet f)(\mathbf{x},\mathbf{1})
 				& = (\mu\bullet (u\bullet f))(\mathbf{x},\mathbf{1})
