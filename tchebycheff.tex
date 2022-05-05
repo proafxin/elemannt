@@ -12,22 +12,5 @@
 			\lim\limits_{x\to\infty}\dfrac{\pi(x)}{\dfrac{x}{\log{x}}}
 				& = 1
 		\end{align*}
-	\textcite{tchebycheff_1852} is the first one to make any substantial progress on the matter though we will not discuss his findings right now.
-		\begin{definition}[Tschebischeff's theta function]
-			Tschebischeff function of the first kind or \index{Tschebischeff's theta function}\textit{Tschebischeff's theta function} is defined as
-				\begin{align*}
-					\vartheta(x)
-						& = \sum_{p\leq x}\log{p}
-				\end{align*}
-		\end{definition}
-
-		\begin{definition}[Tschebischeff's psi function]
-			Tschebischeff function of the second kind or \index{Tschebischeff's psi function}\textit{Tschebischeff's psi function} is defined as
-				\begin{align*}
-					\psi(x)
-						& = \sum_{n\leq x}\Lambda(n)\\
-						& = \sum_{p^{e}\leq x}\log{p}\\
-						& = \sum_{p\leq x}\floor{\dfrac{\log{x}}{\log{p}}}\log{p}
-				\end{align*}
-		\end{definition}
+	\textcite{tchebycheff_1852} is the first one to make any substantial progress on the matter. But instead of going straight into discussing the findings of Tschebischeff, we will first try to understand the reasoning behind his approach. It is very difficult to do so and there is no real concrete intuition behind it. But we will make an attempt anyway. Imagine you are given the numbers from $1$ to $n$. If one of these numbers was missing, we could find the missing number by subtracting the sum of the remaining numbers from the sum $1+\ldots+n$. Now what happens if two numbers go missing? Does the same technique apply? Let us give it a try. If $a$ and $b$ are the missing numbers, then we only know that the subtracted value is going to be $a+b$. However, there are $a+b-1$ possible pairs of positive integers for which $a+b$ can be achieved. So, how do we know exactly which pair is the answer? Definitely we need another clue for this. Now, if you were allowed to ask questions for getting clues (directly asking for the numbers is not allowed obviously), what kind of questions would you want to ask? Assume that you are allowed only one question in this scenario regarding only one of the numbers (again, except asking what the actual number is). One idea would be to ask what the multiple of that number (say, multiple of $3$) is. But this is again asking for the numbers directly. So assume that this type of questioning is also not allowed either. But now we can ask questions such as what is the sum when the first number multiplied by $3$ is added to the second number? We can form equations from such questions and then easily find the answers. Let us now make this a little more challenging. Imagine the same problem, except now you do not have to find the numbers explicitly. Rather you just have to find the number of missing numbers. However, you can ask fewer questions this time. What should be our approach now? If we just keep randomly asking questions to form linear equations like before, we will run out of questions sooner.
 \end{document}
