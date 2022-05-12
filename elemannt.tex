@@ -4,24 +4,40 @@
 \usepackage[left=.8in,right=.8in,top=.5in,]{geometry}
 \usepackage{xcolor,color,fancyhdr,relsize}
 \usepackage{subfiles}
-\usepackage{hyperref,titlesec,xifthen,iftex,authoraftertitle,titletoc}
-\usepackage[bibstyle=philosophy-modern,citestyle=philosophy-verbose,backend=biber,autopunct,sortcites,]{biblatex}
 
-\usepackage[]{titletoc,tocloft}
-\renewcommand{\thechapter}{\Roman{chapter}}
+\usepackage[]{titletoc,fmtcount,tocloft}
+
+\renewcommand{\thechapter}{\Numberstring{chapter}}
 \renewcommand{\contentsname}{\parbox{\linewidth}{\centerline{\LARGE CONTENTS}~\\[-1.5cm]}}
 
-\renewcommand{\thepart}{\NUMBERstring{part}}
+\renewcommand{\thesection}{$\S$\Roman{section}\hspace{.1em}:\hspace{.2em}}
+%\addtolength{\cftchapnumwidth}{70pt}
+\addtolength{\cftsecnumwidth}{30pt}
 
-\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
-\renewcommand{\thesection}{$\S$\arabic{section}\hspace{.1em}:\hspace{.2em}}
-\renewcommand{\cftsecfont}{\normalsize\bfseries}
-\renewcommand{\cftchappresnum}{\normalfont\textsc{Chapter}\hspace{.2em}}
-\renewcommand{\thechapter}{\Roman{chapter}\hspace{.1em}}
-\setcounter{tocdepth}{1}
-\setcounter{secnumdepth}{2}
-\addtolength{\cftchapnumwidth}{60pt}
-\addtolength{\cftsecnumwidth}{10pt}
+
+\makeatletter
+\renewcommand*\l@chapter[2]{%
+	\ifnum \c@tocdepth >\m@ne\relax
+	\addpenalty{-\@highpenalty}%
+	\addvspace{1.0em \@plus\p@}%
+	\setlength\@tempdima{3em}%
+	\begingroup
+	\def\numberline##1{\bfseries\xdef\@chapternumber{##1}}%
+	\setbox0=\vbox{\centering\strut #1}% Could be more than one line
+	\centering
+	\leavevmode
+	\hyperlink{\Hy@tocdestname}{\vspace{.5\baselineskip}\bfseries \chaptername\hspace{.5em}\@chapternumber}\\
+	\unvbox0
+	\par
+	\nobreak
+	\global\@nobreaktrue
+	\everypar{\global\@nobreakfalse\everypar{}}%
+	\endgroup
+	\fi}
+\makeatother
+
+\usepackage{hyperref,titlesec,xifthen,iftex,authoraftertitle,titletoc}
+\usepackage[bibstyle=philosophy-modern,citestyle=philosophy-verbose,backend=biber,autopunct,sortcites,]{biblatex}
 
 \hypersetup{linktocpage,unicode,pdfencoding=auto,pdfstartview=,allcolors=black,anchorcolor=black,allbordercolors=black,hidelinks}
 \DeclareNameAlias{sortname}{given-family}
@@ -113,11 +129,11 @@
 \makeindex
 \makeglossaries
 
-\titleformat{\chapter}[display]{\bfseries\scshape\Huge}{}{1ex}{\centering\titlerule\vspace{1ex}\ifthenelse{\value{chapter}>0}{$\S$\thechapter\;}{}}[\vspace{1ex}\titlerule]
-\titleformat{\section}[display]{\bfseries\scshape\LARGE}{}{1ex}{\centering\ifthenelse{\value{section}>0}{$\S\S$\thesection\;}{}}[\titlerule]
-\titleformat{\subsection}[display]{\bfseries\scshape\Large}{}{1ex}{\centering\ifthenelse{\value{section}>0}{$\S\S\S$\thesection\;}{}}[\titlerule]
+\titleformat{\chapter}[display]{\bfseries\scshape\Huge}{}{1ex}{\centering\titlerule\vspace{1ex}\ifthenelse{\value{chapter}>0}{}{}}[\vspace{1ex}\titlerule]
+\titleformat{\section}[display]{\bfseries\scshape\LARGE}{}{1ex}{\centering\ifthenelse{\value{section}>0}{\thesection\;}{}}[\titlerule]
+\titleformat{\subsection}[display]{\bfseries\scshape\Large}{}{1ex}{\centering\ifthenelse{\value{section}>0}{$\S\S$\thesubsection\;}{}}[\titlerule]
 
-\newtheorem{theorem}{\textsc{\textbf{Theorem}}}[chapter]
+\newtheorem{theorem}{\textsc{\textbf{Theorem}}}
 \theoremstyle{definition}
 \newenvironment{definition}[1][]{\par\medskip\noindent \textsc{\textbf{{\ifthenelse{\isempty{#1}}{Definition.}{#1.}}}} \rmfamily}{\medskip}
 
@@ -138,19 +154,18 @@
 \renewcommand*{\sectionautorefname}{Section}
 \renewcommand*{\subsectionautorefname}{Subsection}
 
-%\renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
-\pagestyle{fancyplain}
-\fancyhf{}
-\rhead{ \fancyplain{}{\small\textit{{\MyAuthor}}} }
-\lhead{ \fancyplain{}{\small$\S$\thechapter. \ \textsc{\leftmark}} }
-\rfoot{ \fancyplain{}{\thepage}}
-\setlength{\headheight}{15pt}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
+\renewcommand{\sectionmark}[1]{\markboth{#1}{#1}}
+
+\fancypagestyle{fancy}{
+	\fancyhf{}
+	\fancyhead[CE]{\small\textit{{\MyAuthor}}}
+	\fancyfoot[LE,RO]{\thepage}
+	\fancyhead[CO]{\small Chapter \thechapter,\hspace{.4em}\thesection\hspace{.1em}\nouppercase\rightmark}
+}
+%\setlength{\headheight}{30pt}
 
 \newtheorem*{remark}{\textit{Remark}}
-%\renewcommand{\thechapter}{\Roman{chapter}}
-%\titlecontents{part}[0pt]{\addvspace{2pc}\centering\large}{\parbox[t][3ex][t]{\linewidth}{\centering\partname~\thecontentslabel} \bfseries}{}{}[\medskip]
-%\titlecontents{chapter}[0pt]{\addvspace{2pc}\centering\large}{\parbox[t][3ex][t]{\linewidth}{\centering\MakeUppercase{\chaptername}~\thecontentslabel} \bfseries}{}{}[\medskip]
-
 
 \title{ELEMENTARY ANALYTIC NUMBER THEORY}
 \author{Masum Billal}
@@ -172,12 +187,10 @@
     \tableofcontents
     \subfile{nomencl.tex}
     \printnomenclature
-    \renewcommand{\thechapter}{\arabic{chapter}}
+    %\renewcommand{\thechapter}{\arabic{chapter}}
     \mainmatter
-    \pagestyle{fancyplain}
-	\renewcommand{\thechapter}{\arabic{chapter}}
-	\renewcommand{\thesection}{\thechapter.\arabic{section}}
-	\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+    \pagestyle{fancy}
+	%\renewcommand{\thechapter}{\arabic{chapter}}
 	\setcounter{chapter}{0}
 	\subfile{arith.tex}
 	\subfile{zeta.tex}
