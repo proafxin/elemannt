@@ -145,7 +145,7 @@
 			u(n)
 				& = n^s
 		\end{align*}
-	From \autoref{eqn:jordansummatory},
+	From \eqref{eqn:jordansummatory},
 		\begin{align*}
 			\prod_{d\mid n}J(d)
 				& = n^{s}
@@ -196,17 +196,17 @@
 				& = \sum_{1\leq a_i\leq x_i}g(\mathbf{a})^{s}
 		\end{align*}
 	where $g(\mathbf{a})=\gcd(a_{1},\ldots,a_{k})$ for the vector of positive integers $\mathbf{a}=(a_{1},\ldots,a_{k})$. Then we have
-		\begin{align*}
+		\begin{align}
 			S(\mathbf{x})
-				& = \sum_{n\leq\mathbf{x}}J(n, s)\prod_{i=1}^{k}\left\lfloor\dfrac{x_i}{n}\right\rfloor\\
-				& = \sum_{n\leq\mathbf{x}}\mu(n)\left(\sum_{i\leq\mathbf{x}/n}i^{s}\prod_{j=1}^{k}\left\lfloor\dfrac{x_j}{ni}\right\rfloor\right)
-		\end{align*}
-	The second portion of the equation follows from \nameref{thm:genassociativity} and \autoref{eqn:inversejordan}.
+				& = \sum_{n\leq\mathbf{x}}J_{s}(n)\prod_{i=1}^{k}\left\lfloor\dfrac{x_i}{n}\right\rfloor\label{eqn:Sx1}\\
+				& = \sum_{n\leq\mathbf{x}}\mu(n)\left(\sum_{i\leq\mathbf{x}/n}i^{s}\prod_{j=1}^{k}\left\lfloor\dfrac{x_j}{ni}\right\rfloor\right)\label{eqn:Sx2}
+		\end{align}
+	\eqref{eqn:Sx1} follows from \nameref{thm:genassociativity} and \eqref{eqn:inversejordan}.
 		\begin{align*}
-			(J\bullet f)(\mathbf{x},\mathbf{1})
+			(J_{s}\bullet f)(\mathbf{x},\mathbf{1})
 				& = (\mu\bullet (u\bullet f))(\mathbf{x},\mathbf{1})
 		\end{align*}
-	So, we will only prove the first portion. Consider the vector $(a_{1},\ldots,a_{k})$ and $g=\gcd(a_{1},\ldots,a_{k})$. Letting $a_i=gb_i$, we have that $\gcd(b_{1},\ldots,b_{k})=1$. The number of such vectors is $(\mu\bullet f)(\mathbf{x},\mathbf{1})$. Each of these vectors contribute $g^{s}$ to the sum, so for a particular $g$, the contribution of $g$ in the sum is
+	So, we will only prove \eqref{eqn:Sx2}. Consider the vector $(a_{1},\ldots,a_{k})$ and $g=\gcd(a_{1},\ldots,a_{k})$. Letting $a_i=gb_i$, we have that $\gcd(b_{1},\ldots,b_{k})=1$. The number of such vectors is $(\mu\bullet f)(\mathbf{x},\mathbf{1})$. Each of these vectors contribute $g^{s}$ to the sum, so for a particular $g$, the contribution of $g$ in the sum is
 		\begin{align*}
 			g^{s}(\mu\bullet f)(\mathbf{x},\mathbf{1})
 		\end{align*}
@@ -220,7 +220,7 @@
 		\begin{remark}
 			We could prove this result without using $\bullet$ convolution as well. For example, in the case $s=1$, if $d\mid g$ and $d<g$, then $g$ has already appeared in the vectors of $d$. Thus, we cannot consider any $d$ that shares a common factor with $g$. $n\leq g$ will contribute a new sum to the vectors only if $\gcd(n,g)=1$. So, the total sum of $g(\mathbf{a})$ with $\gcd(a_{1},\ldots,a_{k})=g$ is $\varphi(g)$. Generalizing this for arbitrary $s$, we can easily see that the contributed sum for $g$ is
 				\begin{align*}
-					J(g)\sum_{n\leq\min(\mathbf{x})/g}f(\mathbf{x}/n)
+					J_{s}(g)\sum_{n\leq\min(\mathbf{x})/g}f(\mathbf{x}/n)
 				\end{align*}
 		\end{remark}
 \end{document}
