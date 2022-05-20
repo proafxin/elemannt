@@ -153,7 +153,27 @@
 		\end{theorem}
 	
 		\begin{proof}
-			
+			This is not as difficult as it looks. We mainly need to look at $\mathbb{D}_{n}$, the set of divisors of $n$ for $n\in\mathbb{D}$. If $m\mid n$, then $\mathbb{D}_{m}\in\mathbb{D}_{n}$. Let $M(n) = \max\{m\in\mathbb{D}:n\mid m\}$ for $n\in\mathbb{D}$, $N(n)=M(n)/n$ and $P(n)=\prod_{p\mid N(n)}p$. Since
+				\begin{align*}
+					F(n)
+						& = \sum_{\substack{n\mid d\\d\in\mathbb{D}}}f(d)\\
+						& = \sum_{\substack{k\mid N(n)}}f(nk)
+				\end{align*}
+			For a prime $p$, if $\nu_{p}(k)>1$, then $\mathbb{D}_{nk}\in\mathbb{D}_{np}$, so we don't need to consider any of $F(nk)$ separately for $nk\in\mathbb{D}$ . We only need to consider the set of sets
+				\begin{align*}
+					\{\mathbb{D}_{nq}:q\mid P(n)\}
+				\end{align*}
+			Note that for distinct $q,r\in\mathbb{D}_{P(n)}$, $\mathbb{D}_{nq}\cap\mathbb{D}_{nr}=\mathbb{D}_{nqr}$. Thus, we can easily see that
+				\begin{align*}
+					\sum_{n\mid d}f(d)\mu\left(\dfrac{d}{n}\right)
+						& = \sum_{q\mid P(n)}f(nq)\mu(q)
+				\end{align*}
+			From this, it is pretty obvious that unless $q=1$, all the other terms cancel out. Indeed, for $q\mid P(n)$, $f(nq)$ appears $\binom{\omega(P(n))}{\omega(q)}$ times in the sum $\sum_{q\mid P(n)}f(nq)\mu(q)$ and
+				\begin{align*}
+					\binom{m}{0}+\binom{m}{2}+\ldots
+						& = \binom{m}{1}+\binom{m}{3}+\ldots
+				\end{align*}
+			So, running $q$ through all divisors of $P(n)$, the conclusion follows.
 		\end{proof}
 	While discussing inversion, we should also mention Dirichlet inverse.
 		\begin{definition}[Dirichlet Inverse]

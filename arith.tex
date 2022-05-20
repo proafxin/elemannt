@@ -44,7 +44,7 @@
 				\end{align}
 			holds for \textit{almost} all $n\leq x$ as $x\to\infty$. Then we say that $F$ is the \index{Normal order}\textit{normal order} of $f$.
 		\end{definition}
-	A trivial(?) example of normal order is that almost all positive integers not exceeding $x$ are composite if $x$ is sufficiently large. We should probably elaborate on what we mean by \textit{almost} here. One interpretation is that the number of positive integers not exceeding $x$ which are prime is very small compared to $x$. Similarly, $f$ is of order $F$ means that the number of positive integers $n$ not exceeding $x$ which do not satisfy \ref{eqn:normal} is very small compared to $x$.
+	A trivial(?) example of normal order is that almost all positive integers not exceeding $x$ are composite if $x$ is sufficiently large. We should probably elaborate on what we mean by \textit{almost} here. One interpretation is that the number of positive integers not exceeding $x$ which are prime is very small compared to $x$. Similarly, $f$ is of order $F$ means that the number of positive integers $n$ not exceeding $x$ which do not satisfy \eqref{eqn:normal} is very small compared to $x$.
 
 	An interesting property in summatory functions is that
 		\begin{align*}
@@ -135,7 +135,7 @@
 				\end{align*}
 			and we denote it by $f\sim g$. So, we can say that $g$ is an asymptotic formula for $f$.
 		\end{definition}
-	An example is $x^{2}\sim x^{2}+x$. Another example in connection with normal order is that $f$ has normal order $F$ if the number of $n$ not satisfying \ref{eqn:normal} is $o(x)$. We can also say, the number of $n$ satisfying \ref{eqn:normal} is $\sim x$. Note the following.
+	An example is $x^{2}\sim x^{2}+x$. Another example in connection with normal order is that $f$ has normal order $F$ if the number of $n$ not satisfying \eqref{eqn:normal} is $o(x)$. We can also say, the number of $n$ satisfying \eqref{eqn:normal} is $\sim x$. Note the following.
 		\begin{align*}
 			f \sim g
 				& \iff |f(x)-g(x)|= o(g(x))
@@ -250,7 +250,7 @@
 		\begin{proof}
 
 		\end{proof}
-	As an application of \nameref{thm:eulersum}, we can derive a result similar to \ref{eqn:lehmers} taking  $f(n)=n^{k}$ for $k\geq 0$.
+	As an application of \nameref{thm:eulersum}, we can derive a result similar to \eqref{eqn:lehmers} taking  $f(n)=n^{k}$ for $k\geq 0$.
 		\begin{align*}
 			\mathfrak{S}_{k}(x)
 				& = \sum_{n\leq x}n^{k}\\
