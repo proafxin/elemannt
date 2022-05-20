@@ -123,7 +123,25 @@
 		\end{theorem}
 		
 		\begin{proof}
-			
+			It it known that $\ast$ is associative. We have $f\ast f^{-1}=I$ where
+				\begin{align*}
+					I(n)
+						& = \floor{\dfrac{1}{n}}
+				\end{align*}
+			Note that,
+				\begin{align*}
+					\sum_{d\mid n}\mu(d)
+						& = I(n)
+				\end{align*}
+			We can write it as $\mu\ast u=I$ where $u(n)=1$ is the unit function. Then $\mu^{-1}=u$ and $u^{-1}=\mu$.  Now, we can write $F(n)=\sum_{d\mid n}f(d)$ as $F=f\ast u$. Multiplying both sides to the left by $\mu$,
+				\begin{align*}
+					F\ast\mu
+						& = (f\ast u)\ast \mu\\
+						& = f\ast(u\ast\mu)\\
+						& = f\ast I\\
+						& = f
+				\end{align*}
+			since $f\ast I=f(n)$. Expanding this, we have the result.
 		\end{proof}
 	Following \textcite[Page $4$, Theorem $1.2.3$]{cojocaru_murty_2006}, let us define \index{Dual convolution}\textit{dual convolution}.
 		\begin{definition}[Divisor Closed Set]
