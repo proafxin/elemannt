@@ -2,42 +2,12 @@
 
 \usepackage{amsmath,amssymb,amsthm,etoolbox}
 \usepackage[left=.8in,right=.8in,top=.5in,]{geometry}
-\usepackage{xcolor,color,fancyhdr,relsize,authoraftertitle}
+\usepackage{xcolor,color,fancyhdr,}
 \usepackage{subfiles}
 
-\usepackage{titletoc,fmtcount,tocloft,enumerate}
+\usepackage{enumerate}
 
-\renewcommand{\thechapter}{\NUMBERstring{chapter}}
-\renewcommand{\chaptername}{CHAPTER}
-\renewcommand{\contentsname}{\parbox{\linewidth}{\centerline{\LARGE CONTENTS}~\\[-1.5cm]}}
-
-\renewcommand{\thesection}{$\S$\Roman{section}\hspace{.1em}:\hspace{.2em}}
-%\addtolength{\cftchapnumwidth}{70pt}
-\addtolength{\cftsecnumwidth}{30pt}
-
-
-\makeatletter
-\renewcommand*\l@chapter[2]{%
-	\ifnum \c@tocdepth >\m@ne\relax
-	\addpenalty{-\@highpenalty}%
-	\addvspace{1.0em \@plus\p@}%
-	\setlength\@tempdima{3em}%
-	\begingroup
-	\def\numberline##1{\titlefont\Large\xdef\@chapternumber{##1}}%
-	\setbox0=\vbox{\centering\strut #1}% Could be more than one line
-	\centering
-	\leavevmode
-	\hyperlink{\Hy@tocdestname}{\small\vspace{.5\baselineskip}\bfseries \chaptername\hspace{.5em}\@chapternumber}\\
-	\unvbox0
-	\par
-	\nobreak
-	\global\@nobreaktrue
-	\everypar{\global\@nobreakfalse\everypar{}}%
-	\endgroup
-	\fi}
-\makeatother
-
-\usepackage{hyperref,titlesec,xifthen,iftex,authoraftertitle,titletoc}
+\usepackage{hyperref,titlesec,xifthen,iftex,authoraftertitle,}
 \usepackage[bibstyle=philosophy-modern,citestyle=philosophy-verbose,backend=biber,autopunct,sortcites,]{biblatex}
 
 \hypersetup{linktocpage,unicode,pdfencoding=auto,pdfstartview=,allcolors=black,anchorcolor=black,allbordercolors=black,hidelinks}
@@ -45,11 +15,42 @@
 \interfootnotelinepenalty=10000
 
 \ifxetex
+	\usepackage{titletoc,tocloft,fmtcount}
+	%\renewcommand{\thechapter}{\NUMBERstring{chapter}}
+	\renewcommand{\chaptername}{CHAPTER}
+	\renewcommand{\contentsname}{\parbox{\linewidth}{\centerline{\LARGE CONTENTS}~\\[-1.5cm]}}
+	
+	\renewcommand{\thesection}{$\S$\Roman{section}\hspace{.1em}:\hspace{.2em}}
+	%\addtolength{\cftchapnumwidth}{70pt}
+	\addtolength{\cftsecnumwidth}{30pt}
+	
+	
+	\makeatletter
+	\renewcommand*\l@chapter[2]{%
+		\ifnum \c@tocdepth >\m@ne\relax
+		\addpenalty{-\@highpenalty}%
+		\addvspace{1.0em \@plus\p@}%
+		\setlength\@tempdima{3em}%
+		\begingroup
+		\def\numberline##1{\titlefont\Large\xdef\@chapternumber{##1}}%
+		\setbox0=\vbox{\centering\strut #1}% Could be more than one line
+		\centering
+		\leavevmode
+		\hyperlink{\Hy@tocdestname}{\small\vspace{.5\baselineskip}\bfseries \chaptername\hspace{.5em}\@chapternumber}\\
+		\unvbox0
+		\par
+		\nobreak
+		\global\@nobreaktrue
+		\everypar{\global\@nobreakfalse\everypar{}}%
+		\endgroup
+		\fi}
+	\makeatother
+	
 	\usepackage{unicode-math}
-	\newcommand{\fakebold}{1.5}
+	\newcommand{\fakebold}{1}
 	\newcommand{\fakestretch}{.95}
-	\newcommand{\scale}{1.2}
-	\newcommand{\fakemathbold}{1.5}
+	\newcommand{\scale}{1.1}
+	\newcommand{\fakemathbold}{1}
 	\setmainfont[FakeBold=\fakebold,ItalicFont=ModernMT-ExtendedItalic-New.otf,BoldItalicFont=ModernMT-ExtendedItalic-New.otf,SmallCapsFont={OldStandard-Regular.otf},SmallCapsFeatures={Letters=SmallCaps,RawFeature=+smcp,Scale=\scale,FakeStretch=\fakestretch},BoldFont=TheanoModern-Bold.otf,BoldFeatures={,Scale=\scale,SmallCapsFont=OldStandard-Bold.otf,SmallCapsFeatures={RawFeature=+smcp,Scale=\scale},FakeStretch=\fakestretch},BoldItalicFeatures={FakeBold=3},Scale=\scale,FakeStretch=\fakestretch]{ModernMT-Extended-New.otf}
 	\setsansfont[FakeBold=1,Scale=\scale,FakeStretch=\fakestretch]{Latin Modern Sans}
 	\setmonofont[FakeBold=1,Scale=\scale,FakeStretch=\fakestretch]{Latin Modern Mono}
@@ -73,7 +74,7 @@
 	\NewDocumentCommand{\baskervillesum}{}{%
 		\mathchoice
 		{\makebaskervillesum{1.9}}% displaystyle
-		{\makebaskervillesum{1.2}}% textstyle
+		{\makebaskervillesum{1.5}}% textstyle
 		{\makebaskervillesum{1}}% scriptstyle
 		{\makebaskervillesum{0.7}}% scriptscriptstyle
 	}
@@ -89,7 +90,7 @@
 	\NewDocumentCommand{\baskervilleprod}{}{%
 		\mathchoice
 		{\makebaskervilleprod{1.9}}% displaystyle
-		{\makebaskervilleprod{1.2}}% textstyle
+		{\makebaskervilleprod{1.5}}% textstyle
 		{\makebaskervilleprod{1}}% scriptstyle
 		{\makebaskervilleprod{0.7}}% scriptscriptstyle
 	}
@@ -116,9 +117,15 @@
 	\defaultfontfeatures{Mapping=tex-text,Ligatures=Tex}
 \else
 	\usepackage{pdfrender, xcolor}
-	\usepackage[T1]{fontenc}
-	\usepackage{baskervillef}
-	\usepackage[baskerville]{newtxmath}
+	\usepackage[T1,]{fontenc}
+	%\usepackage{relsize}
+	%\usepackage[varg]{txfonts}
+	%\usepackage{OldStandard}
+	%\usepackage{baskervillef}
+	\usepackage[baskervillef]{newtxmath}
+	%\usepackage[charter]{mathdesign}
+	%\def\rmdefault{bch} % not scaled
+	%\def\ttdefault{blg}
 	\pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.2pt}
 	\makeatletter\let\normalrender\PdfRender@NormalColorHook\let\PdfRender@NormalColorHook\@empty\newcommand*{\textnormalrender}[1]{\begingroup\normalrender#1\endgroup}\makeatother
 \fi
@@ -140,7 +147,7 @@
 \theoremstyle{definition}
 \newenvironment{definition}[1][]{\par\medskip\noindent \textsc{\textbf{{\ifthenelse{\isempty{#1}}{Definition.}{#1.}}}} \rmfamily}{\medskip}
 
-\newcommand{\floor}[1]{\left[{#1}\right]}
+\newcommand{\floor}[1]{\left\lfloor{#1}\right\rfloor}
 \newcommand{\ceiling}[1]{\left\lceil{#1}\right\rceil}
 \newcommand{\parenthesis}[1]{\left(#1\right)}
 \newcommand{\curlybrace}[1]{\left\{#1\right\}}
@@ -195,19 +202,30 @@
 		\wb{#2}{#2}#3\end{center}\vspace*{#1}}
 
 \begin{document}
+	\ifpdftex
+		%\relscale{1.1}
+	\fi
 	\pagestyle{empty}
 	\begin{titlepage}
 		\centering
 		\vspace*{2\baselineskip}
-		{\fontsize{30}{10}\titlefont\ E\hspace{.1em}L\hspace{.1em}E\hspace{.1em}M\hspace{.1em}E\hspace{.1em}N\hspace{.1em}T\hspace{.1em}A\hspace{.1em}R\hspace{.1em}Y\\\vspace{.3in} ANALYTIC\hspace{.3em}NUMBER\hspace{.3em} THEORY}\\[2\baselineskip]
-		\scalebox{8}[1]{{\wb{10}{12}4}}\\[2\baselineskip]
+		{\fontsize{30}{10}\ E\hspace{.1em}L\hspace{.1em}E\hspace{.1em}M\hspace{.1em}E\hspace{.1em}N\hspace{.1em}T\hspace{.1em}A\hspace{.1em}R\hspace{.1em}Y\\\vspace{.3in} ANALYTIC\hspace{.3em}NUMBER\hspace{.3em} THEORY}\\[2\baselineskip]
+		\ifxetex
+			\scalebox{8}[1]{{\wb{10}{12}4}}
+			\\[2\baselineskip]
+		\fi
 		{BY}\\[\baselineskip]
-		{\fontsize{20}{10}\titlefont\hspace{.5em} MASUM\hspace{.5em}BILLAL}\\[\baselineskip]
-		{\wb{10}{12}4}\\[\baselineskip]
+		{\fontsize{20}{10}\hspace{.5em} MASUM\hspace{.5em}BILLAL}\\[\baselineskip]
+		\ifxetex
+			{\wb{10}{12}4}\\[2\baselineskip]
+		\fi
 		%{\Large\itshape with a Commentary by}\\[\baselineskip]
 		%{\Large A N OTHER}\par
 		\vfill
-		\scalebox{8}[1]{{\wb{10}{12}4}}\\[2\baselineskip]
+		\ifxetex
+			\scalebox{8}[1]{{\wb{10}{12}4}}
+			\\[\baselineskip]
+		\fi
 		\vfill
 		{\Large THE PUBLISHER}\\
 		{2022}\par
@@ -223,7 +241,7 @@
 			\item I initially wanted to discuss basic complex analysis with connection to the convergence of Dirichlet series but later decided not to include it at all. It simply does not go with the spirit of this book. Similarly, I did not follow \textcite{apostol_1976} and discuss Dirichlet characters from a more general point of view using group theory.
 			\item The reader may omit \autoref{ch:dispute} entirely given that it is more of an opinion of mine than an actual mathematical discussion. The reason behind including this chapter is that I believe if this dispute had not occurred, we might have had a few more influential discoveries like the elementary proof of the prime number theorem from the collaboration of Erd\H{o}s and Selberg. It was a crime that we were deprived of further collaboration between these two mathematical giants just because some third party that did not even witness the incidents first hand poked their noses where they did not belong; which consequently drove a wedge between Erd\H{o}s and Selberg. It will be clear why I feel so strongly on the matter in the respective chapter. Even though I say this is purely my opinion, proper references will be provided for the history along with some relevant information such as letters between parties involved. I will attach the letters in their original form purely because of historical reasons and also add the corresponding textual versions since they can be difficult to read occasionally. Thus, despite this chapter being a personal opinion, the reader will have some (if not all) necessary relevant documents to draw their own conclusions.
 		\end{enumerate}
-	I will now explain what I mean by elementary. My initial thought on elementary is that a result is elementary if it only involves what we learn in grades 1-12 (that is, before undergraduate study starts since the number of grades may differ depending on what country the reader is from). In that sense, basic calculus such as differentiation or integration is elementary. I believe this is an opinion mathematicians will share in general. For example, \textcite{landau_1969}, \textcite{ingham_1932} also consider basic integration along with basic properties of zeta functions to be elementary. I should warn the reader that elementary does not imply simplicity. In reality, it is often the exact opposite. Very frequently what we can prove by the use of deep/analytic methods can also be proven by elementary means, but with much more difficulty and an even greater amount of effort. The best example to demonstrate this is the elementary proof of prime number theorem by Selberg and Erd\H{o}s. Selberg stated in his paper of the proof of the prime number theorem that the proof used only the \textit{simplest properties of logarithm}. And yet it took humanity over 150 years to produce an elementary proof of this theorem and a joint effort of two of the biggest mathematical giants of twentieth century. More context and specific details will be provided on this matter in \autoref{ch:dispute}, \nameref{ch:dispute} which will shed light on why this was such a difficult task.
+	I will now explain what I mean by elementary. My initial thought on elementary is that a result is elementary if it only involves what we learn in grades 1-12 (that is, before undergraduate study starts since the number of grades may differ depending on what country the reader is from). In that sense, basic calculus such as differentiation or integration is elementary. I believe this is an opinion mathematicians will share in general. For example, \textcite{landau_1969}, \textcite{ingham_1932} also consider basic integration along with basic properties of zeta functions to be elementary. I should warn the reader that elementary does not imply simplicity. In reality, it is often the exact opposite. Very frequently what we can prove by the use of deep/analytic methods can also be proven by elementary means, but with much more difficulty and an even greater amount of effort. The best example to demonstrate this is the elementary proof of prime number theorem by Selberg and Erd\H{o}s. Selberg stated in his paper of the elementary proof of the prime number theorem that the proof used only the \textit{simplest properties of logarithm}. And yet it took humanity over 150 years to produce an elementary proof of this theorem and a joint effort of two of the biggest mathematical giants of twentieth century. More context and specific details will be provided on this matter in \autoref{ch:dispute}, \nameref{ch:dispute} which will shed light on why this was such a difficult task.
 	\begin{flushright}
 		{\itshape Masum Billal}\\
 		4:03 AM, 13 May, 2022
