@@ -1,4 +1,4 @@
-# Introduction to Elementary Analytic Number Theory
+# Elementary Analytic Number Theory
 
 Compiler used: Texlive 2021
 
