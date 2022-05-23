@@ -117,15 +117,15 @@
 \else
 	\usepackage{pdfrender, xcolor}
 	\usepackage[T1,]{fontenc}
-	%\usepackage{relsize}
+	\usepackage{relsize}
 	%\usepackage[varg]{txfonts}
 	%\usepackage{OldStandard}
-	%\usepackage{baskervillef}
+	\usepackage{baskervillef}
 	\usepackage[baskervillef]{newtxmath}
 	%\usepackage[charter]{mathdesign}
 	%\def\rmdefault{bch} % not scaled
 	%\def\ttdefault{blg}
-	\pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.2pt}
+	\pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.4pt}
 	\makeatletter\let\normalrender\PdfRender@NormalColorHook\let\PdfRender@NormalColorHook\@empty\newcommand*{\textnormalrender}[1]{\begingroup\normalrender#1\endgroup}\makeatother
 \fi
 
@@ -202,7 +202,7 @@
 
 \begin{document}
 	\ifpdftex
-		%\relscale{1.1}
+		\relscale{1.2}
 	\fi
 	\pagestyle{empty}
 	\begin{titlepage}
