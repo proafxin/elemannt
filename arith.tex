@@ -52,7 +52,7 @@
 				& = \sum_{i=1}^{n}\sum_{d\mid i}f(d)\\
 				& = \sum_{i=1}^{n}\floor{\frac{n}{i}}f(i)
 		\end{align*}
-	Here, the last equation is true because there are $\lfloor{n/i}\rfloor$ multiples of $i$ not exceeding $n$.
+	Here, the last equation is true because there are $\floor{n/i}$ multiples of $i$ not exceeding $n$.
 	\section{Order of Some Arithmetic Functions}
 	Recall that the number of divisor function
 		\begin{align*}
@@ -97,10 +97,10 @@
 		\end{definition}
 	In particular, $f(x)=O(1)$ means that $f$ is bounded above by some positive constant. Some trivial examples are $x^{2}=O(x^{3})$, $x+1=O(x)$ and $x^{2}+2x=O(x^{2})$. We usually want $g(x)$ to be as small as possible to avoid triviality. A useful example is
 		\begin{align*}
-			\left\lfloor{x}\right\rfloor
+			\floor{x}
 				& = x+O(1)
 		\end{align*}
-	since $x=\lfloor{x}\rfloor+\{x\}$ and $0\leq \{x\}<1$.
+	since $x=\floor{x}+\{x\}$ and $0\leq \{x\}<1$.
 		\begin{definition}[Small O]
 			Let $f$ and $g$ be two real or complex valued functions. Then the following two statements are equivalent
 				\begin{align}
@@ -244,7 +244,7 @@
 					\sum_{y<n\leq x}f(n)
 						& = \int\limits_{y}^{x}f(t)dt+\int\limits_{y}^{x}\{t\}f(t)dt+\{y\}f(y)-\{x\}f(x)
 				\end{align*}
-			where $\{t\}=t-\lfloor{t}\rfloor$ is the fractional part of $t$.
+			where $\{t\}=t-\floor{t}$ is the fractional part of $t$.
 		\end{theorem}
 
 		\begin{proof}
@@ -268,13 +268,13 @@
 			\sum_{n\leq x}\tau(n)
 				& = \sum_{n\leq x}\floor{\frac{x}{n}}
 		\end{align*}
-	Clearly, this is just the number of pairs $(a,b)$ such that $ab\leq x$. We can divide the pairs in two classes. In the first class, $1\leq a\leq \sqrt{x}$ and in the second one, $a>\sqrt{x}$. In the first case, for a fixed $a$, there are $\lfloor{x/a}\rfloor$ possible choices for a valid value of $b$. So, the number of pairs in the first case is
+	Clearly, this is just the number of pairs $(a,b)$ such that $ab\leq x$. We can divide the pairs in two classes. In the first class, $1\leq a\leq \sqrt{x}$ and in the second one, $a>\sqrt{x}$. In the first case, for a fixed $a$, there are $\floor{x/a}$ possible choices for a valid value of $b$. So, the number of pairs in the first case is
 		\begin{align*}
 			\sum_{a\leq \sqrt{x}}\floor{\frac{x}{a}}
 		\end{align*}
-	In the second case, since $a>\sqrt{x}$ and $b\leq x/a$, we must have $b\leq \sqrt{x}$. For a fixed $b$, there are $\lfloor{x/b}\rfloor-\sqrt{x}$ choices for a valid value of $a$, the choices namely are
+	In the second case, since $a>\sqrt{x}$ and $b\leq x/a$, we must have $b\leq \sqrt{x}$. For a fixed $b$, there are $\floor{x/b}-\sqrt{x}$ choices for a valid value of $a$, the choices namely are
 		\begin{align*}
-			\lfloor{x}\rfloor+1,\ldots,\floor{\frac{x}{b}}
+			\floor{x}+1,\ldots,\floor{\frac{x}{b}}
 		\end{align*}
 	Then the number of pairs in this case is
 		\begin{align*}
@@ -297,7 +297,7 @@
 			H(x)
 				& = \frac{A(x)}{x}-\int\limits_{1}^{x}-\frac{A(t)}{t^{2}}dt
 		\end{align*}
-	Here, $A(x)=\lfloor{x}\rfloor=x+O(1)$. Using this,
+	Here, $A(x)=\floor{x}=x+O(1)$. Using this,
 		\begin{align*}
 			H(x)
 				& = 1+O\parenthesis{\frac{1}{x}}+\int\limits_{1}^{x}\parenthesis{\frac{1}{t}+\frac{O(1)}{t^{2}}}dt\\

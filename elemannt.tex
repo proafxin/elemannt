@@ -59,7 +59,7 @@
 	\usepackage{unicode-math}
 	\newcommand{\fakebold}{0.}
 	\newcommand{\fakestretch}{1.}
-	\newcommand{\scale}{1.1}
+	\newcommand{\scale}{1.3}
 	\newcommand{\fakemathbold}{1.}
 	\setmainfont[FakeBold=\fakebold,ItalicFont=CenturymodernTT-Italic.otf,ItalicFeatures={FakeBold=.5},BoldItalicFont=CenturymodernTT-Italic.otf,SmallCapsFont={OldStandard-Regular.otf},SmallCapsFeatures={Letters=SmallCaps,RawFeature=+smcp,Scale=\scale,FakeStretch=\fakestretch},BoldFont=CenturymodernTT-Regular.otf,BoldFeatures={,Scale=\scale,SmallCapsFont=OldStandard-Bold.otf,SmallCapsFeatures={RawFeature=+smcp,Scale=\scale},FakeStretch=\fakestretch,FakeBold=2},BoldItalicFeatures={FakeBold=2},Scale=\scale,FakeStretch=\fakestretch]{CenturymodernTT-Regular.otf}
 	%\setsansfont[FakeBold=1,Scale=\scale,FakeStretch=\fakestretch]{Latin Modern Sans}
@@ -67,15 +67,16 @@
 	\setmathfont[,Scale=\scale,FakeStretch=\fakestretch]{NewCMMath-Regular.otf}% KpMath-Regular.otf,KpMath-Light.otf
 	
 	\setmathfont[range={it,},Scale=\scale,FakeStretch=\fakestretch,FakeBold=\fakemathbold]{CenturymodernTT-Italic.otf}
-	%\setmathfont[range={up,},Scale=\scale,FakeStretch=\fakestretch,FakeBold=\fakemathbold]{CenturymodernTT-Regular.otf}
+	\setmathfont[range={up,"03BB},Scale=\scale,FakeStretch=\fakestretch,FakeBold=\fakemathbold]{CenturymodernTT-Regular.otf}
 	%\setmathfont{latinmodern-math.otf}[range={bfup,},Scale=\scale,FakeStretch=\fakestretch,FakeBold=\fakemathbold]
 	%\setmathfont{CenturymodernTT-Regular.otf}[range={"005B,"005D,"2308-"230B,"005B,"005D,"003A,"003B,"002C,"003D,"2260-"2267,"00A7},FakeStretch=1.1\fakestretch]% NewCMMath-Regular.otf,texgyrepagella-math.otf
-	\setmathfont{CenturymodernTT-Regular.otf}[range={bb,frak,it/{num},up/{num},"00A7},Scale=\scale,FakeStretch=\fakestretch,FakeBold=\fakemathbold]
-	%\setmathfont{OldStandard-Regular.otf}[range={"2260-"2267,"003C-"003E,"00A7,"226A-"226B},FakeBold=\fakemathbold,FakeStretch=1.05\fakestretch]
-	%\setmathfont{ModernMT-ExtendedItalic-New.otf}[range={up/{greek,Greek},it/{greek,Greek},"003D},FakeStretch=\fakestretch,Scale=1.,FakeBold=\fakemathbold,]
-	%\setmathfont{CenturymodernTT-Italic.otf}[range={up/{latin,Latin},it/{latin,Latin}},FakeBold=\fakemathbold,FakeStretch=\fakestretch]
-	%\setmathfont{ModernMT-ExtendedItalic-New.otf}[range={"00A7,"003D,},FakeStretch=1.1\fakestretch,Scale=1.2]
-	%\newfontfamily\titlefont{TheanoModern-Bold.otf}[FakeBold=0]
+	\setmathfont{CenturymodernTT-Regular.otf}[range={bb,frak,it/{num},up/{num},"00A7,"0028-"0029,},Scale=\scale,FakeStretch=\fakestretch,FakeBold=\fakemathbold]
+	\setmathfont{FeDPrm2.ttf}[range={"0028-"0029,"00A7,"005B-"005D},]
+	%\setmathfont{IMFellEnglish-Regular.ttf}[range={"007B-"007D,}]
+	\setmathfont{ModernMT-ExtendedItalic-New.otf}[range={"2260-"2267,"226A-"226B,"003C-"003E,},FakeBold=\fakemathbold,FakeStretch=1.1\fakestretch]
+	%\setmathfont{OldStandard-Italic.otf}[range={it/{Greek,greek},},FakeBold=\fakemathbold]
+	%\setmathfont{ModernMT-ExtendedItalic-New.otf}[range={"003D},Scale=\scale,FakeStretch=1.2]
+	%\setmathfont{CenturymodernTT-regular.otf}[range={up/{greek,Greek},it/{greek,Greek},},FakeBold=\fakemathbold,Scale=\scale,FakeStretch=\fakestretch]
 	\newfontfamily{\sumfont}{ModernMT-ExtendedItalic-New.otf}[]% GFSSolomos.otf,lmroman17-regular.otf,lmromanslant17-regular.otf,Theano Didot Regular V1.otf
 	\makeatletter
 	\RenewDocumentCommand{\sum@}{}{\DOTSB\baskervillesum}
@@ -108,7 +109,7 @@
 	\NewDocumentCommand{\makebaskervilleprod}{m}{%
 		\vcenter{\hbox{\scalebox{#1}{\prodfont ∏}}}%
 	}
-	\newfontfamily\intfont{Centurymodernitalic2.ttf}[FakeBold=0]% OldStandard-Italic.otf,latinmodern-math.otf,Erewhon-Math.otf
+	\newfontfamily\intfont{CenturymodernTT-Italic.ttf}[FakeBold=0]% OldStandard-Italic.otf,latinmodern-math.otf,Erewhon-Math.otf
 	\makeatletter
 	\NewDocumentCommand{\int@}{}{\DOTSB\baskervilleint}
 	\AtBeginDocument{%
@@ -150,7 +151,7 @@
 \makeindex
 \makeglossaries
 
-\titleformat{\chapter}[display]{\Huge}{}{1ex}{\centering\vspace{1ex}\ifthenelse{\value{chapter}>0}{\MakeUppercase}{}}[\vspace{1ex}]
+\titleformat{\chapter}[display]{\Huge}{\normalfont\large\centering\MakeUppercase\chaptername\hspace{.5em}\thechapter.}{1ex}{\centering\vspace{1ex}\ifthenelse{\value{chapter}>0}{\MakeUppercase}{}}[\vspace{1ex}]
 \titleformat{\section}[display]{\LARGE}{}{1ex}{\centering\ifthenelse{\value{section}>0}{\thesection\;}{}\vspace{.2in}}[]
 %\titleformat{\subsection}[display]{\bfseries\scshape\Large}{}{1ex}{\centering\ifthenelse{\value{section}>0}{$\S\S$\thesubsection\;}{}}[\titlerule]
 
@@ -158,11 +159,14 @@
 \theoremstyle{definition}
 \newenvironment{definition}[1][]{\par\medskip\noindent \textbf{\textit{{\ifthenelse{\isempty{#1}}{Definition.}{#1.}}}} \rmfamily}{\medskip}
 
-\newcommand{\floor}[1]{\left\lfloor{#1}\right\rfloor}
+\usepackage{scalerel}
+\newcommand{\floor}[1]{\squarebracket{#1}}
 \newcommand{\ceiling}[1]{\left\lceil{#1}\right\rceil}
-\newcommand{\parenthesis}[1]{\left(#1\right)}
-\newcommand{\curlybrace}[1]{\left\{#1\right\}}
-\newcommand{\squarebracket}[1]{\left[#1\right]}
+
+\renewcommand{\binom}[2]{\scaleleftright[.7ex]{(}{\genfrac{}{}{0pt}{0}{#1}{#2}}{)}}
+\newcommand{\parenthesis}[1]{\scaleleftright[.8ex]{(}{#1}{)}}
+\newcommand{\curlybrace}[1]{\scaleleftright[.8ex]{\{}{#1}{\}}}
+\newcommand{\squarebracket}[1]{\scaleleftright[1ex]{[}{#1}{]}}
 \newcommand{\bigo}[1]{O\parenthesis{#1}}
 \DeclareMathOperator{\ord}{ord}
 \newcommand{\F}[1]{\mathbb{F}_{#1}}
@@ -285,20 +289,20 @@
 		\vspace*{2\baselineskip}
 		{\fontsize{30}{10}\ifxetex\titlefont\fi E\hspace{.1em}L\hspace{.1em}E\hspace{.1em}M\hspace{.1em}E\hspace{.1em}N\hspace{.1em}T\hspace{.1em}A\hspace{.1em}R\hspace{.1em}Y\\\vspace{.3in} ANALYTIC\hspace{.3em}NUMBER\hspace{.3em} THEORY}\\[2\baselineskip]
 		\ifxetex
-			\scalebox{8}[1]{{\wb{10}{12}4}}
-			\\[2\baselineskip]
+		%	\scalebox{8}[1]{{\wb{10}{12}4}}
+			%\\[2\baselineskip]
 		\fi
 		{BY}\\[\baselineskip]
 		{\fontsize{20}{10}\hspace{.5em}\ifxetex\titlefont\fi MASUM\hspace{.5em}BILLAL}\\[\baselineskip]
 		\ifxetex
-			{\wb{10}{12}4}\\[2\baselineskip]
+		%	{\wb{10}{12}4}\\[2\baselineskip]
 		\fi
 		%{\Large\itshape with a Commentary by}\\[\baselineskip]
 		%{\Large A N OTHER}\par
 		\vfill
 		\ifxetex
-			\scalebox{8}[1]{{\wb{10}{12}4}}
-			\\[\baselineskip]
+		%	\scalebox{8}[1]{{\wb{10}{12}4}}
+			%\\[\baselineskip]
 		\fi
 		\vfill
 		{\Large AMS Chelsea Publishing}\\

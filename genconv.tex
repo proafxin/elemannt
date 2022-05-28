@@ -15,7 +15,7 @@
 				& = f(x_{1},\ldots,x_{k})\\
 			f\left(\dfrac{\mathbf{x}}{n^{\mathbf{a}}}\right)
 				& = f\left(\dfrac{x_{1}}{n^{a_{1}}},\ldots,\dfrac{x_{k}}{n^{a_{k}}}\right)\\
-			f\left(\left\lfloor\dfrac{\mathbf{x}}{n^{\mathbf{a}}}\right\rfloor\right)
+			f\parenthesis{\floor{\dfrac{\mathbf{x}}{n^{\mathbf{a}}}}}
 				& = f\parenthesis{\floor{\dfrac{x_{1}}{n^{a_{1}}}},\ldots,\floor{\dfrac{x_{k}}{n^{a_{k}}}}}
 		\end{align*}
 	
@@ -198,8 +198,8 @@
 	where $g(\mathbf{a})=\gcd(a_{1},\ldots,a_{k})$ for the vector of positive integers $\mathbf{a}=(a_{1},\ldots,a_{k})$. Then we have
 		\begin{align}
 			S(\mathbf{x})
-				& = \sum_{n\leq\mathbf{x}}J_{s}(n)\prod_{i=1}^{k}\left\lfloor\dfrac{x_i}{n}\right\rfloor\label{eqn:Sx1}\\
-				& = \sum_{n\leq\mathbf{x}}\mu(n)\left(\sum_{i\leq\mathbf{x}/n}i^{s}\prod_{j=1}^{k}\left\lfloor\dfrac{x_j}{ni}\right\rfloor\right)\label{eqn:Sx2}
+				& = \sum_{n\leq\mathbf{x}}J_{s}(n)\prod_{i=1}^{k}\floor{\dfrac{x_i}{n}}\label{eqn:Sx1}\\
+				& = \sum_{n\leq\mathbf{x}}\mu(n)\parenthesis{\sum_{i\leq\mathbf{x}/n}i^{s}\prod_{j=1}^{k}\floor{\dfrac{x_j}{ni}}}\label{eqn:Sx2}
 		\end{align}
 	\eqref{eqn:Sx1} follows from \nameref{thm:genassociativity} and \eqref{eqn:inversejordan}.
 		\begin{align*}
