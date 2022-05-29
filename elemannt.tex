@@ -9,6 +9,40 @@
 
 \usepackage{hyperref,titlesec,xifthen,iftex,authoraftertitle,}
 
+\renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
+\renewcommand{\thechapter}{\NUMBERstring{chapter}}
+\renewcommand{\chaptername}{CHAPTER}
+\renewcommand{\contentsname}{\parbox{\linewidth}{\centerline{\LARGE CONTENTS}~\\[-1.5cm]}}
+
+\renewcommand{\thesection}{$\S$\Roman{section}\hspace{.1em}:\hspace{.2em}}
+\renewcommand{\thesubsection}{\arabic{section}.\hspace{.1em}\arabic{subsection}}
+\renewcommand{\theequation}{$\ddagger$\arabic{equation}}
+
+%\addtolength{\cftchapnumwidth}{70pt}
+%\addtolength{\cftsecnumwidth}{30pt}
+\setcounter{tocdepth}{2}
+
+\makeatletter
+\renewcommand*\l@chapter[2]{%
+	\ifnum \c@tocdepth >\m@ne\relax
+	\addpenalty{-\@highpenalty}%
+	\addvspace{1.0em \@plus\p@}%
+	\setlength\@tempdima{3em}%
+	\begingroup
+	\def\numberline##1{\bfseries\Large\xdef\@chapternumber{##1}}%
+	\setbox0=\vbox{\centering\strut #1}% Could be more than one line
+	\centering
+	\leavevmode
+	\hyperlink{\Hy@tocdestname}{\vspace{.5\baselineskip}\bfseries \chaptername\hspace{.5em}\@chapternumber}\\
+	\unvbox0
+	\par
+	\nobreak
+	\global\@nobreaktrue
+	\everypar{\global\@nobreakfalse\everypar{}}%
+	\endgroup
+	\fi}
+\makeatother
+
 \usepackage{filecontents}
 
 \begin{filecontents*}{ext-eprint.dbx}
@@ -19,8 +53,7 @@
 	\DeclareDatamodelEntryfields{arxivclass}
 \end{filecontents*}
 
-\usepackage[bibstyle=philosophy-modern,citestyle=philosophy-verbose,backend=biber,autopunct,sortcites,]{biblatex}
-
+\usepackage[bibstyle=philosophy-modern,citestyle=philosophy-verbose,backend=biber,autopunct,sortcites,dashed,datamodel=ext-eprint,doi,eprint]{biblatex}
 \hypersetup{linktocpage,unicode,pdfencoding=auto,pdfstartview=,allcolors=black,anchorcolor=black,allbordercolors=black,hidelinks}
 \DeclareNameAlias{sortname}{given-family}
 \interfootnotelinepenalty=10000
@@ -33,7 +66,7 @@
 	
 	\renewcommand{\thesection}{$\S$\arabic{section}\hspace{.1em}.\hspace{.2em}}
 	%\addtolength{\cftchapnumwidth}{70pt}
-	\addtolength{\cftsecnumwidth}{30pt}
+	%\addtolength{\cftsecnumwidth}{30pt}
 	
 	\makeatletter
 	\renewcommand*\l@chapter[2]{%
@@ -59,24 +92,26 @@
 	\usepackage{unicode-math}
 	\newcommand{\fakebold}{0.}
 	\newcommand{\fakestretch}{1.}
-	\newcommand{\scale}{1.3}
+	\newcommand{\scale}{1.1}
 	\newcommand{\fakemathbold}{1.}
 	\setmainfont[FakeBold=\fakebold,ItalicFont=CenturymodernTT-Italic.otf,ItalicFeatures={FakeBold=.5},BoldItalicFont=CenturymodernTT-Italic.otf,SmallCapsFont={OldStandard-Regular.otf},SmallCapsFeatures={Letters=SmallCaps,RawFeature=+smcp,Scale=\scale,FakeStretch=\fakestretch},BoldFont=CenturymodernTT-Regular.otf,BoldFeatures={,Scale=\scale,SmallCapsFont=OldStandard-Bold.otf,SmallCapsFeatures={RawFeature=+smcp,Scale=\scale},FakeStretch=\fakestretch,FakeBold=2},BoldItalicFeatures={FakeBold=2},Scale=\scale,FakeStretch=\fakestretch]{CenturymodernTT-Regular.otf}
-	%\setsansfont[FakeBold=1,Scale=\scale,FakeStretch=\fakestretch]{Latin Modern Sans}
-	%\setmonofont[FakeBold=1,Scale=\scale,FakeStretch=\fakestretch]{Latin Modern Mono}
-	\setmathfont[,Scale=\scale,FakeStretch=\fakestretch]{NewCMMath-Regular.otf}% KpMath-Regular.otf,KpMath-Light.otf
+	\setsansfont[FakeBold=\fakebold,Scale=\scale,FakeStretch=\fakestretch]{CenturymodernTT-Regular.otf}
+	\setmonofont[FakeBold=\fakebold,Scale=\scale,FakeStretch=\fakestretch]{CenturymodernTT-Regular.otf}
+	\setmathfont[,Scale=\scale,FakeStretch=\fakestretch,FakeBold=\fakemathbold]{NewCMMath-Regular.otf}% KpMath-Regular.otf,KpMath-Light.otf
 	
-	\setmathfont[range={it,},Scale=\scale,FakeStretch=\fakestretch,FakeBold=\fakemathbold]{CenturymodernTT-Italic.otf}
+	\setmathfont[range={it,"007D,},Scale=\scale,FakeStretch=\fakestretch,FakeBold=\fakemathbold]{CenturymodernTT-Italic.otf}
 	\setmathfont[range={up,"03BB},Scale=\scale,FakeStretch=\fakestretch,FakeBold=\fakemathbold]{CenturymodernTT-Regular.otf}
 	%\setmathfont{latinmodern-math.otf}[range={bfup,},Scale=\scale,FakeStretch=\fakestretch,FakeBold=\fakemathbold]
 	%\setmathfont{CenturymodernTT-Regular.otf}[range={"005B,"005D,"2308-"230B,"005B,"005D,"003A,"003B,"002C,"003D,"2260-"2267,"00A7},FakeStretch=1.1\fakestretch]% NewCMMath-Regular.otf,texgyrepagella-math.otf
-	\setmathfont{CenturymodernTT-Regular.otf}[range={bb,frak,it/{num},up/{num},"00A7,"0028-"0029,},Scale=\scale,FakeStretch=\fakestretch,FakeBold=\fakemathbold]
-	\setmathfont{FeDPrm2.ttf}[range={"0028-"0029,"00A7,"005B-"005D},]
+	\setmathfont{CenturymodernTT-Regular.otf}[range={bb,frak,it/{num,"03BB},up/{num,"03BB},"00A7,"03BB,},Scale=\scale,FakeStretch=\fakestretch,FakeBold=\fakemathbold]
+	%\setmathfont{FeDPrm2.ttf}[range={"0028-"0029,"00A7,"005B-"005D},]
 	%\setmathfont{IMFellEnglish-Regular.ttf}[range={"007B-"007D,}]
 	\setmathfont{ModernMT-ExtendedItalic-New.otf}[range={"2260-"2267,"226A-"226B,"003C-"003E,},FakeBold=\fakemathbold,FakeStretch=1.1\fakestretch]
 	%\setmathfont{OldStandard-Italic.otf}[range={it/{Greek,greek},},FakeBold=\fakemathbold]
 	%\setmathfont{ModernMT-ExtendedItalic-New.otf}[range={"003D},Scale=\scale,FakeStretch=1.2]
 	%\setmathfont{CenturymodernTT-regular.otf}[range={up/{greek,Greek},it/{greek,Greek},},FakeBold=\fakemathbold,Scale=\scale,FakeStretch=\fakestretch]
+	\setmathfont{IM_FELL_Double_Pica_Roman_SC.otf}[range={"007B-"007D,"0028-"0029,"002F,"005B-"005D,"00A7,\mid,},FakeBold=0]
+	\setmathfont{IMFellEnglish-Regular.ttf}[range={"007B,"007D,},]
 	\newfontfamily{\sumfont}{ModernMT-ExtendedItalic-New.otf}[]% GFSSolomos.otf,lmroman17-regular.otf,lmromanslant17-regular.otf,Theano Didot Regular V1.otf
 	\makeatletter
 	\RenewDocumentCommand{\sum@}{}{\DOTSB\baskervillesum}
@@ -128,26 +163,21 @@
 	\newfontfamily\titlefont{CenturymodernTT-Regular.otf}[FakeBold=1,UprightFeatures={Letters=Uppercase},]
 	\defaultfontfeatures{Mapping=tex-text,Ligatures=Tex}
 \else
-	\usepackage{pdfrender, xcolor}
-	\usepackage[T1,]{fontenc}
-	\usepackage{relsize}
-	%\usepackage[varg]{txfonts}
-	%\usepackage{OldStandard}
+	\usepackage{pdfrender, xcolor,relsize}
+	\usepackage[T1]{fontenc}
 	\usepackage{baskervillef}
-	\usepackage[baskervillef]{newtxmath}
-	%\usepackage[charter]{mathdesign}
-	%\def\rmdefault{bch} % not scaled
-	%\def\ttdefault{blg}
-	\pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.4pt}
+	\usepackage[baskerville]{newtxmath}
+	\pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.2pt}
 	\makeatletter\let\normalrender\PdfRender@NormalColorHook\let\PdfRender@NormalColorHook\@empty\newcommand*{\textnormalrender}[1]{\begingroup\normalrender#1\endgroup}\makeatother
 \fi
 
-\usepackage[nopostdot,automake=true,nonumberlist,order=word]{glossaries}
+\usepackage[toc,nopostdot,]{glossaries}
 \usepackage{makeidx}
 
 \usepackage{nomencl}
 \renewcommand{\nomname}{Notations}
 \makenomenclature
+%\glstoctrue
 \makeindex
 \makeglossaries
 
@@ -155,17 +185,18 @@
 \titleformat{\section}[display]{\LARGE}{}{1ex}{\centering\ifthenelse{\value{section}>0}{\thesection\;}{}\vspace{.2in}}[]
 %\titleformat{\subsection}[display]{\bfseries\scshape\Large}{}{1ex}{\centering\ifthenelse{\value{section}>0}{$\S\S$\thesubsection\;}{}}[\titlerule]
 
-\newtheorem{theorem}{\textit{\textbf{Theorem}}}
+\newtheorem{theorem}{\textbf{\textbf{Theorem}}}
+%\numberwithin{theorem}{chapter}
+%\renewcommand{\thetheorem}{\arabic{theorem}}
 \theoremstyle{definition}
-\newenvironment{definition}[1][]{\par\medskip\noindent \textbf{\textit{{\ifthenelse{\isempty{#1}}{Definition.}{#1.}}}} \rmfamily}{\medskip}
+\newenvironment{definition}[1][]{\par\medskip\noindent \textit{\textbf{{\ifthenelse{\isempty{#1}}{Definition.}{#1.}}}} \rmfamily}{\medskip}
 
 \usepackage{scalerel}
 \newcommand{\floor}[1]{\squarebracket{#1}}
 \newcommand{\ceiling}[1]{\left\lceil{#1}\right\rceil}
-
-\renewcommand{\binom}[2]{\scaleleftright[.7ex]{(}{\genfrac{}{}{0pt}{0}{#1}{#2}}{)}}
+\renewcommand{\binom}[2]{\scaleleftright[.8ex]{(}{\genfrac{}{}{0pt}{0}{#1}{#2}}{)}}
 \newcommand{\parenthesis}[1]{\scaleleftright[.8ex]{(}{#1}{)}}
-\newcommand{\curlybrace}[1]{\scaleleftright[.8ex]{\{}{#1}{\}}}
+\newcommand{\curlybrace}[1]{\scaleleftright[1.2ex]{\{}{#1}{\}}}
 \newcommand{\squarebracket}[1]{\scaleleftright[1ex]{[}{#1}{]}}
 \newcommand{\bigo}[1]{O\parenthesis{#1}}
 \DeclareMathOperator{\ord}{ord}
@@ -178,16 +209,15 @@
 \renewcommand*{\chapterautorefname}{Chapter}
 \renewcommand*{\sectionautorefname}{Section}
 \renewcommand*{\subsectionautorefname}{Subsection}
-%\numberwithin{equation}{part}
-\renewcommand{\theequation}{$\ddagger$\arabic{equation}}
-\renewcommand{\thepart}{\arabic{chapter}}
 
 \renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
 \renewcommand{\sectionmark}[1]{\markboth{#1}{#1}}
+
 \usepackage{extramarks}
 \AtBeginEnvironment{theorem}{\addtocounter{theorem}{1}%
 	\extramarks{\thetheorem}{}\addtocounter{theorem}{-1}}
 
+\pagestyle{fancy}
 \fancypagestyle{fancy}{
 	\fancyhf{}
 	\fancyhead[L]{\ifthenelse{0\firstleftxmark=0}
@@ -195,19 +225,24 @@
 		{\ifthenelse{\equal{\firstleftxmark}{\lastleftxmark}}
 			{\textit{Theorem} \firstleftxmark}% Only one theorem on the page
 			{\textit{Theorems} \firstleftxmark–\lastleftxmark}}}
-	\fancyhead[CE]{\small\itshape \MyAuthor}
+	\fancyhead[CE]{\small\itshape Masum Billal}
 	\fancyhead[R]{\thepage}
-	\fancyhead[CO]{\small Chapter \arabic{chapter},\hspace{.4em}\thesection\hspace{.1em}\nouppercase\rightmark}
+	\fancyhead[CO]{\small\itshape \thesection\hspace{.1em}\nouppercase\rightmark}
 }
-%\setlength{\headheight}{30pt}
 
-\newtheorem*{remark}{\textit{Remark}}
+\setcounter{secnumdepth}{3}
 
-\defbibfilter{books}{type=book or type=inbook}
-
-\usepackage{graphicx,}
+\theoremstyle{definition}
+\newtheorem{problem}{\text{Problem}}
+\newcommand*{\problemautorefname}{Problem}
+\newtheorem*{remark}{\text{Remark}}
+\newtheorem*{note}{\text{Note}}
+\newtheorem*{solution}{\text{Solution}}
+%\numberwithin{problem}{chapter}
 
 \addbibresource{ref.bib}
+\defbibfilter{books}{type=book or type=inbook}
+
 \DeclareSourcemap{
 	\maps[datatype=bibtex]{
 		\map{
@@ -270,6 +305,50 @@
 	\iffieldundef{eprinttype}
 	{\printfield{eprint}}
 	{\printfield[eprint:\strfield{eprinttype}]{eprint}}}
+% Fix pmatrix for custom brackets
+\ExplSyntaxOn
+\box_new:N \l_masum_box
+\RenewDocumentEnvironment{pmatrix}{}
+{ 
+	\hbox_set:Nw \l_masum_box 
+	\c_math_toggle_token
+	\begin{matrix}
+	}
+	{ 
+	\end{matrix}
+	\c_math_toggle_token
+	\hbox_set_end:
+	\scaleleftright[.8ex]{(}{\box_use:N \l_masum_box}{)}
+}
+
+\box_new:N \l_masum_box_vm
+\RenewDocumentEnvironment{vmatrix}{}
+{ 
+	\hbox_set:Nw \l_masum_box_vm
+	\c_math_toggle_token
+	\begin{matrix}
+	}
+	{ 
+	\end{matrix}
+	\c_math_toggle_token
+	\hbox_set_end:
+	\scaleleftright[.5ex]{|}{\box_use:N \l_masum_box_vm}{|}
+}
+
+\box_new:N \l_masum_box_new
+\RenewDocumentEnvironment{cases}{}
+{ 
+	\hbox_set:Nw \l_masum_box_new
+	\c_math_toggle_token
+	\begin{matrix}
+	}
+	{
+	\end{matrix}
+	\c_math_toggle_token
+	\hbox_set_end:
+	\scaleleftright[1.2ex]{\{}{\box_use:N \l_masum_box_new}{}
+}
+\ExplSyntaxOff
 
 \subfile{glossary.tex}
 
@@ -305,8 +384,8 @@
 			%\\[\baselineskip]
 		\fi
 		\vfill
-		{\Large AMS Chelsea Publishing}\\
-		{\includegraphics[scale=.5]{logo.png}}\par
+		%{\Large AMS Chelsea Publishing}\\
+		%{\includegraphics[scale=.5]{logo.png}}\par
 	\end{titlepage}
 	%\maketitle
 	\section*{Preface}
@@ -315,6 +394,7 @@
 			\item I neither discuss class number of quadratic forms nor do I follow \textcite[Part Two, Chapter III]{landau_1969} to prove that $L(1,\chi)\neq0$ for real non-principal Dirichlet character $\chi$. Therefore, one of the two proofs I present for Dirichlet's prime number theorem is a mixture of the approach taken by \textcite[Part two, Chapter III, $\S$3]{landau_1969} and \textcite[Chapter VI]{apostol_1976}. Thus, we avoid the unnecessary bulky calculation presented by \textcite[Theorem 152]{landau_1969} while still keeping the proof of Dirichlet's theorem completely elementary. The other proof is due to \textcite{selberg_1949}. Both will be included in \autoref{ch:legendre}.
 			\item I will treat the reader to a topic I consider to be bittersweet--\textit{Sieve Theory}. However, I will only discuss Brun's theorem on prime pairs and the idea behind Selberg's sieve; the reason being that I primarily intend to lay the groundwork for a solid foundation. One can consult \textcite{cojocaru_murty_2006} and \textcite{friedlander_iwaniec_2010} after reading this chapter. If I only discuss a lot of sieving techniques and prove a lot of theorems, that may cause a lack of sense in the mind of the reader as to why such methods are necessary and what leads one to think in such a way that allows us to prove such powerful results. \textcite{friedlander_iwaniec_2010} has an enormous discussion on the matter and it is mostly elementary but I think the text is a little difficult for a non-enthusiast.
 			\item The reason I include sieve theory at all in this book is that this is the strongest and most interesting area in all of number theory. I will explain further. The development in recent number theory has been a little slow in comparison to the previous century. Brun's theorem on twin primes and Chen's theorem on almost primes related to Goldbach conjecture are still two of the most spectacular results in all of mathematics. Yet both of them are really old and I do not know of any improvements over these results that are of any real significance. \item Brun's theorem is of incredible historical importance; being the starting point of sieve methods today despite being over 100 years old. A story goes that Erd\H{o}s was asked what he thought the strongest theorem was in elementary number theory. His response was Brun's theorem on twin prime pairs. Indeed, one can see that the result of Viggo Brun on twin primes is still the most spectacular result regarding twin primes which requires no analysis or deep results. \textcite[Chapter VI]{friedlander_iwaniec_2010} named their chapter on Brun's theorem \textit{Brun’s Sieve--The Big Bang}. It just goes to show how beautiful this result really is and I believe this theorem is the most underrated result in all of mathematics. Another story goes that Landau had been sitting on Brun's paper for 8 years, mostly due to the use of difficult notations by Brun. Later, Landau dedicated an entire chapter in his \textit{Elementaren Zahlentheorie}, volume I.1 of \textcite{landau_1927} to Brun's theorem. I personally believe this story to be true, and that Landau did this out of guilt that he had deprived the mathematics world from such influential results for so long. The other result, Chen's theorem is based on Selberg's sieve that states that an even number greater than 2 is the sum of a prime and an \textit{almost prime} (product of two primes). To my knowledge, this is still the best result available related to Goldbach's conjecture despite being $\sim$60 years old. As you can see, the most influential results related to the oldest problems in number theory are actually fruits of sieve methods and quite old. This goes to show how difficult it is to improve on sieve methods.
+			\item I will discuss Turan's proof of a weaker version of a theorem of normal order by Ramanujan-Hardy which essentially contains \textit{Turan's sieve} in it. I do not go into the sieving technique itself but I show this proof because I mention normal order early in the book.
 			\item I will discuss two elementary proofs of the prime number theorem. Again, this begs the question: \textit{exactly what do we consider to be elementary?} which will be answered below. Both proofs will be included in \autoref{ch:pnt}.
 			\item I initially wanted to discuss basic complex analysis with connection to the convergence of Dirichlet series but later decided not to include it at all. It simply does not go with the spirit of this book. Similarly, I did not follow \textcite{apostol_1976} and discuss Dirichlet characters from a more general point of view using group theory.
 			\item The reader may omit \autoref{ch:dispute} entirely given that it is more of an opinion of mine than an actual mathematical discussion. The reason behind including this chapter is that I believe if this dispute had not occurred, we might have had a few more influential discoveries like the elementary proof of the prime number theorem from the collaboration of Erd\H{o}s and Selberg. It was a crime that we were deprived of further collaboration between these two mathematical giants just because some third party that did not even witness the incidents first hand poked their noses where they did not belong; which consequently drove a wedge between Erd\H{o}s and Selberg. It will be clear why I feel so strongly on the matter in the respective chapter. Even though I say this is purely my opinion, proper references will be provided for the history along with some relevant information such as letters between parties involved. I will attach the letters in their original form purely because of historical reasons and also add the corresponding textual versions since they can be difficult to read occasionally. Thus, despite this chapter being a personal opinion, the reader will have some (if not all) necessary relevant evidences that are currently available to me so everyone can draw their own conclusions.
