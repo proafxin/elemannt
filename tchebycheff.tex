@@ -18,14 +18,14 @@
 			Let $\xi$ be a positive real number. Then there are constants $a$ and $A$ such that
 				\begin{align*}
 					a\dfrac{\xi}{\log{\xi}}
-						& < \pi(\xi) < A\dfrac{\xi}{\log{\xi}}
+						& \leq \pi(\xi) \leq A\dfrac{\xi}{\log{\xi}}
 				\end{align*}
 		\end{theorem}
 	Then he proved that if the limit
 		\begin{align*}
 			\lim_{\xi\to\infty}\dfrac{\xi}{\log{\xi}}
 		\end{align*}
-	exists, then it is $1$. The only problem was it could not be proven that this limit indeed exists. We follow the proof by \textcite[Theorem 112]{landau_1969}.
+	exists, then it is $1$. The only problem was it could not be proven that this limit indeed exists. The following proof is inspired by \textcite[Theorem 112]{landau_1969}. This book is actually a translation of the first section of the first volume of \textcite{landau_1927}.
 		\begin{proof}
 			For any $x\geq 0$,
 				\begin{align*}
@@ -50,6 +50,120 @@
 					\nu_{p}\parenthesis{\binom{2n}{n}}
 						& = \nu_{p}((2n)!)-2\nu_{p}(n!)
 				\end{align*}
-			Since $p>n$, $\nu_{p}(n!)=0$.
+			Since $p>n$, $\nu_{p}(n!)=0$ and $\nu_{p}\func{}{\binom{2n}{n}}=\nu_{p}((2n)!)\geq\nu_{p}\func{}{\prod_{n<p\leq 2n}p}$. On the other hand, for $p\leq 2n$,
+				\begin{align*}
+					\nu_{p}\func{}{\binom{2n}{n}}
+						& = \nu_{p}((2n)!)-2\nu_{p}(n!)\\
+						& = \sum_{i\geq 1}\floor{\dfrac{2n}{p^{i}}}-2\floor{\dfrac{n}{p^{i}}}
+				\end{align*}
+			Since $\floor{2x}-2\floor{x}\leq 1$ for any $x\geq0$ and $\nu_{p^{i}}((2n)!)=0$ for $i>r$, we have
+				\begin{align*}
+					\sum_{i\geq 1}\floor{\dfrac{2n}{p^{i}}}-2\floor{\dfrac{n}{p^{i}}}
+						& \leq \sum_{1\leq i\leq r}1
+				\end{align*}
+			Thus, for every prime $p$,
+				\begin{align*}
+					p^{\nu_{p}\func{}{\binom{2n}{n}}}
+						& \mid p^{r}
+				\end{align*}
+			and evidently
+				\begin{align*}
+					\binom{2n}{n}
+						& \mid \prod_{p\leq 2n}p^{r}
+				\end{align*}
+			Now, there are $\pi(2n)-\pi(n)$ primes in the interval $(n,2n)$ each of which are greater than $n$. So,
+				\begin{align*}
+					n^{\pi(2n)-\pi(n)}
+						& \leq \prod_{n<p\leq 2n}p\\
+						& \leq\binom{2n}{n}\\
+						& \leq \prod_{n<p\leq 2n}p^{\floor{\log_{p}{2n}}}\\
+						& \leq (2n)^{\pi(2n)}
+				\end{align*}
+			Taking logarithm,
+				\begin{align*}
+					\func{}{\pi(2n)-\pi(n)}\log{n}
+						& \leq \pi(2n)\log{2n}
+				\end{align*}
+			Next, we have that
+				\begin{align*}
+					\binom{2n}{n}
+						& \leq \sum_{i=0}^{2n}\binom{2n}{i}\\
+						& = 2^{2n}\\
+					\binom{2n}{n}
+						& = \dfrac{(n+1)\cdots (2n)}{1\cdots n}\\
+						& \geq \prod_{i=1}^{n}\dfrac{n+i}{i}\\
+						& = 2^{n}
+				\end{align*}
+			giving
+				\begin{align*}
+					(\pi(2n)-\pi(n))\log{n}
+						& \leq\log{\binom{2n}{n}}\leq\pi(2n)\log{2n}
+				\end{align*}
+			Thus, we have
+				\begin{align*}
+					(\pi(2n)-\pi(n))\log{n}
+						& \leq \log{2^{2n}}						
+				\end{align*}
+			and also
+				\begin{align*}
+					\pi(2n)\log{2n}
+						& \geq \log{2^{n}}\\
+					\pi(2n)
+						& \geq c_{1}\dfrac{2n}{\log{2n}}
+				\end{align*}
+			for a positive constant $c_{1}$. For $\xi\geq2$, setting $\eta=\floor{\xi/2}$ and $\xi=2\eta+r$ with $0\leq r<2$, we have $\xi\leq3\eta$ and $\log{2\eta}\leq\log{\xi}$.
+				\begin{align*}
+					\pi(\xi)
+						& \geq\func{\pi}{2\eta}\\
+						& \geq c\dfrac{2\eta}{\log{2\eta}}\\
+						& = \dfrac{2c}{3}\dfrac{3\eta}{\log{2\eta}}\\
+						& \geq a\dfrac{\xi}{\log{\xi}}
+				\end{align*}
+			for a positive constant $a$. On the other hand, since $x<2+2\floor{\frac{x}{2}}$,
+				\begin{align*}
+					\pi(x)-\func{\pi}{\dfrac{x}{2}}
+						& = \pi(x)-\func{\pi}{\floor{\dfrac{x}{2}}}\\
+						& \leq 2+\func{\pi}{2\floor{\dfrac{x}{2}}}-\func{\pi}{\floor{\dfrac{x}{2}}}\\
+						& \leq 2+2\log{2}\dfrac{\floor{\dfrac{x}{2}}}{\log{\floor{\dfrac{x}{2}}}}\\
+						& < d\dfrac{x}{log{x}}
+				\end{align*}
+			for $\eta=\floor{\frac{x}{2}}$. Using $\func{\pi}{\frac{x}{2}}\leq\frac{x}{2}$,
+				\begin{align*}
+					\log{x}\pi(x)-\log{\frac{x}{2}}\func{\pi}{\dfrac{x}{2}}
+						& = \func{\log{x}}{\pi(x)-\func{\pi}{\dfrac{x}{2}}}+\log{2}\cdot\func{\pi}{\dfrac{x}{2}}\\
+						& < \log{x}\cdot d_{1}\dfrac{x}{\log{x}}+\dfrac{x}{2}\\
+						& < d_{2}x
+				\end{align*}
+			If $2^{m+1}\leq2^{v+1}\xi<2^{v+2}$ (that is, $v+1=\floor{\log_{2}{\xi}})$,
+				\begin{align*}
+					\log{\dfrac{\xi}{2^{m}}}\func{\pi}{\dfrac{\xi}{2^{m}}}-\log{\dfrac{\xi}{2^{m+1}}}\func{\pi}{\dfrac{\xi}{2^{m+1}}}
+						& < d_{2}\dfrac{\xi}{2^{m}}
+				\end{align*}
+			Summing over this for $0\leq m\leq v$,
+				\begin{align*}
+					\log{\xi}\pi(\xi)
+						& = \func{\sum_{m=0}^{v}}{\log{\dfrac{\xi}{2^{m}}}\func{\pi}{\dfrac{\xi}{2^{m}}}-\log{\dfrac{\xi}{2^{m+1}}}\func{\pi}{\dfrac{x}{2^{m+1}}}}\\
+						& < d_{2}\xi\sum_{m=0}^{v}\dfrac{1}{2^{m}}\\
+						& = A\xi
+				\end{align*}
 		\end{proof}
+	A corollary is the following.
+		\begin{theorem}
+			For a positive integer $n>1$,
+				\begin{align*}
+					bn\log{n}
+						& < p_{n}<Bn\log{n}
+				\end{align*}
+		\end{theorem}
+	The proof is left to the reader as an exercise. Using this, we can prove Euler's divergence of sum of reciprocals of prime theorem. Since
+		\begin{align*}
+			\dfrac{1}{p_{n}}
+				& > B\dfrac{1}{n\log{n}}
+		\end{align*}
+	we only need to show that
+		\begin{align*}
+			\sum_{n\geq1}\dfrac{1}{n\log{n}}
+		\end{align*}
+	diverges. This is also left to the reader as an exercise.
+	\subfile{prime.tex}
 \end{document}
