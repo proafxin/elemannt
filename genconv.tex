@@ -13,8 +13,8 @@
 		\begin{align*}
 			f(\mathbf{x})
 				& = f(x_{1},\ldots,x_{k})\\
-			f\left(\dfrac{\mathbf{x}}{n^{\mathbf{a}}}\right)
-				& = f\left(\dfrac{x_{1}}{n^{a_{1}}},\ldots,\dfrac{x_{k}}{n^{a_{k}}}\right)\\
+			\func{f}{\dfrac{\mathbf{x}}{n^{\mathbf{a}}}}
+				& = \func{f}{\dfrac{x_{1}}{n^{a_{1}}},\ldots,\dfrac{x_{k}}{n^{a_{k}}}}\\
 			f\parenthesis{\floor{\dfrac{\mathbf{x}}{n^{\mathbf{a}}}}}
 				& = f\parenthesis{\floor{\dfrac{x_{1}}{n^{a_{1}}}},\ldots,\floor{\dfrac{x_{k}}{n^{a_{k}}}}}
 		\end{align*}
@@ -23,7 +23,7 @@
 			Let the generalized convolution of an arithmetic function $\alpha$ and a function $f$ defined for $k$ real numbers and a positive integer $a$ be
 				\begin{align}
 					(\alpha\bullet f)(\mathbf{x}, \mathbf{a})
-						& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}\alpha(n)f\left(\dfrac{\mathbf{x}}{n^{\mathbf{a}}}\right)\label{eqn:genconv}
+						& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}\alpha(n)\func{f}{\dfrac{\mathbf{x}}{n^{\mathbf{a}}}}\label{eqn:genconv}
 				\end{align}
 		\end{definition}
 	We have the next theorem about the associativity of $\bullet$ convolution.
@@ -64,7 +64,7 @@
 			and $\alpha^{-1}$ is the Dirichlet inverse of $\alpha$, then
 				\begin{align*}
 					f(\mathbf{x}, \mathbf{a})
-						& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}\alpha^{-1}(n)g\left(\dfrac{\mathbf{x}}{n^{\mathbf{a}}}\right)
+						& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}\alpha^{-1}(n)\func{g}{\dfrac{\mathbf{x}}{n^{\mathbf{a}}}}
 				\end{align*}
 			
 				\begin{proof}
@@ -106,7 +106,7 @@
 				\begin{align*}
 					H(\mathbf{x}, \mathbf{a})
 						& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}f(n)\parenthesis{\dfrac{\mathbf{x}}{n^{\mathbf{a}}},\mathbf{a}}\\
-						& =\sum_{n^{\mathbf{a}}\leq\mathbf{x}}g(n)F\left(\dfrac{\mathbf{x}}{n^{\mathbf{a}}},\mathbf{a}\right)
+						& =\sum_{n^{\mathbf{a}}\leq\mathbf{x}}g(n)\func{F}{\dfrac{\mathbf{x}}{n^{\mathbf{a}}},\mathbf{a}}
 				\end{align*}
 			
 				\begin{proof}
@@ -135,12 +135,12 @@
 						& =\sum_{n^{\mathbf{a}}\leq\mathbf{x}}F\parenthesis{\dfrac{\sqrt[\mathbf{a}]{\mathbf{x}}}{n}}
 				\end{align*}
 		\end{theorem}
-	We will now see some applications of generalized convolution $\bullet$. Let $s$ be a fixed positive integer and $f$ be defined as
+	We will now see some applications of generalized convolution $\bullet$. Let $s$ be a fixed positive integer and for the rest of the section, $f$ be defined as
 		\begin{align*}
 			f(\mathbf{x})
 			& = \prod_{i=1}^{k}\floor{x_{i}}
 		\end{align*}
-	For Jordan function $J_{s}(n)$, we will omit the index $s$ because the context is clear. Moreover, define the function $u$ as
+	Define the function $u$ as
 		\begin{align*}
 			u(n)
 				& = n^s
