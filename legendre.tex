@@ -2,6 +2,7 @@
 
 \begin{document}
 	\chapter{Two Elementary Proofs of Legendre-Dirichlet Prime Number Theorem}\label{ch:legendre}
+	\textcite[pp. 241]{euler_1783} proved that the sequence ${a+nd}$ contains infinitely many primes for $a=1$. This can be proven using cyclotomic polynomials (see \textcite[$\S1.4$, Theorem 1.47]{billal_riasat_2021}). \textcite[pp. 404]{legendre_1798} conjectured that ${a+nd}$ contains infinitely many primes when $\gcd(a,b)=1$ although failed to prove it as \textcite[$\S29$, pp. $505-508$]{gauss_1801} noted. \textcite{dirichlet_1837} proved in his famous paper that $a+nd$ contains infinitely many primes though \textcite[pp. 1]{davenport_1980} remarks that the proof is complete only when $d$ is a prime. \textcite{dirichlet_1839} (also see \textcite{dirichlet_1897_28}) completes this proof with Dirichlet's class number formula.
 	\section{Dirichlet Characters}
 	We will carry some concepts from elementary number theory. \textcite[pp. 186]{legendre_1798} defined the \textit{Legendre symbol} which plays a pivotal role in the theory of quadratic residue. \textcite{jacobi_1846} generalized Legendre symbol which is now known as \textit{Jacobi symbol}. \textcite[pp. 770]{kronecker_1885} generalized this to \textit{Kronecker symbol} which is unfortunately less known today. This is because \textcite{dirichlet_1837} introduced (also see \textcite{dirichlet_1897_21}) had already introduced a generalization of Kronecker symbol. For this section, let $k$ be a fixed positive integer.
 		\begin{definition}[Dirichlet Character]
@@ -21,12 +22,16 @@
 		\begin{proof}
 			From Euler's theorem,
 				\begin{align*}
-					a^{\varphi(k)}
+					n^{\varphi(k)}
 						& \equiv1\pmod{k}
 				\end{align*}
 			So, $\chi(n)^{k}=\chi(n^{k})=\chi(1)=1$.
 		\end{proof}
 	
+		\begin{definition}[Principal character]
+			$\chi_{0}(n)=1$ when $\gcd(n,k)=1$ is the \textit{principal character} $\pmod{k}$. If $\gcd(n,k)>1$, $\chi_{0}(n)=0$.
+		\end{definition}
+	Since the characters $\pmod{k}$ are complex roots of unity, the complex conjugate of $\chi(n)$ is also a root of unity, hence; also a character $\pmod{k}$. 
 		\begin{theorem}
 			
 		\end{theorem}
