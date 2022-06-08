@@ -3,6 +3,33 @@
 \begin{document}
 	\chapter{Two Elementary Proofs of Legendre-Dirichlet Prime Number Theorem}\label{ch:legendre}
 	\section{Dirichlet Characters}
+	We will carry some concepts from elementary number theory. \textcite[pp. 186]{legendre_1798} defined the \textit{Legendre symbol} which plays a pivotal role in the theory of quadratic residue. \textcite{jacobi_1846} generalized Legendre symbol which is now known as \textit{Jacobi symbol}. \textcite[pp. 770]{kronecker_1885} generalized this to \textit{Kronecker symbol} which is unfortunately less known today. This is because \textcite{dirichlet_1837} introduced (also see \textcite{dirichlet_1897_21}) had already introduced a generalization of Kronecker symbol. For this section, let $k$ be a fixed positive integer.
+		\begin{definition}[Dirichlet Character]
+			An arithmetic function $\chi$ is called a \index{Dirichlet character}\textit{character} $\pmod{k}$ if
+				\begin{enumerate}[(I)]
+					\item $\chi(a)=0$ if $\gcd(a,k)>1$.
+					\item $\chi(1)\neq0$.
+					\item $\chi(ab)=\chi(a)\chi(b)$ for all positive integers $a,b$.
+					\item $\chi(a)=\chi(b)$ if $a\equiv b\pmod{k}$.
+				\end{enumerate}
+		\end{definition}
+	Note that Legendre symbol $\func{}{\frac{a}{p}}\pmod{p}$ for prime $p$, Jacobi symbol $\func{}{\frac{a}{n}}$ and Kronecker symbol $\func{}{\frac{a}{n}}$ are all characters $\pmod{p},\pmod{n}$ and $\pmod{n}$ where $n$ is square-free and $n\equiv0,1\pmod{4}$ respectively. Another example of $\chi$ is $\chi(n)=0$ for $n\equiv0,2\pmod{4}$, $\chi(n)=1$ for $n\equiv1\pmod4$ and $\chi(n)=-1$ for $n\equiv3\pmod{4}$. Obviously, $\chi$ is completely multiplicative; hence $\chi(1)=1$.
+		\begin{theorem}
+			If $\gcd(n,k)=1$, then $\chi(n)^{k}=1$. So $\chi(n)$ is actually a complex number which is an $n$-th root of unity and $|\chi(n)|=1$.
+		\end{theorem}
+	
+		\begin{proof}
+			From Euler's theorem,
+				\begin{align*}
+					a^{\varphi(k)}
+						& \equiv1\pmod{k}
+				\end{align*}
+			So, $\chi(n)^{k}=\chi(n^{k})=\chi(1)=1$.
+		\end{proof}
+	
+		\begin{theorem}
+			
+		\end{theorem}
 	\section{Non-vanishing of $L$-Series At $s=1$}
 	\section{First Proof}
 	\section{Proof by Selberg}

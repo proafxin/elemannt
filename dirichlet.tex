@@ -116,42 +116,42 @@
     \end{align*}
     Now we need to focus on the following two sums.
     \begin{align*}
-    	\mathfrak{U}_{s}(x)
+    	\mathfrak{M}_{s}(x)
     	& = \sum_{n\leq x}\dfrac{n^{s}}{n^{\xi}}\\
-    	\mathfrak{V}_{s}(x)
+    	\mathfrak{G}_{s}(x)
     	& = \sum_{n\leq x}\dfrac{f(n)}{n^{s}}
     \end{align*}
     where $s\geq1$. Then
     \begin{align}
     	(f\diamond g)(x)
-    	& = x^{\xi}\bigo{\mathfrak{U}_{k}(\sqrt{x})}+x^{k}\mathfrak{V}_{k}(\sqrt{x})+\bigo{x^{k-1}\mathfrak{V}_{k-1}(\sqrt{x})}-\mathfrak{B}(x)\label{eqn:diamond}
+    	& = x^{\xi}\bigo{\mathfrak{M}_{k}(\sqrt{x})}+x^{k}\mathfrak{G}_{k}(\sqrt{x})+\bigo{x^{k-1}\mathfrak{G}_{k-1}(\sqrt{x})}-\mathfrak{B}(x)\label{eqn:diamond}
     \end{align}
-	We can use \autoref{thm:zetapositive} for computing $\mathfrak{U}$. If $s+1<\xi$,
+	We can use \autoref{thm:zetapositive} for computing $\mathfrak{M}$. If $s+1<\xi$,
     \begin{align}
-    	\mathfrak{U}_{s}(x)
+    	\mathfrak{M}_{s}(x)
     	& = \sum_{n\leq x}\dfrac{1}{n^{\xi-s}}\nonumber\\
     	& = \dfrac{x^{1+s-\xi}}{1+s-\xi}+\zeta(\xi-s)+\bigo{x^{s-\xi}}\label{eqn:Us}
     \end{align}
     If $s+1=\xi$, from \nameref{thm:harmonicsum},
     \begin{align*}
-    	\mathfrak{U}_{s}(x)
+    	\mathfrak{M}_{s}(x)
     	& = \log{x}+C+\bigo{\dfrac{1}{x}}
     \end{align*}
     The case $\xi-1<s<\xi$ is possible if and only if $\xi$ is not an integer and $s=\floor{\xi}$ which can be taken care of in the same manner as \eqref{eqn:Us}.  We can now assume $s\geq\xi$. In this case, $s-\xi\geq0$ and from \autoref{thm:lehmer}
     \begin{align*}
-    	\mathfrak{U}_{s}(x)
+    	\mathfrak{M}_{s}(x)
     	& = \sum_{n\leq x}n^{s-\xi}\\
     	& = \dfrac{x^{s-\xi+1}}{s-\xi+1}+\bigo{x^{s-\xi}}
     \end{align*}
-    For handling $\mathfrak{V}$, we will use \nameref{thm:abel}.
+    For handling $\mathfrak{G}$, we will use \nameref{thm:abel}.
     \begin{align*}
-    	\mathfrak{V}_{s}(x)
+    	\mathfrak{G}_{s}(x)
     	& = \dfrac{F(x)}{x^{s}}+s\int_{1}^{x}F(t)t^{-s-1}dt\\
     	& = \bigo{x^{\xi-s}}+s\bigo{\int_{1}^{x}t^{\xi-s-1}dt}
     \end{align*}
     Thus, we have
     \begin{align*}
-    	\mathfrak{U}_{s}(x),\mathfrak{V}_{s}(x)
+    	\mathfrak{M}_{s}(x),\mathfrak{G}_{s}(x)
     	& = 
     	\begin{cases}
     		\log{x}+C+\bigo{\dfrac{1}{x}},\bigo{x}& \mbox{ if }s+1=\xi\\
