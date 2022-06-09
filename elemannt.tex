@@ -38,17 +38,9 @@
 \makeatother
 
 \usepackage{hyperref,titlesec,xifthen,iftex,authoraftertitle,}
-\usepackage{filecontents}
-
-\begin{filecontents*}{ext-eprint.dbx}
-	\ProvidesFile{ext-eprint.dbx}[2016/09/11 extended stand-alone eprint fields]
-	\DeclareDatamodelFields[type=field,datatype=verbatim]{arxiv,mr,zbl,jstor,hdl,pubmed,googlebooks,pmcid}
-	\DeclareDatamodelEntryfields{arxiv,mr,zbl,jstor,hdl,pubmed,googlebooks,pmcid}
-	\DeclareDatamodelFields[type=field,datatype=literal]{arxivclass}
-	\DeclareDatamodelEntryfields{arxivclass}
-\end{filecontents*}
 
 \usepackage[bibstyle=philosophy-modern,citestyle=philosophy-verbose,backend=biber,autopunct,sortcites,dashed,datamodel=ext-eprint,doi,eprint]{biblatex}
+
 \hypersetup{linktocpage,unicode,pdfencoding=auto,pdfstartview=,allcolors=black,anchorcolor=black,allbordercolors=black,hidelinks}
 \DeclareNameAlias{sortname}{given-family}
 \interfootnotelinepenalty=10000
@@ -60,8 +52,8 @@
 	\newcommand{\scale}{1.2}
 	\newcommand{\fakemathbold}{0.}
 	\setmainfont[FakeBold=\fakebold,ItalicFont=CenturymodernTT-Italic.otf,ItalicFeatures={FakeBold=.5},BoldItalicFont=CenturymodernTT-Italic.otf,SmallCapsFont={OldStandard-Regular.otf},SmallCapsFeatures={Letters=SmallCaps,RawFeature=+smcp,Scale=\scale,FakeStretch=\fakestretch},BoldFont=CenturymodernTT-Regular.otf,BoldFeatures={,Scale=\scale,SmallCapsFont=OldStandard-Bold.otf,SmallCapsFeatures={RawFeature=+smcp,Scale=\scale},FakeStretch=\fakestretch,FakeBold=2},BoldItalicFeatures={FakeBold=2},Scale=\scale,FakeStretch=\fakestretch]{CenturymodernTT-Regular.otf}
-	\setsansfont[FakeBold=\fakebold,Scale=\scale,FakeStretch=\fakestretch]{CenturymodernTT-Regular.otf}
-	\setmonofont[FakeBold=\fakebold,Scale=\scale,FakeStretch=\fakestretch]{CenturymodernTT-Regular.otf}
+	\setsansfont[FakeBold=\fakebold,Scale=\scale,FakeStretch=\fakestretch]{NewCMSans10-Book.otf}
+	\setmonofont[FakeBold=\fakebold,Scale=\scale,FakeStretch=\fakestretch]{NewCMMono10-Book.otf}
 	\setmathfont[,Scale=\scale,FakeStretch=\fakestretch,FakeBold=\fakemathbold]{NewCMMath-Regular.otf}% KpMath-Regular.otf,KpMath-Light.otf
 	
 	\setmathfont[range={it,"007D,frak,"2022},Scale=\scale,FakeStretch=\fakestretch,FakeBold=\fakemathbold]{CenturymodernTT-Italic.otf}
@@ -175,6 +167,16 @@
 		\scaleleftright[1.2ex]{\{}{\box_use:N \l_masum_box_new}{}
 	}
 	\ExplSyntaxOff
+	\makeatletter
+	\let\fontspec@setsansfont\setsansfont
+	\def\setsansfont{%
+		\let\Alegreya@boldstyle\AlegreyaSans@boldstyle
+		\let\setsansfont\fontspec@setsansfont
+		\setsansfont
+	}
+	\makeatother
+	%\edef\familydefault{\sfdefault}
+	%\edef\rmdefault{\sfdefault}
 \else
 	\usepackage{pdfrender, xcolor,relsize}
 	\usepackage[T1]{fontenc}
@@ -211,6 +213,7 @@
 \newcommand{\parenthesis}[1]{\ifxetex{\scaleleftright[.8ex]{(}{#1}{)}}\else{\left(#1\right)}\fi}
 \newcommand{\curlybrace}[1]{\ifxetex{\scaleleftright[1.2ex]{\{}{#1}{\}}}\else{\left\{#1\right\}}\fi}
 \newcommand{\squarebracket}[1]{\ifxetex{\scaleleftright[.8ex]{[}{#1}{]}}\else{\left[#1\right]}\fi}
+\newcommand{\qr}[2]{\parenthesis{\frac{#1}{#2}}}
 \newcommand{\bigo}[1]{O\parenthesis{#1}}
 \newcommand{\func}[2]{#1\parenthesis{#2}}
 \DeclareMathOperator{\ord}{ord}

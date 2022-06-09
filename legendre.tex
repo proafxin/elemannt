@@ -2,9 +2,20 @@
 
 \begin{document}
 	\chapter{Two Elementary Proofs of Legendre-Dirichlet Prime Number Theorem}\label{ch:legendre}
-	\textcite[pp. 241]{euler_1783} proved that the sequence ${a+nd}$ contains infinitely many primes for $a=1$. This can be proven using cyclotomic polynomials (see \textcite[$\S1.4$, Theorem 1.47]{billal_riasat_2021}). \textcite[pp. 404]{legendre_1798} conjectured that ${a+nd}$ contains infinitely many primes when $\gcd(a,b)=1$ although failed to prove it as \textcite[$\S29$, pp. $505-508$]{gauss_1801} noted. \textcite{dirichlet_1837} proved in his famous paper that $a+nd$ contains infinitely many primes though \textcite[pp. 1]{davenport_1980} remarks that the proof is complete only when $d$ is a prime. \textcite{dirichlet_1839} (also see \textcite{dirichlet_1897_28}) completes this proof with Dirichlet's class number formula.
+	\textcite[pp. 241]{euler_1783} proved that the sequence ${a+nd}$ contains infinitely many primes for $a=1$. This can be proven using cyclotomic polynomials (see \textcite[$\S1.4$, Theorem 1.47]{billal_riasat_2021}). \textcite[pp. 404]{legendre_1798} conjectured that ${a+nd}$ contains infinitely many primes when $\gcd(a,d)=1$ although failed to prove it as \textcite[$\S29$, pp. $505-508$]{gauss_1801} noted. \textcite{dirichlet_1837} proved in his famous paper that $a+nd$ contains infinitely many primes though the proof is complete only when $d$ is a prime. \textcite{dirichlet_1839} (also see \textcite{dirichlet_1897_28}) completes this proof with Dirichlet's class number formula. This is why today it is known as \index{Dirichlet's theorem on arithmetic progression}\textit{Dirichlet's theorem on arithmetic progression} or \textit{Dirichlet's prime number theorem}.
 	\section{Dirichlet Characters}
-	We will carry some concepts from elementary number theory. \textcite[pp. 186]{legendre_1798} defined the \textit{Legendre symbol} which plays a pivotal role in the theory of quadratic residue. \textcite{jacobi_1846} generalized Legendre symbol which is now known as \textit{Jacobi symbol}. \textcite[pp. 770]{kronecker_1885} generalized this to \textit{Kronecker symbol} which is unfortunately less known today. This is because \textcite{dirichlet_1837} introduced (also see \textcite{dirichlet_1897_21}) had already introduced a generalization of Kronecker symbol. For this section, let $k$ be a fixed positive integer.
+	Dirichlet's idea of proving Legendre's conjecture essentially comes from Euler's proof of the divergence of the sum of reciprocal of primes, except Dirichlet wanted to prove the same when restricted by the constraint that $p\equiv a\pmod{k}$. Euler's proof gives us another way to prove there are infinitely many primes because the sum of reciprocals of primes diverge. If there were finitely many primes, that would not be the case. So, if we could prove
+		\begin{align*}
+			\sum_{p\equiv a\pmod{k}}\frac{1}{p}
+		\end{align*}
+	diverges as well, the theorem would be complete. This is where Dirichlet introduced the crucial idea of \textit{characters}. The motivation Dirichlet had was to define a function in a certain way that would allow one to
+		\begin{enumerate}[(I)]
+			\item identify when $a$ is relatively prime to $k$.
+			\item have the same behavior as the reduced set of residues $\pmod{k}$.
+			\item have the same behavior as the complex roots of unity (this is actually very important, for example, the sum of all roots of unity is $0$.)
+			\item identify exactly when $b\equiv a\pmod{k}$ for $\gcd(a,k)=1$.
+		\end{enumerate}
+	As we will see later, Dirichlet characters satisfy all of these properties. It will become apparent later how and why they play such a crucial role. \textcite[pp. 186]{legendre_1798} defined the \textit{Legendre symbol} which plays a pivotal role in elementary number theory. \textcite{jacobi_1846} generalized Legendre symbol which is now known as \textit{Jacobi symbol}. \textcite[pp. 770]{kronecker_1885} generalized this to \textit{Kronecker symbol} which is unfortunately less known today. This is because \textcite{dirichlet_1837} had already introduced (also see \textcite{dirichlet_1897_21}) a generalization of Kronecker symbol which is far more insightful. Let $k$ be a fixed positive integer.
 		\begin{definition}[Dirichlet Character]
 			An arithmetic function $\chi$ is called a \index{Dirichlet character}\textit{character} $\pmod{k}$ if
 				\begin{enumerate}[(I)]
@@ -14,9 +25,11 @@
 					\item $\chi(a)=\chi(b)$ if $a\equiv b\pmod{k}$.
 				\end{enumerate}
 		\end{definition}
-	Note that Legendre symbol $\func{}{\frac{a}{p}}\pmod{p}$ for prime $p$, Jacobi symbol $\func{}{\frac{a}{n}}$ and Kronecker symbol $\func{}{\frac{a}{n}}$ are all characters $\pmod{p},\pmod{n}$ and $\pmod{n}$ where $n$ is square-free and $n\equiv0,1\pmod{4}$ respectively. Another example of $\chi$ is $\chi(n)=0$ for $n\equiv0,2\pmod{4}$, $\chi(n)=1$ for $n\equiv1\pmod4$ and $\chi(n)=-1$ for $n\equiv3\pmod{4}$. Obviously, $\chi$ is completely multiplicative; hence $\chi(1)=1$.
+	Note that Legendre symbol $\qr{a}{p}$ for prime $p$, Jacobi symbol $\qr{a}{n}$ and Kronecker symbol $\qr{a}{l}$ are all characters $\pmod{p},\pmod{n}$ and $\pmod{l}$ respectively where $p$ is prime, $n$ is a positive integer and $l\equiv0,1\pmod{4}$ for square-free $l$. Another example of $\chi$ is $\chi(n)=0$ for $n\equiv0,2\pmod{4}$, $\chi(n)=1$ for $n\equiv1\pmod4$ and $\chi(n)=-1$ for $n\equiv3\pmod{4}$. Obviously, $\chi$ is completely multiplicative; hence $\chi(1)=1$.
+	
+	It is still not entirely clear how $\chi$ satisfies the properties we mentioned above. The next three theorems show why $\chi(n)$ behaves like complex roots of unity.
 		\begin{theorem}
-			If $\gcd(n,k)=1$, then $\chi(n)^{k}=1$. So $\chi(n)$ is actually a complex number which is an $n$-th root of unity and $|\chi(n)|=1$.
+			If $\gcd(n,k)=1$, then $\chi(n)^{\varphi(k)}=1$. So $\chi(n)$ is actually a complex number which is an $\varphi(k)$-th root of unity and $|\chi(n)|=1$.
 		\end{theorem}
 	
 		\begin{proof}
@@ -25,16 +38,49 @@
 					n^{\varphi(k)}
 						& \equiv1\pmod{k}
 				\end{align*}
-			So, $\chi(n)^{k}=\chi(n^{k})=\chi(1)=1$.
+			So, $\chi(n)^{\varphi(k)}=\chi(n^{\varphi(k)})=\chi(1)=1$.
 		\end{proof}
 	
 		\begin{definition}[Principal character]
 			$\chi_{0}(n)=1$ when $\gcd(n,k)=1$ is the \textit{principal character} $\pmod{k}$. If $\gcd(n,k)>1$, $\chi_{0}(n)=0$.
 		\end{definition}
-	Since the characters $\pmod{k}$ are complex roots of unity, the complex conjugate of $\chi(n)$ is also a root of unity, hence; also a character $\pmod{k}$. 
+	Since the characters $\pmod{k}$ are complex roots of unity, the complex conjugate of $\chi(n)$, $\bar{\chi(n)}$ is also a root of unity, hence; the following. 
 		\begin{theorem}
+			If $\chi(n)$ is a character $\pmod{k}$, $\bar{\chi(n)}$ is also a character $\pmod{k}$.
+		\end{theorem}
+	
+		\begin{theorem}
+			For any Dirichlet character $\chi$,
+				\begin{align*}
+					\sum_{0\leq a\leq k-1}\chi(a)
+						& =
+							\begin{cases}
+								\varphi(k)& \mbox{ if }\chi=\chi_{0}\\
+								0& \mbox{ otherwise}
+							\end{cases}
+				\end{align*}
 			
 		\end{theorem}
+	
+		\begin{proof}
+			
+		\end{proof}
+	The next two theorems show why $\chi$ behaves like a set of complete/reduced residues.
+		\begin{theorem}
+			If $\chi_{1}(n)$ and $\chi_{2}(n)$ are both characters, then so is $\chi_{1}(n)\chi_{2}(n)$. 
+		\end{theorem}
+	
+		\begin{proof}
+			
+		\end{proof}
+	
+		\begin{theorem}
+			If $\chi'(n)$ is a character and $\chi(n)$ runs over all characters of $k$, $\chi'(n)\chi(n)$ runs over all characters of $k$ as well.
+		\end{theorem}
+	
+		\begin{proof}
+			
+		\end{proof}
 	\section{Non-vanishing of $L$-Series At $s=1$}
 	\section{First Proof}
 	\section{Proof by Selberg}
