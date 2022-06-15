@@ -56,7 +56,7 @@
 	\setmonofont[FakeBold=\fakebold,Scale=\scale,FakeStretch=\fakestretch]{NewCMMono10-Book.otf}
 	\setmathfont[,Scale=\scale,FakeStretch=\fakestretch,FakeBold=\fakemathbold]{NewCMMath-Regular.otf}% KpMath-Regular.otf,KpMath-Light.otf
 	
-	\setmathfont[range={it,"007D,frak,"2022,{up/Greek},{it/Greek}},Scale=\scale,FakeStretch=\fakestretch,FakeBold=\fakemathbold]{CenturymodernTT-Italic.otf}
+	\setmathfont[range={it,"007D,frak,"2022,{up/Greek},{it/Greek},"22EF,"2217-"2219,"2229-"222B,"2208,"2022},Scale=\scale,FakeStretch=\fakestretch,FakeBold=\fakemathbold]{CenturymodernTT-Italic.otf}
 	%\setmathfont[range={up,"03BB,},Scale=\scale,FakeStretch=\fakestretch,FakeBold=\fakemathbold]{CenturymodernTT-Regular.otf}
 	%\setmathfont{latinmodern-math.otf}[range={bfup,},Scale=\scale,FakeStretch=\fakestretch,FakeBold=\fakemathbold]
 	%\setmathfont{CenturymodernTT-Regular.otf}[range={"005B,"005D,"2308-"230B,"005B,"005D,"003A,"003B,"002C,"003D,"2260-"2267,"00A7},FakeStretch=1.1\fakestretch]% NewCMMath-Regular.otf,texgyrepagella-math.otf
@@ -70,7 +70,7 @@
 	\setmathfont{CenturymodernTT-Italic.ttf}[range={"221E,"002F,"00B1,"0021,},Scale=\scale,FakeBold=\fakemathbold,FakeStretch=\fakestretch]%,{it/{greek}},{up/{greek}},
 	\setmathfont{IMFELLDoublePicaRomanSC.otf}[range={"007B-"007D,"0028-"0029,"002F,"005B-"005D,"00A7,\mid,},FakeBold=0]
 	\setmathfont{IMFellEnglish-Regular.ttf}[range={"007B,"007D,},]
-	\newfontfamily{\sumfont}{CenturymodernTT-Italic.ttf}[]% GFSSolomos.otf,lmroman17-regular.otf,lmromanslant17-regular.otf,Theano Didot Regular V1.otf
+	\newfontfamily{\sumfont}{CenturymodernTT-Italic.otf}[]% GFSSolomos.otf,lmroman17-regular.otf,lmromanslant17-regular.otf,Theano Didot Regular V1.otf
 	\makeatletter
 	\RenewDocumentCommand{\sum@}{}{\DOTSB\baskervillesum}
 	\AtBeginDocument{%
@@ -86,7 +86,7 @@
 	\NewDocumentCommand{\makebaskervillesum}{m}{%
 		\vcenter{\hbox{\scalebox{#1}{\sumfont Σ}}}%
 	}
-	\newfontfamily{\prodfont}{CenturymodernTT-Italic.ttf}[FakeStretch=.9\fakestretch]%OldStandard-Italic.otf,ModernExtT-Theano.otf
+	\newfontfamily{\prodfont}{CenturymodernTT-Italic.otf}[FakeStretch=.9\fakestretch]%OldStandard-Italic.otf,ModernExtT-Theano.otf
 	\makeatletter
 	\RenewDocumentCommand{\prod@}{}{\DOTSB\baskervilleprod}
 	\AtBeginDocument{%
@@ -102,7 +102,7 @@
 	\NewDocumentCommand{\makebaskervilleprod}{m}{%
 		\vcenter{\hbox{\scalebox{#1}{\prodfont ∏}}}%
 	}
-	\newfontfamily\intfont{CenturymodernTT-Regular.otf}[FakeBold=0]% OldStandard-Italic.otf,latinmodern-math.otf,Erewhon-Math.otf
+	\newfontfamily\intfont{CenturymodernTT-Italic.otf}[FakeBold=0]% OldStandard-Italic.otf,latinmodern-math.otf,Erewhon-Math.otf
 	\makeatletter
 	\NewDocumentCommand{\int@}{}{\DOTSB\baskervilleint}
 	\AtBeginDocument{%
