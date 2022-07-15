@@ -51,7 +51,7 @@
 	\newcommand{\fakestretch}{1.}
 	\newcommand{\scale}{1.}
 	\newcommand{\fakemathbold}{0.}
-	\setmainfont[FakeBold=\fakebold,ItalicFont=CenturymodernTT-Italic.otf,ItalicFeatures={FakeBold=.5},BoldItalicFont=CenturymodernTT-Italic.otf,SmallCapsFont={CenturymodernTT-SC.otf},SmallCapsFeatures={Letters=SmallCaps,RawFeature=+smcp,Scale=\scale,FakeStretch=\fakestretch},BoldFont=CenturymodernTT-Regular.otf,BoldFeatures={,Scale=\scale,SmallCapsFont=CenturymodernTT-SC.otf,SmallCapsFeatures={RawFeature=+smcp,Scale=\scale},FakeStretch=\fakestretch,FakeBold=2},BoldItalicFeatures={FakeBold=2},Scale=\scale,FakeStretch=\fakestretch]{CenturymodernTT-Regular.otf}
+	\setmainfont[FakeBold=\fakebold,ItalicFont=CenturymodernTT-Italic.otf,BoldItalicFont=CenturymodernTT-Italic.otf,SmallCapsFont={CenturymodernTT-SC.otf},BoldFont=CenturymodernTT-Regular.otf,BoldFeatures={SmallCapsFeatures={FakeBold=2}},BoldItalicFeatures={FakeBold=2},Scale=\scale,FakeStretch=\fakestretch]{CenturymodernTT-Regular.otf}
 	\setsansfont[FakeBold=\fakebold,Scale=\scale,FakeStretch=\fakestretch]{NewCMSans10-Book.otf}
 	\setmonofont[FakeBold=\fakebold,Scale=\scale,FakeStretch=\fakestretch]{NewCMMono10-Book.otf}
 	\setmathfont[,Scale=\scale,FakeStretch=\fakestretch,FakeBold=\fakemathbold]{NewCMMath-Regular.otf}% KpMath-Regular.otf,KpMath-Light.otf
@@ -203,11 +203,11 @@
 \titleformat{\section}[display]{\LARGE}{}{1ex}{\centering\ifthenelse{\value{section}>0}{\thesection\;}{}\vspace{.2in}}[]
 %\titleformat{\subsection}[display]{\bfseries\scshape\Large}{}{1ex}{\centering\ifthenelse{\value{section}>0}{$\S\S$\thesubsection\;}{}}[\titlerule]
 
-\newtheorem{theorem}{\textbf{\textbf{Theorem}}}
+\newtheorem{theorem}{\textsc{\textbf{Theorem}}}
 %\numberwithin{theorem}{chapter}
 %\renewcommand{\thetheorem}{\arabic{theorem}}
 \theoremstyle{definition}
-\newenvironment{definition}[1][]{\par\medskip\noindent \textit{\textbf{{\ifthenelse{\isempty{#1}}{Definition.}{#1.}}}} \rmfamily}{\medskip}
+\newenvironment{definition}[1][]{\par\medskip\noindent \textsc{\textbf{{\ifthenelse{\isempty{#1}}{Definition.}{#1.}}}} \rmfamily}{\medskip}
 
 \usepackage{scalerel}
 \newcommand{\floor}[1]{\ifxetex{\squarebracket{#1}}\else{\left\lfloor{#1}\right\rfloor}\fi}
@@ -243,17 +243,17 @@
 	\fancyhead[L]{\ifthenelse{0\firstleftxmark=0}
 		{}% no theorems yet, so no header
 		{\ifthenelse{\equal{\firstleftxmark}{\lastleftxmark}}
-			{\textit{Theorem} \firstleftxmark}% Only one theorem on the page
-			{\textit{Theorems} \firstleftxmark–\lastleftxmark}}}
-	\fancyhead[CE]{\small\itshape Masum Billal}
+			{\textsc{Theorem} \firstleftxmark}% Only one theorem on the page
+			{\textsc{Theorems} \firstleftxmark–\lastleftxmark}}}
+	\fancyhead[CE]{\small\scshape Masum Billal}
 	\fancyhead[R]{\thepage}
-	\fancyhead[CO]{\small\itshape \thesection\hspace{.1em}\nouppercase\rightmark}
+	\fancyhead[CO]{\small\scshape \thesection\hspace{.1em}\nouppercase\rightmark}
 }
 
 \setcounter{secnumdepth}{3}
 
 \theoremstyle{definition}
-\newtheorem{problem}{\text{Problem}}
+\newtheorem{problem}{\textbf{Problem}}
 \newcommand*{\problemautorefname}{Problem}
 \newtheorem*{remark}{\text{Remark}}
 \newtheorem*{note}{\text{Note}}
