@@ -1,49 +1,49 @@
-\documentclass[12pt,leqno,]{book}
+\documentclass[lang=en,color=green,mode=fancy,math=cm,12pt,letterpaper]{elegantbook}
 
-\usepackage{amsmath,amssymb,amsthm,etoolbox}
-\usepackage[left=.5in,right=.5in,top=.5in,]{geometry}
-\usepackage{xcolor,color,fancyhdr,}
+\usepackage{amsmath,amssymb}
+%\usepackage[left=.5in,right=.5in,top=.5in,]{geometry}
+\usepackage{fancyhdr}
 \usepackage{subfiles}
 
 \usepackage{enumerate}
 
-\usepackage{titletoc,tocloft,fmtcount}
-\renewcommand{\thechapter}{\Roman{chapter}}
-\renewcommand{\theequation}{$\ddagger$\arabic{equation}}
+%\usepackage{titletoc,tocloft,fmtcount}
+%\renewcommand{\thechapter}{\Roman{chapter}}
+%\renewcommand{\theequation}{$\ddagger$\arabic{equation}}
 %\renewcommand{\chaptername}{CHAPTER}
-\renewcommand{\contentsname}{\parbox{\linewidth}{\centerline{\normalfont\LARGE CONTENTS}~\\[-1.5cm]}}
+%\renewcommand{\contentsname}{\parbox{\linewidth}{\centerline{\normalfont\LARGE CONTENTS}~\\[-1.5cm]}}
 
-\renewcommand{\thesection}{$\S$\arabic{section}\hspace{.1em}.\hspace{.2em}}
+%\renewcommand{\thesection}{$\S$\arabic{section}\hspace{.1em}.\hspace{.2em}}
 %\addtolength{\cftchapnumwidth}{70pt}
 %\addtolength{\cftsecnumwidth}{30pt}
-\makeatletter
-\renewcommand*\l@chapter[2]{%
-	\ifnum \c@tocdepth >\m@ne\relax
-	\addpenalty{-\@highpenalty}%
-	\addvspace{1.0em \@plus\p@}%
-	\setlength\@tempdima{3em}%
-	\begingroup
-	\def\numberline##1{\xdef\@chapternumber{##1}}%
-	\setbox0=\vbox{\centering #1.\vspace{1\baselineskip}}% Could be more than one line
-	\centering
-	\leavevmode
-	\hyperlink{\Hy@tocdestname}{\vspace{1\baselineskip} \MakeUppercase\chaptername\hspace{.5em}\@chapternumber.}\\
-	\unvbox0
-	\par
-	\nobreak
-	\global\@nobreaktrue
-	\everypar{\global\@nobreakfalse\everypar{}}%
-	\endgroup
-	\fi}
-\makeatother
+%\makeatletter
+%\renewcommand*\l@chapter[2]{%
+%	\ifnum \c@tocdepth >\m@ne\relax
+%	\addpenalty{-\@highpenalty}%
+%	\addvspace{1.0em \@plus\p@}%
+%	\setlength\@tempdima{3em}%
+%	\begingroup
+%	\def\numberline##1{\xdef\@chapternumber{##1}}%
+%	\setbox0=\vbox{\centering #1.\vspace{1\baselineskip}}% Could be more than one line
+%	\centering
+%	\leavevmode
+%	\hyperlink{\Hy@tocdestname}{\vspace{1\baselineskip} \MakeUppercase\chaptername\hspace{.5em}\@chapternumber.}\\
+%	\unvbox0
+%	\par
+%	\nobreak
+%	\global\@nobreaktrue
+%	\everypar{\global\@nobreakfalse\everypar{}}%
+%	\endgroup
+%	\fi}
+%\makeatother
 
 \usepackage{hyperref,titlesec,xifthen,iftex,authoraftertitle,}
 
-\usepackage[bibstyle=philosophy-modern,citestyle=philosophy-verbose,backend=biber,autopunct,sortcites,dashed,datamodel=ext-eprint,doi,eprint,scauthors=true,volnumformat=strings,volumeformat=romansc,scauthorsbib,scauthorscite]{biblatex}
+%\usepackage[bibstyle=philosophy-modern,citestyle=philosophy-verbose,backend=biber,autopunct,sortcites,dashed,datamodel=ext-eprint,doi,eprint,scauthors=true,volnumformat=strings,volumeformat=romansc,scauthorsbib,scauthorscite]{biblatex}
 
-\hypersetup{linktocpage,unicode,pdfencoding=auto,pdfstartview=,allcolors=black,anchorcolor=black,allbordercolors=black,hidelinks}
-\DeclareNameAlias{sortname}{given-family}
-\interfootnotelinepenalty=10000
+%\hypersetup{linktocpage,unicode,pdfencoding=auto,pdfstartview=,allcolors=black,anchorcolor=black,allbordercolors=black,hidelinks}
+%\DeclareNameAlias{sortname}{given-family}
+%\interfootnotelinepenalty=10000
 
 \ifxetex
 	\usepackage{unicode-math}
@@ -55,7 +55,7 @@
 	\setsansfont[FakeBold=\fakebold,Scale=\scale,FakeStretch=\fakestretch]{NewCMSans10-Book.otf}
 	\setmonofont[FakeBold=\fakebold,Scale=\scale,FakeStretch=\fakestretch]{NewCMMono10-Book.otf}
 	\setmathfont[,Scale=\scale,FakeStretch=\fakestretch,FakeBold=\fakemathbold]{NewCMMath-Regular.otf}% KpMath-Regular.otf,KpMath-Light.otf
-	
+
 	\setmathfont[range={it,"007D,frak,"2022,{up/Greek},{it/Greek},"22EF,"2217-"2219,"2229-"222B,"2208,"2022,"211C,"2111},Scale=\scale,FakeStretch=\fakestretch,FakeBold=\fakemathbold]{CenturymodernTT-Italic.otf}
 	\setmathfont{CenturymodernTT-Regular.otf}[range={it/{num,"03BB},up/{num,"03BB},"00A7,"03BB,"007B-"007D,"0028-"0029,"002F,"005B-"005D,"00A7,\mid,},Scale=\scale,FakeStretch=\fakestretch,FakeBold=\fakemathbold]
 	%\setmathfont{ModernMT-ExtendedItalic-New.otf}[range={"2260-"2267,"226A-"226B,"003C,"003E,"03B1},FakeBold=\fakemathbold,FakeStretch=1.1\fakestretch]
@@ -119,35 +119,35 @@
 	\ExplSyntaxOn
 	\box_new:N \l_masum_box
 	\RenewDocumentEnvironment{pmatrix}{}
-	{ 
-		\hbox_set:Nw \l_masum_box 
+	{
+		\hbox_set:Nw \l_masum_box
 		\c_math_toggle_token
 		\begin{matrix}
 		}
-		{ 
+		{
 		\end{matrix}
 		\c_math_toggle_token
 		\hbox_set_end:
 		\scaleleftright[.8ex]{(}{\box_use:N \l_masum_box}{)}
 	}
-	
+
 	\box_new:N \l_masum_box_vm
 	\RenewDocumentEnvironment{vmatrix}{}
-	{ 
+	{
 		\hbox_set:Nw \l_masum_box_vm
 		\c_math_toggle_token
 		\begin{matrix}
 		}
-		{ 
+		{
 		\end{matrix}
 		\c_math_toggle_token
 		\hbox_set_end:
 		\scaleleftright[.5ex]{|}{\box_use:N \l_masum_box_vm}{|}
 	}
-	
+
 	\box_new:N \l_masum_box_new
 	\RenewDocumentEnvironment{cases}{}
-	{ 
+	{
 		\hbox_set:Nw \l_masum_box_new
 		\c_math_toggle_token
 		\begin{matrix}
@@ -169,11 +169,11 @@
 	\makeatother
 \else
 	\usepackage{pdfrender, xcolor,relsize}
-	\usepackage[T1]{fontenc}
+	%\usepackage[T1]{fontenc}
 	%\usepackage{baskervillef}
 	%\usepackage[baskerville]{newtxmath}
-	\pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.0pt}
-	\makeatletter\let\normalrender\PdfRender@NormalColorHook\let\PdfRender@NormalColorHook\@empty\newcommand*{\textnormalrender}[1]{\begingroup\normalrender#1\endgroup}\makeatother
+	%\pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.0pt}
+	%\makeatletter\let\normalrender\PdfRender@NormalColorHook\let\PdfRender@NormalColorHook\@empty\newcommand*{\textnormalrender}[1]{\begingroup\normalrender#1\endgroup}\makeatother
 \fi
 
 \usepackage[,nopostdot,]{glossaries}
@@ -186,15 +186,15 @@
 \makeindex
 \makeglossaries
 
-\titleformat{\chapter}[display]{\Huge}{\normalfont\large\centering\MakeUppercase\chaptername\hspace{.5em}\thechapter.}{1ex}{\centering\vspace{1ex}\ifthenelse{\value{chapter}>0}{\MakeUppercase}{}}[\vspace{1ex}]
-\titleformat{\section}[display]{\LARGE}{}{1ex}{\centering\ifthenelse{\value{section}>0}{\thesection\;}{}\vspace{.2in}}[]
+%\titleformat{\chapter}[display]{\Huge}{\normalfont\large\centering\MakeUppercase\chaptername\hspace{.5em}\thechapter.}{1ex}{\centering\vspace{1ex}\ifthenelse{\value{chapter}>0}{\MakeUppercase}{}}[\vspace{1ex}]
+%\titleformat{\section}[display]{\LARGE}{}{1ex}{\centering\ifthenelse{\value{section}>0}{\thesection\;}{}\vspace{.2in}}[]
 %\titleformat{\subsection}[display]{\bfseries\scshape\Large}{}{1ex}{\centering\ifthenelse{\value{section}>0}{$\S\S$\thesubsection\;}{}}[\titlerule]
 
-\newtheorem{theorem}{\textsc{\textbf{Theorem}}}
+%\newtheorem{theorem}{\textsc{\textbf{Theorem}}}
 %\numberwithin{theorem}{chapter}
 %\renewcommand{\thetheorem}{\arabic{theorem}}
-\theoremstyle{definition}
-\newenvironment{definition}[1][]{\par\medskip\noindent \textsc{\textbf{{\ifthenelse{\isempty{#1}}{Definition.}{#1.}}}} \rmfamily}{\medskip}
+%\theoremstyle{definition}
+%\newenvironment{definition}[1][]{\par\medskip\noindent \textsc{\textbf{{\ifthenelse{\isempty{#1}}{Definition.}{#1.}}}} \rmfamily}{\medskip}
 
 \usepackage{scalerel}
 \newcommand{\floor}[1]{\ifxetex{\squarebracket{#1}}\else{\left\lfloor{#1}\right\rfloor}\fi}
@@ -217,34 +217,34 @@
 \renewcommand*{\sectionautorefname}{Section}
 \renewcommand*{\subsectionautorefname}{Subsection}
 
-\renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
-\renewcommand{\sectionmark}[1]{\markboth{#1}{#1}}
+%\renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
+%\renewcommand{\sectionmark}[1]{\markboth{#1}{#1}}
 
-\usepackage{extramarks}
-\AtBeginEnvironment{theorem}{\addtocounter{theorem}{1}%
-	\extramarks{\thetheorem}{}\addtocounter{theorem}{-1}}
+%\usepackage{extramarks}
+%\AtBeginEnvironment{theorem}{\addtocounter{theorem}{1}%
+%	\extramarks{\thetheorem}{}\addtocounter{theorem}{-1}}
 
-\pagestyle{fancy}
-\fancypagestyle{fancy}{
-	\fancyhf{}
-	\fancyhead[L]{\ifthenelse{0\firstleftxmark=0}
-		{}% no theorems yet, so no header
-		{\ifthenelse{\equal{\firstleftxmark}{\lastleftxmark}}
-			{\textsc{Theorem} \firstleftxmark}% Only one theorem on the page
-			{\textsc{Theorems} \firstleftxmark–\lastleftxmark}}}
-	\fancyhead[CE]{\small\scshape Masum Billal}
-	\fancyhead[R]{\thepage}
-	\fancyhead[CO]{\small\scshape \thesection\hspace{.1em}\nouppercase\rightmark}
-}
+%\pagestyle{fancy}
+%\fancypagestyle{fancy}{
+%	\fancyhf{}
+%	\fancyhead[L]{\ifthenelse{0\firstleftxmark=0}
+%		{}% no theorems yet, so no header
+%		{\ifthenelse{\equal{\firstleftxmark}{\lastleftxmark}}
+%			{\textsc{Theorem} \firstleftxmark}% Only one theorem on the page
+%			{\textsc{Theorems} \firstleftxmark–\lastleftxmark}}}
+%	\fancyhead[CE]{\small\scshape Masum Billal}
+%	\fancyhead[R]{\thepage}
+%	\fancyhead[CO]{\small\scshape \thesection\hspace{.1em}\nouppercase\rightmark}
+%}
 
 \setcounter{secnumdepth}{3}
 
-\theoremstyle{definition}
-\newtheorem{problem}{\textbf{Problem}}
-\newcommand*{\problemautorefname}{Problem}
-\newtheorem*{remark}{\text{Remark}}
-\newtheorem*{note}{\text{Note}}
-\newtheorem*{solution}{\text{Solution}}
+%\theoremstyle{definition}
+%\newtheorem{problem}{\textbf{Problem}}
+%\newcommand*{\problemautorefname}{Problem}
+%\newtheorem*{remark}{\text{Remark}}
+%\newtheorem*{note}{\text{Note}}
+%\newtheorem*{solution}{\text{Solution}}
 %\numberwithin{problem}{chapter}
 
 \defbibfilter{books}{type=book or type=inbook}
@@ -322,18 +322,20 @@
 \author{Masum Billal}
 
 \begin{document}
-	\AddToShipoutPictureBG{\includegraphics[width=\paperwidth,height=\paperheight]{background}}
+	%\AddToShipoutPictureBG{\includegraphics[width=\paperwidth,height=\paperheight]{background}}
 	\pagestyle{empty}
 	\begin{titlepage}
 		\centering
 		\vspace*{2\baselineskip}
-		{\ifxetex\fontsize{30}{10}\titlefont\fi E\hspace{.1em}L\hspace{.1em}E\hspace{.1em}M\hspace{.1em}E\hspace{.1em}N\hspace{.1em}T\hspace{.1em}A\hspace{.1em}R\hspace{.1em}Y\\\vspace{.3in} ANALYTIC\hspace{.3em}NUMBER\hspace{.3em} THEORY}\\[2\baselineskip]
+		\textit{Elementary Analytic Number Theory}\\ \vspace{.2in}
+		%{\ifxetex\fontsize{30}{10}\titlefont\fi E\hspace{.1em}L\hspace{.1em}E\hspace{.1em}M\hspace{.1em}E\hspace{.1em}N\hspace{.1em}T\hspace{.1em}A\hspace{.1em}R\hspace{.1em}Y\\\vspace{.3in} ANALYTIC\hspace{.3em}NUMBER\hspace{.3em} THEORY}\\[2\baselineskip]
 		\ifxetex
 		%	\scalebox{8}[1]{{\wb{10}{12}4}}
 			%\\[2\baselineskip]
 		\fi
-		{BY}\\[\baselineskip]
-		{\ifxetex\fontsize{20}{10}\hspace{.5em}\titlefont\fi MASUM\hspace{.5em}BILLAL}\\[\baselineskip]
+		\textsc{by}\\[\baselineskip]
+		\textsc{Masum Billal}
+		%{\ifxetex\fontsize{20}{10}\hspace{.5em}\titlefont\fi MASUM\hspace{.5em}BILLAL}\\[\baselineskip]
 		\ifxetex
 		%	{\wb{10}{12}4}\\[2\baselineskip]
 		\fi
@@ -386,7 +388,7 @@
 	\subfile{sieve.tex}
 	\subfile{dispute}
 	\pagestyle{empty}
-	
+
 	\backmatter
 	\printglossary[title=Glossary,]
 	\printbibliography[type=article,title=Articles,]
