@@ -63,7 +63,25 @@
 		\end{theorem}
 
 		\begin{proof}
-
+			If $\chi(n)=\chi_{0}(n)$ is the principal character, then
+				\begin{align*}
+					\sum_{i=0}^{k-1}\chi_{0}(i)
+						& = \sum_{\substack{i=0\\\gcd(i,k)=1}}^{k-1}\chi_{0}(i)+\sum_{\substack{i=0\\\gcd(i,k)>1}}^{k-1}\chi_{0}(i)\\
+						& = \sum_{\substack{i=0\\\gcd(i,k)=1}}^{k-1}1\\
+						& = \varphi(k)
+				\end{align*}
+			If $\chi(n)$ is not the principal character, for any $l$ prime to $k$ such that $\chi(l)\neq1$, the set of residues $\{i: 1\leq i\leq k-1\}$ and $\{il:1\leq i\leq k-1\}$ coincide. Then
+				\begin{align*}
+					\sum_{i=1}^{k-1}\chi(i)
+						& = \sum_{i=1}^{k-1}\chi(il)\\
+						& = \sum_{i=1}^{k-1}\chi(i)\chi(l)\\
+						& = \chi(l)\sum_{i=1}^{k-1}\chi(i)
+				\end{align*}
+			Since $\chi(l)\neq1$,
+				\begin{align*}
+					\sum_{i=1}^{k-1}\chi(i)
+						& = 0
+				\end{align*}
 		\end{proof}
 	The next two theorems show why $\chi$ behaves like a complete/reduced set of residues.
 		\begin{theorem}
@@ -71,7 +89,7 @@
 		\end{theorem}
 
 		\begin{proof}
-
+			Left as an exercise.
 		\end{proof}
 
 		\begin{theorem}
