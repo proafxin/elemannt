@@ -7,8 +7,8 @@
 			\max\{\sqrt[\mathbf{a}]{\mathbf{x}}\}
 				& = \max\{\floor{\sqrt[a_{1}]{x_{1}}},\ldots,\floor{\sqrt[a_{k}]{x_{k}}}\}
 		\end{align*}
-	For a positive integer $n$, let $n^{\mathbf{a}}\leq\mathbf{x}$ denote that $n\leq\max\{\sqrt[\mathbf{a}]{\mathbf{x}}\}$. 
-	
+	For a positive integer $n$, let $n^{\mathbf{a}}\leq\mathbf{x}$ denote that $n\leq\max\{\sqrt[\mathbf{a}]{\mathbf{x}}\}$.
+
 	Let $f$ be a real or complex valued function defined in $k$ variables. For a vector of positive real numbers $\mathbf{a}$, let $\mathbf{x}/\mathbf{a}$ denote the vector $(x_{1}/a_{1},\ldots,x_{k}/a_{1})$, $\floor{\mathbf{x}/\mathbf{a}}$ denote the vector $(\floor{x_{1}/a_{1}},\ldots,\floor{x_{k}/a_{k}})$ and
 		\begin{align*}
 			f(\mathbf{x})
@@ -18,7 +18,7 @@
 			f\parenthesis{\floor{\dfrac{\mathbf{x}}{n^{\mathbf{a}}}}}
 				& = f\parenthesis{\floor{\dfrac{x_{1}}{n^{a_{1}}}},\ldots,\floor{\dfrac{x_{k}}{n^{a_{k}}}}}
 		\end{align*}
-	
+
 		\begin{definition}[Generalized Convolution]
 			Let the generalized convolution of an arithmetic function $\alpha$ and a function $f$ defined for $k$ real numbers and a positive integer $a$ be
 				\begin{align}
@@ -34,27 +34,28 @@
 						& = ((\alpha\ast\beta)\bullet f)(\mathbf{x}, \mathbf{a})
 				\end{align*}
 			where $f\ast g$ is the usual Dirichlet convolution of arithmetic functions $f$ and $g$.
-				\begin{proof}
-					From the definition,
-						\begin{align*}
-							(\beta\bullet f)(\mathbf{x},\mathbf{a})
-								& = \sum_{m^{\mathbf{a}}\leq\mathbf{x}}\beta(m)\parenthesis{\dfrac{x_{1}}{m^{a_{1}}},\ldots,\dfrac{x_{k}}{m^{a_{k}}}}\\
-							(\alpha\bullet(\beta\bullet f))(\mathbf{x}, \mathbf{a})
-								& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}\alpha(n)\parenthesis{(\beta\bullet f)\parenthesis{\dfrac{\mathbf{x}}{n^{\mathbf{a}}},\mathbf{a}}}\\
-								& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}\alpha(n)\parenthesis{(\beta\bullet f)\parenthesis{\dfrac{x_{1}}{n^{a_{1}}},\ldots,\dfrac{x_{k}}{n^{a_{k}}}}}\\
-								& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}\alpha(n)\sum_{m^{a}\leq{\mathbf{x}/n^{\mathbf{a}}}}\beta(m)f\parenthesis{\dfrac{x_{1}}{m^an^a},\ldots,\dfrac{x_{k}}{m^an^a}}
-						\end{align*}
-					We can collect the $m$ and $n$ together and write
-						\begin{align*}
-							(\alpha\bullet(\beta\bullet f))(\mathbf{x},\mathbf{a})
-								& = \sum_{(mn)^{\mathbf{a}}\leq\mathbf{x}}\alpha(n)\beta(m)f\parenthesis{\dfrac{x_{1}}{m^{a}n^{a}},\ldots,\dfrac{x_{k}}{m^{a_{k}}n^{a_{k}}}}\\
-								& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}\parenthesis{\sum_{d\mid n}\alpha(d)\beta\parenthesis{\dfrac{n}{d}}}f\parenthesis{\dfrac{x_{1}}{n^{a_{1}}},\ldots,\dfrac{x_{k}}{n^{a_{k}}}}\\
-								& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}(\alpha\ast\beta)f\parenthesis{\dfrac{\mathbf{x}}{n^{\mathbf{a}}}}\\
-								& = (\alpha\ast\beta)\bullet f(\mathbf{x},\mathbf{a})
-						\end{align*}
-				\end{proof}
 		\end{theorem}
-	
+
+		\begin{proof}
+			From the definition,
+			\begin{align*}
+				(\beta\bullet f)(\mathbf{x},\mathbf{a})
+				& = \sum_{m^{\mathbf{a}}\leq\mathbf{x}}\beta(m)\parenthesis{\dfrac{x_{1}}{m^{a_{1}}},\ldots,\dfrac{x_{k}}{m^{a_{k}}}}\\
+				(\alpha\bullet(\beta\bullet f))(\mathbf{x}, \mathbf{a})
+				& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}\alpha(n)\parenthesis{(\beta\bullet f)\parenthesis{\dfrac{\mathbf{x}}{n^{\mathbf{a}}},\mathbf{a}}}\\
+				& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}\alpha(n)\parenthesis{(\beta\bullet f)\parenthesis{\dfrac{x_{1}}{n^{a_{1}}},\ldots,\dfrac{x_{k}}{n^{a_{k}}}}}\\
+				& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}\alpha(n)\sum_{m^{a}\leq{\mathbf{x}/n^{\mathbf{a}}}}\beta(m)f\parenthesis{\dfrac{x_{1}}{m^an^a},\ldots,\dfrac{x_{k}}{m^an^a}}
+			\end{align*}
+			We can collect the $m$ and $n$ together and write
+			\begin{align*}
+				(\alpha\bullet(\beta\bullet f))(\mathbf{x},\mathbf{a})
+				& = \sum_{(mn)^{\mathbf{a}}\leq\mathbf{x}}\alpha(n)\beta(m)f\parenthesis{\dfrac{x_{1}}{m^{a}n^{a}},\ldots,\dfrac{x_{k}}{m^{a_{k}}n^{a_{k}}}}\\
+				& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}\parenthesis{\sum_{d\mid n}\alpha(d)\beta\parenthesis{\dfrac{n}{d}}}f\parenthesis{\dfrac{x_{1}}{n^{a_{1}}},\ldots,\dfrac{x_{k}}{n^{a_{k}}}}\\
+				& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}(\alpha\ast\beta)f\parenthesis{\dfrac{\mathbf{x}}{n^{\mathbf{a}}}}\\
+				& = (\alpha\ast\beta)\bullet f(\mathbf{x},\mathbf{a})
+			\end{align*}
+		\end{proof}
+
 		\begin{theorem}[Inversion of Generalized Convolution]\label{thm:geninverse}
 			Let $\alpha$ be an arithmetic function and $f$ be a real or complex valued multivariate function. If
 				\begin{align*}
@@ -66,31 +67,31 @@
 					f(\mathbf{x}, \mathbf{a})
 						& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}\alpha^{-1}(n)\func{g}{\dfrac{\mathbf{x}}{n^{\mathbf{a}}}}
 				\end{align*}
-			
-				\begin{proof}
-					First, we see that
-						\begin{align*}
-							(I\bullet f)(\mathbf{x},\mathbf{a})
-								& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}I(n)f(\mathbf{x},\mathbf{a})\\
-								& = I(1)f(\mathbf{x},\mathbf{a})+\sum_{\substack{n^{\mathbf{a}}\leq{\mathbf{x}}\\n>1}}I(n)f(\mathbf{x},\mathbf{a})\\
-								& = f(\mathbf{x},\mathbf{a})
-						\end{align*}
-					Since $g=\alpha\bullet f$, we will use \nameref{thm:genassociativity} on $\alpha^{-1}$ and $g$. We have
-						\begin{align*}
-							(\alpha^{-1}\bullet(\alpha\bullet f))(\mathbf{x},\mathbf{a})
-								& = ((\alpha^{-1}\ast\alpha)\bullet f)(\mathbf{x},\mathbf{a})
-						\end{align*}
-					From the definition of Dirichlet inverse, $\alpha^{-1}\ast\alpha=I$. So, we have
-						\begin{align*}
-							(\alpha^{-1}\bullet g)(\mathbf{x},\mathbf{a})
-								& = (\alpha^{-1}\bullet(\alpha\bullet f))(\mathbf{x},\mathbf{a})\\
-								& = ((\alpha^{-1}\ast\alpha)\bullet f)(\mathbf{x}, \mathbf{a})\\
-								& = (I\bullet f)(\mathbf{x},\mathbf{a})\\
-								& = f(\mathbf{x},\mathbf{a})
-						\end{align*}
-					Thus, we have the theorem.
-				\end{proof}
 		\end{theorem}
+
+		\begin{proof}
+			First, we see that
+			\begin{align*}
+				(I\bullet f)(\mathbf{x},\mathbf{a})
+				& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}I(n)f(\mathbf{x},\mathbf{a})\\
+				& = I(1)f(\mathbf{x},\mathbf{a})+\sum_{\substack{n^{\mathbf{a}}\leq{\mathbf{x}}\\n>1}}I(n)f(\mathbf{x},\mathbf{a})\\
+				& = f(\mathbf{x},\mathbf{a})
+			\end{align*}
+			Since $g=\alpha\bullet f$, we will use \nameref{thm:genassociativity} on $\alpha^{-1}$ and $g$. We have
+			\begin{align*}
+				(\alpha^{-1}\bullet(\alpha\bullet f))(\mathbf{x},\mathbf{a})
+				& = ((\alpha^{-1}\ast\alpha)\bullet f)(\mathbf{x},\mathbf{a})
+			\end{align*}
+			From the definition of Dirichlet inverse, $\alpha^{-1}\ast\alpha=I$. So, we have
+			\begin{align*}
+				(\alpha^{-1}\bullet g)(\mathbf{x},\mathbf{a})
+				& = (\alpha^{-1}\bullet(\alpha\bullet f))(\mathbf{x},\mathbf{a})\\
+				& = ((\alpha^{-1}\ast\alpha)\bullet f)(\mathbf{x}, \mathbf{a})\\
+				& = (I\bullet f)(\mathbf{x},\mathbf{a})\\
+				& = f(\mathbf{x},\mathbf{a})
+			\end{align*}
+			Thus, we have the theorem.
+		\end{proof}
 	If we set $\mathbf{a}=(1),k=1$ and $\mathbf{x}=(x)$ for a real number $x$ in \nameref{thm:genassociativity} and \nameref{thm:geninverse}, we have the usual \nameref{thm:genconv} and \nameref{thm:geninverse}.
 		\begin{theorem}
 			Let $f$ and $g$ be arithmetic functions and $h=f\ast g$. If
@@ -108,19 +109,19 @@
 						& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}f(n)\parenthesis{\dfrac{\mathbf{x}}{n^{\mathbf{a}}},\mathbf{a}}\\
 						& =\sum_{n^{\mathbf{a}}\leq\mathbf{x}}g(n)\func{F}{\dfrac{\mathbf{x}}{n^{\mathbf{a}}},\mathbf{a}}
 				\end{align*}
-			
-				\begin{proof}
-					We can write $H$ as follows.
-						\begin{align*}
-							H(\mathbf{x}, \mathbf{a})
-								& = \sum_{n^{\mathbf{a}}\leq(\mathbf{x})}h(n)\\
-								& = \sum_{(de)^{\mathbf{a}}\leq\mathbf{x}}f(d)g(e)\\
-								& = \sum_{d^{\mathbf{a}}\leq\mathbf{x}}f(d)\sum_{e^{\mathbf{a}}\leq\mathbf{x}/d^{\mathbf{a}}}g(e)\\
-								& = \sum_{d^{\mathbf{a}}\leq\mathbf{x}}f(d)G\parenthesis{\dfrac{\mathbf{x}}{d^{\mathbf{a}}},\mathbf{a}}
-						\end{align*}
-					We can prove the other part similarly by fixing $e$ and letting $d$ run through for $f$ instead of $g$.
-				\end{proof}
 		\end{theorem}
+
+		\begin{proof}
+			We can write $H$ as follows.
+			\begin{align*}
+				H(\mathbf{x}, \mathbf{a})
+				& = \sum_{n^{\mathbf{a}}\leq(\mathbf{x})}h(n)\\
+				& = \sum_{(de)^{\mathbf{a}}\leq\mathbf{x}}f(d)g(e)\\
+				& = \sum_{d^{\mathbf{a}}\leq\mathbf{x}}f(d)\sum_{e^{\mathbf{a}}\leq\mathbf{x}/d^{\mathbf{a}}}g(e)\\
+				& = \sum_{d^{\mathbf{a}}\leq\mathbf{x}}f(d)G\parenthesis{\dfrac{\mathbf{x}}{d^{\mathbf{a}}},\mathbf{a}}
+			\end{align*}
+			We can prove the other part similarly by fixing $e$ and letting $d$ run through for $f$ instead of $g$.
+		\end{proof}
 	As a corollary, we have the following theorem.
 		\begin{theorem}
 			Let $f$ be an arithmetic function. If
@@ -155,7 +156,7 @@
 			\mu\ast u
 				& = J\label{eqn:inversejordan}
 		\end{align}
-	Let $F(\mathbf{x})$ be the number of vectors of positive integers $(a_{1},\ldots,a_{k})$ such that $1\leq a_i\leq x_i$ and $\gcd(a_{1},\ldots,a_{k})=1$. 
+	Let $F(\mathbf{x})$ be the number of vectors of positive integers $(a_{1},\ldots,a_{k})$ such that $1\leq a_i\leq x_i$ and $\gcd(a_{1},\ldots,a_{k})=1$.
 	Then we have
 		\begin{align*}
 			F(\mathbf{x})
@@ -178,7 +179,7 @@
 				& = \sum_{n\leq\min(\mathbf{x})}\mu(n)f(\mathbf{x},\mathbf{1})
 		\end{align*}
 	Thus, we have the result. As a consequence of this result, we can prove the next result using the fact that the number of non-decreasing sequences $(a_{1},\ldots,a_{k})$ such that $1\leq a_i\leq a_{i+1}\leq n$ is $\binom{n+k-1}{k}$.
-	
+
 	Let $B(n,k)$ be the number of vectors of non-decreasing sequences $(a_{1},\ldots,a_{k})$ such that $1\leq a_{1}\leq\ldots\leq a_{k}\leq n$ and $\gcd(a_{1},\ldots,a_{k})=1$. If for a positive integer $m$, $\mathbf{m}=\underbrace{(m,\ldots,m)}_{k\mbox{ times}}$ and
 		\begin{align*}
 			f(\mathbf{m})
@@ -216,7 +217,7 @@
 				& = \sum_{n\leq\mathbf{x}}n^{s}(\mu\bullet f)(\mathbf{x},\mathbf{1})\\
 				& = (u\bullet(\mu\bullet f))(\mathbf{x},\mathbf{1})
 		\end{align*}
-		
+
 		\begin{remark}
 			We could prove this result without using $\bullet$ convolution as well. For example, in the case $s=1$, if $d\mid g$ and $d<g$, then $g$ has already appeared in the vectors of $d$. Thus, we cannot consider any $d$ that shares a common factor with $g$. $n\leq g$ will contribute a new sum to the vectors only if $\gcd(n,g)=1$. So, the total sum of $g(\mathbf{a})$ with $\gcd(a_{1},\ldots,a_{k})=g$ is $\varphi(g)$. Generalizing this for arbitrary $s$, we can easily see that the contributed sum for $g$ is
 				\begin{align*}

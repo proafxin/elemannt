@@ -26,12 +26,12 @@
 				\end{enumerate}
 		\end{definition}
 	Note that Legendre symbol $\qr{a}{p}$ for prime $p$, Jacobi symbol $\qr{a}{n}$ and Kronecker symbol $\qr{a}{l}$ are all characters $\pmod{p},\pmod{n}$ and $\pmod{l}$ respectively where $p$ is prime, $n$ is a positive integer and $l\equiv0,1\pmod{4}$ for square-free $l$. Another example of $\chi$ is $\chi(n)=0$ for $n\equiv0,2\pmod{4}$, $\chi(n)=1$ for $n\equiv1\pmod4$ and $\chi(n)=-1$ for $n\equiv3\pmod{4}$. Obviously, $\chi$ is completely multiplicative; hence $\chi(1)=1$.
-	
+
 	It is still not entirely clear how $\chi$ satisfies the properties we mentioned above. The next three theorems show why $\chi(n)$ behaves like complex roots of unity.
 		\begin{theorem}
 			If $\gcd(n,k)=1$, then $\chi(n)^{\varphi(k)}=1$. So $\chi(n)$ is actually a complex number which is an $\varphi(k)$-th root of unity and $|\chi(n)|=1$.
 		\end{theorem}
-	
+
 		\begin{proof}
 			From Euler's theorem,
 				\begin{align*}
@@ -40,15 +40,15 @@
 				\end{align*}
 			So, $\chi(n)^{\varphi(k)}=\chi(n^{\varphi(k)})=\chi(1)=1$.
 		\end{proof}
-	
+
 		\begin{definition}[Principal character]
 			$\chi_{0}(n)=1$ when $\gcd(n,k)=1$ is the \textit{principal character} $\pmod{k}$. If $\gcd(n,k)>1$, $\chi_{0}(n)=0$.
 		\end{definition}
-	Since the characters $\pmod{k}$ are complex roots of unity, the complex conjugate of $\chi(n)$, $\bar{\chi(n)}$ is also a root of unity, hence; the following. 
+	Since the characters $\pmod{k}$ are complex roots of unity, the complex conjugate of $\chi(n)$, $\bar{\chi(n)}$ is also a root of unity, hence; the following.
 		\begin{theorem}
 			If $\chi(n)$ is a character $\pmod{k}$, $\bar{\chi(n)}$ is also a character $\pmod{k}$.
 		\end{theorem}
-	
+
 		\begin{theorem}
 			For any Dirichlet character $\chi$,
 				\begin{align*}
@@ -59,27 +59,27 @@
 								0& \mbox{ otherwise}
 							\end{cases}
 				\end{align*}
-			
+
 		\end{theorem}
-	
+
 		\begin{proof}
-			
+
 		\end{proof}
 	The next two theorems show why $\chi$ behaves like a complete/reduced set of residues.
 		\begin{theorem}
-			If $\chi_{1}(n)$ and $\chi_{2}(n)$ are both characters, then so is $\chi_{1}(n)\chi_{2}(n)$. 
+			If $\chi_{1}(n)$ and $\chi_{2}(n)$ are both characters, then so is $\chi_{1}(n)\chi_{2}(n)$.
 		\end{theorem}
-	
+
 		\begin{proof}
-			
+
 		\end{proof}
-	
+
 		\begin{theorem}
 			If $\chi'(n)$ is a character and $\chi(n)$ runs over all characters of $k$, $\chi'(n)\chi(n)$ runs over all characters of $k$ as well.
 		\end{theorem}
-	
+
 		\begin{proof}
-			If $\gcd(n,k)\neq1$, $\chi'(n)\chi(n)$ and $\chi(n)$ both are $0$. For $\gcd(n,k)=1$, 
+			If $\gcd(n,k)\neq1$, $\chi'(n)\chi(n)$ and $\chi(n)$ both are $0$. For $\gcd(n,k)=1$, if $\chi'(n)\chi(n)=\chi''(n)\chi'(n)$ then $\chi(n)=\chi''(n)$ since neither is $0$.
 		\end{proof}
 	\section{Non-vanishing of $L$-Series At $s=1$}
 	\section{First Proof}
