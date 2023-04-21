@@ -1,4 +1,4 @@
-\documentclass[lang=en,color=green,mode=fancy,math=cm,12pt,letterpaper]{elegantbook}
+\documentclass[lang=en,color=cyan,mode=fancy,math=cm,titlestyle=display,12pt,letterpaper]{elegantbook}
 
 \usepackage{amsmath,amssymb}
 %\usepackage[left=.5in,right=.5in,top=.5in,]{geometry}
@@ -237,7 +237,7 @@
 %	\fancyhead[CO]{\small\scshape \thesection\hspace{.1em}\nouppercase\rightmark}
 %}
 
-\setcounter{secnumdepth}{3}
+%\setcounter{secnumdepth}{3}
 
 %\theoremstyle{definition}
 %\newtheorem{problem}{\textbf{Problem}}
@@ -319,38 +319,39 @@
 \subfile{glossary.tex}
 \addbibresource{ref.bib}
 
+\title{Elementary Analytic Number Theory}
 \author{Masum Billal}
+\cover{cover.pdf}
 
 \begin{document}
 	%\AddToShipoutPictureBG{\includegraphics[width=\paperwidth,height=\paperheight]{background}}
 	\pagestyle{empty}
-	\begin{titlepage}
-		\centering
-		\vspace*{2\baselineskip}
-		\textit{\LARGE Elementary Analytic Number Theory}\\ \vspace{.5in}
+	%\begin{titlepage}
+	%	\centering
+	%	\vspace*{2\baselineskip}
+	%	\textit{\LARGE Elementary Analytic Number Theory}\\ \vspace{.5in}
 		%{\ifxetex\fontsize{30}{10}\titlefont\fi E\hspace{.1em}L\hspace{.1em}E\hspace{.1em}M\hspace{.1em}E\hspace{.1em}N\hspace{.1em}T\hspace{.1em}A\hspace{.1em}R\hspace{.1em}Y\\\vspace{.3in} ANALYTIC\hspace{.3em}NUMBER\hspace{.3em} THEORY}\\[2\baselineskip]
-		\ifxetex
+	%	\ifxetex
 		%	\scalebox{8}[1]{{\wb{10}{12}4}}
 			%\\[2\baselineskip]
-		\fi
-		\textsc{by}\\\vspace{.5in}
-		\textsc{\LARGE Masum Billal}
+	%	\fi
+	%	\textsc{by}\\\vspace{.5in}
+	%	\textsc{\LARGE Masum Billal}
 		%{\ifxetex\fontsize{20}{10}\hspace{.5em}\titlefont\fi MASUM\hspace{.5em}BILLAL}\\[\baselineskip]
-		\ifxetex
+	%	\ifxetex
 		%	{\wb{10}{12}4}\\[2\baselineskip]
-		\fi
+	%	\fi
 		%{\Large\itshape with a Commentary by}\\[\baselineskip]
 		%{\Large A N OTHER}\par
-		\vfill
-		\ifxetex
+	%	\vfill
+	%	\ifxetex
 		%	\scalebox{8}[1]{{\wb{10}{12}4}}
 			%\\[\baselineskip]
-		\fi
-		\vfill
-		%{\Large AMS Chelsea Publishing}\\
+	%	\fi
+	%	\vfill
 		%{\includegraphics[scale=.5]{logo.png}}\par
-	\end{titlepage}
-	%\maketitle
+	%\end{titlepage}
+	\maketitle
 	\section*{Preface}
 	While analytic number theory is a very broad subject and there are a great many books on this topic, there are not many books that are truly introductory. There are some that are introductory enough such as \textcite{apostol_1976} but they usually depend on abstract algebra and complex analysis heavily. In contrast to that, it can be argued that both topics are entirely excluded from this book. Thus, the primary objective of this book is to discuss analytic number theory in the most \textit{elementary} way possible. Before I explain what I mean by elementary, I will mention a few more details.
 		\begin{enumerate}[(1)]

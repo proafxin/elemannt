@@ -49,7 +49,7 @@
 			If $\chi(n)$ is a character $\pmod{k}$, $\bar{\chi(n)}$ is also a character $\pmod{k}$.
 		\end{theorem}
 
-		\begin{theorem}
+		\begin{theorem}\label{thm:sum-for-residues}
 			For any Dirichlet character $\chi$,
 				\begin{align*}
 					\sum_{0\leq a\leq k-1}\chi(a)
@@ -84,7 +84,7 @@
 				\end{align*}
 		\end{proof}
 	The next two theorems show why $\chi$ behaves like a complete/reduced set of residues.
-		\begin{theorem}
+		\begin{theorem}\label{thm:product-character}
 			If $\chi_{1}(n)$ and $\chi_{2}(n)$ are both characters, then so is $\chi_{1}(n)\chi_{2}(n)$.
 		\end{theorem}
 
@@ -92,12 +92,104 @@
 			Left as an exercise.
 		\end{proof}
 
-		\begin{theorem}
+		\begin{theorem}\label{thm:char-perm}
 			If $\chi'(n)$ is a character and $\chi(n)$ runs over all characters of $k$, $\chi'(n)\chi(n)$ runs over all characters of $k$ as well.
 		\end{theorem}
 
 		\begin{proof}
-			If $\gcd(n,k)\neq1$, $\chi'(n)\chi(n)$ and $\chi(n)$ both are $0$. For $\gcd(n,k)=1$, if $\chi'(n)\chi(n)=\chi''(n)\chi'(n)$ then $\chi(n)=\chi''(n)$ since neither is $0$.
+			If $\gcd(n,k)\neq1$, $\chi'(n)\chi(n)$ and $\chi(n)$ both are $0$. For $\gcd(n,k)=1$, if $\chi'(n)\chi(n)=\chi''(n)\chi'(n)$ then $\chi(n)=\chi''(n)$ since neither is $0$. By \autoref{thm:product-character}, $\chi(n)\chi'(n)$ produces $\varphi(k)$ different characters so are a permutation of the original characters $\chi'(n)$.
+		\end{proof}
+
+		\begin{theorem}\label{thm:char-not-one}
+			If $a$ is a positive integer prime to $k$ such that $a\not\equiv1\pmod{k}$, then there exists a character $\chi(a)\neq1$.
+		\end{theorem}
+
+		\begin{proof}
+			If $p$ is a prime divisor of $k$ and $k=p^{e}l$ such that $p\nmid l$ then $p\nmid a$. For any $e$, there exists a primitive $\lambda(p^{e})$-th root $g\pmod{p^{e}}$. For any $a$ not divisible by $p$, there is a unique non-negative integer $u$ not exceeding $\lambda(p^{e})$ such that
+				\begin{align*}
+					a
+						& \equiv g^{u}\pmod{p^{e}}
+				\end{align*}
+			Setting $\zeta:=\exp\left(\frac{2i\pi}{\lambda(p^{e})}\right)$ and $\chi(a)=\zeta^{u}$, we can easily see for $a\equiv g^{u}\pmod{p^{e}}$ and $b\equiv g^{v}\pmod{p^{e}}$,
+				\begin{align*}
+					ab
+						& \equiv g^{u+v}\pmod{p^{e}}\\
+					\chi(ab)
+						& = \zeta^{u+v}\\
+						& =\zeta^{u}\zeta^{v}\\
+						& = \chi(a)\chi(b)
+				\end{align*}
+			The other properties are trivially satisfied. Now it remains to see that for $a\not\equiv1\pmod{k}$, if $a\equiv g^{u}\pmod{p^{e}}$ then $\lambda(p^{e})\nmid u$ so $\zeta^{u}\neq1$.
+		\end{proof}
+
+		\begin{theorem}\label{thm:sum-for-char}
+			If $C(k)$ is the number of characters $\pmod{k}$, then
+				\begin{align*}
+					\sum_{\chi}\chi(a)
+						& =
+							\begin{cases}
+								C(k)\mbox{ if }a\equiv1\pmod{k}\\
+								0\mbox{ otherwise}
+							\end{cases}
+				\end{align*}
+			where the sum ranges through all the characters.
+		\end{theorem}
+
+		\begin{proof}
+			If $a\equiv1\pmod{k}$,
+				\begin{align*}
+					\sum_{\chi}\chi(a)
+						& = \sum_{\chi}1\\
+						& = C(k)
+				\end{align*}
+			If $\gcd(a,k)>1$, then $\chi(a)=0$ for all $\chi$ so $\sum_{\chi}\chi(a)=0$. Now, $\gcd(a,k)=1$ and $a\not\equiv1\pmod{k}$. By \autoref{thm:char-not-one}, there is a character $\chi'$ such that $\chi'(a)\neq1$. By \autoref{thm:char-perm},
+				\begin{align*}
+					\sum_{\chi}\chi(a)
+						& = \sum_{\chi}\chi(a)\chi'(a)
+				\end{align*}
+			Since $\chi'(a)\neq1$, we have $\sum_{\chi}\chi(a)=0$.
+		\end{proof}
+
+		\begin{theorem}
+			There are $\varphi(k)$ characters $\pmod{k}$.
+		\end{theorem}
+
+		\begin{proof}
+			If $\chi$ runs through all the characters, by \autoref{thm:sum-for-char}
+				\begin{align*}
+					\sum_{i=0}^{k-1}\sum_{\chi}\chi(i)
+						& = 0+\sum_{\chi}\chi(1)+\sum_{i=2}^{k-1}\sum_{\chi}\chi(i)\\
+						& = C(k)
+				\end{align*}
+			On the other hand, by \autoref{thm:sum-for-residues}
+				\begin{align*}
+					\sum_{i=0}^{k-1}\sum_{\chi}\chi(i)
+						& = \sum_{i=0}^{k-1}\chi_{0}(i)+\sum_{i=0}^{k-1}\sum_{\substack{\chi\\\chi\neq\chi_{0}}}\chi(i)\\
+						& = \varphi(k)
+				\end{align*}
+			Thus, $C(k)=\varphi(k)$.
+		\end{proof}
+
+		\begin{theorem}
+			Let $l$ be a positive integer prime to $k$. Then for a positive integer $a$,
+				\begin{align*}
+					\sum_{\chi}\dfrac{\chi(a)}{\chi(l)}
+						& =
+							\begin{cases}
+								\varphi(k)\mbox{ if }a\equiv l\pmod{k}\\
+								0\mbox{ otherwise}
+							\end{cases}
+				\end{align*}
+		\end{theorem}
+
+		\begin{proof}
+			Let $t$ be a positive integer such that $lt\equiv1\pmod{k}$. Such $t$ exists since $l$ is prime to $k$. Then $\chi(l)\chi(t)=\chi(lt)=\chi(1)=1$.
+				\begin{align*}
+					\sum_{\chi}\dfrac{\chi(a)}{\chi(l)}
+						& = \sum_{\chi}\chi(a)\chi(t)\\
+						& = \sum_{\chi}\chi(at)
+				\end{align*}
+			According to \autoref{thm:sum-for-residues}, if $at\equiv1\pmod{k}$, then $\sum_{\chi}\chi(at)=\varphi(k)$ otherwise $\sum_{\chi}\chi(at)=0$. Since $at\equiv1\equiv lt\pmod{k}$ and $\gcd(t,k)=1$, we have $a\equiv l\pmod{k}$.
 		\end{proof}
 	\section{Non-vanishing of $L$-Series At $s=1$}
 	\section{First Proof}
