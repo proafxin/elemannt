@@ -28,9 +28,9 @@
 	Note that Legendre symbol $\qr{a}{p}$ for prime $p$, Jacobi symbol $\qr{a}{n}$ and Kronecker symbol $\qr{a}{l}$ are all characters $\pmod{p},\pmod{n}$ and $\pmod{l}$ respectively where $p$ is prime, $n$ is a positive integer and $l\equiv0,1\pmod{4}$ for square-free $l$. Another example of $\chi$ is $\chi(n)=0$ for $n\equiv0,2\pmod{4}$, $\chi(n)=1$ for $n\equiv1\pmod4$ and $\chi(n)=-1$ for $n\equiv3\pmod{4}$. Obviously, $\chi$ is completely multiplicative; hence $\chi(1)=1$.
 
 	It is still not entirely clear how $\chi$ satisfies the properties we mentioned above. The next three theorems show why $\chi(n)$ behaves like complex roots of unity.
-		\begin{theorem}
+		\begin{proposition}
 			If $\gcd(n,k)=1$, then $\chi(n)^{\varphi(k)}=1$. So $\chi(n)$ is actually a complex number which is an $\varphi(k)$-th root of unity and $|\chi(n)|=1$.
-		\end{theorem}
+		\end{proposition}
 
 		\begin{proof}
 			From Euler's theorem,
@@ -45,11 +45,11 @@
 			$\chi_{0}(n)=1$ when $\gcd(n,k)=1$ is the \textit{principal character} $\pmod{k}$. If $\gcd(n,k)>1$, $\chi_{0}(n)=0$.
 		\end{definition}
 	Since the characters $\pmod{k}$ are complex roots of unity, the complex conjugate of $\chi(n)$, $\bar{\chi(n)}$ is also a root of unity, hence; the following.
-		\begin{theorem}
+		\begin{proposition}
 			If $\chi(n)$ is a character $\pmod{k}$, $\bar{\chi(n)}$ is also a character $\pmod{k}$.
-		\end{theorem}
+		\end{proposition}
 
-		\begin{theorem}\label{thm:sum-for-residues}
+		\begin{proposition}\label{thm:sum-for-residues}
 			For any Dirichlet character $\chi$,
 				\begin{align*}
 					\sum_{0\leq a\leq k-1}\chi(a)
@@ -60,7 +60,7 @@
 							\end{cases}
 				\end{align*}
 
-		\end{theorem}
+		\end{proposition}
 
 		\begin{proof}
 			If $\chi(n)=\chi_{0}(n)$ is the principal character, then
@@ -84,25 +84,25 @@
 				\end{align*}
 		\end{proof}
 	The next two theorems show why $\chi$ behaves like a complete/reduced set of residues.
-		\begin{theorem}\label{thm:product-character}
+		\begin{proposition}\label{thm:product-character}
 			If $\chi_{1}(n)$ and $\chi_{2}(n)$ are both characters, then so is $\chi_{1}(n)\chi_{2}(n)$.
-		\end{theorem}
+		\end{proposition}
 
 		\begin{proof}
 			Left as an exercise.
 		\end{proof}
 
-		\begin{theorem}\label{thm:char-perm}
+		\begin{proposition}\label{thm:char-perm}
 			If $\chi'(n)$ is a character and $\chi(n)$ runs over all characters of $k$, $\chi'(n)\chi(n)$ runs over all characters of $k$ as well.
-		\end{theorem}
+		\end{proposition}
 
 		\begin{proof}
 			If $\gcd(n,k)\neq1$, $\chi'(n)\chi(n)$ and $\chi(n)$ both are $0$. For $\gcd(n,k)=1$, if $\chi'(n)\chi(n)=\chi''(n)\chi'(n)$ then $\chi(n)=\chi''(n)$ since neither is $0$. By \autoref{thm:product-character}, $\chi(n)\chi'(n)$ produces $\varphi(k)$ different characters so are a permutation of the original characters $\chi'(n)$.
 		\end{proof}
 
-		\begin{theorem}\label{thm:char-not-one}
+		\begin{proposition}\label{thm:char-not-one}
 			If $a$ is a positive integer prime to $k$ such that $a\not\equiv1\pmod{k}$, then there exists a character $\chi(a)\neq1$.
-		\end{theorem}
+		\end{proposition}
 
 		\begin{proof}
 			If $p$ is a prime divisor of $k$ and $k=p^{e}l$ such that $p\nmid l$ then $p\nmid a$. For any $e$, there exists a primitive $\lambda(p^{e})$-th root $g\pmod{p^{e}}$. For any $a$ not divisible by $p$, there is a unique non-negative integer $u$ not exceeding $\lambda(p^{e})$ such that
@@ -122,7 +122,7 @@
 			The other properties are trivially satisfied. Now it remains to see that for $a\not\equiv1\pmod{k}$, if $a\equiv g^{u}\pmod{p^{e}}$ then $\lambda(p^{e})\nmid u$ so $\zeta^{u}\neq1$.
 		\end{proof}
 
-		\begin{theorem}\label{thm:sum-for-char}
+		\begin{proposition}\label{thm:sum-for-char}
 			If $C(k)$ is the number of characters $\pmod{k}$, then
 				\begin{align*}
 					\sum_{\chi}\chi(a)
@@ -133,7 +133,7 @@
 							\end{cases}
 				\end{align*}
 			where the sum ranges through all the characters.
-		\end{theorem}
+		\end{proposition}
 
 		\begin{proof}
 			If $a\equiv1\pmod{k}$,
@@ -150,9 +150,9 @@
 			Since $\chi'(a)\neq1$, we have $\sum_{\chi}\chi(a)=0$.
 		\end{proof}
 
-		\begin{theorem}
+		\begin{proposition}
 			There are $\varphi(k)$ characters $\pmod{k}$.
-		\end{theorem}
+		\end{proposition}
 
 		\begin{proof}
 			If $\chi$ runs through all the characters, by \autoref{thm:sum-for-char}
@@ -170,7 +170,7 @@
 			Thus, $C(k)=\varphi(k)$.
 		\end{proof}
 
-		\begin{theorem}
+		\begin{proposition}
 			Let $l$ be a positive integer prime to $k$. Then for a positive integer $a$,
 				\begin{align*}
 					\sum_{\chi}\dfrac{\chi(a)}{\chi(l)}
@@ -180,7 +180,7 @@
 								0\mbox{ otherwise}
 							\end{cases}
 				\end{align*}
-		\end{theorem}
+		\end{proposition}
 
 		\begin{proof}
 			Let $t$ be a positive integer such that $lt\equiv1\pmod{k}$. Such $t$ exists since $l$ is prime to $k$. Then $\chi(l)\chi(t)=\chi(lt)=\chi(1)=1$.
@@ -191,6 +191,41 @@
 				\end{align*}
 			According to \autoref{thm:sum-for-residues}, if $at\equiv1\pmod{k}$, then $\sum_{\chi}\chi(at)=\varphi(k)$ otherwise $\sum_{\chi}\chi(at)=0$. Since $at\equiv1\equiv lt\pmod{k}$ and $\gcd(t,k)=1$, we have $a\equiv l\pmod{k}$.
 		\end{proof}
+
+		\begin{definition}
+			$\chi$ is a \textbf{character of the first kind} if $\chi=\chi_{0}$ is the principal character. If $\chi$ is real but not principal, then $\chi$ is a \textbf{character of the second kind}. Otherwise, $\chi$ can sometimes be complex and called \textbf{character of the third kind}.
+		\end{definition}
+	The next result is a very crucial one and was the intuition behind defining a function like $\chi$ with the properties we discussed.
+		\begin{proposition}
+			If $\chi$ is not a character of the first kind, then $\sum_{i=a}^{b}\chi(i)\leq \frac{\varphi(k)}{2}$ for $1\leq a\leq b$.
+		\end{proposition}
+
+		\begin{proof}
+			Notice that, $\sum_{i=0}^{k-1}\chi(i)=0$ if $\chi$ is not of the first kind. So we can only consider $1\leq a\leq b\leq a+k-1$. Also, $|\chi(a)|=1$ for $\varphi(k)$ residues that prime to $k$. If the number of residues $i$ for which $|\chi(i)|=1$ and $a\leq i\leq b$ does not exceed $\frac{\varphi(k)}{2}$, then we are done. Otherwise, there are more than $\frac{\varphi(k)}{2}$ residues $i$ for which $|\chi(i)|=1$ and $a\leq i\leq b$. In that case, the number of residues $i$ for which $|\chi(i)|=1$ and $b+1\leq i\leq a+k-1$ does not exceed $\frac{\varphi(k)}{2}$.
+				\begin{align*}
+					\sum_{i=a}^{b}\chi(a)
+						& = \sum_{i=a}^{a+k-1}\chi(i)-\sum_{i=b+1}^{a+k-1}\chi(i)
+				\end{align*}
+			Since $\sum_{i=a}^{a+k-1}\chi(i)=0$,
+				\begin{align*}
+					\sum_{i=a}^{b}\chi(a)
+						& = \sum_{i=b+1}^{a+k-1}\chi(i)\\
+						& < \frac{\varphi(k)}{2}
+				\end{align*}
+		\end{proof}
+	\section{$L$-Series}
+	We mentioned earlier that Riemann considered $\zeta(s)$ for complex $s$. Here, we do something similar except we do not require any complex analysis except for the most basic facts. By $\mathfrak{R}(s)$ and $\mathfrak{I}(s)$, we denote the real and imaginary parts of $s$ respectively.
+		\begin{definition}[$L$-Series]
+			Let $s$ be a complex number. If $k$ is a positive integer and $\chi$ is a character $\pmod{k}$, Dirichlet's $L$-series $L(\chi,s)$ associated with $\chi$ and $s$ is defined as
+				\begin{align*}
+					L(\chi, s)
+						& = \sum_{a\geq 1}\dfrac{\chi(a)}{a^{s}}
+				\end{align*}
+		\end{definition}
+	The following theorem is fairly obvious from properties of zeta function and characters so we leave it as an exercise.
+		\begin{proposition}
+			For any of $\varphi(k)$ characters $\chi$ and complex number $s$ with $\mathfrak{R}(s)>1$, $L(\chi, s)$ converges.
+		\end{proposition}
 	\section{Non-vanishing of $L$-Series At $s=1$}
 	\section{First Proof}
 	\section{Proof by Selberg}
