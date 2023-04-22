@@ -49,7 +49,7 @@
 			If $\chi(n)$ is a character $\pmod{k}$, $\bar{\chi(n)}$ is also a character $\pmod{k}$.
 		\end{proposition}
 
-		\begin{proposition}\label{thm:sum-for-residues}
+		\begin{proposition}\label{pro:sum-for-residues}
 			For any Dirichlet character $\chi$,
 				\begin{align*}
 					\sum_{0\leq a\leq k-1}\chi(a)
@@ -84,7 +84,7 @@
 				\end{align*}
 		\end{proof}
 	The next two theorems show why $\chi$ behaves like a complete/reduced set of residues.
-		\begin{proposition}\label{thm:product-character}
+		\begin{proposition}\label{pro:product-character}
 			If $\chi_{1}(n)$ and $\chi_{2}(n)$ are both characters, then so is $\chi_{1}(n)\chi_{2}(n)$.
 		\end{proposition}
 
@@ -92,15 +92,15 @@
 			Left as an exercise.
 		\end{proof}
 
-		\begin{proposition}\label{thm:char-perm}
+		\begin{proposition}\label{pro:char-perm}
 			If $\chi'(n)$ is a character and $\chi(n)$ runs over all characters of $k$, $\chi'(n)\chi(n)$ runs over all characters of $k$ as well.
 		\end{proposition}
 
 		\begin{proof}
-			If $\gcd(n,k)\neq1$, $\chi'(n)\chi(n)$ and $\chi(n)$ both are $0$. For $\gcd(n,k)=1$, if $\chi'(n)\chi(n)=\chi''(n)\chi'(n)$ then $\chi(n)=\chi''(n)$ since neither is $0$. By \autoref{thm:product-character}, $\chi(n)\chi'(n)$ produces $\varphi(k)$ different characters so are a permutation of the original characters $\chi'(n)$.
+			If $\gcd(n,k)\neq1$, $\chi'(n)\chi(n)$ and $\chi(n)$ both are $0$. For $\gcd(n,k)=1$, if $\chi'(n)\chi(n)=\chi''(n)\chi'(n)$ then $\chi(n)=\chi''(n)$ since neither is $0$. By \autoref{pro:product-character}, $\chi(n)\chi'(n)$ produces $\varphi(k)$ different characters so are a permutation of the original characters $\chi'(n)$.
 		\end{proof}
 
-		\begin{proposition}\label{thm:char-not-one}
+		\begin{proposition}\label{pro:char-not-one}
 			If $a$ is a positive integer prime to $k$ such that $a\not\equiv1\pmod{k}$, then there exists a character $\chi(a)\neq1$.
 		\end{proposition}
 
@@ -122,7 +122,7 @@
 			The other properties are trivially satisfied. Now it remains to see that for $a\not\equiv1\pmod{k}$, if $a\equiv g^{u}\pmod{p^{e}}$ then $\lambda(p^{e})\nmid u$ so $\zeta^{u}\neq1$.
 		\end{proof}
 
-		\begin{proposition}\label{thm:sum-for-char}
+		\begin{proposition}\label{pro:sum-for-char}
 			If $C(k)$ is the number of characters $\pmod{k}$, then
 				\begin{align*}
 					\sum_{\chi}\chi(a)
@@ -142,7 +142,7 @@
 						& = \sum_{\chi}1\\
 						& = C(k)
 				\end{align*}
-			If $\gcd(a,k)>1$, then $\chi(a)=0$ for all $\chi$ so $\sum_{\chi}\chi(a)=0$. Now, $\gcd(a,k)=1$ and $a\not\equiv1\pmod{k}$. By \autoref{thm:char-not-one}, there is a character $\chi'$ such that $\chi'(a)\neq1$. By \autoref{thm:char-perm},
+			If $\gcd(a,k)>1$, then $\chi(a)=0$ for all $\chi$ so $\sum_{\chi}\chi(a)=0$. Now, $\gcd(a,k)=1$ and $a\not\equiv1\pmod{k}$. By \autoref{pro:char-not-one}, there is a character $\chi'$ such that $\chi'(a)\neq1$. By \autoref{pro:char-perm},
 				\begin{align*}
 					\sum_{\chi}\chi(a)
 						& = \sum_{\chi}\chi(a)\chi'(a)
@@ -155,13 +155,13 @@
 		\end{proposition}
 
 		\begin{proof}
-			If $\chi$ runs through all the characters, by \autoref{thm:sum-for-char}
+			If $\chi$ runs through all the characters, by \autoref{pro:sum-for-char}
 				\begin{align*}
 					\sum_{i=0}^{k-1}\sum_{\chi}\chi(i)
 						& = 0+\sum_{\chi}\chi(1)+\sum_{i=2}^{k-1}\sum_{\chi}\chi(i)\\
 						& = C(k)
 				\end{align*}
-			On the other hand, by \autoref{thm:sum-for-residues}
+			On the other hand, by \autoref{pro:sum-for-residues}
 				\begin{align*}
 					\sum_{i=0}^{k-1}\sum_{\chi}\chi(i)
 						& = \sum_{i=0}^{k-1}\chi_{0}(i)+\sum_{i=0}^{k-1}\sum_{\substack{\chi\\\chi\neq\chi_{0}}}\chi(i)\\
@@ -189,7 +189,7 @@
 						& = \sum_{\chi}\chi(a)\chi(t)\\
 						& = \sum_{\chi}\chi(at)
 				\end{align*}
-			According to \autoref{thm:sum-for-residues}, if $at\equiv1\pmod{k}$, then $\sum_{\chi}\chi(at)=\varphi(k)$ otherwise $\sum_{\chi}\chi(at)=0$. Since $at\equiv1\equiv lt\pmod{k}$ and $\gcd(t,k)=1$, we have $a\equiv l\pmod{k}$.
+			According to \autoref{pro:sum-for-residues}, if $at\equiv1\pmod{k}$, then $\sum_{\chi}\chi(at)=\varphi(k)$ otherwise $\sum_{\chi}\chi(at)=0$. Since $at\equiv1\equiv lt\pmod{k}$ and $\gcd(t,k)=1$, we have $a\equiv l\pmod{k}$.
 		\end{proof}
 
 		\begin{definition}
@@ -222,6 +222,14 @@
 						& = \sum_{a\geq 1}\dfrac{\chi(a)}{a^{s}}
 				\end{align*}
 		\end{definition}
+	So, $L$-series is Euler product when $f(n):=\chi(n)$. Since $\chi$ is completely multiplicative, using properties of Euler product, we immediately have the following.
+		\begin{proposition}
+			For a complex $s$ and a character $\chi$,
+				\begin{align*}
+					L(\chi, s)
+						& = \prod_{p}\dfrac{1}{1-\dfrac{\chi(p)}{p^{s}}}
+				\end{align*}
+		\end{proposition}
 
 		\begin{proposition}
 			For any of $\varphi(k)$ characters $\chi$ and complex number $s$ with $\mathfrak{R}(s)>1$, $L(\chi, s)$ converges.
@@ -259,7 +267,18 @@
 				\end{align*}
 			If $\chi(p)=0$, then $\varsigma(p^{e})=1$. If $\chi(p)=1$, then $\varsigma(p^{e})=e+1$. Otherwise $\chi(p)=-1$ so $\varsigma(p^{e})=1$ if $e$ is even or $\varsigma(p^{e})=0$ if $e$ is odd. If $n=p_{1}^{e_{1}}\cdots p_{r}^{e_{r}}$, then $\varsigma(n)=\varsigma(p_{1}^{e_{1}})\cdots\varsigma(p_{r}^{e_{r}})$. Since each $\varsigma(p_{i}^{e_{i}})\geq0$, we have $\varsigma(n)\geq0$ and if $n$ is square, then $e_{i}$ is even for $1\leq i\leq r$ so $\varsigma(p_{i}^{e_{i}})\geq 1$ and $\varsigma(n)\geq1$.
 		\end{proof}
-	\section{Non-vanishing of $L$-Series At $s=1$}
-	\section{First Proof}
-	\section{Proof by Selberg}
+
+		\begin{proposition}
+			If $\chi$ is of the second kind, then $L(1,\chi)\neq0$.
+		\end{proposition}
+	\textcite[pp. 122, Theorem 152]{landau_1969} says the following about this theorem:
+		\begin{quote}
+			This is the deepest of all of the lemmas that are necessary for Dirichlet's proof. Dirichlet proved it only by the considerably roundabout method of using the so-called theory of the class number of quadratic forms.
+		\end{quote}
+
+		\begin{proof}
+
+		\end{proof}
+	\section{First Proof of Legendre-Dirichlet Theorem}
+	\section{Second Proof by Selberg}
 \end{document}
