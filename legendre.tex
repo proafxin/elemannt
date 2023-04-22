@@ -208,12 +208,12 @@
 				\end{align*}
 			Since $\sum_{i=a}^{a+k-1}\chi(i)=0$,
 				\begin{align*}
-					\sum_{i=a}^{b}\chi(a)
-						& = \sum_{i=b+1}^{a+k-1}\chi(i)\\
+					\left|\sum_{i=a}^{b}\chi(a)\right|
+						& = \left|\sum_{i=b+1}^{a+k-1}\chi(i)\right|\\
 						& < \frac{\varphi(k)}{2}
 				\end{align*}
 		\end{proof}
-	\section{$L$-Series}
+	\section{Dirichlet's $L$-Series}
 	We mentioned earlier that Riemann considered $\zeta(s)$ for complex $s$. Here, we do something similar except we do not require any complex analysis except for the most basic facts. By $\mathfrak{R}(s)$ and $\mathfrak{I}(s)$, we denote the real and imaginary parts of $s$ respectively.
 		\begin{definition}[$L$-Series]
 			Let $s$ be a complex number. If $k$ is a positive integer and $\chi$ is a character $\pmod{k}$, Dirichlet's $L$-series $L(\chi,s)$ associated with $\chi$ and $s$ is defined as
@@ -222,10 +222,43 @@
 						& = \sum_{a\geq 1}\dfrac{\chi(a)}{a^{s}}
 				\end{align*}
 		\end{definition}
-	The following theorem is fairly obvious from properties of zeta function and characters so we leave it as an exercise.
+
 		\begin{proposition}
 			For any of $\varphi(k)$ characters $\chi$ and complex number $s$ with $\mathfrak{R}(s)>1$, $L(\chi, s)$ converges.
 		\end{proposition}
+
+		\begin{proof}
+			For a complex number $s=\sigma+it$ and $a=e^{b}$, $|a^{s}|=a^{\sigma}|a^{it}|=a^{\sigma}|e^{bit}|$. Since $e^{ix}=\cos{x}+i\sin{x}$, $|e^{ix}|=\cos^{2}{x}+\sin^{2}{x}=1$. Thus, $|a^{s}|=a^{\sigma}$ and by triangle inequality,
+				\begin{align*}
+					|L(\chi,s)|
+						& = \left|\sum_{a\geq 1}\dfrac{\chi(a)}{a^{s}}\right|\\
+						& \leq \sum_{a\geq 1}\left|\dfrac{\chi(a)}{a^{s}}\right|\\
+						& = \sum_{a\geq 1}\dfrac{|\chi(a)|}{a^{\sigma}}\\
+						& \leq \sum_{a\geq 1}\dfrac{1}{a^{\sigma}}\\
+						& = \zeta(\sigma)
+				\end{align*}
+			If $\sigma > 1$, then $\zeta(\sigma)$ converges, hence, so does $L(\chi, s)$.
+		\end{proof}
+
+		\begin{proposition}
+			If $\chi$ is a character of the second kind and
+				\begin{align*}
+					\varsigma(n)
+						& = \sum_{d\mid n}\chi(d)
+				\end{align*}
+			Then $\varsigma(n)\geq 0$ for all $n$ and $\varsigma(n)\geq 1$ for square $n$.
+		\end{proposition}
+
+		\begin{proof}
+			Since $\chi$ is completely multiplicative and $\varsigma$ is the summatory function on divisors, $\varsigma$ is multiplicative also. So we mainly need to look at
+				\begin{align*}
+					\varsigma(p^{e})
+						& = \sum_{d\mid p^{e}}\chi(d)\\
+						& = 1+\sum_{i=1}^{e}\chi(p^{i})\\
+						& = 1+\sum_{i=1}^{e}(\chi(p))^{i}
+				\end{align*}
+			If $\chi(p)=0$, then $\varsigma(p^{e})=1$. If $\chi(p)=1$, then $\varsigma(p^{e})=e+1$. Otherwise $\chi(p)=-1$ so $\varsigma(p^{e})=1$ if $e$ is even or $\varsigma(p^{e})=0$ if $e$ is odd. If $n=p_{1}^{e_{1}}\cdots p_{r}^{e_{r}}$, then $\varsigma(n)=\varsigma(p_{1}^{e_{1}})\cdots\varsigma(p_{r}^{e_{r}})$. Since each $\varsigma(p_{i}^{e_{i}})\geq0$, we have $\varsigma(n)\geq0$ and if $n$ is square, then $e_{i}$ is even for $1\leq i\leq r$ so $\varsigma(p_{i}^{e_{i}})\geq 1$ and $\varsigma(n)\geq1$.
+		\end{proof}
 	\section{Non-vanishing of $L$-Series At $s=1$}
 	\section{First Proof}
 	\section{Proof by Selberg}
