@@ -237,7 +237,7 @@
 		\begin{align*}
 			\sum_{p\leq x}\phi(p)
 		\end{align*}
-	with respect to $\pi(x),\phi(x)$ and an integral where $\pi(x)$ is the number of primes not exceeding $x$. A consequence of \nameref{thm:abel} is the celebrated \index{Euler's summation formula}\textit{Euler's summation formula}.
+	with respect to $\pi(x),\phi(x)$ and an integral where $\pi(x)$ is the number of primes not exceeding $x$. A consequence of \autoref{thm:abel} is the celebrated \index{Euler's summation formula}\textit{Euler's summation formula}.
 		\begin{theorem}[Euler's summation formula]\label{thm:eulersum}
 			Let $f$ be a continuous differentiable function in $[y,x]$. Then
 				\begin{align*}
@@ -250,7 +250,7 @@
 		\begin{proof}
 
 		\end{proof}
-	As an application of \nameref{thm:eulersum}, we can derive a result similar to \eqref{eqn:lehmers} taking  $f(n)=n^{k}$ for $k\geq 0$.
+	As an application of \autoref{thm:eulersum}, we can derive a result similar to \eqref{eqn:lehmers} taking  $f(n)=n^{k}$ for $k\geq 0$.
 		\begin{align*}
 			\mathfrak{S}_{k}(x)
 				& = \sum_{n\leq x}n^{k}\\
@@ -258,7 +258,7 @@
 				& = \frac{x^{k+1}}{k+1}-\frac{1}{k+1}+O\parenthesis{k\int\limits_{1}^{x}t^{k-1}dt}+O(x^{k})\\
 				& = \frac{x^{k+1}}{k+1}+O(x^{k})
 		\end{align*}
-	Setting $a_{n}=\tau_{k-1}(n)$ and $f(n)=1/n$ in \nameref{thm:abel}, we get
+	Setting $a_{n}=\tau_{k-1}(n)$ and $f(n)=1/n$ in \autoref{thm:abel}, we get
 		\begin{align*}
 			\sum_{n\leq x}\frac{\tau_{k-1}(n)}{n}
 				& = \frac{T_{k-1}(x)}{x}-\int\limits_{1}^{x}-\frac{T_{k-1}(t)}{t^{2}}dt
@@ -292,7 +292,7 @@
 				& = x\sum_{n\leq \sqrt{x}}\frac{1}{n}+O(\sqrt{x})\\
 				& = xH(\sqrt{x})+O(\sqrt{x})
 		\end{align*}
-	Setting $a_{n}=1$ and $f(n)=1/n$ in \nameref{thm:abel}, we get
+	Setting $a_{n}=1$ and $f(n)=1/n$ in \autoref{thm:abel}, we get
 		\begin{align*}
 			H(x)
 				& = \frac{A(x)}{x}-\int\limits_{1}^{x}-\frac{A(t)}{t^{2}}dt
@@ -321,7 +321,7 @@
 						& = \lim\limits_{x\to\infty}(H(x)-\log{x})
 				\end{align*}
 		\end{theorem}
-	This constant $\gamma$ is now known as \index{Euler-Mascheroni constant}\textit{Euler's constant} or \textit{Euler-Mascheroni's constant}, although, neither Euler nor Mascheroni used the notation $\gamma$ for this constant. \textcite{euler_1740} (republished in \textcite{euler_2020}) used $C$ and $O$ in his original paper. \textcite{mascheroni_1790} used $A$ and $a$. Today it is not known whether $\gamma$ is even irrational. For now, we will not require the use of $\gamma$, so we will use \nameref{thm:harmonicsum}. Applying this, we have
+	This constant $\gamma$ is now known as \index{Euler-Mascheroni constant}\textit{Euler's constant} or \textit{Euler-Mascheroni's constant}, although, neither Euler nor Mascheroni used the notation $\gamma$ for this constant. \textcite{euler_1740} (republished in \textcite{euler_2020}) used $C$ and $O$ in his original paper. \textcite{mascheroni_1790} used $A$ and $a$. Today it is not known whether $\gamma$ is even irrational. For now, we will not require the use of $\gamma$, so we will use \autoref{thm:harmonicsum}. Applying this, we have
 		\begin{align*}
 			\sum_{n\leq \sqrt{x}}\floor{\frac{x}{n}}
 				& = xH(\sqrt{x})+O(\sqrt{x})\\
@@ -350,12 +350,12 @@
 		\end{theorem}
 	Then Dirichlet's theorem on $\tau$ can be restated as \textit{the average order of $\tau$ is }$O(\log{x})$. \textcite{aiyangar_hardy_vennkatesvara_seshu_aiyar_p_wilson_1927} points out in his paper that the error term $O(1/\sqrt{x})$ in Dirichlet's theorem can be improved to $\bigo{x^{-2/3+\epsilon}}$ or $\bigo{x^{-2/3}\log{x}}$ as \textcite[Page $689$]{landau_1912} shows.
 
-	We can now get back to estimating $T$. Using \nameref{thm:abel}, we were able to deduce
+	We can now get back to estimating $T$. Using \autoref{thm:abel}, we were able to deduce
 		\begin{align*}
 			T_{k}(x)
 				& = \bigo{T_{k-1}(x)}+x\int\limits_{1}^{x}\frac{T_{k-1}(t)}{t^{2}}dt
 		\end{align*}
-	Using \nameref{thm:dirtau}, $T(x)=x\log{x}+O(x)$, so
+	Using \autoref{thm:dirtau}, $T(x)=x\log{x}+O(x)$, so
 		\begin{align*}
 			T_{3}(x)
 				& = O(T(x))+x\int\limits_{1}^{x}\frac{T(t)}{t^{2}}dt\\
@@ -413,7 +413,7 @@
 						& = \sum_{n\geq 1}\frac{1}{n^{s}}
 				\end{align*}
 		\end{definition}
-	We will discuss zeta function in details in \autoref{sec:zeta}. For now, let us establish a result similar to \nameref{thm:dirtau} for partial sums of $\zeta$. Setting $f(n):=n^{-s}$ and $a_{n}=1$ in \nameref{thm:abel}, $A(x)=\floor{x}=x+O(1)$ and
+	We will discuss zeta function in details in \autoref{sec:zeta}. For now, let us establish a result similar to \autoref{thm:dirtau} for partial sums of $\zeta$. Setting $f(n):=n^{-s}$ and $a_{n}=1$ in \autoref{thm:abel}, $A(x)=\floor{x}=x+O(1)$ and
 		\begin{align*}
 			\sum_{n\leq x}\frac{1}{n^{s}}
 				& = \floor{x}x^{-s}-\int\limits_{1}^{x}(t+O(1))f'(t)dt\\

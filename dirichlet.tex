@@ -3,7 +3,7 @@
 \begin{document}
     \section{General Convolution and Dirichlet Hyperbola Method}
     In this chapter, we will first discuss Dirichlet convolution and a generalization. Then we will discuss a variation and another generalization both of which are very useful in many cases.
-    
+
     We proved before that
     	\begin{align*}
     		\sum\limits_{n\leq x}\tau(n)
@@ -66,7 +66,7 @@
     	(f\diamond g)(x)
     	& = \sum_{n\leq x}f(n)g\parenthesis{\floor{\dfrac{x}{n}}}
     \end{align*}
-    
+
     \begin{theorem}\label{thm:genconvhyp}
     	Let $f$ and $g$ be arithmetic functions. Then
     	\begin{align*}
@@ -88,7 +88,7 @@
     		\end{cases}
     	\end{align*}
     \end{theorem}
-    
+
     \begin{proof}
     	Consider the integers
     	\begin{align*}
@@ -132,7 +132,7 @@
     	& = \sum_{n\leq x}\dfrac{1}{n^{\xi-s}}\nonumber\\
     	& = \dfrac{x^{1+s-\xi}}{1+s-\xi}+\zeta(\xi-s)+\bigo{x^{s-\xi}}\label{eqn:Us}
     \end{align}
-    If $s+1=\xi$, from \nameref{thm:harmonicsum},
+    If $s+1=\xi$, from \autoref{thm:harmonicsum},
     \begin{align*}
     	\mathfrak{M}_{s}(x)
     	& = \log{x}+C+\bigo{\dfrac{1}{x}}
@@ -143,7 +143,7 @@
     	& = \sum_{n\leq x}n^{s-\xi}\\
     	& = \dfrac{x^{s-\xi+1}}{s-\xi+1}+\bigo{x^{s-\xi}}
     \end{align*}
-    For handling $\mathfrak{G}$, we will use \nameref{thm:abel}.
+    For handling $\mathfrak{G}$, we will use \autoref{thm:abel}.
     \begin{align*}
     	\mathfrak{G}_{s}(x)
     	& = \dfrac{F(x)}{x^{s}}+s\int_{1}^{x}F(t)t^{-s-1}dt\\
@@ -152,7 +152,7 @@
     Thus, we have
     \begin{align*}
     	\mathfrak{M}_{s}(x),\mathfrak{G}_{s}(x)
-    	& = 
+    	& =
     	\begin{cases}
     		\log{x}+C+\bigo{\dfrac{1}{x}},\bigo{x}& \mbox{ if }s+1=\xi\\
     		\dfrac{x^{1+s-\xi}}{1+s-\xi}+\zeta(\xi-s)+\bigo{x^{s-\xi}},\bigo{x^{\xi-s}}& \mbox{ if }s<\xi\mbox{ and }s+1\neq\xi\\

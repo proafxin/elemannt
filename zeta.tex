@@ -79,15 +79,15 @@
 						& = \sum_{d\mid n}f(d)g\parenthesis{\dfrac{n}{d}}
 				\end{align*}
 		\end{definition}
-	
+
 		\begin{theorem}
 			Let $f$ and $g$ be multiplicative arithmetic functions. Then $f\ast g$ is also multiplicative.
 		\end{theorem}
-	
+
 		\begin{proof}
-			
+
 		\end{proof}
-	
+
 		\begin{theorem}[Associativity of Dirichlet Convolution]\label{thm:convass}
 			Dirichlet convolution is associative. That is, if $f,g$ and $h$ are arithmetic functions, then
 				\begin{align*}
@@ -95,9 +95,9 @@
 						& = f\ast (g\ast h)
 				\end{align*}
 		\end{theorem}
-	
+
 		\begin{proof}
-			
+
 		\end{proof}
 	 An interesting function associated with Dirichlet convolution and summatory functions is the \index{M\"{o}bius function}\textit{M\"{o}bius function} $\mu$, defined in \textcite{mobius_1832}.
 		\begin{align*}
@@ -121,7 +121,7 @@
 						& = \sum_{d\mid n}\mu(d)F\parenthesis{\dfrac{n}{d}}
 				\end{align*}
 		\end{theorem}
-		
+
 		\begin{proof}
 			It it known that $\ast$ is associative. We have $f\ast f^{-1}=I$ where
 				\begin{align*}
@@ -147,7 +147,7 @@
 		\begin{definition}[Divisor Closed Set]
 			A set of positive integers $\mathbb{S}$ is a \index{Divisor closed set}\textit{divisor closed set} if $d\mid n$, then $d\in\mathbb{S}$ holds for all $n\in\mathbb{S}$.
 		\end{definition}
-	
+
 		\begin{definition}[Dual Convolution]
 			Let $f$ and $g$ be arithmetic functions. Then the dual convolution of $f$ and $g$ is the arithmetic function $h$ defined as
 				\begin{align*}
@@ -156,7 +156,7 @@
 				\end{align*}
 			where $\mathbb{D}$ is a divisor closed set.
 		\end{definition}
-	
+
 		\begin{theorem}[Dual M\"{o}bius Inversion]
 			Let $f$ be an arithmetic function and $F$ be the summatory function
 				\begin{align*}
@@ -169,7 +169,7 @@
 						& = \sum_{\substack{n\mid d\\d\in\mathbb{D}}}\mu\parenthesis{\dfrac{d}{n}}f(d)
 				\end{align*}
 		\end{theorem}
-	
+
 		\begin{proof}
 			This is not as difficult as it looks. We mainly need to look at $\mathbb{D}_{n}$, the set of divisors of $n$ for $n\in\mathbb{D}$. If $m\mid n$, then $\mathbb{D}_{m}\in\mathbb{D}_{n}$. Let $M(n) = \max\{m\in\mathbb{D}:n\mid m\}$ for $n\in\mathbb{D}$, $N(n)=M(n)/n$ and $P(n)=\prod_{p\mid N(n)}p$. Since
 				\begin{align*}

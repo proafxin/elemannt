@@ -118,8 +118,8 @@
 	linkcolor=winered,
 	citecolor=winered,
 	urlcolor=winered,
-	plainpages=false,
-	pdfstartview=FitH,
+	%plainpages=false,
+	pdfstartview=,
 	pdfborder={0 0 0},
 	linktocpage
 }
