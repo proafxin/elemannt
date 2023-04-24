@@ -105,7 +105,7 @@
 		\end{proposition}
 
 		\begin{proof}
-			If $p$ is a prime divisor of $k$ and $k=p^{e}l$ such that $p\nmid l$ then $p\nmid a$. For any $e$, there exists a primitive $\lambda(p^{e})$-th root $g\pmod{p^{e}}$. For any $a$ not divisible by $p$, there is a unique non-negative integer $u$ not exceeding $\lambda(p^{e})$ such that
+			If $p$ is a prime divisor of $k$ and $k=p^{e}l$ such that $p\nmid l$ then $p\nmid a$. For any $e$, there exists a primitive $\lambda(p^{e})$-th root $g\pmod{p^{e}}$ where $\lambda(n)$ is Carmichael's universal exponent function (see \textcite[pp. 90]{billal_riasat_2021}). For any $a$ not divisible by $p$, there is a unique non-negative integer $u$ not exceeding $\lambda(p^{e})$ such that
 				\begin{align*}
 					a
 						& \equiv g^{u}\pmod{p^{e}}
@@ -213,7 +213,7 @@
 						& < \frac{\varphi(k)}{2}
 				\end{align*}
 		\end{proof}
-	\section{Dirichlet's $L$-Series}
+	\section{Dirichlet's \textit{L}-Series}
 	We mentioned earlier that Riemann considered $\zeta(s)$ for complex $s$. Here, we do something similar except we do not require any complex analysis except for the most basic facts.
 		\begin{definition}[$L$-Series]
 			Let $s$ be a complex number. If $k$ is a positive integer and $\chi$ is a character $\pmod{k}$, Dirichlet's $L$-series $L(\chi,s)$ associated with $\chi$ and $s$ is defined as
