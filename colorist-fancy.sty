@@ -699,7 +699,7 @@ heading_suffix "}\n"
       {0pt}
       {
         \rlap{\vbox{\hbox{\parbox{\linewidth}{
-          {\thmname{#1}\thmnumber{\nobreakspace #2}}
+          {\thmname{#1}\bfseries\thmnumber{\nobreakspace #2}}
           {\color{main-text!50!paper}\thmnote{\hspace{.4em}$($#3$)$}}
         }}\hbox{\strut}\vspace{0pt}}}
       }
@@ -727,7 +727,7 @@ heading_suffix "}\n"
       {0pt}
       {
         \rlap{\vbox{\hbox{\parbox{\linewidth}{
-          {\thmname{#1}\nobreakspace\thmnumber{\textup{#2}}}
+          {\thmname{#1}\bfseries\nobreakspace\thmnumber{\textup{#2}}}
           \thmnote{\normalfont\color{main-text}\nobreakspace(#3)}
         }}\hbox{\strut}\vspace{0pt}}}
       }
@@ -736,7 +736,7 @@ heading_suffix "}\n"
     \newtheoremstyle{basic}
       {0pt}{0pt}{\normalfont}{0pt}
       {}{\;}{0.25em}
-      {{\thmname{#1}\nobreakspace\thmnumber{\textup{#2}}}
+      {{\thmname{#1}\bfseries\nobreakspace\thmnumber{\textup{#2}}}
       \thmnote{\normalfont\color{main-text}\nobreakspace(#3)}}
   }
 
