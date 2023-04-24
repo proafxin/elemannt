@@ -27,14 +27,14 @@
 				\end{align}
 		\end{definition}
 	We have the next theorem about the associativity of $\bullet$ convolution.
-		\begin{theorem}[Associativity of Generalized Convolution]\label{thm:genassociativity}
+		\begin{proposition}[Associativity of Generalized Convolution]\label{pro:genassociativity}
 			Let $\mathbf{x}$ be a vector of $k$ positive real numbers, $\alpha,\beta$ be arithmetic functions, $a$ be a fixed positive integer and $f(x_{1},\ldots,x_{k})$ be a real or complex valued multivariate function. Then
 				\begin{align*}
 					(\alpha\bullet(\beta\bullet f))(\mathbf{x}, \mathbf{a})
 						& = ((\alpha\ast\beta)\bullet f)(\mathbf{x}, \mathbf{a})
 				\end{align*}
 			where $f\ast g$ is the usual Dirichlet convolution of arithmetic functions $f$ and $g$.
-		\end{theorem}
+		\end{proposition}
 
 		\begin{proof}
 			From the definition,
@@ -56,7 +56,7 @@
 			\end{align*}
 		\end{proof}
 
-		\begin{theorem}[Inversion of Generalized Convolution]\label{thm:geninverse}
+		\begin{proposition}[Inversion of Generalized Convolution]\label{pro:geninverse}
 			Let $\alpha$ be an arithmetic function and $f$ be a real or complex valued multivariate function. If
 				\begin{align*}
 					g(\mathbf{x}, \mathbf{a})
@@ -67,7 +67,7 @@
 					f(\mathbf{x}, \mathbf{a})
 						& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}\alpha^{-1}(n)\func{g}{\dfrac{\mathbf{x}}{n^{\mathbf{a}}}}
 				\end{align*}
-		\end{theorem}
+		\end{proposition}
 
 		\begin{proof}
 			First, we see that
@@ -77,7 +77,7 @@
 				& = I(1)f(\mathbf{x},\mathbf{a})+\sum_{\substack{n^{\mathbf{a}}\leq{\mathbf{x}}\\n>1}}I(n)f(\mathbf{x},\mathbf{a})\\
 				& = f(\mathbf{x},\mathbf{a})
 			\end{align*}
-			Since $g=\alpha\bullet f$, we will use \autoref{thm:genassociativity} on $\alpha^{-1}$ and $g$. We have
+			Since $g=\alpha\bullet f$, we will use \nameref{pro:genassociativity} on $\alpha^{-1}$ and $g$. We have
 			\begin{align*}
 				(\alpha^{-1}\bullet(\alpha\bullet f))(\mathbf{x},\mathbf{a})
 				& = ((\alpha^{-1}\ast\alpha)\bullet f)(\mathbf{x},\mathbf{a})
@@ -92,8 +92,8 @@
 			\end{align*}
 			Thus, we have the theorem.
 		\end{proof}
-	If we set $\mathbf{a}=(1),k=1$ and $\mathbf{x}=(x)$ for a real number $x$ in \autoref{thm:genassociativity} and \autoref{thm:geninverse}, we have the usual \autoref{thm:genconv} and \autoref{thm:geninverse}.
-		\begin{theorem}
+	If we set $\mathbf{a}=(1),k=1$ and $\mathbf{x}=(x)$ for a real number $x$ in \nameref{pro:genassociativity} and \nameref{pro:geninverse}, we have the usual \nameref{thm:genconv} and \nameref{pro:geninverse}.
+		\begin{proposition}
 			Let $f$ and $g$ be arithmetic functions and $h=f\ast g$. If
 				\begin{align*}
 					F(\mathbf{x}, \mathbf{a})
@@ -109,7 +109,7 @@
 						& = \sum_{n^{\mathbf{a}}\leq\mathbf{x}}f(n)\parenthesis{\dfrac{\mathbf{x}}{n^{\mathbf{a}}},\mathbf{a}}\\
 						& =\sum_{n^{\mathbf{a}}\leq\mathbf{x}}g(n)\func{F}{\dfrac{\mathbf{x}}{n^{\mathbf{a}}},\mathbf{a}}
 				\end{align*}
-		\end{theorem}
+		\end{proposition}
 
 		\begin{proof}
 			We can write $H$ as follows.
@@ -123,7 +123,7 @@
 			We can prove the other part similarly by fixing $e$ and letting $d$ run through for $f$ instead of $g$.
 		\end{proof}
 	As a corollary, we have the following theorem.
-		\begin{theorem}
+		\begin{proposition}
 			Let $f$ be an arithmetic function. If
 				\begin{align*}
 					F(\mathbf{x},\mathbf{a})
@@ -135,7 +135,7 @@
 						& = \sum_{n\leq\sqrt[\mathbf{a}]{\mathbf{x}}}\floor{\dfrac{\sqrt[\mathbf{a}]{\mathbf{x}}}{n}} f(n)\\
 						& =\sum_{n^{\mathbf{a}}\leq\mathbf{x}}F\parenthesis{\dfrac{\sqrt[\mathbf{a}]{\mathbf{x}}}{n}}
 				\end{align*}
-		\end{theorem}
+		\end{proposition}
 	We will now see some applications of generalized convolution $\bullet$. Let $s$ be a fixed positive integer and for the rest of the section, $f$ be defined as
 		\begin{align*}
 			f(\mathbf{x})
@@ -151,7 +151,7 @@
 			\sum_{d\mid n}J(d)
 				& = n^{s}
 		\end{align*}
-	Using \autoref{thm:mobinv}, we also get that
+	Using \nameref{thm:mobinv}, we also get that
 		\begin{align}
 			\mu\ast u
 				& = J\label{eqn:inversejordan}
@@ -202,7 +202,7 @@
 				& = \sum_{n\leq\mathbf{x}}J_{s}(n)\prod_{i=1}^{k}\floor{\dfrac{x_i}{n}}\label{eqn:Sx1}\\
 				& = \sum_{n\leq\mathbf{x}}\mu(n)\parenthesis{\sum_{i\leq\mathbf{x}/n}i^{s}\prod_{j=1}^{k}\floor{\dfrac{x_j}{ni}}}\label{eqn:Sx2}
 		\end{align}
-	\eqref{eqn:Sx1} follows from \autoref{thm:genassociativity} and \eqref{eqn:inversejordan}.
+	\eqref{eqn:Sx1} follows from \nameref{pro:genassociativity} and \eqref{eqn:inversejordan}.
 		\begin{align*}
 			(J_{s}\bullet f)(\mathbf{x},\mathbf{1})
 				& = (\mu\bullet (u\bullet f))(\mathbf{x},\mathbf{1})
