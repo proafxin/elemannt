@@ -9,7 +9,7 @@
 			\sum_{p\equiv a\pmod{k}}\frac{1}{p}
 		\end{align*}
 	diverges as well, the theorem would be complete. This is where Dirichlet introduced the crucial idea of \textit{characters}. The motivation Dirichlet had was to define a \textit{periodic} function in a certain way that would allow one to
-		\begin{enumerate}[(I)]
+		\begin{enumerate}
 			\item identify when $a$ is relatively prime to $k$.
 			\item have the same behavior as the reduced set of residues $\pmod{k}$.
 			\item have the same behavior as the complex roots of unity (this is actually very important, for example, the sum of all roots of unity is $0$.)
@@ -18,7 +18,7 @@
 	The intuition behind finding a periodic function is to note that $\gcd(a,k)=1$ implies $\gcd(a+k,k)=1$. As we will see later, Dirichlet characters satisfy all of these properties. It will become apparent later how and why they play such a crucial role. \textcite[pp. 186]{legendre_1798} defined the \textit{Legendre symbol} which plays a pivotal role in elementary number theory. \textcite{jacobi_1846} generalized Legendre symbol which is now known as \textit{Jacobi symbol}. \textcite[pp. 770]{kronecker_1885} generalized this to \textit{Kronecker symbol} which is unfortunately less known today. This is because \textcite{dirichlet_1837} had already introduced (also see \textcite{dirichlet_1897_21}) a generalization of Kronecker symbol which is far more insightful. Let $k$ be a fixed positive integer.
 		\begin{definition}[Dirichlet Character]
 			An arithmetic function $\chi$ is called a \index{Dirichlet character}\textit{character} $\pmod{k}$ if
-				\begin{enumerate}[(I)]
+				\begin{enumerate}
 					\item $\chi(a)=0$ if $\gcd(a,k)>1$.
 					\item $\chi(1)\neq0$.
 					\item $\chi(ab)=\chi(a)\chi(b)$ for all positive integers $a,b$.
@@ -214,7 +214,7 @@
 				\end{align*}
 		\end{proof}
 	\section{Dirichlet's $L$-Series}
-	We mentioned earlier that Riemann considered $\zeta(s)$ for complex $s$. Here, we do something similar except we do not require any complex analysis except for the most basic facts. By $\mathfrak{R}(s)$ and $\mathfrak{I}(s)$, we denote the real and imaginary parts of $s$ respectively.
+	We mentioned earlier that Riemann considered $\zeta(s)$ for complex $s$. Here, we do something similar except we do not require any complex analysis except for the most basic facts.
 		\begin{definition}[$L$-Series]
 			Let $s$ be a complex number. If $k$ is a positive integer and $\chi$ is a character $\pmod{k}$, Dirichlet's $L$-series $L(\chi,s)$ associated with $\chi$ and $s$ is defined as
 				\begin{align*}
@@ -293,7 +293,7 @@
 						& = \sum_{n\leq x}\dfrac{\sum_{d\mid n}\chi(d)}{\sqrt{n}}\\
 						& = \sum_{de\leq x}\dfrac{\chi(d)}{\sqrt{de}}
 				\end{align*}
-			We can use \autoref{thm:hyperbola} with $a=b=\sqrt{x}, f(n)=\frac{\chi(n)}{\sqrt{n}}$ and $g(n)=\frac{1}{\sqrt{n}}$.
+			We can use \nameref{thm:hyperbola} with $a=b=\sqrt{x}, f(n)=\frac{\chi(n)}{\sqrt{n}}$ and $g(n)=\frac{1}{\sqrt{n}}$.
 				\begin{align*}
 					\varUpsilon(x)
 						& = \sum_{n\leq\sqrt{x}}\dfrac{\chi(n)}{\sqrt{n}}\func{G}{\dfrac{x}{n}}+\sum_{n\leq \sqrt{x}}\dfrac{1}{\sqrt{n}}\func{F}{\dfrac{x}{n}}-F(\sqrt{x})G(\sqrt{x})
