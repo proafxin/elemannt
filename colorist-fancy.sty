@@ -803,7 +803,7 @@ heading_suffix "}\n"
 
 \SetTheorem { proof, proof* } { qed-symbol = { \customqedsymbol } }
 
-\SetTheorem { theorem, lemma, corollary, property, axiom, construction, theorem-with-name }
+\SetTheorem { theorem, corollary, property, axiom, construction, theorem-with-name }
   {
     name style = {
       heading style = { \color{orange}\colorist_bfseries:\g_colorist_title_font_common_tl\textbf }
@@ -829,7 +829,7 @@ heading_suffix "}\n"
     }
   }
 
-\SetTheorem { conjecture }
+\SetTheorem { conjecture, lemma }
   {
     name style = {
       heading style = { \color{purple}\colorist_bfseries:\g_colorist_title_font_common_tl\textbf }
@@ -838,7 +838,7 @@ heading_suffix "}\n"
 
 \bool_if:NF \l__projlib_theorem_complexname_bool
   {
-    \SetTheorem { theorem, lemma, proposition, corollary, property, axiom, construction, theorem-with-name }
+    \SetTheorem { theorem, proposition, corollary, property, axiom, construction, theorem-with-name }
       {
         name style = {
           , crefname style = { \color{orange}\colorist_bfseries:\g_colorist_title_font_common_tl\textsc }
@@ -865,7 +865,7 @@ heading_suffix "}\n"
         }
       }
 
-    \SetTheorem { conjecture }
+    \SetTheorem { conjecture, lemma }
       {
         name style = {
           , crefname style = { \color{purple}\colorist_bfseries:\g_colorist_title_font_common_tl\textsc }
@@ -980,7 +980,7 @@ heading_suffix "}\n"
     \tcolorboxenvironment { #1 } { #2 }
   }
 
-\colorist_add_colorbox:nn { theorem, lemma, corollary, property, axiom, construction, definition-corollary, definition-proposition, definition-theorem, theorem-with-name }
+\colorist_add_colorbox:nn { theorem, corollary, property, axiom, construction, definition-corollary, definition-proposition, definition-theorem, theorem-with-name }
   {
     enhanced~jigsaw, breakable, lines~before~break=3,
     left=3.5mm, right=3.5mm,
@@ -1011,7 +1011,7 @@ heading_suffix "}\n"
     boxrule=0pt, frame~hidden, arc=.7mm
   }
 
-\colorist_add_colorbox:nn { conjecture }
+\colorist_add_colorbox:nn { conjecture, lemma }
   {
     enhanced~jigsaw, breakable, lines~before~break=3,
     left=3.5mm, right=3.5mm,

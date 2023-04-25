@@ -213,6 +213,30 @@
 						& < \frac{\varphi(k)}{2}
 				\end{align*}
 		\end{proof}
+
+	We now prove a very insightful result.
+		\begin{proposition}
+			Let $\chi$ be a character of the second or third kind $\pmod{k}$ and $f$ be a function such that $f(x)\geq 0$ and $f'(x)$ is continuous for all $x\geq x_{0}$ for some positive $x_{0}$. Then
+				\begin{align*}
+					\sum_{a< n\leq b}\chi(n)f(n)
+						& = \bigo{f(a)}
+				\end{align*}
+		\end{proposition}
+	When I said earlier that it would become apparent how someone would think of functions likes characters, this lemma was one of the results I had in my mind. Let $P(x)$ denote the set of primes not exceeding $x$. If for a positive integer $n>1$, $P_{a}(x, n)$ is the set of primes not exceeding that are $a\pmod{n}$ and $r_{1},\ldots,r_{\varphi(n)}$ are the numbers prime to $n$ not exceeding $n$, then obviously $P(x)=P_{r_{1}}(x,n)\cup\ldots P_{r_{\varphi(n)}}(x,n)$ where $P_{i}(x,n)$ and $P_{j}(x,n)=\{\}$ are disjoint if $i\neq j$. Now, we know that there are infinitely many primes to $P(x)\to\infty$ as $x\to\infty$. So, it is highly likely we also have $P_{a}(x,n)\to\infty$ for fixed $a$ and $n$ as well. However, we need to somehow sift them out in a way that allows us to retain only primes of the form $a\pmod{n}$. Imagine something like this: we already know $\sum_{p\leq x}1\to\infty$ and we want to show $\sum_{\substack{p\leq x\\p\equiv a\pmod{n}}}1\to\infty$ as $x\to\infty$. What if we could somehow relate these two? In order to do that, we should definitely look at something like $\sum_{p\leq x}f(a,p)$ where $f(a,p)$ would be $0$ unless $p\equiv a\pmod{n}$. Again, it is very difficult to get an idea how to exactly handle this directly. One thing we could do is to consider something like $\sum_{p\leq x}f(a,p)g(p)$ where $g(p)$ would be known to us and we would have a good idea about both $\sum_{p\leq x}g(p)$. Then if we somehow had an estimation for $\sum_{p\leq x}f(a,p)g(p)$ itself, we could single out $\sum_{p\leq x}f(a,p)$ itself by using something like \nameref{thm:abel}. Now, clearly, we want $f(a,p)=1$ when $p\equiv a\pmod{n}$ otherwise $f(a,p)=0$. In order to be able to use \nameref{thm:abel}, we should consider something like $\sum_{n\leq x}f(a,n)$. Now, since we only want primes we must also have $f(a,n)=0$ whenever $\gcd(a,n)>1$. Another crucial intuition is that we can be certain $\sum_{\substack{p\leq x\\p\equiv a\pmod{n}}}$ would be surely related to $\sum_{p\leq x}1$, most likely bounded by a factor. In other words, we are conjecturing $\sum_{\substack{p\leq x\\p\equiv a\pmod{n}}}=\func{O}{\sum_{p\leq x}1}$. Obviously, this will turn out to be true, but we are pretending we still do not know if it is true or false. Then we should look for a function that can make $\sum_{p\leq x}f(a,p)g(p)$ disappear except for a few cases. This suggests us that the partial sums $\sum_{n\leq x}f(a,n)$ should be bounded, in other words we should look for functions that would give us $\sum_{y\leq n\leq x}f(a,n)=O(1)$ ideally. This might be a little too much too ask for, so we could even look for something like $\sum_{y\leq n\leq x}f(a,n)g(n)$ to be bounded by $g(x)$ so $\sum_{y\leq n\leq x}f(a,n)g(n)=\func{O}{g(x)}$ would also be desirable. This is where the idea of complex roots come. If you recall, the sum of non-unit complex roots vanishes. Therefore, we should definitely look into sort of one to one correspondence of complex roots. This actually makes more sense if you recall that the only root that does not contribute to the vanishing sum is $1$. This all sounds a bit handwavy so we will now jump into the formal proof again.
+		\begin{proof}
+			Since $\chi$ is non-principal,
+				\begin{align*}
+					\sum_{i=1}^{k-1}\chi(i)
+						& = 0
+				\end{align*}
+			In \nameref{thm:abel}, setting $a_{n}:=\chi(n)$, we have $A(k)=0$. By periodicity, $A(nk)=0$ for all positive integer $n$. Thus, if $\floor{x}=kq+r$ with $0\leq r<k$, $A(x)=A(r)<\varphi(k)$ so $A(x)=O(1)$.
+				\begin{align*}
+					\sum_{a< n\leq b}\chi(n)f(n)
+						& = A(b)f(b)-A(a)f(a)-\int_{a}^{b}A(t)f'(t)dt\\
+						& = \bigo{f(b)}-\bigo{f(a)}-\bigo{\int_{a}^{b}f'(t)dt}\\
+						& = \bigo{f(a)}
+				\end{align*}
+		\end{proof}
 	\section{Dirichlet's \textit{L}-Series}
 	We mentioned earlier that Riemann considered $\zeta(s)$ for complex $s$. Here, we do something similar except we do not require any complex analysis except for the most basic facts.
 		\begin{definition}[$L$-Series]
