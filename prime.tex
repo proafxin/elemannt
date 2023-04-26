@@ -68,4 +68,21 @@
 			\sum_{p\leq x}\dfrac{1}{p}
 				& \geq \log{\log\parenthesis{x+1}}-\dfrac{\pi^{2}}{6}
 		\end{align*}
+	More precise results and their rigorous proofs seem to be given by \textcite{mertens_1874}.
+		\begin{theorem}[Mertens' theorems]\label{thm:mertens}
+			Let $x$ be a positive real number. As $x\to\infty$,
+				\begin{align}
+					\sum_{p\leq x}\dfrac{1}{p}
+						& = \log{\log{x}}+B+\bigo{\dfrac{1}{x}}\label{eqn:mertens1}\\
+					\sum_{p\leq x}\dfrac{\log{p}}{p}
+						& = \log{x}+O(1)\label{eqn:mertens2}\\
+					\prod_{p\leq x}\left(1-\dfrac{1}{p}\right)
+						& \sim \dfrac{e^{-\gamma}}{\log{x}}\label{eqn:mertens3}
+				\end{align}
+			where $B$ is a constant and $\gamma$ is Euler-Mascheroni constant.
+		\end{theorem}
+
+		\begin{proof}
+
+		\end{proof}
 \end{document}
