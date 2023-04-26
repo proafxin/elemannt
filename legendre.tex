@@ -347,7 +347,7 @@
 			converges. Since $\lim_{x\to\infty}\frac{1}{\sqrt{x}}=0$, $F(x)=C+\bigo{\frac{1}{\sqrt{x}}}$. Setting $s:=\frac{1}{2}$ in \autoref{thm:zetapositive},
 				\begin{align*}
 					G(x)
-						& =2\sqrt{x}+D+\bigo{\frac{1}{x}}
+						& =2\sqrt{x}+D+\bigo{\frac{1}{\sqrt{x}}}
 				\end{align*}
 			Using these, we get
 				\begin{align*}
@@ -359,16 +359,15 @@
 			Note that that $ab-ac-bd =(b-c)(a-d)-cd$. Setting $a:=F(\sqrt{x}),b:=G(\sqrt{x})$, we see that
 				\begin{align*}
 					F(\sqrt{x})G(\sqrt{x})-D\cdot F(\sqrt{x})-C\cdot G(\sqrt{x})
-						& = O(1)\\
-					\varUpsilon(x)
-						& = 2\sqrt{x}\sum_{n\leq \sqrt{x}}\dfrac{\chi(n)}{n}+O(1)
+						& = O(1)+\bigo{\dfrac{1}{\sqrt{x}}}
 				\end{align*}
 			Taking $x\to\infty$, we have
 				\begin{align*}
 					\lim_{x\to\infty}\varUpsilon(x)
-						& = 2\sqrt{x}L(1,\chi)+O(1)
+					& = 2\sqrt{x}\sum_{n\leq \sqrt{x}}\dfrac{\chi(n)}{n}+O(1)\\
+					& = 2\sqrt{x}L(1,\chi)+O(1)
 				\end{align*}
-			If $L(1,x)=0$, then $\varUpsilon(x^{2})=O(1)$ which is impossible since $\varUpsilon(x)\to\infty$. Therefore, we must have $L(1,x)\neq0$.
+			If $L(1,x)=0$, then $\varUpsilon(x^{2})=O(1)$ which is impossible since $\varUpsilon(x)\to\infty$ as $x\to\infty$. Therefore, we must have $L(1,x)\neq0$.
 		\end{proof}
 	\section{First Proof of Legendre-Dirichlet Theorem}
 	\section{Second Proof by Selberg}
