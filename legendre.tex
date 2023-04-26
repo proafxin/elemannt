@@ -237,6 +237,14 @@
 						& = \bigo{f(a)}
 				\end{align*}
 		\end{proof}
+	Since $\lim_{b\to\infty}\sum_{a<n\leq b}\chi(n)f(n)=\sum_{n\geq 1}\chi(n)f(n)-\sum_{n\leq a}\chi(n)f(n)$, we have the following.
+		\begin{proposition}\label{pro:o(f)}
+			If $\lim_{x\to\infty}f(x)=0$, then
+				\begin{align*}
+					\sum_{n\leq a}\chi(n)f(n)
+						& = \sum_{n\geq 1}\chi(n)f(n)+\bigo{f(a)}
+				\end{align*}
+		\end{proposition}
 	\section{Dirichlet's \textit{L}-Series}
 	We mentioned earlier that Riemann considered $\zeta(s)$ for complex $s$. Here, we do something similar except we do not require any complex analysis except for the most basic facts.
 		\begin{definition}[$L$-Series]
@@ -299,7 +307,12 @@
 		\begin{quote}
 			This is the deepest of all of the lemmas that are necessary for Dirichlet's proof. Dirichlet proved it only by the considerably roundabout method of using the so-called theory of the class number of quadratic forms.
 		\end{quote}
-
+	Before we prove this, the reader is encouraged to try to prove this. For example, a question is whether \nameref{thm:abel} works here with the following decomposition or not:
+		\begin{align*}
+			\sum_{n\leq x}\dfrac{\chi(n)}{n}
+				& = \sum_{n\leq x}\dfrac{\chi(n)}{\sqrt{n}}\dfrac{1}{\sqrt{n}}
+		\end{align*}
+	Then taking $x\to\infty$ seems very promising but there is a catch. Figuring out this catch is left to the reader as an exercise.
 		\begin{proof}
 			Let
 				\begin{align*}
@@ -311,7 +324,7 @@
 					\varUpsilon(x)
 						& \geq \sum_{n\leq\sqrt{x}}\dfrac{1}{n}
 				\end{align*}
-			Clearly $\varsigma(x)\to\infty$ as $x\to\infty$. Now,
+			Clearly $\varUpsilon(x)\to\infty$ as $x\to\infty$. Now,
 				\begin{align*}
 					\varUpsilon(x)
 						& = \sum_{n\leq x}\dfrac{\sum_{d\mid n}\chi(d)}{\sqrt{n}}\\
@@ -322,7 +335,40 @@
 					\varUpsilon(x)
 						& = \sum_{n\leq\sqrt{x}}\dfrac{\chi(n)}{\sqrt{n}}\func{G}{\dfrac{x}{n}}+\sum_{n\leq \sqrt{x}}\dfrac{1}{\sqrt{n}}\func{F}{\dfrac{x}{n}}-F(\sqrt{x})G(\sqrt{x})
 				\end{align*}
-			where $F(x)=\sum_{n\leq x}f(n)$ and $G(x)=\sum_{n\leq x}g(n)$.
+			where $F(x)=\sum_{n\leq x}f(n)$ and $G(x)=\sum_{n\leq x}g(n)$. Setting $f(n):=\frac{1}{\sqrt{n}}$ in \autoref{pro:o(f)},
+				\begin{align*}
+					\sum_{n\leq x}\dfrac{\chi(n)}{\sqrt{n}}
+						& = \sum_{n\geq 1}\dfrac{\chi(n)}{\sqrt{n}}+\bigo{\dfrac{1}{\sqrt{x}}}
+				\end{align*}
+			From \nameref{thm:cauchyconvergence}, we can see that
+				\begin{align*}
+					\sum_{n\geq 1}\dfrac{\chi(n)}{\sqrt{n}}
+				\end{align*}
+			converges. Since $\lim_{x\to\infty}\frac{1}{\sqrt{x}}=0$, $F(x)=C+\bigo{\frac{1}{\sqrt{x}}}$. Setting $s:=\frac{1}{2}$ in \autoref{thm:zetapositive},
+				\begin{align*}
+					G(x)
+						& =2\sqrt{x}+D+\bigo{\frac{1}{x}}
+				\end{align*}
+			Using these, we get
+				\begin{align*}
+					\varUpsilon(x)
+						& = \sum_{n\leq \sqrt{x}}\dfrac{1}{\sqrt{n}}\left(\chi(n)\left(2\sqrt{\dfrac{x}{n}}+D+\bigo{\sqrt{\dfrac{n}{x}}}+C+\bigo{\sqrt{\dfrac{n}{x}}}\right)\right)-F(\sqrt{x})G(\sqrt{x})\\
+						& = 2\sqrt{x}\sum_{n\leq \sqrt{x}}\dfrac{\chi(n)}{n}+D\sum_{n\leq \sqrt{x}}\dfrac{\chi(n)}{\sqrt{n}}+\dfrac{1}{\sqrt{x}}\bigo{\sum_{n\leq \sqrt{x}}\chi(n)}+C\sum_{n\leq \sqrt{x}}\dfrac{1}{\sqrt{n}}+\dfrac{1}{\sqrt{x}}\bigo{\sum_{n\leq \sqrt{x}}1}-F(\sqrt{x})G(\sqrt{x})\\
+						& = 2\sqrt{x}\sum_{n\leq \sqrt{x}}\dfrac{\chi(n)}{n}+D\cdot F(\sqrt{x})+C\cdot G(\sqrt{x})+O(1)-F(\sqrt{x})G(\sqrt{x})
+				\end{align*}
+			Note that that $ab-ac-bd =(b-c)(a-d)-cd$. Setting $a:=F(\sqrt{x}),b:=G(\sqrt{x})$, we see that
+				\begin{align*}
+					F(\sqrt{x})G(\sqrt{x})-D\cdot F(\sqrt{x})-C\cdot G(\sqrt{x})
+						& = O(1)\\
+					\varUpsilon(x)
+						& = 2\sqrt{x}\sum_{n\leq \sqrt{x}}\dfrac{\chi(n)}{n}+O(1)
+				\end{align*}
+			Taking $x\to\infty$, we have
+				\begin{align*}
+					\lim_{x\to\infty}\varUpsilon(x)
+						& = 2\sqrt{x}L(1,\chi)+O(1)
+				\end{align*}
+			If $L(1,x)=0$, then $\varUpsilon(x^{2})=O(1)$ which is impossible since $\varUpsilon(x)\to\infty$. Therefore, we must have $L(1,x)\neq0$.
 		\end{proof}
 	\section{First Proof of Legendre-Dirichlet Theorem}
 	\section{Second Proof by Selberg}

@@ -250,7 +250,7 @@
 		\begin{proof}
 
 		\end{proof}
-	As an application of \autoref{thm:eulersum}, we can derive a result similar to \eqref{eqn:lehmers} taking  $f(n)=n^{k}$ for $k\geq 0$.
+	As an application of \nameref{thm:eulersum}, we can derive a result similar to \eqref{eqn:lehmers} taking  $f(n)=n^{k}$ for $k\geq 0$.
 		\begin{align*}
 			\mathfrak{S}_{k}(x)
 				& = \sum_{n\leq x}n^{k}\\
@@ -258,7 +258,7 @@
 				& = \frac{x^{k+1}}{k+1}-\frac{1}{k+1}+O\parenthesis{k\int\limits_{1}^{x}t^{k-1}dt}+O(x^{k})\\
 				& = \frac{x^{k+1}}{k+1}+O(x^{k})
 		\end{align*}
-	Setting $a_{n}=\tau_{k-1}(n)$ and $f(n)=1/n$ in \autoref{thm:abel}, we get
+	Setting $a_{n}=\tau_{k-1}(n)$ and $f(n)=1/n$ in \nameref{thm:abel}, we get
 		\begin{align*}
 			\sum_{n\leq x}\frac{\tau_{k-1}(n)}{n}
 				& = \frac{T_{k-1}(x)}{x}-\int\limits_{1}^{x}-\frac{T_{k-1}(t)}{t^{2}}dt
