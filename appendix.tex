@@ -2,6 +2,14 @@
 
 \begin{document}
 	\chapter{Appendix}
+		\begin{theorem}[Legendre's formula]\label{thm:legendrefact}
+			The exact power of prime $p$ in $n!$ is
+				\begin{align*}
+					\nu_{p}(n!)
+						& = \sum_{n\geq 1}\floor{\dfrac{n}{p^{i}}}
+				\end{align*}
+		\end{theorem}
+
 		\begin{theorem}[Cauchy's convergence criteria]\label{thm:cauchyconvergence}
 			Let $(a_{n\geq})$ be a sequence of complex numbers. Then $(a_{n\geq1})$ converges if and only if for any positive real number $\epsilon$, there exists a positive integer $N$ such that $s_{n}-s_{m}<\epsilon$ for all $n\geq m\geq N$ where
 				\begin{align*}
@@ -13,8 +21,8 @@
 		\begin{theorem}[Stirling's approximation formula]\label{thm:stirling}
 			For positive integer $n$,
 				\begin{align*}
-					\sqrt{2\pi n}\left(\dfrac{n}{e}\right)^{n}e^{\dfrac{1}{12n+1}}
-						& < n! < \sqrt{2\pi n}\left(\dfrac{n}{e}\right)^{n}e^{\dfrac{1}{12n}}
+					\sqrt{2\pi n}\left(\dfrac{n}{e}\right)^{n}e^{\frac{1}{12n+1}}
+						& < n! < \sqrt{2\pi n}\left(\dfrac{n}{e}\right)^{n}e^{\frac{1}{12n}}
 				\end{align*}
 		\end{theorem}
 	\textcite{stirling_1730} actually showed an exact series for $\log{n!}$ but usually a weaker statement like this suffices. We can also write it as

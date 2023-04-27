@@ -10,7 +10,7 @@
 				\end{align*}
 			where the sum is taken over all primes diverges.
 		\end{theorem}
-	This proof is again inspired by \textcite[Theorem 114]{landau_1969}.
+	This proof is inspired by \textcite[Theorem 114]{landau_1969}.
 		\begin{proof}
 			From \nameref{thm:harmonicsum}, we already know that
 				\begin{align*}
@@ -68,7 +68,7 @@
 			\sum_{p\leq x}\dfrac{1}{p}
 				& \geq \log{\log\parenthesis{x+1}}-\dfrac{\pi^{2}}{6}
 		\end{align*}
-	More precise results and their rigorous proofs seem to be given by \textcite{mertens_1874}.
+	More precise results and their rigorous proofs were given by \textcite{mertens_1874}. They seem to be established decades after Tchebycheff's work but we discuss them first to get an idea on what could inspire Tchebycheff to consider the functions he used for analyzing primes.
 		\begin{theorem}[Mertens' theorems]\label{thm:mertens}
 			Let $x$ be a positive real number. As $x\to\infty$,
 				\begin{align}
@@ -84,5 +84,15 @@
 
 		\begin{proof}
 			From \nameref{thm:stirling},
+				\begin{align*}
+					\log{n!}
+						& = n\log{n}-n+\bigo{n}
+				\end{align*}
+			Also, from \nameref{thm:legendrefact},
+				\begin{align*}
+					\log{n!}
+						& = \sum_{p^{i}\leq n}\floor{\dfrac{n}{p^{i}}}\log{p}\\
+						& = \sum_{i\leq n}\Lambda(n)\floor{\dfrac{n}{i}}
+				\end{align*}
 		\end{proof}
 \end{document}

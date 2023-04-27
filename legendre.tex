@@ -356,7 +356,7 @@
 						& = 2\sqrt{x}\sum_{n\leq \sqrt{x}}\dfrac{\chi(n)}{n}+D\sum_{n\leq \sqrt{x}}\dfrac{\chi(n)}{\sqrt{n}}+\dfrac{1}{\sqrt{x}}\bigo{\sum_{n\leq \sqrt{x}}\chi(n)}+C\sum_{n\leq \sqrt{x}}\dfrac{1}{\sqrt{n}}+\dfrac{1}{\sqrt{x}}\bigo{\sum_{n\leq \sqrt{x}}1}-F(\sqrt{x})G(\sqrt{x})\\
 						& = 2\sqrt{x}\sum_{n\leq \sqrt{x}}\dfrac{\chi(n)}{n}+D\cdot F(\sqrt{x})+C\cdot G(\sqrt{x})+O(1)-F(\sqrt{x})G(\sqrt{x})
 				\end{align*}
-			Note that that $ab-ac-bd =(b-c)(a-d)-cd$. Setting $a:=F(\sqrt{x}),b:=G(\sqrt{x})$, we see that
+			Note that $ab-ac-bd =(b-c)(a-d)-cd$. Setting $a:=F(\sqrt{x}),b:=G(\sqrt{x})$, we see that
 				\begin{align*}
 					F(\sqrt{x})G(\sqrt{x})-D\cdot F(\sqrt{x})-C\cdot G(\sqrt{x})
 						& = O(1)+\bigo{\dfrac{1}{\sqrt{x}}}
@@ -367,7 +367,7 @@
 					& = 2\sqrt{x}\sum_{n\leq \sqrt{x}}\dfrac{\chi(n)}{n}+O(1)\\
 					& = 2\sqrt{x}L(1,\chi)+O(1)
 				\end{align*}
-			If $L(1,x)=0$, then $\varUpsilon(x^{2})=O(1)$ which is impossible since $\varUpsilon(x)\to\infty$ as $x\to\infty$. Therefore, we must have $L(1,x)\neq0$.
+			If $L(1,x)=0$, then $\lim_{x\to\infty}\varUpsilon(x^{2})=O(1)$ which is impossible since $\varUpsilon(x)\to\infty$ as $x\to\infty$. Therefore, we must have $L(1,x)\neq0$.
 		\end{proof}
 	\section{First Proof of Legendre-Dirichlet Theorem}
 	\section{Second Proof by Selberg}

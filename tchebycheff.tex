@@ -17,7 +17,9 @@
 		\begin{align*}
 			\lim_{\xi\to\infty}\dfrac{\xi}{\log{\xi}}
 		\end{align*}
-	exists, then it is $1$. The only problem was to actually prove that this limit indeed exists.
+	exists, then it is $1$. The only problem was to actually prove that this limit indeed exists. One of our objectives in this book is prove the prime number theorem without any serious analysis from the scratch. We will discuss some relevant results first that give us better insight into the structure of primes before doing that.
+		\subfile{prime.tex}
+
 		\begin{theorem}
 			Let $\xi$ be a positive real number. Then there are constants $a$ and $A$ such that
 				\begin{align*}
@@ -60,7 +62,7 @@
 					\nu_{p}\parenthesis{\binom{2n}{n}}
 						& = \nu_{p}((2n)!)-2\nu_{p}(n!)
 				\end{align*}
-			Since $p>n$, $\nu_{p}(n!)=0$ and $\nu_{p}\func{}{\binom{2n}{n}}=\nu_{p}((2n)!)\geq\nu_{p}\func{}{\prod_{n<p\leq 2n}p}$. On the other hand, for $p\leq 2n$,
+			Since $p>n$, $\nu_{p}(n!)=0$ and $\nu_{p}\func{}{\binom{2n}{n}}=\nu_{p}((2n)!)\geq\nu_{p}\func{}{\prod_{n<p\leq 2n}p}$. On the other hand, for $p\leq 2n$, using \nameref{thm:legendrefact},
 				\begin{align*}
 					\nu_{p}\func{}{\binom{2n}{n}}
 						& = \nu_{p}((2n)!)-2\nu_{p}(n!)\\
@@ -112,7 +114,7 @@
 			Thus, we have
 				\begin{align*}
 					(\pi(2n)-\pi(n))\log{n}
-						& \leq \log{2^{2n}}						
+						& \leq \log{2^{2n}}
 				\end{align*}
 			and also
 				\begin{align*}
@@ -175,5 +177,4 @@
 			\sum_{n\geq1}\dfrac{1}{n\log{n}}
 		\end{align*}
 	diverges. This is also left to the reader as an exercise.
-	\subfile{prime.tex}
 \end{document}
