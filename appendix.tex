@@ -9,4 +9,17 @@
 						& = \sum_{i=1}^{k}a_{i}
 				\end{align*}
 		\end{theorem}
+
+		\begin{theorem}[Stirling's approximation formula]\label{thm:stirling}
+			For positive integer $n$,
+				\begin{align*}
+					\sqrt{2\pi n}\left(\dfrac{n}{e}\right)^{n}e^{\dfrac{1}{12n+1}}
+						& < n! < \sqrt{2\pi n}\left(\dfrac{n}{e}\right)^{n}e^{\dfrac{1}{12n}}
+				\end{align*}
+		\end{theorem}
+	\textcite{stirling_1730} actually showed an exact series for $\log{n!}$ but usually a weaker statement like this suffices. We can also write it as
+		\begin{align*}
+			\log{n!}
+				& = n\log{n}-n+\bigo{\log{n}}
+		\end{align*}
 \end{document}
