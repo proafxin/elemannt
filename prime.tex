@@ -2,7 +2,7 @@
 
 \begin{document}
 	\textcite{euler_1737} proved this first although his method was a bit questionable.
-		\begin{theorem}[Divergence of sum of reciprocals of primes]
+		\begin{theorem}[Divergence of sum of reciprocals of primes]\label{thm:primereciprocal}
 			The sum
 				\begin{align*}
 					\sum_{p}\dfrac{1}{p}
@@ -63,36 +63,51 @@
 			\sum_{n\geq 1}\dfrac{1}{n}
 				& = \infty
 		\end{align*}
-	This is indeed true, however, Euler's statement is vague. Today it is known that
-		\begin{align*}
-			\sum_{p\leq x}\dfrac{1}{p}
-				& \geq \log{\log\parenthesis{x+1}}-\dfrac{\pi^{2}}{6}
-		\end{align*}
-	More precise results and their rigorous proofs were given by \textcite{mertens_1874}. They seem to be established decades after Tchebycheff's work but we discuss them first to get an idea on what could inspire Tchebycheff to consider the functions he used for analyzing primes.
-		\begin{theorem}[Mertens' theorems]\label{thm:mertens}
-			Let $x$ be a positive real number. As $x\to\infty$,
-				\begin{align}
-					\sum_{p\leq x}\dfrac{1}{p}
-						& = \log{\log{x}}+B+\bigo{\dfrac{1}{x}}\label{eqn:mertens1}\\
-					\sum_{p\leq x}\dfrac{\log{p}}{p}
-						& = \log{x}+O(1)\label{eqn:mertens2}\\
-					\prod_{p\leq x}\left(1-\dfrac{1}{p}\right)
-						& \sim \dfrac{e^{-\gamma}}{\log{x}}\label{eqn:mertens3}
-				\end{align}
-			where $B$ is a constant and $\gamma$ is Euler-Mascheroni constant.
+	This is indeed true, however, Euler's statement is vague. So this is not usually considered a rigorous proof of this result.
+		\begin{theorem}
+			If $x\to\infty$, then $\pi(x)=\bigo{\frac{x}{\log{\log{x}}}}$. A weaker statement is $\pi(x)=o(x)$.
 		\end{theorem}
 
 		\begin{proof}
-			From \nameref{thm:stirling},
+			Let $\xi$ be a real number such that $2<\xi<x$ and the primes not exceeding $\xi$ are $p_{1},\ldots,p_{k}$. The number of positive integers not divisible by any of $p_{1},\ldots,p_{k}$ in the interval $[\xi+1,\ldots,x]$ is
 				\begin{align*}
-					\log{n!}
-						& = n\log{n}-n+\bigo{n}
+					\varphi(x,\xi)
+						& = x-\sum\floor{\dfrac{x}{p_{i}}}+\sum_{i<j}\floor{\dfrac{x}{p_{i}p_{j}}}-\ldots
 				\end{align*}
-			Also, from \nameref{thm:legendrefact},
+			If $\xi\geq\sqrt{x}$, then we have $\varphi(x,\xi)=\pi(x)-k+1$. In general, $\pi(x)-r+1\leq \varphi(x,\xi)$ holds. Now,
 				\begin{align*}
-					\log{n!}
-						& = \sum_{p^{i}\leq n}\floor{\dfrac{n}{p^{i}}}\log{p}\\
-						& = \sum_{i\leq n}\Lambda(n)\floor{\dfrac{n}{i}}
+					\varphi(x,\xi)
+						& \leq x-\sum\left(\dfrac{x}{p_{i}}\right)+1+\sum_{i<j}\left(\dfrac{x}{p_{i}p_{j}}\right)+1-\ldots\\
+						& = x\prod_{i=1}^{k}\left(1-\dfrac{1}{p_{i}}\right)+2^{k}\\
+						& < x\prod_{p\leq\xi}\left(1-\dfrac{1}{p}\right)+2^{\xi}
+				\end{align*}
+			Note that the choice of $\xi$ is arbitrary and we can easily choose $2^{\xi}+r-1=o(x)$ or $\xi=c\log{x}$ for some constant $c$. Also,
+				\begin{align*}
+					\prod_{p\leq x}\left(1-\dfrac{1}{p}\right)^{-1}
+						& = \prod_{p\leq x}\left(1+\dfrac{1}{p}+\dfrac{1}{p^{2}}+\ldots\right)\\
+						& > \sum_{n\leq x}\dfrac{1}{n}\\
+						& > \log{x}
+				\end{align*}
+			so
+				\begin{align*}
+					\prod_{p\leq \xi}\left(1-\dfrac{1}{p}\right)
+						& < \dfrac{1}{\log{c\log{x}}}\\
+						& = \dfrac{1}{\log{c}+\log{\log{x}}}\\
+						& < \dfrac{1}{\log{\log{x}}}
+				\end{align*}
+			Therefore,
+				\begin{align*}
+					\pi(x)
+						& \leq \varphi(x,\xi)+r-1\\
+						& <\frac{x}{\log{\log{x}}}+o(x)\\
+					\pi(x)
+						& = \bigo{\dfrac{x}{\log{\log{x}}}}
+				\end{align*}
+			and evidently, $\pi(x)=o(x)$ since
+				\begin{align*}
+					\lim_{x\to\infty}\dfrac{\dfrac{x}{\log{\log{x}}}}{x}
+						& = 0
 				\end{align*}
 		\end{proof}
+
 \end{document}

@@ -1,7 +1,7 @@
 \documentclass[elemannt.tex]{subfile}
 
 \begin{document}
-	\chapter{Bertrand to Tschebischeff}
+	\chapter{Bertrand to Tchebyscheff}
 	We said before that \textit{almost} all natural numbers are composite. A major objective of this book is to discuss how often the primes occur. The same question has bugged mathematicians for a centuries. It was Gauss who first observed that the change in the distribution of primes in every interval $[x,x+1000]$ was around $1/\log{x}$. Thus, the rough estimate
 		\begin{align*}
 			\pi(x)
@@ -12,14 +12,14 @@
 			\lim\limits_{x\to\infty}\dfrac{\pi(x)}{\dfrac{x}{\log{x}}}
 				& = 1
 		\end{align*}
-	\textcite{tchebycheff_1852} is the first one to make any substantial progress on the matter. %But instead of going straight into discussing the findings of Tschebischeff, we will first try to understand the reasoning behind his approach. It is very difficult to do so and there is no real concrete intuition behind it. But we will make an attempt anyway. Imagine you are given the numbers from $1$ to $n$. If one of these numbers was missing, we could find the missing number by subtracting the sum of the remaining numbers from the sum $1+\ldots+n$. Now what happens if two numbers go missing? Does the same technique apply? Let us give it a try. If $a$ and $b$ are the missing numbers, then we only know that the subtracted value is going to be $a+b$. However, there are $a+b-1$ possible pairs of positive integers for which $a+b$ can be achieved. So, how do we know exactly which pair is the answer? Definitely we need another clue for this. Now, if you were allowed to ask questions for getting clues (directly asking for the numbers is not allowed obviously), what kind of questions would you want to ask? Assume that you are allowed only one question in this scenario regarding only one of the numbers (again, except asking what the actual number is). One idea would be to ask what the multiple of that number (say, multiple of $3$) is. But this is again asking for the numbers directly. So assume that this type of questioning is also not allowed either. But now we can ask questions such as what is the sum when the first number multiplied by $3$ is added to the second number? We can form equations from such questions and then easily find the answers. Let us now make this a little more challenging. Imagine the same problem, except now you do not have to find the numbers explicitly. Rather you just have to find the number of missing numbers. However, you can ask fewer questions this time. What should be our approach now? If we just keep randomly asking questions to form linear equations like before, we will run out of questions sooner.
-	In fact, Tschebischeff was close to proving the prime number theorem himself. \textcite{tschebischeff_1852} first proved that if $\pi(x)$ was of order $\frac{x}{\log^{N}{x}}$ as $x\to\infty$, then $N=1$. Consequently, he also proved that if the limit
+	\textcite{Tchebyscheff_1852} is the first one to make any substantial progress on the matter. %But instead of going straight into discussing the findings of Tchebyscheff, we will first try to understand the reasoning behind his approach. It is very difficult to do so and there is no real concrete intuition behind it. But we will make an attempt anyway. Imagine you are given the numbers from $1$ to $n$. If one of these numbers was missing, we could find the missing number by subtracting the sum of the remaining numbers from the sum $1+\ldots+n$. Now what happens if two numbers go missing? Does the same technique apply? Let us give it a try. If $a$ and $b$ are the missing numbers, then we only know that the subtracted value is going to be $a+b$. However, there are $a+b-1$ possible pairs of positive integers for which $a+b$ can be achieved. So, how do we know exactly which pair is the answer? Definitely we need another clue for this. Now, if you were allowed to ask questions for getting clues (directly asking for the numbers is not allowed obviously), what kind of questions would you want to ask? Assume that you are allowed only one question in this scenario regarding only one of the numbers (again, except asking what the actual number is). One idea would be to ask what the multiple of that number (say, multiple of $3$) is. But this is again asking for the numbers directly. So assume that this type of questioning is also not allowed either. But now we can ask questions such as what is the sum when the first number multiplied by $3$ is added to the second number? We can form equations from such questions and then easily find the answers. Let us now make this a little more challenging. Imagine the same problem, except now you do not have to find the numbers explicitly. Rather you just have to find the number of missing numbers. However, you can ask fewer questions this time. What should be our approach now? If we just keep randomly asking questions to form linear equations like before, we will run out of questions sooner.
+	In fact, Tchebyscheff was close to proving the prime number theorem himself. \textcite{tschebischeff_1852} first proved that if $\pi(x)$ was of order $\frac{x}{\log^{N}{x}}$ as $x\to\infty$, then $N=1$. Consequently, he also proved that if the limit
 		\begin{align*}
 			\lim_{\xi\to\infty}\dfrac{\xi}{\log{\xi}}
 		\end{align*}
 	exists, then it is $1$. The only problem was to actually prove that this limit indeed exists. One of our objectives in this book is prove the prime number theorem without any serious analysis from the scratch. We will discuss some relevant results first that give us better insight into the structure of primes before doing that.
 		\subfile{prime.tex}
-
+	We can now start proving some results by \textcite{tchebycheff_1852} and \textcite{tschebischeff_1852}. Before we discuss Tchebyscheff's functions, we should discuss the following first which gives us some insight into why Tchebyscheff's functions are important.
 		\begin{theorem}
 			Let $\xi$ be a positive real number. Then there are constants $a$ and $A$ such that
 				\begin{align*}
@@ -27,7 +27,7 @@
 						& \leq \pi(\xi) \leq A\dfrac{\xi}{\log{\xi}}
 				\end{align*}
 		\end{theorem}
-	Actually, Tschebischeff gave a specific statement that
+	Actually, Tchebyscheff gave a specific statement that
 		\begin{align*}
 			a
 				& < \dfrac{\pi(\xi)}{\dfrac{\xi}{\log{\xi}}} < \dfrac{6a}{5}
@@ -37,7 +37,7 @@
 			a
 				& = \dfrac{\log{2}}{2}+\dfrac{\log{3}}{3}+\dfrac{\log{5}}{5}-\dfrac{\log{30}}{30}
 		\end{align*}
-	The following proof is inspired by \textcite[Theorem 112]{landau_1969}; which is actually a translation of the first section of the first volume of \textcite{landau_1927}.
+	The following proof is inspired by \textcite[Theorem 112]{landau_1969}; which is a translation of the first section of the first volume of \textcite{landau_1927}.
 		\begin{proof}
 			For any $x\geq 0$,
 				\begin{align*}
@@ -177,4 +177,125 @@
 			\sum_{n\geq1}\dfrac{1}{n\log{n}}
 		\end{align*}
 	diverges. This is also left to the reader as an exercise.
+
+	\section{Tchebyscheff Functions}
+	\textcite{tschebischeff_1852} defines two functions that are today known as Tchebisceff's $\vartheta$ and $\psi$ functions.
+		\begin{definition}[Tchebyscheff's $\vartheta$ function]
+			For a real number $x$, Tchebyscheff's $\vartheta$ function is defined as
+				\begin{align*}
+					\vartheta(x)
+						& = \sum_{p\leq x}\log{p}
+				\end{align*}
+		\end{definition}
+
+		\begin{definition}[Tchebyscheff's $\psi$ function]
+			For a real number $x$, Tchebyscheff's $\psi$ function is defined as
+				\begin{align*}
+					\psi(x)
+						& = \sum_{p^{i}\leq n}\log{p}
+				\end{align*}
+		\end{definition}
+	Note that we can write $\psi$ in different ways.
+		\begin{align*}
+			\psi(x)
+				& = \sum_{p\leq x}\log{p}\sum_{p^{i}\leq x}1\\
+				& = \sum_{p\leq x}\floor{\log_{p}{x}}\log{p}
+		\end{align*}
+	Also,
+		\begin{align*}
+			\psi(x)
+				& = \sum_{i\geq 1}\sum_{p^{i}\leq x}\log{p}\\
+				& = \sum_{i\geq 1}\sum_{p\leq\sqrt[i]{x}}\log{p}\\
+				& = \sum_{i\geq 1}\vartheta(\sqrt[i]{x})
+		\end{align*}
+	At this point, we should introduce the Von Mangoldt function.
+		\begin{definition}[Von Mangoldt function]
+			For a positive integer $n$,
+				\begin{align*}
+					\Lambda(n)
+						& = \log{p}\mbox{ if }n=p^{k}\mbox{ for a prime }p\\
+						& = 0\mbox{ otherwise}
+				\end{align*}
+		\end{definition}
+	Then we can write $\psi$ as
+		\begin{align*}
+			\vartheta(x)
+				& = \sum_{n\leq x}\Lambda(n)
+		\end{align*}
+	The following theorem immediately shows us the importance of these functions.
+		\begin{theorem}\label{thm:pntequivalence}
+			If any of the three limits
+				\begin{align*}
+					\lim_{x\to\infty}\dfrac{\pi(x)}{\dfrac{x}{\log{x}}}
+						& ,\lim_{x\to\infty}\dfrac{\vartheta(x)}{x}, \lim_{x\to\infty}\dfrac{\psi(x)}{x}
+				\end{align*}
+			exists, then all three limits are equal.
+		\end{theorem}
+
+		\begin{proof}
+			Let the upper limits of the three be $l_{1},l_{2},l_{3}$ respectively. Obviously,
+				\begin{align*}
+					\vartheta(x)
+						& \leq \psi(x)\\
+						& = \sum_{p\leq x}\floor{\dfrac{\log{x}}{\log{p}}}\log{p}\\
+						& \leq\sum_{p\leq x}\dfrac{\log{x}}{\log{p}}\log{p}\\
+						& =\log{x}\sum_{p\leq x}1\\
+						& = \pi(x)\log{x}
+				\end{align*}
+			Then, for all $x$,
+				\begin{align*}
+					\dfrac{\vartheta(x)}{x}
+						& \leq \dfrac{\psi(x)}{x}\leq \dfrac{\pi(x)}{\dfrac{x}{\log{x}}}
+				\end{align*}
+			So, $l_{2}\leq l_{3}\leq l_{1}$. Now, for any $0<\epsilon<1$, $\vartheta(x^{\epsilon})\geq0$ so $\vartheta(x)-\vartheta(x^{\epsilon})\leq \vartheta(x)$.
+				\begin{align*}
+					\vartheta(x)-\vartheta(x^{\epsilon})
+						& =\sum_{x^{\epsilon}<p\leq x}\log{p}\\
+						& > \sum_{x^{\epsilon}<p\leq x}\log{x^{\epsilon}}\\
+						& = \log{x^{\epsilon}}\sum_{x^{\epsilon}<p\leq x}1\\
+						& = \epsilon\log{x}(\pi(x)-\pi(x^{\epsilon}))
+				\end{align*}
+			Here, $\pi(x^{\epsilon})<x^{\epsilon}$ so $\pi(x)-\pi(x^{\epsilon})\geq \pi(x)-x^{\epsilon}$ and
+				\begin{align*}
+					\dfrac{\vartheta(x)}{x}
+						& > \epsilon\left(\dfrac{\pi(x)}{\dfrac{x}{\log{x}}}-\dfrac{\log{x}}{x^{1-\epsilon}}\right)
+				\end{align*}
+			Taking $x\to\infty$, $\lim_{x\to\infty}\frac{\log{x}}{x^{1-\epsilon}}=0$ so
+				\begin{align*}
+					\lim_{x\to\infty}\dfrac{\vartheta(x)}{x}
+						& \geq \epsilon \dfrac{\pi(x)}{\dfrac{x}{\log{x}}}
+				\end{align*}
+			Therefore, $l_{2}\geq l_{1}$ so $l_{1}=l_{2}$ and so $l_{3}=l_{2}=l_{1}$.
+		\end{proof}
+	$\vartheta$ and $\psi$ are discussed in every book on analytic number theory, however, it is never discussed why Tchebyscheff would consider these functions. Like most notable mathematical discovery, this was not a blind attempt by Tchebyscheff and he did not suddenly receive divine knowledge one night either. So there must be some explanation how he thought of these functions and why they are so crucial in the study of prime numbers. Initially, I wanted to discuss a rationalization how Tchebyscheff might have thought of them. But I think it is more appropriate if we leave it as an open question to the reader to come up with such a rationalization how we might come up with such functions if we were to prove the prime number theorem. \textcite[pp. 13]{ingham_1932} says the following about this matter:
+		\begin{quote}
+			It happens (as will appear more clearly in $\S7$) that, of the three functions $\pi,\vartheta,\psi$, the one which arises most naturally from the analytical point of view is the most remote from the original problem, namely $\psi$. For this reason, it is usually most convenient to work in the first instance with $\psi$ and to use Theorem 3 (or more precise relations corresponding to the degree of approximation contemplated) to deduce the results about $\pi$. This is a complication which seems inherent in the subject, and the reader should familiarize himself at the outset with the function $\psi$, which is to be regarded as the fundamental one.
+		\end{quote}
+	\textcite{mertens_1874} gave more precise results than \nameref{thm:primereciprocal}.
+		\begin{theorem}[Mertens' theorems]\label{thm:mertens}
+			Let $x$ be a positive real number. As $x\to\infty$,
+			\begin{align}
+				\sum_{p\leq x}\dfrac{1}{p}
+				& = \log{\log{x}}+B+\bigo{\dfrac{1}{x}}\label{eqn:mertens1}\\
+				\sum_{p\leq x}\dfrac{\log{p}}{p}
+				& = \log{x}+O(1)\label{eqn:mertens2}\\
+				\prod_{p\leq x}\left(1-\dfrac{1}{p}\right)
+				& \sim \dfrac{e^{-\gamma}}{\log{x}}\label{eqn:mertens3}
+			\end{align}
+			where $B$ is a constant and $\gamma$ is Euler-Mascheroni constant.
+		\end{theorem}
+
+		\begin{proof}
+			From \nameref{thm:stirling},
+			\begin{align*}
+				\log{n!}
+				& = n\log{n}-n+\bigo{n}
+			\end{align*}
+			Also, from \nameref{thm:legendrefact},
+			\begin{align*}
+				\log{n!}
+				& = \sum_{p^{i}\leq n}\floor{\dfrac{n}{p^{i}}}\log{p}\\
+				& = \sum_{i\leq n}\Lambda(n)\floor{\dfrac{n}{i}}
+			\end{align*}
+		\end{proof}
 \end{document}
