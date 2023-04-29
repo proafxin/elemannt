@@ -12,25 +12,25 @@
 			\lim\limits_{x\to\infty}\dfrac{\pi(x)}{\dfrac{x}{\log{x}}}
 				& = 1
 		\end{align*}
-	\textcite{Tchebyscheff_1852} is the first one to make any substantial progress on the matter. %But instead of going straight into discussing the findings of Tchebyscheff, we will first try to understand the reasoning behind his approach. It is very difficult to do so and there is no real concrete intuition behind it. But we will make an attempt anyway. Imagine you are given the numbers from $1$ to $n$. If one of these numbers was missing, we could find the missing number by subtracting the sum of the remaining numbers from the sum $1+\ldots+n$. Now what happens if two numbers go missing? Does the same technique apply? Let us give it a try. If $a$ and $b$ are the missing numbers, then we only know that the subtracted value is going to be $a+b$. However, there are $a+b-1$ possible pairs of positive integers for which $a+b$ can be achieved. So, how do we know exactly which pair is the answer? Definitely we need another clue for this. Now, if you were allowed to ask questions for getting clues (directly asking for the numbers is not allowed obviously), what kind of questions would you want to ask? Assume that you are allowed only one question in this scenario regarding only one of the numbers (again, except asking what the actual number is). One idea would be to ask what the multiple of that number (say, multiple of $3$) is. But this is again asking for the numbers directly. So assume that this type of questioning is also not allowed either. But now we can ask questions such as what is the sum when the first number multiplied by $3$ is added to the second number? We can form equations from such questions and then easily find the answers. Let us now make this a little more challenging. Imagine the same problem, except now you do not have to find the numbers explicitly. Rather you just have to find the number of missing numbers. However, you can ask fewer questions this time. What should be our approach now? If we just keep randomly asking questions to form linear equations like before, we will run out of questions sooner.
-	In fact, Tchebyscheff was close to proving the prime number theorem himself. \textcite{tschebischeff_1852} first proved that if $\pi(x)$ was of order $\frac{x}{\log^{N}{x}}$ as $x\to\infty$, then $N=1$. Consequently, he also proved that if the limit
+	\textcite{tchebycheff_1852} is the first one to make any substantial progress on the matter. %But instead of going straight into discussing the findings of Tchebyscheff, we will first try to understand the reasoning behind his approach. It is very difficult to do so and there is no real concrete intuition behind it. But we will make an attempt anyway. Imagine you are given the numbers from $1$ to $n$. If one of these numbers was missing, we could find the missing number by subtracting the sum of the remaining numbers from the sum $1+\ldots+n$. Now what happens if two numbers go missing? Does the same technique apply? Let us give it a try. If $a$ and $b$ are the missing numbers, then we only know that the subtracted value is going to be $a+b$. However, there are $a+b-1$ possible pairs of positive integers for which $a+b$ can be achieved. So, how do we know exactly which pair is the answer? Definitely we need another clue for this. Now, if you were allowed to ask questions for getting clues (directly asking for the numbers is not allowed obviously), what kind of questions would you want to ask? Assume that you are allowed only one question in this scenario regarding only one of the numbers (again, except asking what the actual number is). One idea would be to ask what the multiple of that number (say, multiple of $3$) is. But this is again asking for the numbers directly. So assume that this type of questioning is also not allowed either. But now we can ask questions such as what is the sum when the first number multiplied by $3$ is added to the second number? We can form equations from such questions and then easily find the answers. Let us now make this a little more challenging. Imagine the same problem, except now you do not have to find the numbers explicitly. Rather you just have to find the number of missing numbers. However, you can ask fewer questions this time. What should be our approach now? If we just keep randomly asking questions to form linear equations like before, we will run out of questions sooner.
+	In fact, Tchebyscheff was close to proving the prime number theorem himself. \textcite{tschebischeff_1852} proved that if $\pi(x)$ was of order $\frac{x}{\log^{N}{x}}$ as $x\to\infty$, then $N=1$. Consequently, he also proved that if the limit
 		\begin{align*}
-			\lim_{\xi\to\infty}\dfrac{\xi}{\log{\xi}}
+			\lim_{x\to\infty}\dfrac{x}{\log{x}}
 		\end{align*}
 	exists, then it is $1$. The only problem was to actually prove that this limit indeed exists. One of our objectives in this book is prove the prime number theorem without any serious analysis from the scratch. We will discuss some relevant results first that give us better insight into the structure of primes before doing that.
 		\subfile{prime.tex}
 	We can now start proving some results by \textcite{tchebycheff_1852} and \textcite{tschebischeff_1852}. Before we discuss Tchebyscheff's functions, we should discuss the following first which gives us some insight into why Tchebyscheff's functions are important.
-		\begin{theorem}
-			Let $\xi$ be a positive real number. Then there are constants $a$ and $A$ such that
+		\begin{theorem}[Tchebyscheff]\label{thm:tchebycheffbound}
+			Let $x$ be a positive real number. Then there are constants $a$ and $A$ such that
 				\begin{align*}
-					a\dfrac{\xi}{\log{\xi}}
-						& \leq \pi(\xi) \leq A\dfrac{\xi}{\log{\xi}}
+					a\dfrac{x}{\log{x}}
+						& \leq \pi(x) \leq A\dfrac{x}{\log{x}}
 				\end{align*}
 		\end{theorem}
-	Actually, Tchebyscheff gave a specific statement that
+	Actually, Tchebyscheff gave a more precise statement that
 		\begin{align*}
 			a
-				& < \dfrac{\pi(\xi)}{\dfrac{\xi}{\log{\xi}}} < \dfrac{6a}{5}
+				& < \dfrac{\pi(x)}{\dfrac{x}{\log{x}}} < \dfrac{6a}{5}
 		\end{align*}
 	holds for large enough $x$ where
 		\begin{align*}
@@ -123,13 +123,13 @@
 					\pi(2n)
 						& \geq c_{1}\dfrac{2n}{\log{2n}}
 				\end{align*}
-			for a positive constant $c_{1}$. For $\xi\geq2$, setting $\eta=\floor{\xi/2}$ and $\xi=2\eta+r$ with $0\leq r<2$, we have $\xi\leq3\eta$ and $\log{2\eta}\leq\log{\xi}$.
+			for a positive constant $c_{1}$. For $x\geq2$, setting $\eta=\floor{x/2}$ and $x=2\eta+r$ with $0\leq r<2$, we have $x\leq3\eta$ and $\log{2\eta}\leq\log{x}$.
 				\begin{align*}
-					\pi(\xi)
+					\pi(x)
 						& \geq\func{\pi}{2\eta}\\
 						& \geq c\dfrac{2\eta}{\log{2\eta}}\\
 						& = \dfrac{2c}{3}\dfrac{3\eta}{\log{2\eta}}\\
-						& \geq a\dfrac{\xi}{\log{\xi}}
+						& \geq a\dfrac{x}{\log{x}}
 				\end{align*}
 			for a positive constant $a$. On the other hand, since $x<2+2\floor{\frac{x}{2}}$,
 				\begin{align*}
@@ -146,17 +146,17 @@
 						& < \log{x}\cdot d_{1}\dfrac{x}{\log{x}}+\dfrac{x}{2}\\
 						& < d_{2}x
 				\end{align*}
-			If $2^{m+1}\leq2^{v+1}\xi<2^{v+2}$ (that is, $v+1=\floor{\log_{2}{\xi}})$,
+			If $2^{m+1}\leq2^{v+1}x<2^{v+2}$ (that is, $v+1=\floor{\log_{2}{x}})$,
 				\begin{align*}
-					\log{\dfrac{\xi}{2^{m}}}\func{\pi}{\dfrac{\xi}{2^{m}}}-\log{\dfrac{\xi}{2^{m+1}}}\func{\pi}{\dfrac{\xi}{2^{m+1}}}
-						& < d_{2}\dfrac{\xi}{2^{m}}
+					\log{\dfrac{x}{2^{m}}}\func{\pi}{\dfrac{x}{2^{m}}}-\log{\dfrac{x}{2^{m+1}}}\func{\pi}{\dfrac{x}{2^{m+1}}}
+						& < d_{2}\dfrac{x}{2^{m}}
 				\end{align*}
 			Summing over this for $0\leq m\leq v$,
 				\begin{align*}
-					\log{\xi}\pi(\xi)
-						& = \func{\sum_{m=0}^{v}}{\log{\dfrac{\xi}{2^{m}}}\func{\pi}{\dfrac{\xi}{2^{m}}}-\log{\dfrac{\xi}{2^{m+1}}}\func{\pi}{\dfrac{x}{2^{m+1}}}}\\
-						& < d_{2}\xi\sum_{m=0}^{v}\dfrac{1}{2^{m}}\\
-						& = A\xi
+					\log{x}\pi(x)
+						& = \func{\sum_{m=0}^{v}}{\log{\dfrac{x}{2^{m}}}\func{\pi}{\dfrac{x}{2^{m}}}-\log{\dfrac{x}{2^{m+1}}}\func{\pi}{\dfrac{x}{2^{m+1}}}}\\
+						& < d_{2}x\sum_{m=0}^{v}\dfrac{1}{2^{m}}\\
+						& = Ax
 				\end{align*}
 		\end{proof}
 	A corollary is the following.
@@ -253,7 +253,7 @@
 						& =\sum_{x^{\epsilon}<p\leq x}\log{p}\\
 						& > \sum_{x^{\epsilon}<p\leq x}\log{x^{\epsilon}}\\
 						& = \log{x^{\epsilon}}\sum_{x^{\epsilon}<p\leq x}1\\
-						& = \epsilon\log{x}(\pi(x)-\pi(x^{\epsilon}))
+						& = \epsilon(\pi(x)-\pi(x^{\epsilon}))\log{x}
 				\end{align*}
 			Here, $\pi(x^{\epsilon})<x^{\epsilon}$ so $\pi(x)-\pi(x^{\epsilon})\geq \pi(x)-x^{\epsilon}$ and
 				\begin{align*}
@@ -267,10 +267,18 @@
 				\end{align*}
 			Therefore, $l_{2}\geq l_{1}$ so $l_{1}=l_{2}$ and so $l_{3}=l_{2}=l_{1}$.
 		\end{proof}
-	$\vartheta$ and $\psi$ are discussed in every book on analytic number theory, however, it is never discussed why Tchebyscheff would consider these functions. Like most notable mathematical discovery, this was not a blind attempt by Tchebyscheff and he did not suddenly receive divine knowledge one night either. So there must be some explanation how he thought of these functions and why they are so crucial in the study of prime numbers. Initially, I wanted to discuss a rationalization how Tchebyscheff might have thought of them. But I think it is more appropriate if we leave it as an open question to the reader to come up with such a rationalization how we might come up with such functions if we were to prove the prime number theorem. \textcite[pp. 13]{ingham_1932} says the following about this matter:
+	$\vartheta$ and $\psi$ are discussed in every book on analytic number theory, however, it is never discussed why Tchebyscheff would consider these functions to begin with. Like most notable mathematical discovery, this was not a blind attempt by Tchebyscheff and he did not suddenly receive divine knowledge one night either. So there must be some explanation of how he thought of these functions and why they are so crucial in the study of prime numbers. Initially, I wanted to discuss a rationalization how Tchebyscheff might have thought of them. But I think it is more appropriate if we leave it as an open question to the reader to come up with such a rationalization how we might come up with such functions if we were to prove the prime number theorem. \textcite[pp. 13]{ingham_1932} says the following about this matter:
 		\begin{quote}
 			It happens (as will appear more clearly in $\S7$) that, of the three functions $\pi,\vartheta,\psi$, the one which arises most naturally from the analytical point of view is the most remote from the original problem, namely $\psi$. For this reason, it is usually most convenient to work in the first instance with $\psi$ and to use Theorem 3 (or more precise relations corresponding to the degree of approximation contemplated) to deduce the results about $\pi$. This is a complication which seems inherent in the subject, and the reader should familiarize himself at the outset with the function $\psi$, which is to be regarded as the fundamental one.
 		\end{quote}
+	One of the goals of Tchebyscheff's work was to prove a postulate by \textcite{bertrand_1845}. We have sort of proved it already but now we will prove it again using Tchebyscheff's functions.
+		\begin{conjecture}[Bertrand's postulate]\label{con:bertrand}
+			For any real number $x>1$, there is a prime $p$ such that $n<p<2n$.
+		\end{conjecture}
+
+		\begin{proof}
+
+		\end{proof}
 	\textcite{mertens_1874} gave more precise results than \nameref{thm:primereciprocal}.
 		\begin{theorem}[Mertens' theorems]\label{thm:mertens}
 			Let $x$ be a positive real number. As $x\to\infty$,
