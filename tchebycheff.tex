@@ -104,7 +104,7 @@
 					\binom{2n}{n}
 						& = \dfrac{(n+1)\cdots (2n)}{1\cdots n}\\
 						& \geq \prod_{i=1}^{n}\dfrac{n+i}{i}\\
-						& = 2^{n}
+						& \geq 2^{n}
 				\end{align*}
 			giving
 				\begin{align*}
@@ -271,11 +271,72 @@
 		\begin{quote}
 			It happens (as will appear more clearly in $\S7$) that, of the three functions $\pi,\vartheta,\psi$, the one which arises most naturally from the analytical point of view is the most remote from the original problem, namely $\psi$. For this reason, it is usually most convenient to work in the first instance with $\psi$ and to use Theorem 3 (or more precise relations corresponding to the degree of approximation contemplated) to deduce the results about $\pi$. This is a complication which seems inherent in the subject, and the reader should familiarize himself at the outset with the function $\psi$, which is to be regarded as the fundamental one.
 		\end{quote}
-	One of the goals of Tchebyscheff's work was to prove a postulate by \textcite{bertrand_1845}. We have sort of proved it already but now we will prove it again using Tchebyscheff's functions.
+	One of the goals of Tchebyscheff's work was to prove a postulate by \textcite{bertrand_1845}.
 		\begin{conjecture}[Bertrand's postulate]\label{con:bertrand}
 			For any real number $x>1$, there is a prime $p$ such that $n<p<2n$.
 		\end{conjecture}
+	Note that \autoref{thm:tchebycheffbound} already implies \nameref{con:bertrand} if we can show that $A\leq 2a$. Because then $\vartheta\left(\frac{Ax}{a}\right)>\vartheta(x)$ so there must be a prime between $x$ and $cx$ for some constant $c\leq 2$. However, we will show that the direct approach in the proof of \autoref{thm:tchebycheffbound} does not produce a proof for this postulate.
+			With the help of \autoref{thm:pntequivalence}, it is enough to show that there exist constants $a$ and $A$ such that $A\leq 2a$ and
+				\begin{align*}
+					ax
+					& < \vartheta(x) < Ax
+				\end{align*}
+			We again consider the binomial coefficient $\binom{2n}{n}$ and use the trivial fact $\binom{2n}{n}<2^{2n}$. If $p$ is a prime such that $n<p<2n$, then
+				\begin{align*}
+					\nu_{p}\left(\binom{2n}{n}\right)
+						& = \nu_{p}((2n)!)-2\nu_{p}(n!)\\
+						& = \nu_{p}((2n)!)
+				\end{align*}
+			So, $\binom{2n}{n}$ is divisible by all such primes $p$. Thus,
+				\begin{align*}
+					\binom{2n}{n}
+						& \geq \prod_{n<p<2n}p
+				\end{align*}
+			Since $\log{\binom{2n}{n}}<2n\log{2}$,
+				\begin{align*}
+					2n\log{2}
+						& > \sum_{n<p<2n}\log{p}\\
+						& = \vartheta(2n)-\vartheta(n)
+				\end{align*}
+			The right side can be telescoped by setting $n:=2^{i}$ for $0\leq i\leq  k-1$.
+				\begin{align*}
+					\sum_{i=0}^{k-1}2^{i+1}\log{2}
+						& > \vartheta(2^{k})
+				\end{align*}
+			Since $2^{k}>1+\ldots+2^{k-1}$,
+				\begin{align*}
+					2^{k+1}\log{2}
+						& > \vartheta(2^{k})
+				\end{align*}
+			For any $x>1$, taking $2^{k-1}\leq x<2^{k}$, $2^{k+1}\leq 4x$ so $\vartheta(x)\leq\vartheta(2^{k})<4x\log{2}$ and $\vartheta(x)<Ax$ for some $A\leq 4\log{2}$.
 
+			Again, for a prime $p$, letting $r$ be the largest positive integer such that $p^{r}\leq 2n$, similar to the proof of \autoref{thm:tchebycheffbound}, $\nu_{p}\left(\binom{2n}{n}\right)\leq r$. From the definition,
+				\begin{align*}
+					e^{\psi(2n)}
+						& = \prod_{p\leq 2n}p^{r}
+				\end{align*}
+			so $\binom{2n}{n}\mid e^{\psi(2n)}$. Also, $(2n+1)\binom{2n}{n}\geq 2^{2n}$ so
+				\begin{align*}
+					(2n+1)e^{\psi(2n)}
+						& \geq 2^{2n}
+				\end{align*}
+			Taking logarithm,
+				\begin{align*}
+					\log{(2n+1)}+\psi(2n)
+						& \geq 2n\log{2}
+				\end{align*}
+			Letting $\floor{\frac{x}{2}}=n$, we have $\psi(x)\geq\psi(2n)$, $2n>x-2$ and
+				\begin{align*}
+					\psi(x)
+						& \geq (x-1)\log{2}-\log{(x+1)}
+				\end{align*}
+	We can now show that $\psi(x)\geq ax$ for some $a\geq\log{2}$. However, this only gives us the bound $\frac{A}{a}\leq4$ which does not prove \nameref{con:bertrand}. \textcite[$\S4$, eqn. $(5)$ pp. 376]{tschebischeff_1852} showed that $A\leq\frac{6}{5}a$ where
+		\begin{align*}
+			a
+				& \geq \log{\dfrac{2^{\frac{1}{2}}3^{\frac{1}{3}}5^{\frac{1}{5}}}{30^{\frac{1}{30}}}}
+		\end{align*}
+
+	It was \textcite{erdos_1932} who introduced himself to the mathematical world by proving \nameref{con:bertrand} in a completely elementary manner using only properties of binomial coefficients.
 		\begin{proof}
 
 		\end{proof}
