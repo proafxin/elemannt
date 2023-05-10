@@ -1,7 +1,7 @@
 \documentclass[elemannt.tex]{subfile}
 
 \begin{document}
-	\chapter{Bertrand to Tchebyscheff}
+	\chapter{Tchebyscheff's Theorems}
 	We said before that \textit{almost} all natural numbers are composite. A major objective of this book is to discuss how often the primes occur. The same question has bugged mathematicians for a centuries. It was Gauss who first observed that the change in the distribution of primes in every interval $[x,x+1000]$ was around $1/\log{x}$. Thus, the rough estimate
 		\begin{align*}
 			\pi(x)
@@ -336,10 +336,65 @@
 				& \geq \log{\dfrac{2^{\frac{1}{2}}3^{\frac{1}{3}}5^{\frac{1}{5}}}{30^{\frac{1}{30}}}}
 		\end{align*}
 
-	It was \textcite{erdos_1932} who introduced himself to the mathematical world by proving \nameref{con:bertrand} in a completely elementary manner using only properties of binomial coefficients.
+	It was \textcite{erdos_1932} who introduced himself to the mathematical world by proving \nameref{con:bertrand} in a completely elementary manner using only properties of binomial coefficients. The reader can consult \textcite[$\S2$]{aigner_ziegler_guunter_m_1999} for an English translation. We will use some ideas we have already discussed on the matter.
 		\begin{proof}
+			The crucial idea behind Erd\H{o}s's proof was to show that if there was no prime between $n$ and $2n$, then $\binom{2n}{n}$ would not be as large as needs be.
 
+			In order to show that, one of the first results Erd\H{o}s uses is for any odd prime $p$ such that $\frac{2}{3}n<p\leq n$, $2n<3p$ so, $\nu_{p}((2n)!)=2$ and $\nu_{p}(n!)=1$. Therefore, $\nu_{p}\left(\binom{2n}{n}\right)=\nu_{p}((2n)!)-2\nu_{p}(n!)=0$. In a similar manner, if $n+1<p\leq 2n+1$, then $\nu_{p}\left(\binom{2n+1}{n}\right)=1$. So,
+				\begin{align*}
+					\prod_{n+1<p\leq 2n+1}p
+						& \mid \binom{2n+1}{n}
+				\end{align*}
+			In a similar fashion as above,
+				\begin{align*}
+					(1+1)^{2n+1}
+						& = \sum_{i=0}^{2n+1}\binom{2n+1}{i}\\
+						& \geq\binom{2n+1}{n}+\binom{2n+1}{n+1}\\
+						& \geq 2\binom{2n+1}{n}
+				\end{align*}
+			Then $\binom{2n+1}{n}\leq 2^{2n}$. Erd\H{o}s uses the last two facts to establish another elementary result: the product of primes not exceeding $n$ does not exceed $4^{n}$. Induction is the easiest way to prove this. For very small $n$, say $n\leq 10$, the result is obvious. When $n>10$, if $n$ is even, then it cannot be prime so
+				\begin{align*}
+					\prod_{p\leq n}p
+						& = \prod_{p\leq n-1}p\\
+						& \leq 4^{n-1}\\
+						& < 4^{n}
+				\end{align*}
+			When $n$ is odd,
+				\begin{align*}
+					\prod_{p\leq 2m+1}p
+						& = \left(\prod_{p\leq m+1}p\right)\cdot\left(\prod_{m+2\leq p\leq 2m+1}p\right)\\
+						& \leq 4^{m+1}\cdot\binom{2m+1}{m}\\
+						& \leq 4^{m+1}\cdot 2^{2m}\\
+						& = 4^{2m+1}
+				\end{align*}
+			We have already shown that
+				\begin{align*}
+					p^{\nu_{p}\left(\binom{2n}{n}\right)}
+						& \leq 2n
+				\end{align*}
+			Finally, we can divide the factorization of $\binom{2n}{n}$ using primes not exceeding $2n$ the following way
+				\begin{align*}
+					\binom{2n}{n}
+						& \leq \left(\prod_{p\leq\sqrt{2n}}2n\right)\cdot\left(\prod_{\sqrt{2n}<p\leq \frac{2n}{3}}p\right)\cdot\left(\prod_{n\leq 2n}p\right)
+				\end{align*}
+			since no prime in the region $(\frac{2n}{3}, n)$ divide $\binom{2n}{n}$. If there is no prime between $n$ and $2n$ either, then we have
+				\begin{align*}
+					\binom{2n}{n}
+						& \leq (2n)^{\sqrt{2n}}4^{\frac{2n}{3}}
+				\end{align*}
+			because $\pi(\sqrt{2n})\leq\sqrt{2n}$. However, $\binom{2n}{n}\geq\frac{4^{n}}{2n}$ so
+				\begin{align*}
+					4^{n}
+						& \leq (2n)^{1+\sqrt{2n}}4^{\frac{2n}{3}}\\
+					4^{\frac{n}{3}}
+						& \leq (2n)^{1+\sqrt{2n}}
+				\end{align*}
+			We can easily see $4^{\frac{n}{3}}$ grows much faster than $(2n)^{1+\sqrt{2n}}$. We leave this to the reader to show that for large enough $n$, this does not hold true.
 		\end{proof}
+
+		\begin{remark}
+			In fact, you can show easily that $n\leq 4000$. Also, notice that we can  easily show that primes exist in the region $n<p<2n$ for $n<4000$ in at most $12$ steps which is also easy.
+		\end{remark}
 	\textcite{mertens_1874} gave more precise results than \nameref{thm:primereciprocal}.
 		\begin{theorem}[Mertens' theorems]\label{thm:mertens}
 			Let $x$ be a positive real number. As $x\to\infty$,

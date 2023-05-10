@@ -40,8 +40,9 @@
 
 %\usepackage{biblatex}
 
-\usepackage[bibstyle=philosophy-modern,citestyle=philosophy-verbose,backend=biber,autopunct,sortcites,dashed,datamodel=ext-eprint,doi,eprint,scauthors=true,volnumformat=strings,volumeformat=romansc,scauthorsbib,scauthorscite]{biblatex}
+%\usepackage[bibstyle=philosophy-modern,citestyle=philosophy-verbose,backend=biber,autopunct,sortcites,dashed,datamodel=ext-eprint,doi,eprint,scauthors=true,volnumformat=strings,volumeformat=romansc,scauthorsbib,scauthorscite]{biblatex}
 
+\usepackage{biblatex}
 %\hypersetup{linktocpage,unicode,pdfencoding=auto,pdfstartview=,allcolors=black,anchorcolor=black,allbordercolors=black,hidelinks}
 \DeclareNameAlias{sortname}{given-family}
 \interfootnotelinepenalty=10000
@@ -170,11 +171,11 @@
 	\makeatother
 \else
 	\usepackage{pdfrender, xcolor,relsize}
-	%\usepackage[T1]{fontenc}
+	\usepackage[T1]{fontenc}
 	%\usepackage{baskervillef}
 	%\usepackage[baskerville]{newtxmath}
-	%\pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.0pt}
-	%\makeatletter\let\normalrender\PdfRender@NormalColorHook\let\PdfRender@NormalColorHook\@empty\newcommand*{\textnormalrender}[1]{\begingroup\normalrender#1\endgroup}\makeatother
+	\pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.4pt}
+	\makeatletter\let\normalrender\PdfRender@NormalColorHook\let\PdfRender@NormalColorHook\@empty\newcommand*{\textnormalrender}[1]{\begingroup\normalrender#1\endgroup}\makeatother
 \fi
 
 %\usepackage[,nopostdot,]{glossaries}
@@ -322,7 +323,7 @@
 %\subfile{glossary.tex}
 \addbibresource{ref.bib}
 
-\title{Elementary Analytic Number Theory}
+\title{ELEMENTARY ANALYTIC NUMBER THEORY}
 \author{Masum Billal}
 %\cover{cover.pdf}
 
@@ -331,6 +332,7 @@
 \newcommand{\propositionautorefname}{Proposition}
 \definecolor{burgundy}{rgb}{0.5, 0.0, 0.13}
 \definecolor{darkgreen}{rgb}{0.0, 0.2, 0.13}
+\usepackage{relsize}
 
 \begin{document}
 	%\AddToShipoutPictureBG{\includegraphics[width=\paperwidth,height=\paperheight]{background}}
@@ -360,14 +362,16 @@
 	%	\vfill
 		%{\includegraphics[scale=.5]{logo.png}}\par
 	%\end{titlepage}
-	\TitlePage [ color = { main = burgundy!75!forestgreen, back = orange!30 } ]
+	% color = { main = burgundy!75!forestgreen, back = orange!30 }
+	\TitlePage [  ]
 	{
 		, title     = \normalfont\textsc{Elementary Analytic Number Theory}
 		, subtitle  =
 		, author    = \normalfont{Masum Billal}
 		, date      = {}
-		, logo      = {} %<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+		%, logo      = {} %<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 	}
+	\relscale{1.3}
 
 	\section*{Preface}
 	While analytic number theory is a very broad subject and there are a great many books on this topic, there are not many books that are truly introductory. There are some that are introductory enough such as \textcite{apostol_1976} but they usually depend on abstract algebra and complex analysis heavily. In contrast to that, it can be argued that both topics are entirely excluded from this book. Thus, the primary objective of this book is to discuss analytic number theory in the most \textit{elementary} way possible. Before I explain what I mean by elementary, I will mention a few more details.
