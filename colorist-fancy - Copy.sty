@@ -267,7 +267,7 @@
         \thispagestyle{empty}
         \begin{tikzpicture}[remember~picture,overlay]
           \fill[maintheme!10!paper] (current~page.north~west) rectangle (current~page.south~east);
-          \node at ($(current~page.north~west)+(15em,-15em)$) {\normalfont{\scalebox{12}{\thepart}}};
+          \node at ($(current~page.north~west)+(15em,-15em)$) {\normalfont\textcolor{maintheme}{\scalebox{12}{\thepart}}};
         \end{tikzpicture}
       }
       {1em}
@@ -279,7 +279,7 @@
         \thispagestyle{empty}
         \begin{tikzpicture}[remember~picture,overlay]
           \fill[maintheme!10!paper] (current~page.north~west) rectangle (current~page.south~east);
-          \node at ($(current~page.north~west)+(15em,-15em)$) {\normalfont{\scalebox{12}{$*$}}};
+          \node at ($(current~page.north~west)+(15em,-15em)$) {\normalfont\textcolor{maintheme}{\scalebox{12}{$*$}}};
         \end{tikzpicture}
       }
       {1em}
@@ -306,11 +306,11 @@
         \tcbsidebyside[enhanced,sidebyside~adapt=right,sidebyside~align=bottom,
         colback=paper,frame~hidden,
         segmentation~code={
-            \filldraw[black] (segmentation.north)
+            \filldraw[maintheme] (segmentation.north)
                 -- ($(segmentation.east)-(12pt,0)$)
                 -- ($(segmentation.west)+(12pt,0)$)
                 -- (segmentation.south);}
-        ]{\filleft#2}{\normalfont{\scalebox{4}{#1}}}
+        ]{\filleft#2}{\normalfont\textcolor{maintheme}{\scalebox{4}{#1}}}
       }
     % Numberless chapter title
     \cs_new_protected:Nn \colorist_chapter_inner:n
@@ -325,7 +325,7 @@
             \vspace{-.6em}
             \begin{center}
                 \begin{tikzpicture}
-                    \filldraw[black] (-4em,0) -- (4em,0) -- (0,-.1em) -- (0,.1em);
+                    \filldraw[maintheme] (-4em,0) -- (4em,0) -- (0,-.1em) -- (0,.1em);
                 \end{tikzpicture}
             \end{center}
         \end{tcolorbox}
@@ -349,7 +349,7 @@
 
     %% Section
     \titleformat{\section}
-      { \g_colorist_title_font_section_tl \large\bfseries}
+      {\color{maintheme} \g_colorist_title_font_section_tl \large\bfseries}
       {\thesection}{.75em}{#1}
 
     %% Subsection
@@ -806,33 +806,33 @@ heading_suffix "}\n"
 \SetTheorem { theorem, corollary, property, axiom, construction, theorem-with-name }
   {
     name style = {
-      heading style = { \colorist_bfseries:\g_colorist_title_font_common_tl\textbf }
+      heading style = { \color{orange}\colorist_bfseries:\g_colorist_title_font_common_tl\textbf }
     }
   }
 \SetTheorem { proposition,}
 {
 	name style = {
-		heading style = { \colorist_bfseries:\g_colorist_title_font_common_tl\textbf }
+		heading style = { \color{cyan}\colorist_bfseries:\g_colorist_title_font_common_tl\textbf }
 	}
 }
 \SetTheorem { definition, assumption, convention, hypothesis, notation }
   {
     name style = {
-      heading style = { \colorist_bfseries:\g_colorist_title_font_common_tl\textbf }
+      heading style = { \color{forestgreen}\colorist_bfseries:\g_colorist_title_font_common_tl\textbf }
     }
   }
 
 \SetTheorem { application, claim, example, exercise, fact, problem, question, recall }
   {
     name style = {
-      heading style = { \colorist_bfseries:\g_colorist_title_font_common_tl\textbf }
+      heading style = { \color{main-text}\colorist_bfseries:\g_colorist_title_font_common_tl\textbf }
     }
   }
 
 \SetTheorem { conjecture, lemma }
   {
     name style = {
-      heading style = { \colorist_bfseries:\g_colorist_title_font_common_tl\textbf }
+      heading style = { \color{purple}\colorist_bfseries:\g_colorist_title_font_common_tl\textbf }
     }
   }
 
@@ -841,36 +841,36 @@ heading_suffix "}\n"
     \SetTheorem { theorem, proposition, corollary, property, axiom, construction, theorem-with-name }
       {
         name style = {
-          , crefname style = { \colorist_bfseries:\g_colorist_title_font_common_tl\textsc }
-          , Crefname style = { \colorist_bfseries:\g_colorist_title_font_common_tl\textsc }
-          , numbering style = { \colorist_bfseries:\g_colorist_title_font_common_tl }
+          , crefname style = { \color{orange}\colorist_bfseries:\g_colorist_title_font_common_tl\textsc }
+          , Crefname style = { \color{orange}\colorist_bfseries:\g_colorist_title_font_common_tl\textsc }
+          , numbering style = { \color{orange}\colorist_bfseries:\g_colorist_title_font_common_tl }
         }
       }
 
     \SetTheorem { definition, assumption, convention, hypothesis, notation }
       {
         name style = {
-          , crefname style = { \colorist_bfseries:\g_colorist_title_font_common_tl\textsc }
-          , Crefname style = { \colorist_bfseries:\g_colorist_title_font_common_tl\textsc }
-          , numbering style = { \colorist_bfseries:\g_colorist_title_font_common_tl }
+          , crefname style = { \color{forestgreen}\colorist_bfseries:\g_colorist_title_font_common_tl\textsc }
+          , Crefname style = { \color{forestgreen}\colorist_bfseries:\g_colorist_title_font_common_tl\textsc }
+          , numbering style = { \color{forestgreen}\colorist_bfseries:\g_colorist_title_font_common_tl }
         }
       }
 
     \SetTheorem { application, claim, example, exercise, fact, problem, question, recall }
       {
         name style = {
-          , crefname style = { \colorist_bfseries:\g_colorist_title_font_common_tl\textsc }
-          , Crefname style = { \colorist_bfseries:\g_colorist_title_font_common_tl\textsc }
-          , numbering style = { \colorist_bfseries:\g_colorist_title_font_common_tl }
+          , crefname style = { \color{main-text}\colorist_bfseries:\g_colorist_title_font_common_tl\textsc }
+          , Crefname style = { \color{main-text}\colorist_bfseries:\g_colorist_title_font_common_tl\textsc }
+          , numbering style = { \color{main-text}\colorist_bfseries:\g_colorist_title_font_common_tl }
         }
       }
 
     \SetTheorem { conjecture, lemma }
       {
         name style = {
-          , crefname style = { \colorist_bfseries:\g_colorist_title_font_common_tl\textsc }
-          , Crefname style = { \colorist_bfseries:\g_colorist_title_font_common_tl\textsc }
-          , numbering style = { \colorist_bfseries:\g_colorist_title_font_common_tl }
+          , crefname style = { \color{purple}\colorist_bfseries:\g_colorist_title_font_common_tl\textsc }
+          , Crefname style = { \color{purple}\colorist_bfseries:\g_colorist_title_font_common_tl\textsc }
+          , numbering style = { \color{purple}\colorist_bfseries:\g_colorist_title_font_common_tl }
         }
       }
   }
@@ -890,7 +890,7 @@ heading_suffix "}\n"
     \fi
     \colorist_mpar_adjust:n {-.25em}
     \marginnote{
-      \colorist_icon_ideabulb:w [0.3] {main-text}
+      \colorist_icon_ideabulb:w [0.3] {orange}
       \bool_if:NTF \l__colorist_is_book_bool
         {
           \hspace*{-.2em}
@@ -985,7 +985,7 @@ heading_suffix "}\n"
     enhanced~jigsaw, breakable, lines~before~break=3,
     left=3.5mm, right=3.5mm,
     colback=main-text!3!paper,
-    opacityframe=0.9,  arc=.7mm
+    opacityframe=0.9, colframe=orange, arc=.7mm
   }
 
 \colorist_add_colorbox:nn { proposition}
@@ -993,7 +993,7 @@ heading_suffix "}\n"
 	enhanced~jigsaw, breakable, lines~before~break=3,
 	left=3.5mm, right=3.5mm,
 	colback=main-text!3!paper,
-	opacityframe=0.9,  arc=.7mm
+	opacityframe=0.9, colframe=cyan, arc=.7mm
 }
 
   \colorist_add_colorbox:nn { definition, assumption, convention, hypothesis, notation, corollary-definition, proposition-definition, theorem-definition }
@@ -1001,7 +1001,7 @@ heading_suffix "}\n"
     enhanced~jigsaw, breakable, lines~before~break=3,
     left=4mm, right=4mm, top=1mm, bottom=1mm,
     colback=lightorange!10!paper, boxrule=0pt, frame~hidden,
-    borderline~west={1.5mm}{0mm}{}, arc=.7mm
+    borderline~west={1.5mm}{0mm}{forestgreen}, arc=.7mm
   }
 
 \colorist_add_colorbox:nn { application, claim, example, fact, recall }
@@ -1016,7 +1016,7 @@ heading_suffix "}\n"
     enhanced~jigsaw, breakable, lines~before~break=3,
     left=3.5mm, right=3.5mm,
     colback=main-text!3!paper,
-    opacityframe=0.7,  arc=.7mm
+    opacityframe=0.7, colframe=purple, arc=.7mm
   }
 
 \colorist_add_colorbox:nn { problem }

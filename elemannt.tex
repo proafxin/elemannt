@@ -53,7 +53,7 @@
 	\newcommand{\fakestretch}{1.}
 	\newcommand{\scale}{1.}
 	\newcommand{\fakemathbold}{0.}
-	\setmainfont[FakeBold=\fakebold,ItalicFont=CenturymodernTT-Italic.otf,BoldItalicFont=CenturymodernTT-Italic.otf,SmallCapsFont={CenturymodernTT-SC.otf},BoldFont=CenturymodernTT-Regular.otf,BoldFeatures={SmallCapsFeatures={FakeBold=2}},BoldItalicFeatures={FakeBold=2},Scale=\scale,FakeStretch=\fakestretch]{CenturymodernTT-Regular.otf}
+	\setmainfont[FakeBold=\fakebold,ItalicFont=CenturymodernTT-Italic.otf,BoldItalicFont=CenturymodernTT-Italic.otf,SmallCapsFont={CenturymodernTT-SC.otf},BoldFont=CenturymodernTT-Regular.otf,BoldFeatures={SmallCapsFeatures={FakeBold=2}, FakeBold=2},BoldItalicFeatures={FakeBold=2},Scale=\scale,FakeStretch=\fakestretch]{CenturymodernTT-Regular.otf}
 	\setsansfont[FakeBold=\fakebold,Scale=\scale,FakeStretch=\fakestretch]{NewCMSans10-Book.otf}
 	\setmonofont[FakeBold=\fakebold,Scale=\scale,FakeStretch=\fakestretch]{NewCMMono10-Book.otf}
 	\setmathfont[,Scale=\scale,FakeStretch=\fakestretch,FakeBold=\fakemathbold]{NewCMMath-Regular.otf}% KpMath-Regular.otf,KpMath-Light.otf
@@ -329,6 +329,12 @@
 
 \usepackage{colorist}
 
+\usepackage{tocloft}
+\renewcommand{\cftchapfont}{\color{black}\large\bfseries}
+\renewcommand{\cftsecfont}{\color{black}}
+\renewcommand{\cftsubsecfont}{\color{black}}
+
+
 \newcommand{\propositionautorefname}{Proposition}
 \definecolor{burgundy}{rgb}{0.5, 0.0, 0.13}
 \definecolor{darkgreen}{rgb}{0.0, 0.2, 0.13}
@@ -362,16 +368,17 @@
 	%	\vfill
 		%{\includegraphics[scale=.5]{logo.png}}\par
 	%\end{titlepage}
-	% color = { main = burgundy!75!forestgreen, back = orange!30 }
+
 	\TitlePage [  ]
 	{
+		color = { main = burgundy!75!black, back = black!100 }
 		, title     = \normalfont\textsc{Elementary Analytic Number Theory}
 		, subtitle  =
 		, author    = \normalfont{Masum Billal}
 		, date      = {}
-		%, logo      = {} %<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+		, logo      = {} %<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 	}
-	\relscale{1.3}
+	\relscale{1.2}
 
 	\section*{Preface}
 	While analytic number theory is a very broad subject and there are a great many books on this topic, there are not many books that are truly introductory. There are some that are introductory enough such as \textcite{apostol_1976} but they usually depend on abstract algebra and complex analysis heavily. In contrast to that, it can be argued that both topics are entirely excluded from this book. Thus, the primary objective of this book is to discuss analytic number theory in the most \textit{elementary} way possible. Before I explain what I mean by elementary, I will mention a few more details.
