@@ -74,23 +74,23 @@
 					\varphi(x,\xi)
 						& = x-\sum\floor{\dfrac{x}{p_{i}}}+\sum_{i<j}\floor{\dfrac{x}{p_{i}p_{j}}}-\ldots
 				\end{align*}
-			If $\xi\geq\sqrt{x}$, then we have $\varphi(x,\xi)=\pi(x)-k+1$. In general, $\pi(x)-r+1\leq \varphi(x,\xi)$ holds. Now,
+			If $\xi=\sqrt{x}$, then we have $\varphi(x,\xi)=\pi(x)-k+1$. In general, $\pi(x)-r+1\leq \varphi(x,\xi)$ holds. Now,
 				\begin{align*}
 					\varphi(x,\xi)
-						& \leq x-\sum\left(\dfrac{x}{p_{i}}\right)+1+\sum_{i<j}\left(\dfrac{x}{p_{i}p_{j}}\right)+1-\ldots\\
-						& = x\prod_{i=1}^{k}\left(1-\dfrac{1}{p_{i}}\right)+2^{k}\\
-						& < x\prod_{p\leq\xi}\left(1-\dfrac{1}{p}\right)+2^{\xi}
+						& \leq x-\sum\dfrac{x}{p_{i}}+1+\sum\dfrac{x}{p_{i}p_{j}}+1-\ldots\\
+						& = x\prod_{i=1}^{k}\func{}{1-\dfrac{1}{p_{i}}}+2^{k}\\
+						& < x\prod_{p\leq\xi}\func{}{1-\dfrac{1}{p}}+2^{\xi}
 				\end{align*}
 			Note that the choice of $\xi$ is arbitrary and we can easily choose $2^{\xi}+r-1=o(x)$ or $\xi=c\log{x}$ for some constant $c$. Also,
 				\begin{align*}
-					\prod_{p\leq x}\left(1-\dfrac{1}{p}\right)^{-1}
-						& = \prod_{p\leq x}\left(1+\dfrac{1}{p}+\dfrac{1}{p^{2}}+\ldots\right)\\
+					\prod_{p\leq x}\func{}{1-\dfrac{1}{p}}^{-1}
+						& = \prod_{p\leq x}\func{}{1+\dfrac{1}{p}+\dfrac{1}{p^{2}}+\ldots}\\
 						& > \sum_{n\leq x}\dfrac{1}{n}\\
 						& > \log{x}
 				\end{align*}
 			so
 				\begin{align*}
-					\prod_{p\leq \xi}\left(1-\dfrac{1}{p}\right)
+					\prod_{p\leq \xi}\func{}{1-\dfrac{1}{p}}
 						& < \dfrac{1}{\log{c\log{x}}}\\
 						& = \dfrac{1}{\log{c}+\log{\log{x}}}\\
 						& < \dfrac{1}{\log{\log{x}}}

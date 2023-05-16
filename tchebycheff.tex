@@ -281,18 +281,18 @@
 					ax
 					& < \vartheta(x) < Ax
 				\end{align*}
-			We again consider the binomial coefficient $\binom{2n}{n}$ and use the trivial fact $\binom{2n}{n}<2^{2n}$. If $p$ is a prime such that $n<p<2n$, then
+			We again consider the binomial coefficient $\mathfrak{N}=\binom{2n}{n}<2^{2n}$ and use the trivial fact $\mathfrak{N}<2^{2n}$. If $p$ is a prime such that $n<p<2n$, then
 				\begin{align*}
-					\nu_{p}\left(\binom{2n}{n}\right)
+					\nu_{p}(\mathfrak{N})
 						& = \nu_{p}((2n)!)-2\nu_{p}(n!)\\
 						& = \nu_{p}((2n)!)
 				\end{align*}
-			So, $\binom{2n}{n}$ is divisible by all such primes $p$. Thus,
+			So, $\mathfrak{N}$ is divisible by all such primes $p$. Thus,
 				\begin{align*}
-					\binom{2n}{n}
+					\mathfrak{N}
 						& \geq \prod_{n<p<2n}p
 				\end{align*}
-			Since $\log{\binom{2n}{n}}<2n\log{2}$,
+			Since $\log{\mathfrak{N}}<2n\log{2}$,
 				\begin{align*}
 					2n\log{2}
 						& > \sum_{n<p<2n}\log{p}\\
@@ -310,12 +310,12 @@
 				\end{align*}
 			For any $x>1$, taking $2^{k-1}\leq x<2^{k}$, $2^{k+1}\leq 4x$ so $\vartheta(x)\leq\vartheta(2^{k})<4x\log{2}$ and $\vartheta(x)<Ax$ for some $A\leq 4\log{2}$.
 
-			Again, for a prime $p$, letting $r$ be the largest positive integer such that $p^{r}\leq 2n$, similar to the proof of \autoref{thm:tchebycheffbound}, $\nu_{p}\left(\binom{2n}{n}\right)\leq r$. From the definition,
+			Again, for a prime $p$, letting $r$ be the largest positive integer such that $p^{r}\leq 2n$, similar to the proof of \autoref{thm:tchebycheffbound}, $\nu_{p}(\mathfrak{N})\leq r$. From the definition,
 				\begin{align*}
 					e^{\psi(2n)}
 						& = \prod_{p\leq 2n}p^{r}
 				\end{align*}
-			so $\binom{2n}{n}\mid e^{\psi(2n)}$. Also, $(2n+1)\binom{2n}{n}\geq 2^{2n}$ so
+			so $\mathfrak{N}\mid e^{\psi(2n)}$. Also, $(2n+1)\mathfrak{N}\geq 2^{2n}$ so
 				\begin{align*}
 					(2n+1)e^{\psi(2n)}
 						& \geq 2^{2n}
@@ -338,9 +338,9 @@
 
 	It was \textcite{erdos_1932} who introduced himself to the mathematical world by proving \nameref{con:bertrand} in a completely elementary manner using only properties of binomial coefficients. The reader can consult \textcite[$\S2$]{aigner_ziegler_guunter_m_1999} for an English translation. We will use some ideas we have already discussed on the matter.
 		\begin{proof}
-			The crucial idea behind Erd\H{o}s's proof was to show that if there was no prime between $n$ and $2n$, then $\binom{2n}{n}$ would not be as large as needs be.
+			The crucial idea behind Erd\H{o}s's proof was to show that if there was no prime between $n$ and $2n$, then $\mathfrak{N}=\binom{2n}{n}$ would not be as large as needs be.
 
-			In order to show that, one of the first results Erd\H{o}s uses is for any odd prime $p$ such that $\frac{2}{3}n<p\leq n$, $2n<3p$ so, $\nu_{p}((2n)!)=2$ and $\nu_{p}(n!)=1$. Therefore, $\nu_{p}\left(\binom{2n}{n}\right)=\nu_{p}((2n)!)-2\nu_{p}(n!)=0$. In a similar manner, if $n+1<p\leq 2n+1$, then $\nu_{p}\left(\binom{2n+1}{n}\right)=1$. So,
+			In order to show that, one of the first results Erd\H{o}s uses is for any odd prime $p$ such that $\frac{2}{3}n<p< n$, $2n<3p$ so, $\nu_{p}((2n)!)=2$ and $\nu_{p}(n!)=1$. Therefore, $\nu_{p}(\mathfrak{N})=\nu_{p}((2n)!)-2\nu_{p}(n!)=0$. In a similar manner, if $n+1<p\leq 2n+1$, then $\nu_{p}(\mathfrak{N})=1$. So,
 				\begin{align*}
 					\prod_{n+1<p\leq 2n+1}p
 						& \mid \binom{2n+1}{n}
@@ -362,25 +362,26 @@
 			When $n$ is odd,
 				\begin{align*}
 					\prod_{p\leq 2m+1}p
-						& = \left(\prod_{p\leq m+1}p\right)\cdot\left(\prod_{m+2\leq p\leq 2m+1}p\right)\\
+						& = \func{}{\prod_{p\leq m+1}p}\cdot\func{}{\prod_{m+2\leq p\leq 2m+1}p}\\
 						& \leq 4^{m+1}\cdot\binom{2m+1}{m}\\
 						& \leq 4^{m+1}\cdot 2^{2m}\\
 						& = 4^{2m+1}
 				\end{align*}
 			We have already shown that
 				\begin{align*}
-					p^{\nu_{p}\left(\binom{2n}{n}\right)}
+					p^{\nu_{p}(\mathfrak{N})}
 						& \leq 2n
 				\end{align*}
-			Finally, we can divide the factorization of $\binom{2n}{n}$ using primes not exceeding $2n$ the following way
+			Finally, we can divide the factorization of $\mathfrak{N}$ using primes not exceeding $2n$ the following way
 				\begin{align*}
 					\binom{2n}{n}
-						& \leq \left(\prod_{p\leq\sqrt{2n}}2n\right)\cdot\left(\prod_{\sqrt{2n}<p\leq \frac{2n}{3}}p\right)\cdot\left(\prod_{n\leq 2n}p\right)
+						& = \func{}{\prod_{p\leq \sqrt{2n}}p^{\nu_{p}(\mathfrak{N})}}\cdot\func{}{\prod_{\sqrt{2n}< n\leq\frac{2n}{3}}p^{\nu_{p}(\mathfrak{N})}}\cdot\func{}{\prod_{\frac{2n}{3}< p<n}p}\cdot\func{}{\prod_{n\leq p\leq 2n}p}\\
+						& \leq \func{}{\prod_{p\leq\sqrt{2n}}2n}\cdot\func{}{\prod_{\sqrt{2n}<p\leq \frac{2n}{3}}p}\cdot\func{}{\prod_{n\leq p\leq 2n}p}
 				\end{align*}
 			since no prime in the region $(\frac{2n}{3}, n)$ divide $\binom{2n}{n}$. If there is no prime between $n$ and $2n$ either, then we have
 				\begin{align*}
 					\binom{2n}{n}
-						& \leq (2n)^{\sqrt{2n}}4^{\frac{2n}{3}}
+						& \leq (2n)^{\sqrt{2n}}\cdot 4^{\frac{2n}{3}}
 				\end{align*}
 			because $\pi(\sqrt{2n})\leq\sqrt{2n}$. However, $\binom{2n}{n}\geq\frac{4^{n}}{2n}$ so
 				\begin{align*}
@@ -403,7 +404,7 @@
 				& = \log{\log{x}}+B+\bigo{\dfrac{1}{x}}\label{eqn:mertens1}\\
 				\sum_{p\leq x}\dfrac{\log{p}}{p}
 				& = \log{x}+O(1)\label{eqn:mertens2}\\
-				\prod_{p\leq x}\left(1-\dfrac{1}{p}\right)
+				\prod_{p\leq x}\func{}{1-\dfrac{1}{p}}
 				& \sim \dfrac{e^{-\gamma}}{\log{x}}\label{eqn:mertens3}
 			\end{align}
 			where $B$ is a constant and $\gamma$ is Euler-Mascheroni constant.
@@ -411,15 +412,77 @@
 
 		\begin{proof}
 			From \nameref{thm:stirling},
-			\begin{align*}
-				\log{n!}
-				& = n\log{n}-n+\bigo{n}
-			\end{align*}
+				\begin{align*}
+					\log{n!}
+						& = n\log{n}-n+\bigo{n}
+				\end{align*}
 			Also, from \nameref{thm:legendrefact},
-			\begin{align*}
-				\log{n!}
-				& = \sum_{p^{i}\leq n}\floor{\dfrac{n}{p^{i}}}\log{p}\\
-				& = \sum_{i\leq n}\Lambda(n)\floor{\dfrac{n}{i}}
-			\end{align*}
+				\begin{align*}
+					\log{n!}
+						& = \sum_{p^{i}\leq n}\floor{\dfrac{n}{p^{i}}}\log{p}\\
+						& = \sum_{i\leq n}\Lambda(i)\floor{\dfrac{n}{i}}\\
+						& = \sum_{i\leq n}\Lambda(i)\dfrac{n}{i}+\bigo{\Lambda(i)}\\
+						& = n\sum_{i\leq n}\dfrac{\Lambda(i)}{i}+\bigo{\sum_{i\leq n}\Lambda(i)}\\
+						& = n\sum_{i\leq n}\dfrac{\Lambda(i)}{i}+\bigo{\vartheta(n)}
+				\end{align*}
+			Since $\vartheta(n)=O(n)$,
+				\begin{align*}
+					n\sum_{i\leq n}\dfrac{\Lambda(i)}{i}+\bigo{n}
+						& = n\log{n}-n+\bigo{n}
+				\end{align*}
+			Thus, we have
+				\begin{align*}
+					\sum_{n\leq x}\dfrac{\Lambda(n)}{n}
+						& = \log{x}+O(1)
+				\end{align*}
+			Notice that this is awfully similar to the original sum in question. Indeed, the sum is very closely related to this.
+				\begin{align*}
+					\left|\sum_{n\leq x}\dfrac{\Lambda(n)}{n}-\sum_{p\leq x}\dfrac{\log{p}}{p}\right|
+						& \leq \sum_{p\leq x}\func{}{\dfrac{1}{p^{2}}+\dfrac{1}{p^{3}}+\ldots}\log{p}\\
+						& = \sum_{p\leq x}\dfrac{1}{p^{2}}\dfrac{p}{p-1}\log{p}\\
+						& = \sum_{p\leq x}\dfrac{\log{p}}{p(p-1)}
+				\end{align*}
+			Since for all large enough $p>N$, $\log{p}\leq \frac{p-1}{\sqrt{p}}$,
+				\begin{align*}
+					\left|\sum_{n\leq x}\dfrac{\Lambda(n)}{n}-\sum_{p\leq x}\dfrac{\log{p}}{p}\right|
+						& \leq \sum_{N<p\leq x}\dfrac{1}{p\sqrt{p}}+O(1)\\
+						& < \sum_{i\geq 1}\dfrac{1}{i^{\frac{3}{2}}}+O(1)\\
+						& = \zeta\func{}{\frac{3}{2}}+O(1)
+				\end{align*}
+			Since $\zeta(s)$ converges for $s>1$, we have
+				\begin{align*}
+					\sum_{p\leq x}\dfrac{\log{p}}{p}
+						& = \sum_{n\leq x}\dfrac{\Lambda(n)}{n}+O(1)\\
+						& = \log{x}+O(1)
+				\end{align*}
+			We can now apply \nameref{thm:abel} with $a_{n}:=\frac{\log{p_{n}}}{p_{n}}$.
+				\begin{align*}
+					\sum_{p_{n}\leq x}\frac{1}{p_{n}}
+						& = \sum_{p_{n}\leq x}\dfrac{a_{n}}{\log{p_{n}}}\\
+						& = \dfrac{A(x)}{\log{x}}+\int_{2}^{x}\dfrac{A(t)}{t\log^{2}{t}}dt
+				\end{align*}
+			where $A(x)=\sum_{p_{n}\leq x}\frac{\log{p_{n}}}{p_{n}}=\log{x}+O(1)$.
+				\begin{align*}
+					\sum_{p_{n}\leq x}\dfrac{1}{p_{n}}
+						& = 1+\bigo{\dfrac{1}{\log{x}}}+\int_{2}^{x}\dfrac{1}{t\log{t}}dt+\bigo{\int_{2}^{x}\dfrac{1}{t\log^{2}{t}}}dt
+				\end{align*}
+			We leave the calculation of the integrals to the reader to show that
+				\begin{align*}
+					\sum_{p_{n}\leq x}\dfrac{1}{p_{n}}
+						& = \log{\log{x}}+B+\bigo{\dfrac{1}{\log{x}}}
+				\end{align*}
 		\end{proof}
+	Since $\psi(x)=\sum_{n\leq x}\Lambda(n)$, we can write
+		\begin{align*}
+			\sum_{n\leq x}\floor{\dfrac{x}{n}}\Lambda(n)
+				& = \sum_{n\leq x}\func{\psi}{\dfrac{x}{n}}
+		\end{align*}
+	As a corollary, we get the following.
+		\begin{corollary}
+			For all $x\geq1$,
+				\begin{align*}
+					\sum_{n\leq x}\func{\psi}{\dfrac{x}{n}}
+						& = x\log{x}-x+\bigo{\log{x}}
+				\end{align*}
+		\end{corollary}
 \end{document}
