@@ -53,18 +53,18 @@
 			Let $n\geq2$. For every $p\leq2n$, let $r$ denote the largest positive integer such that $p^{r}\leq2n$ (which is $\floor{\log{2n}/\log{p}}$). We will first show that
 				\begin{align}
 					\prod_{n<p\leq 2n}p
-						& \mid \binom{2n}{n}\label{eqn:1}\\
-					\binom{2n}{n}
+						& \mid \mathfrak{N}\label{eqn:1}\\
+					\mathfrak{N}
 						& \mid \prod_{p\leq 2n}p^{r}
 				\end{align}
-			where the products run through the primes only. For a prime $p$,
+			where $\mathfrak{N}=\binom{2n}{n}$ and the product runs through the primes only. For a prime $p$,
 				\begin{align*}
-					\nu_{p}\parenthesis{\binom{2n}{n}}
+					\nu_{p}(\mathfrak{N})
 						& = \nu_{p}((2n)!)-2\nu_{p}(n!)
 				\end{align*}
-			Since $p>n$, $\nu_{p}(n!)=0$ and $\nu_{p}\func{}{\binom{2n}{n}}=\nu_{p}((2n)!)\geq\nu_{p}\func{}{\prod_{n<p\leq 2n}p}$. On the other hand, for $p\leq 2n$, using \nameref{thm:legendrefact},
+			Since $p>n$, $\nu_{p}(n!)=0$ and $\nu_{p}(\mathfrak{N})=\nu_{p}((2n)!)\geq\nu_{p}\func{}{\prod_{n<p\leq 2n}p}$. On the other hand, for $p\leq 2n$, using \nameref{thm:legendrefact},
 				\begin{align*}
-					\nu_{p}\func{}{\binom{2n}{n}}
+					\nu_{p}(\mathfrak{N})
 						& = \nu_{p}((2n)!)-2\nu_{p}(n!)\\
 						& = \sum_{i\geq 1}\floor{\dfrac{2n}{p^{i}}}-2\floor{\dfrac{n}{p^{i}}}
 				\end{align*}
@@ -75,20 +75,20 @@
 				\end{align*}
 			Thus, for every prime $p$,
 				\begin{align*}
-					p^{\nu_{p}\func{}{\binom{2n}{n}}}
-						& \mid p^{r}
+					p^{\nu_{p}(\mathfrak{N})}
+						& \mid p^{\floor{\log_{p}{2n}}}
 				\end{align*}
 			and evidently
 				\begin{align*}
-					\binom{2n}{n}
-						& \mid \prod_{p\leq 2n}p^{r}
+					\mathfrak{N}
+						& \mid \prod_{p\leq 2n}p^{\floor{\log_{p}{2n}}}
 				\end{align*}
-			Now, there are $\pi(2n)-\pi(n)$ primes in the interval $(n,2n)$ each of which are greater than $n$. So,
+			So $\mathfrak{N}\leq \prod_{p\leq 2n}2n$. Now, there are $\pi(2n)-\pi(n)$ primes in the interval $(n,2n)$ each of which are greater than $n$. So,
 				\begin{align*}
 					n^{\pi(2n)-\pi(n)}
 						& \leq \prod_{n<p\leq 2n}p\\
-						& \leq\binom{2n}{n}\\
-						& \leq \prod_{n<p\leq 2n}p^{\floor{\log_{p}{2n}}}\\
+						& \leq\mathfrak{N}\\
+						& \leq \prod_{p\leq 2n}2n\\
 						& \leq (2n)^{\pi(2n)}
 				\end{align*}
 			Taking logarithm,
@@ -98,7 +98,7 @@
 				\end{align*}
 			Next, we have that
 				\begin{align*}
-					\binom{2n}{n}
+					\mathfrak{N}
 						& \leq \sum_{i=0}^{2n}\binom{2n}{i}\\
 						& = 2^{2n}\\
 					\binom{2n}{n}
@@ -109,7 +109,7 @@
 			giving
 				\begin{align*}
 					(\pi(2n)-\pi(n))\log{n}
-						& \leq\log{\binom{2n}{n}}\leq\pi(2n)\log{2n}
+						& \leq\log{\mathfrak{N}}\leq\pi(2n)\log{2n}
 				\end{align*}
 			Thus, we have
 				\begin{align*}
@@ -167,7 +167,7 @@
 						& < p_{n}<Bn\log{n}
 				\end{align*}
 		\end{theorem}
-	The proof is left to the reader as an exercise. Using this, we can prove Euler's divergence of sum of reciprocals of prime theorem. Since
+	The proof is left to the reader as an exercise. Using this, we can prove \nameref{thm:primereciprocal}. Since
 		\begin{align*}
 			\dfrac{1}{p_{n}}
 				& > \dfrac{1}{Bn\log{n}}
@@ -176,7 +176,7 @@
 		\begin{align*}
 			\sum_{n\geq1}\dfrac{1}{n\log{n}}
 		\end{align*}
-	diverges. This is also left to the reader as an exercise.
+	diverges. I leave this as an exercise as well.
 
 	\section{Tchebyscheff Functions}
 	\textcite{tschebischeff_1852} defines two functions that are today known as Tchebisceff's $\vartheta$ and $\psi$ functions.
@@ -219,7 +219,7 @@
 		\end{definition}
 	Then we can write $\psi$ as
 		\begin{align*}
-			\vartheta(x)
+			\psi(x)
 				& = \sum_{n\leq x}\Lambda(n)
 		\end{align*}
 	The following theorem immediately shows us the importance of these functions.
@@ -423,9 +423,9 @@
 						& = \sum_{i\leq n}\Lambda(i)\floor{\dfrac{n}{i}}\\
 						& = \sum_{i\leq n}\Lambda(i)\dfrac{n}{i}+\bigo{\Lambda(i)}\\
 						& = n\sum_{i\leq n}\dfrac{\Lambda(i)}{i}+\bigo{\sum_{i\leq n}\Lambda(i)}\\
-						& = n\sum_{i\leq n}\dfrac{\Lambda(i)}{i}+\bigo{\vartheta(n)}
+						& = n\sum_{i\leq n}\dfrac{\Lambda(i)}{i}+\bigo{\psi(n)}
 				\end{align*}
-			Since $\vartheta(n)=O(n)$,
+			Since $\psi(n)=O(n)$,
 				\begin{align*}
 					n\sum_{i\leq n}\dfrac{\Lambda(i)}{i}+\bigo{n}
 						& = n\log{n}-n+\bigo{n}
