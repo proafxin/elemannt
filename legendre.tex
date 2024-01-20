@@ -300,10 +300,10 @@
 			If $\chi(p)=0$, then $\varsigma(p^{e})=1$. If $\chi(p)=1$, then $\varsigma(p^{e})=e+1$. Otherwise $\chi(p)=-1$ so $\varsigma(p^{e})=1$ if $e$ is even or $\varsigma(p^{e})=0$ if $e$ is odd. If $n=p_{1}^{e_{1}}\cdots p_{r}^{e_{r}}$, then $\varsigma(n)=\varsigma(p_{1}^{e_{1}})\cdots\varsigma(p_{r}^{e_{r}})$. Since each $\varsigma(p_{i}^{e_{i}})\geq0$, we have $\varsigma(n)\geq0$ and if $n$ is square, then $e_{i}$ is even for $1\leq i\leq r$ so $\varsigma(p_{i}^{e_{i}})\geq 1$ and $\varsigma(n)\geq1$.
 		\end{proof}
 
-		\begin{proposition}
+		\begin{proposition}\label{prop:non-vanising-second}
 			If $\chi$ is of the second kind, then $L(1,\chi)\neq0$.
 		\end{proposition}
-	\textcite[pp. 122, Theorem 152]{landau_1969} says the following about this theorem:
+	\textcite[pp. 121, Theorem 152]{landau_1969} says the following about this theorem:
 		\begin{quote}
 			This is the deepest of all of the lemmas that are necessary for Dirichlet's proof. Dirichlet proved it only by the considerably roundabout method of using the so-called theory of the class number of quadratic forms.
 		\end{quote}
@@ -368,7 +368,15 @@
 					& = 2\sqrt{x}\sum_{n\leq \sqrt{x}}\dfrac{\chi(n)}{n}+O(1)\\
 					& = 2\sqrt{x}L(1,\chi)+O(1)
 				\end{align*}
-			If $L(1,x)=0$, then $\lim_{x\to\infty}\varUpsilon(x^{2})=O(1)$ which is impossible since $\varUpsilon(x)\to\infty$ as $x\to\infty$. Therefore, we must have $L(1,x)\neq0$.
+			If $L(1,\chi)=0$, then $\lim_{x\to\infty}\varUpsilon(x^{2})=O(1)$ which is impossible since $\varUpsilon(x)\to\infty$ as $x\to\infty$. Therefore, we must have $L(1,\chi)\neq0$.
+		\end{proof}
+
+		\begin{proposition}
+			$L(1, \chi)\neq0$ for a character $\chi$ of the third kind.
+		\end{proposition}
+
+		\begin{proof}
+			If $\chi$ is of the second kind, then $L(1, \chi)\neq0$ by \autoref{prop:non-vanising-second}. If $\chi$ is of the third kind,
 		\end{proof}
 	\section{First Proof of Legendre-Dirichlet Theorem}
 	\section{Second Proof by Selberg}
