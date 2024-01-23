@@ -372,12 +372,22 @@
 		\end{proof}
 
 		\begin{proposition}
-			$L(1, \chi)\neq0$ for a character $\chi$ of the third kind.
+			$L(1, \chi)\neq0$ for a non-principal character $\chi$.
 		\end{proposition}
 
 		\begin{proof}
-			If $\chi$ is of the second kind, then $L(1, \chi)\neq0$ by \autoref{prop:non-vanising-second}. If $\chi$ is of the third kind,
+
 		\end{proof}
 	\section{First Proof of Legendre-Dirichlet Theorem}
+	Recall that
+		\begin{align*}
+			\lim_{x\to\infty}\sum_{p\leq x}\dfrac{1}{p}
+				& = \log\log{x}
+		\end{align*}
+	In a similar fashion, if we consider the sum
+		\begin{align*}
+			\lim_{x\to\infty}\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\dfrac{1}{p}
+		\end{align*}
+	with the assumption that such primes are uniformly distributed $\pmod{k}$, we
 	\section{Second Proof by Selberg}
 \end{document}
