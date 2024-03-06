@@ -196,7 +196,7 @@
 			$\chi$ is a \textit{character of the first kind} if $\chi=\chi_{0}$ is the principal character. If $\chi$ is real but not principal, then $\chi$ is a \textit{character of the second kind}. Otherwise, $\chi$ can sometimes be complex and called \textit{character of the third kind}.
 		\end{definition}
 	The next result is a very crucial one and was the intuition behind defining a function like $\chi$ with the properties we discussed.
-		\begin{proposition}
+		\begin{proposition}\label{prop:sumphi/2}
 			If $\chi$ is not a character of the first kind, then $\sum_{i=a}^{b}\chi(i)\leq \frac{\varphi(k)}{2}$ for $1\leq a\leq b$.
 		\end{proposition}
 
@@ -280,6 +280,14 @@
 			If $\sigma > 1$, then $\zeta(\sigma)$ converges, hence, so does $L(\chi, s)$.
 		\end{proof}
 
+		\begin{proposition}\label{prop:nonprincipaldirichletconverges}
+			For a non-principal $\chi$, $L(s, \chi)$ converges for $s\geq1$.
+		\end{proposition}
+
+		\begin{proof}
+			This is comparatively easy to prove now using \autoref{prop:sumphi/2}.
+		\end{proof}
+
 		\begin{proposition}\label{pro:second-char-geq1}
 			If $\chi$ is a character of the second kind and
 				\begin{align*}
@@ -352,7 +360,7 @@
 			Using these, we get
 				\begin{align*}
 					\varUpsilon(x)
-						& = \sum_{n\leq \sqrt{x}}\dfrac{1}{\sqrt{n}}\left(\chi(n)\left(2\sqrt{\dfrac{x}{n}}+D+\bigo{\sqrt{\dfrac{n}{x}}}+C+\bigo{\sqrt{\dfrac{n}{x}}}\right)\right)-F(\sqrt{x})G(\sqrt{x})\\
+						& = \sum_{n\leq \sqrt{x}}\dfrac{1}{\sqrt{n}}\func{}{\chi(n)\func{}{2\sqrt{\dfrac{x}{n}}+D+\bigo{\sqrt{\dfrac{n}{x}}}+C+\bigo{\sqrt{\dfrac{n}{x}}}}}-F(\sqrt{x})G(\sqrt{x})\\
 						& = 2\sqrt{x}\sum_{n\leq \sqrt{x}}\dfrac{\chi(n)}{n}+D\sum_{n\leq \sqrt{x}}\dfrac{\chi(n)}{\sqrt{n}}+\dfrac{1}{\sqrt{x}}\bigo{\sum_{n\leq \sqrt{x}}\chi(n)}\\
 						& +C\sum_{n\leq \sqrt{x}}\dfrac{1}{\sqrt{n}}+\dfrac{1}{\sqrt{x}}\bigo{\sum_{n\leq \sqrt{x}}1}-F(\sqrt{x})G(\sqrt{x})\\
 						& = 2\sqrt{x}\sum_{n\leq \sqrt{x}}\dfrac{\chi(n)}{n}+D\cdot F(\sqrt{x})+C\cdot G(\sqrt{x})+O(1)-F(\sqrt{x})G(\sqrt{x})
@@ -379,15 +387,49 @@
 
 		\end{proof}
 	\section{First Proof of Legendre-Dirichlet Theorem}
-	Recall that
-		\begin{align*}
-			\lim_{x\to\infty}\sum_{p\leq x}\dfrac{1}{p}
-				& = \log\log{x}
-		\end{align*}
-	In a similar fashion, if we consider the sum
+	We already discussed that we want to use the fact that the sum of reciprocals of primes diverges. If there are indeed infinitely many primes of the form $kn+l$ for $\gcd(k,l)=1$, we expect that
 		\begin{align*}
 			\lim_{x\to\infty}\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\dfrac{1}{p}
+				& \to\infty
 		\end{align*}
-	with the assumption that such primes are uniformly distributed $\pmod{k}$, we
+	We already know that
+		\begin{align*}
+			\lim_{x\to\infty}\sum_{p\leq x}\dfrac{1}{p}
+				& = \log{\log{x}}
+		\end{align*}
+	Another similar result we established is
+		\begin{align}
+			\lim_{x\to\infty}\sum_{p\leq x}\dfrac{\log{p}}{p}
+			& = \log{x}\label{eqn:logp/p}
+		\end{align}
+	This actually gives us more room to work with because we can see that this sum is very closely related to
+		\begin{align*}
+			\lim_{x\to\infty}\sum_{n\leq x}\dfrac{\Lambda(n)}{n}
+		\end{align*}
+	This expression is not quite the same as the left side of \eqref{eqn:logp/p}. In fact,
+		\begin{align*}
+			\sum_{n\leq x}\dfrac{\Lambda(n)}{n}
+				& = \sum_{p\leq x}\dfrac{1}{p}+\sum_{p\leq x}\log{p}\sum_{i\geq2}\dfrac{1}{p^{i}}\\
+				& = \sum_{p\leq x}\dfrac{1}{p}+\sum_{p\leq x}\dfrac{\log{p}}{p(p-1)}
+		\end{align*}
+	Now since
+		\begin{align*}
+			\sum_{p\leq x}\dfrac{\log{p}}{p(p-1)} & < \sum_{n\leq x}\dfrac{\log{n}}{n(n-1)}
+		\end{align*}
+	which obviously converges, we can see $\sum_{n\leq x}\frac{\Lambda(n)}{n}\to\infty$ and $\sum_{p\leq x}\frac{\log{p}}{p}\to\infty$ are equivalent and one would imply the other. It will be enough to prove the same with the additional constraint that $p$ must be of the form $kn+l$. We can actually consider the more general sum
+		\begin{align*}
+			\sum_{\substack{n\leq x\\n\equiv l\pmod{k}}}\dfrac{\Lambda(n)}{n^{s}}
+		\end{align*}
+	and then take $s\to1$. Furthermore,
+		\begin{align*}
+			\sum_{p\leq x}\dfrac{\log{p}}{p}
+				& = \sum_{\substack{1\leq l\leq k\\\gcd(l,k)=1}}\sum_{\substack{p\leq x\\p\equiv l\pmod k}}\dfrac{\log{p}}{p}
+		\end{align*}
+	So, if we assume for the time now that the distribution of primes $\pmod{k}$ is uniform, meaning any choice $l$ prime to $k$ yields the same number of primes when $x\to\infty$, we expect that
+		\begin{align*}
+			\lim_{x\to\infty}\sum_{\substack{p\leq x\\p\equiv l\pmod k}}\dfrac{\log{p}}{p}
+				& = \dfrac{1}{\varphi(k)}\lim_{x\to\infty}\sum_{p\leq x}\dfrac{\log{p}}{p}
+		\end{align*}
+	since there are $\varphi(k)$ such $l$ for which $\gcd(k,l)=1$.
 	\section{Second Proof by Selberg}
 \end{document}
