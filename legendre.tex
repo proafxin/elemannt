@@ -386,6 +386,30 @@
 		\begin{proof}
 
 		\end{proof}
+
+		\begin{proposition}
+			If $s>1$,
+				\begin{align*}
+					L'(s,\chi)
+						& = -\sum_{i\geq1}\dfrac{\chi(i)\log{i}}{i^{s}}
+				\end{align*}
+			and $L'(s, \chi)$ converges.
+		\end{proposition}
+
+		\begin{proof}
+			It is a straightforward differentiation $d a^{-s}=(-a^{-s}\log{a})da$. Next, we show that the absolute value of $L'(s,\chi)$ is bounded above for $s=1+\epsilon$ where $\epsilon>0$.
+				\begin{align*}
+					\sum_{i\geq1}\abslarge{\dfrac{\chi(i)\log{i}}{i^{s}}}
+						& = \sum_{i\geq1}|\chi(i)|\abslarge{\dfrac{\log{i}}{i^{s}}}\\
+						& = \sum_{i\geq1}\abslarge{\dfrac{\log{i}}{i^{s}}}\\
+						& \leq \sum_{i\geq1}\dfrac{\log{i}}{i^{1+\epsilon}}
+				\end{align*}
+			We leave it as an exercise to show that
+				\begin{align*}
+					\sum_{i\geq1}\dfrac{\log{i}}{i^{1+\epsilon}}
+				\end{align*}
+			diverges if $\epsilon=0$ and converges if $\epsilon>0$.
+		\end{proof}
 	\section{First Proof of Legendre-Dirichlet Theorem}
 	We already discussed that we want to use the fact that the sum of reciprocals of primes diverges. If there are indeed infinitely many primes of the form $kn+l$ for $\gcd(k,l)=1$, we expect that
 		\begin{align*}
