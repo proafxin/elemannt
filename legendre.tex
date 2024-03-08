@@ -170,7 +170,7 @@
 			Thus, $C(k)=\varphi(k)$.
 		\end{proof}
 
-		\begin{proposition}
+		\begin{proposition}\label{prop:moduluscharacter}
 			Let $l$ be a positive integer prime to $k$. Then for a positive integer $a$,
 				\begin{align*}
 					\sum_{\chi}\dfrac{\chi(a)}{\chi(l)}
@@ -250,7 +250,7 @@
 		\begin{definition}[$L$-Series]
 			Let $s$ be a complex number. If $k$ is a positive integer and $\chi$ is a character $\pmod{k}$, Dirichlet's $L$-series $L(\chi,s)$ associated with $\chi$ and $s$ is defined as
 				\begin{align*}
-					L(\chi, s)
+					L(s, \chi)
 						& = \sum_{a\geq 1}\dfrac{\chi(a)}{a^{s}}
 				\end{align*}
 		\end{definition}
@@ -258,13 +258,13 @@
 		\begin{proposition}
 			For a complex $s$ and a character $\chi$,
 				\begin{align*}
-					L(\chi, s)
+					L(s, \chi)
 						& = \prod_{p}\dfrac{1}{1-\dfrac{\chi(p)}{p^{s}}}
 				\end{align*}
 		\end{proposition}
 
 		\begin{proposition}
-			For any of $\varphi(k)$ characters $\chi$ and complex number $s$ with $\mathfrak{R}(s)>1$, $L(\chi, s)$ converges.
+			For any of $\varphi(k)$ characters $\chi$ and complex number $s$ with $\mathfrak{R}(s)>1$, $L(s, \chi)$ converges.
 		\end{proposition}
 
 		\begin{proof}
@@ -277,7 +277,7 @@
 						& \leq \sum_{a\geq 1}\dfrac{1}{a^{\sigma}}\\
 						& = \zeta(\sigma)
 				\end{align*}
-			If $\sigma > 1$, then $\zeta(\sigma)$ converges, hence, so does $L(\chi, s)$.
+			If $\sigma > 1$, then $\zeta(\sigma)$ converges, hence, so does $L(s, \chi)$.
 		\end{proof}
 
 		\begin{proposition}\label{prop:nonprincipaldirichletconverges}
@@ -410,6 +410,7 @@
 				\end{align*}
 			diverges if $\epsilon=0$ and converges if $\epsilon>0$.
 		\end{proof}
+
 	\section{First Proof of Legendre-Dirichlet Theorem}
 	We already discussed that we want to use the fact that the sum of reciprocals of primes diverges. If there are indeed infinitely many primes of the form $kn+l$ for $\gcd(k,l)=1$, we expect that
 		\begin{align*}
@@ -455,5 +456,109 @@
 				& = \dfrac{1}{\varphi(k)}\lim_{x\to\infty}\sum_{p\leq x}\dfrac{\log{p}}{p}
 		\end{align*}
 	since there are $\varphi(k)$ such $l$ for which $\gcd(k,l)=1$.
+
+	Next, we should contemplate how we can restrict the primes in the sum $\sum_{p\leq x}\frac{\log{p}}{p}$ to only primes of the form $kn+l$. Here we can see how the characters come into the whole equation using \autoref{prop:moduluscharacter}. But before doing that if we recall $\log{n}=\sum_{d\mid n}\Lambda(n)$, there should be some connection between sums $\sum_{n\geq1}\frac{\log{n}}{n^{s}}$, $\sum_{p\leq x}\frac{\log{p}}{p}$ and $\sum_{n\geq1}\frac{\Lambda(n)}{n^{s}}$. In fact, we have a better connection due to $L'(s,\chi)$ which even involves $\chi$.
+		\begin{proposition}
+			For a complex $s$ and a character $\chi$,
+				\begin{align*}
+					\sum_{n\geq1}\dfrac{\chi(n)\Lambda(n)}{n^{s}}
+						& = -\dfrac{L'(s, \chi)}{L(s, \chi)}
+				\end{align*}
+		\end{proposition}
+
+		\begin{proof}
+			This is actually quite straightforward using the definitions and Dirichlet product.
+				\begin{align*}
+					L(s,\chi)\sum_{n\geq1}\dfrac{\chi(n)\Lambda(n)}{n^{s}}
+						& = \sum_{n\geq1}\dfrac{\chi(n)}{n^{s}}\sum_{n\geq1}\dfrac{\chi(n)\Lambda(n)}{n^{s}}\\
+						& = \sum_{n\geq1}\dfrac{\chi(n)}{n^{s}}\sum_{d\mid n}\Lambda(n)\\
+						& = \sum_{n\geq1}\dfrac{\chi(n)\log{n}}{n^{s}}\\
+						& = -L'(s,\chi)
+				\end{align*}
+		\end{proof}
+
+		\begin{proposition}
+			If $\chi$ is the principal character, then $\frac{L'(s, \chi)}{L(s, \chi)}$ converges if $s>1$ and it diverges if $s\to1$.
+		\end{proposition}
+
+		\begin{proof}
+			For $s>1$, the proof is straightforward once we notice that $|\chi(n)\Lambda(n)|\leq\log{n}$. For $s\to1$,
+				\begin{align*}
+					-\dfrac{L'(s, \chi)}{L(s, \chi)}
+						& = \sum_{n\geq1}\dfrac{\Lambda(n)}{n}
+				\end{align*}
+			We have already shown that the divergence of $\sum_{n\leq x}\frac{\Lambda(n)}{n}$ and $\sum_{p\leq x}\frac{\log{p}}{p}$ are equivalent.
+		\end{proof}
+
+		\begin{proposition}
+			If $\chi$ is not the principal character, $\frac{L'(s, \chi)}{L(s, \chi)}$ converges for $s>1$.
+		\end{proposition}
+	We omit the proof since it is straightforward at this stage. The stage is now set to finally prove Legendre's conjecture. Now we simply filter the sums related to $L(s, \chi)$ and $L'(s, \chi)$ to sieve out the primes of the form $kn+l$.
+		\begin{proposition}\label{prop:filtermodulus}
+			Let $l$ be relatively prime to $k$. Then
+				\begin{align*}
+					-\sum_{\chi}\dfrac{1}{\chi(l)}\dfrac{L'(s, \chi)}{L(s, \chi)}
+						& = \varphi(k)\sum_{\substack{n\geq1\\n\equiv l\pmod{k}}}\dfrac{\Lambda(n)}{n^{s}}
+				\end{align*}
+			where $\chi$ runs over all the characters of $k$.
+		\end{proposition}
+
+		\begin{proof}
+			We will use the expansion of $\frac{L'(s, \chi)}{L(s, \chi)}$ along with \autoref{prop:moduluscharacter}.
+				\begin{align*}
+					-\sum_{\chi}\dfrac{1}{\chi(l)}\dfrac{L'(s, \chi)}{L(s, \chi)}
+						& = -\sum_{\chi}\dfrac{1}{\chi(l)}\sum_{n\geq1}\dfrac{\chi(n)\Lambda(n)}{n^{s}}\\
+						& = \sum_{n\geq1}\dfrac{\Lambda(n)}{n^{s}}\sum_{\chi}\dfrac{\chi(n)}{\chi(l)}\\
+						& = \sum_{\substack{n\geq1\\n\equiv l\pmod{k}}}\varphi(k)\dfrac{\Lambda(n)}{n^{s}}\\
+						& = \varphi(k)\sum_{\substack{n\geq1\\n\equiv l\pmod{k}}}\dfrac{\Lambda(n)}{n^{s}}
+				\end{align*}
+		\end{proof}
+
+		\begin{theorem}[Dirichlet's Theorem on Arithmetic Progressions]\label{thm:dirichletprime}
+			For any $l$ prime to $k$, there are infinitely many primes of the form $kn+l$.
+		\end{theorem}
+
+		\begin{proof}
+			Take $s\to1$ such that $s=1+\epsilon$ for $\epsilon>0$.
+				\begin{align*}
+					-\sum_{\chi}\dfrac{1}{\chi(l)}\dfrac{L'(s, \chi)}{L(s, \chi)}
+						& = \varphi(k)\sum_{\substack{n\geq1\\n\equiv l\pmod{k}}}\dfrac{\Lambda(n)}{n^{s}}
+				\end{align*}
+			On the left side, if $\chi$ is of the first kind, then $\frac{L'(s, \chi)}{L'(s, \chi)}\to\infty$ for $s\to1$. Otherwise, $\frac{L'(s, \chi)}{L(s, \chi)}$ is finite. Thus, the left side is not bounded, hence, neither is the right side.
+				\begin{align*}
+					\sum_{\substack{n\geq1\\n\equiv l\pmod{k}}}\dfrac{\Lambda(n)}{n^{s}}
+						& = \lim_{x\to\infty}\sum_{\substack{p^{i}\leq x\\p\equiv l\pmod{k}}}\dfrac{\log{p}}{p^{is}}
+				\end{align*}
+			We divide the primes that appear in the sum in two parts based on whether $i=1$ or $i>1$. For $i>1, n\geq1$ and $s\to1$ from the right side, $n^{is}>n^{i}$ and $\frac{n}{2}<n$.
+				\begin{align*}
+					\sum_{p^{i}\equiv l\pmod{k}}\dfrac{\log{p}}{p^{is}}
+						& < \sum_{n\geq1}\dfrac{\log{n}}{n^{is}}\\
+						& < \sum_{n\geq 1}\dfrac{\log{n}}{n^{i}}\\
+						& = \sum_{n\geq2}\log{n}\sum_{i\geq2}\dfrac{1}{n^{i}}\\
+						& = \sum_{n\geq 2}\dfrac{\log{n}}{n(n-1)}\\
+						& < 2\sum_{n\geq 2}\dfrac{\log{n}}{n^{2}}
+				\end{align*}
+			Since the last sum converges,
+				\begin{align*}
+					\lim_{x\to\infty}\sum_{\substack{i\geq 2\\p^{i}\leq x\\p\equiv l\pmod{k}}}\dfrac{\log{p}}{p^{is}}
+						& = O(1)
+				\end{align*}
+			Therefore,
+				\begin{align*}
+					\lim_{x\to\infty}\sum_{\substack{p^{i}\leq x\\p\equiv l\pmod{k}}}\dfrac{\log{p}}{p^{is}}
+						& \to\infty\\
+					\lim_{x\to\infty}\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\dfrac{\log{p}}{p^{s}}+\lim_{x\to\infty}\sum_{\substack{i\geq 2\\p^{i}\leq x\\p\equiv l\pmod{k}}}\dfrac{\log{p}}{p^{is}}
+						& \to\infty\\
+					\lim_{x\to\infty}\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\dfrac{\log{p}}{p^{s}}+O(1)
+						& \to\infty\\
+					\lim_{x\to\infty}\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\dfrac{\log{p}}{p^{s}}
+						& \to\infty
+				\end{align*}
+			Thus, there must be an infinite number of such $p\equiv l\pmod{k}$. Otherwise the sum would also be finite.
+		\end{proof}
+
+		\begin{note}
+			It may not be apparent at first where we used the fact $L(1, \chi)\neq0$. Do ponder on it in case you missed that we did not state it explicitly. But it is still a necessary prerequisite for this proof to work.
+		\end{note}
 	\section{Second Proof by Selberg}
 \end{document}
