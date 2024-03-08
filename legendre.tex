@@ -248,7 +248,7 @@
 	\section{Dirichlet's \textit{L}-Series}
 	We mentioned earlier that Riemann considered $\zeta(s)$ for complex $s$. Here, we do something similar except we do not require any complex analysis except for the most basic facts.
 		\begin{definition}[$L$-Series]
-			Let $s$ be a complex number. If $k$ is a positive integer and $\chi$ is a character $\pmod{k}$, Dirichlet's $L$-series $L(\chi,s)$ associated with $\chi$ and $s$ is defined as
+			Let $s$ be a complex number. If $k$ is a positive integer and $\chi$ is a character $\pmod{k}$, Dirichlet's $L$-series $L(s, \chi)$ associated with $\chi$ and $s$ is defined as
 				\begin{align*}
 					L(s, \chi)
 						& = \sum_{a\geq 1}\dfrac{\chi(a)}{a^{s}}
@@ -270,7 +270,7 @@
 		\begin{proof}
 			For a complex number $s=\sigma+it$ and $a=e^{b}$, $|a^{s}|=a^{\sigma}|a^{it}|=a^{\sigma}|e^{bit}|$. Since $e^{ix}=\cos{x}+i\sin{x}$, $|e^{ix}|=\cos^{2}{x}+\sin^{2}{x}=1$. Thus, $|a^{s}|=a^{\sigma}$ and by triangle inequality,
 				\begin{align*}
-					|L(\chi,s)|
+					|L(s, \chi)|
 						& = \left|\sum_{a\geq 1}\dfrac{\chi(a)}{a^{s}}\right|\\
 						& \leq \sum_{a\geq 1}\left|\dfrac{\chi(a)}{a^{s}}\right|\\
 						& = \sum_{a\geq 1}\dfrac{|\chi(a)|}{a^{\sigma}}\\
@@ -558,7 +558,7 @@
 		\end{proof}
 
 		\begin{note}
-			It may not be apparent at first where we used the fact $L(1, \chi)\neq0$. Do ponder on it in case you missed that we did not state it explicitly. But it is still a necessary prerequisite for this proof to work.
+			It may not be apparent at first where we used the fact $L(1, \chi)\neq0$. Do ponder on it in case you missed that we did not state it explicitly. But it is still a necessary prerequisite for this proof to work. Also note how the
 		\end{note}
 	\section{Second Proof by Selberg}
 \end{document}
