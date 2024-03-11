@@ -15,7 +15,7 @@
 			\item behaves the same as the complex roots of unity (this is actually very important, for example, the sum of all roots of unity is $0$.)
 			\item can differentiate when $b\equiv a\pmod{k}$ for $\gcd(a,k)=1$.
 		\end{enumerate}
-	The intuition behind finding a periodic function is to note that $\gcd(a,k)=1$ implies $\gcd(a+k,k)=1$. As we will see later, Dirichlet characters satisfy all of these properties. It will become apparent later how and why they play such a crucial role. \textcite[pp. 186]{legendre_1798} defined the \textit{Legendre symbol} which plays a pivotal role in elementary number theory. \textcite{jacobi_1846} generalized Legendre symbol which is now known as \textit{Jacobi symbol}. \textcite[pp. 770]{kronecker_1885} generalized this to \textit{Kronecker symbol} which is unfortunately less known today. This is because \textcite{dirichlet_1837} had already introduced (also see \textcite{dirichlet_1897_21}) a generalization of Kronecker symbol which is far more insightful. Let $k$ be a fixed positive integer.
+	The intuition behind finding a periodic function is to note that $\gcd(a,k)=1$ implies $\gcd(a+k,k)=1$. As we will see later, Dirichlet characters satisfy all of these properties. It will become apparent later how and why they play such a crucial role. \textcite[pp. 186]{legendre_1798} defined the \textit{Legendre symbol} which plays a pivotal role in elementary number theory. \textcite{jacobi_1846} generalized Legendre symbol which is now known as \textit{Jacobi symbol}. \textcite[pp. 770]{kronecker_1885} generalized this to \textit{Kronecker symbol} which is unfortunately less known today. This is because \textcite{dirichlet_1837} had already introduced (also see \textcite{dirichlet_1897_21}) a generalization of Kronecker symbol which is far more insightful. Let $k$ be a fixed positive integer throughout this chapter.
 		\begin{definition}[Dirichlet Character]
 			An arithmetic function $\chi$ is called a \index{Dirichlet character}\textit{character} $\pmod{k}$ if
 				\begin{enumerate}
@@ -281,7 +281,7 @@
 		\end{proof}
 
 		\begin{proposition}\label{prop:nonprincipaldirichletconverges}
-			For a non-principal $\chi$, $L(s, \chi)$ converges for $s\geq1$.
+			For a non-principal $\chi$, $L'(s, \chi)$ converges for $s>1$.
 		\end{proposition}
 
 		\begin{proof}
@@ -311,11 +311,11 @@
 		\begin{proposition}\label{prop:non-vanising-second}
 			If $\chi$ is of the second kind, then $L(1,\chi)\neq0$.
 		\end{proposition}
-	\textcite[pp. 121, Theorem 152]{landau_1969} says the following about this theorem:
+	The proofs of $L(1, \chi)\neq0$ for different kinds of $\chi$ presented here are primarily due to \textcite[Chapters 6]{apostol_1976} and \textcite[Theorems 150-151]{landau_1969}. \textcite[pp. 121, Theorem 152]{landau_1969} says the following about this theorem:
 		\begin{quote}
 			This is the deepest of all of the lemmas that are necessary for Dirichlet's proof. Dirichlet proved it only by the considerably roundabout method of using the so-called theory of the class number of quadratic forms.
 		\end{quote}
-	Before we show the proof, the reader is encouraged to try to prove this. For example, a question is whether \nameref{thm:abel} works here with the following decomposition or not:
+	 The reader is encouraged to try and prove \autoref{prop:non-vanising-second}. For example, a question is whether \nameref{thm:abel} works here with the following decomposition or not:
 		\begin{align*}
 			\sum_{n\leq x}\dfrac{\chi(n)}{n}
 				& = \sum_{n\leq x}\dfrac{\chi(n)}{\sqrt{n}}\dfrac{1}{\sqrt{n}}
@@ -384,7 +384,7 @@
 		\end{proposition}
 
 		\begin{proof}
-
+			We have already showed this for $\chi$ of the second kind. If $\chi$ is of the third kind, notice that $\chi^{2}$ is also a non-principal character. Because if $\chi^{2}=1$, then $\chi\in\{1,-1\}$ which would make $\chi$ real.
 		\end{proof}
 
 		\begin{proposition}
@@ -434,8 +434,8 @@
 	This expression is not quite the same as the left side of \eqref{eqn:logp/p}. In fact,
 		\begin{align*}
 			\sum_{n\leq x}\dfrac{\Lambda(n)}{n}
-				& = \sum_{p\leq x}\dfrac{1}{p}+\sum_{p\leq x}\log{p}\sum_{i\geq2}\dfrac{1}{p^{i}}\\
-				& = \sum_{p\leq x}\dfrac{1}{p}+\sum_{p\leq x}\dfrac{\log{p}}{p(p-1)}
+				& = \sum_{p\leq x}\dfrac{\log{p}}{p}+\sum_{p\leq x}\log{p}\sum_{i\geq2}\dfrac{1}{p^{i}}\\
+				& = \sum_{p\leq x}\dfrac{\log{p}}{p}+\sum_{p\leq x}\dfrac{\log{p}}{p(p-1)}
 		\end{align*}
 	Now since
 		\begin{align*}
@@ -558,7 +558,97 @@
 		\end{proof}
 
 		\begin{note}
-			It may not be apparent at first where we used the fact $L(1, \chi)\neq0$. Do ponder on it in case you missed that we did not state it explicitly. But it is still a necessary prerequisite for this proof to work. Also note how the
+			It may not be apparent at first where we used the fact $L(1, \chi)\neq0$. Do ponder on it in case you missed that we did not state it explicitly. But it is still a necessary prerequisite for this proof to work.
 		\end{note}
 	\section{Second Proof by Selberg}
+	Today there are many variations of the proof of Dirichlet's theorem on arithmetic progressions. But most proofs essentially have the same core idea. A much lesser known and studied proof due to \textcite{selberg_1949} has a little different approach to it. The idea itself is primarily a modification of \textit{Selberg's asymptotic formula} which will be discussed heavily in \autoref{sec:fundamentallemma}. In the last proof, we tried to connect sums of prime powers of the form $kn+l$ with another sum that would not converge. Then we separated the primes only so that the prime powers that are at least squares contribute only to a convergent sum. Selberg's proof does something similar except instead of using the divergence of $L$ series, he used a characteristic function for product of at most two prime powers. Here, we will lay the foundation of Selberg's asymptotic formula and we will prove the actual formula that will be used to prove the prime number theorem later.
+
+	For a real $x$, let
+		\begin{align*}
+			\lambda_{d}(x)
+				& = \mu(d)\log^{2}{\frac{x}{d}}
+		\end{align*}
+	and $\theta$ be the summatory function of $\lambda$,
+		\begin{align*}
+			\theta_{n}(x)
+			& = \sum_{d\mid n}\lambda_{d}(x)
+		\end{align*}
+
+		\begin{lemma}
+			We have
+				\begin{align*}
+					\theta_{n}(x)
+						& =
+							\begin{cases}
+								\log^{2}{x}& \mbox{ if }n=1\\
+								\log{p}\log^{2}{\frac{x}{p}}& \mbox{ if }n=p^{u}\\
+								2\log{p}\log{q}& \mbox{ if } n=p^{u}q^{v}\\
+								0& \mbox{ otherwise}
+							\end{cases}
+				\end{align*}
+			where $p,q$ are distinct primes and $u,v$ are positive integers.
+		\end{lemma}
+
+		\begin{proof}
+			Assume that $n$ is square-free. If $n=p_{1}\cdots p_{r}$ for distinct primes $p_{1},\ldots,p_{r}$,
+				\begin{align}
+					\theta_{n}(x)
+						& = \theta_{n/p_{i}}(x)-\theta_{n/p_{i}}(x/p_{i})\label{eqn:thetan}
+				\end{align}
+			Then by induction, the claim follows. If $n=p_{1}^{u_{1}}\cdots p_{r}^{u_{r}}$, then we can either resort to induction or simply notice that \eqref{eqn:thetan} is independent of $u_{i}$.
+		\end{proof}
+	This $\theta$ can be considered a characteristic function for numbers with at most two distinct prime factors much like Mangoldt's $\Lambda$. However, $\theta$ is also dependent on $x$. Although, we can consider a generalization of von Mangoldt function. We know that $\log{n}=\sum_{d\mid n}\Lambda(d)$. From M\"{o}bius inversion,
+		\begin{align*}
+			\Lambda(n)
+				& = \sum_{d\mid n}\mu(d)\log{\frac{n}{d}}
+		\end{align*}
+	This representation enables us to define the generalization.
+		\begin{definition}[Generalized von Mangoldt Function]
+			The $r$-th von Mangoldt function $\Lambda_{r}(n)$ for a non-negative integer $r$ and positive integer $n$ is
+				\begin{align*}
+					\Lambda_{r}(n)
+						& = \sum_{d\mid n}\mu(d)\log^{r}{\frac{n}{d}}
+				\end{align*}
+		\end{definition}
+	We can replace $\log$ with an arbitrary arithmetic function $f$ that has the same property as logarithm $f(mn)=f(m)+f(n), f(m/n)=f(m)-f(n)$ and consider the summatory function
+		\begin{align}
+			F_{r}(n)
+				& = \sum_{d\mid n}\mu(d)\func{f^{m}}{\frac{n}{d}}\label{eqn:genmangold}
+		\end{align}
+	We leave the following generalization as an exercise.
+		\begin{proposition}
+			If $n$ has exactly $r$ prime divisors, then with the notations in \eqref{eqn:genmangold},
+				\begin{align*}
+					F_{r}(n)
+						& = r!\prod_{p^{e}\|n}\parenthesis{f(p^{e})-f(p^{e-1})}
+				\end{align*}
+			where $p^{e}\|n$ denotes $p^{e}\mid n$ but $p^{e+1}\nmid n$.
+		\end{proposition}
+	For the rest of the section, $\chi$ is a character of the second kind. When $\gcd(k,l)=1$,
+		\begin{align*}
+			\sum_{\substack{n\leq x\\n\equiv l\pmod{k}}}\theta_{n}(x)
+				& = +\bigo{\log^{2}{x}}+\sum_{\substack{p^{u}\leq x\\p^{u}\equiv l\pmod{k}}}\theta_{p^{u}}(x)+\sum_{\substack{p^{u}q^{v}\leq x\\p^{u}q^{v}\equiv l\pmod{k}}}\theta_{p^{u}q^{v}}(x)\\
+				& = \bigo{\log^{2}{x}}+\sum_{\substack{p^{u}\leq x\\p^{u}\equiv l\pmod{k}}}\log{p}\log{\frac{x^{2}}{p}}+\sum_{\substack{p^{u}q^{v}\leq x\\p^{u}q^{v}\equiv l\pmod{k}}}\log{p}\log{q}
+		\end{align*}
+	Here, we are not actually omitting the factor $2$. Rather we are simply considering that the contribution from $p^{u}q^{v}$ is $2\log{p}\log{q}$ whereas $q^{v}p^{u}$ is $0$ since both are actually same even though by order only which does not matter. So instead we can simply consider it as if both $p^{u}q^{v}$ and $q^{v}p^{u}$ contribute $\log{p}\log{q}$ which actually makes our calculation easier while keeping the total invariant. Again, we will treat $u=1$ and $u>1$ separately.
+		\begin{align*}
+			\sum_{\substack{p^{u}\leq x\\p^{u}\equiv l\pmod{k}}}\log{p}\log{\frac{x^{2}}{p}}
+				& = \sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\log{p}\log{\frac{x^{2}}{p}}+\sum_{\substack{p^{u}\leq x,u\geq2\\p^{u}\equiv l\pmod{k}}}\log{p}\log{\frac{x^{2}}{p}}
+		\end{align*}
+	You can probably guess by now that the reason we treat them separately is because largest contribution towards the sum is made by the $p\leq x$ rather than $p^{2}\leq x,p^{3}\leq x,\ldots$ since they are much rarer.
+		\begin{align*}
+			\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\log{p}\log{\frac{x^{2}}{p}}
+				& = \sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\log{p}(2\log{x}-\log{p})\\
+				& = 2\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\log{p}\log{\frac{x}{p}}+\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\log^{2}{p}
+		\end{align*}
+	Using partial summation, $\sum_{p\leq x}\log^{2}{p}=\parenthesis{\sum_{p\leq x}\log{p}}\log{x}-\int_{2}^{x}\frac{\vartheta(t)}{t}dt$.
+		\begin{align*}
+			\sum_{p\leq x}\log{p}\log{\frac{x}{p}}
+				& = \parenthesis{\sum_{p\leq x}\log{p}}\log{x}-\sum_{p\leq x}\log^{2}{p}\\
+				& = \vartheta(x)\log{x}-\sum_{p\leq x}\log^{2}{p}\\
+				& = \int_{2}^{x}\dfrac{\vartheta(t)}{t}dt\\
+				& = O(x)
+		\end{align*}
+	Recall that, from Tchebyscheff's theorems, we already know that $\vartheta(x)=O(x)$ and $\psi(x)=O(x)$.
+
 \end{document}
