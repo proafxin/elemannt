@@ -215,7 +215,7 @@
 		\end{proof}
 
 	We now prove a very insightful result.
-		\begin{proposition}
+		\begin{proposition}\label{prop:lsumlimited}
 			Let $\chi$ be a character of the second or third kind $\pmod{k}$ and $f$ be a function such that $f(x)\geq 0$ and $f'(x)$ is continuous for all $x\geq x_{0}$ for some positive $x_{0}$. Then
 				\begin{align*}
 					\sum_{a< n\leq b}\chi(n)f(n)
@@ -379,12 +379,109 @@
 			If $L(1,\chi)=0$, then $\lim_{x\to\infty}\varUpsilon(x^{2})=O(1)$ which is impossible since $\varUpsilon(x)\to\infty$ as $x\to\infty$. Therefore, we must have $L(1,\chi)\neq0$.
 		\end{proof}
 
+		\begin{lemma}
+			For real $\epsilon, t$ such that $0<\epsilon<1$,
+				\begin{align*}
+					(1-\epsilon)^{3}|1-\epsilon e^{it}|^{4}|1-\epsilon e^{2it}|^{2}<1
+				\end{align*}
+		\end{lemma}
+
+		\begin{proof}
+			Since $|z|^{2}=z\bar{z}$ and $e^{ix}=\cos{x}+i\sin{x}$, $1-\epsilon e^{it}=1-\epsilon\cos{t}-i\epsilon\sin{t}$.
+				\begin{align*}
+					|1-\epsilon e^{it}|^{2}
+						& = (1-\epsilon\cos{t})^{2}+\epsilon^{2}\sin^{2}{t}\\
+						& = 1-2\epsilon\cos{t}+\epsilon^{2}
+				\end{align*}
+			Similarly, $1-\epsilon e^{2it}=1-\epsilon\cos{2t}-i\epsilon\sin{2t}$, and
+				\begin{align*}
+					|1-\epsilon e^{2it}|^{2}
+						& = 1-2\epsilon\cos{2t}+\epsilon^{2}
+				\end{align*}
+			From the arithmetic-geometric mean inequality,
+				\begin{align*}
+					|1-\epsilon e^{it}|^{2}|1-\epsilon e^{it}|^{2}|1-\epsilon e^{2it}|^{2}
+						& \leq \parenthesis{1-\dfrac{2}{3}\epsilon(2\cos{t}+\cos{2t})+\epsilon^{2}}^{3}
+				\end{align*}
+			Now, $2\cos{x}+\cos{2x}\geq-3/2$ due to
+				\begin{align*}
+					2\cos{x}+\cos{2x}
+						& =-\dfrac{3}{2}+2\parenthesis{\cos{t}+\dfrac{1}{2}}^{2}
+				\end{align*}
+			Thus,
+				\begin{align*}
+					|1-\epsilon e^{it}|^{4}|1-\epsilon e^{2it}|^{2}
+						& \leq (1+\epsilon+\epsilon^{2})^{3}\\
+						& = \dfrac{1}{(1-\epsilon)}^{3}
+				\end{align*}
+			This proves the claim.
+		\end{proof}
+
+		\begin{lemma}
+			For $s>1$,
+				\begin{align*}
+					L(s, \chi_{0})^{3}|L(s, \chi)|^{4}|L(s, \chi^{2})|^{2}
+						& \geq 1
+				\end{align*}
+		\end{lemma}
+
+		\begin{proof}
+			We can write characters as $\chi=\zeta^{i}$ for some $0\leq i<k$ where $\zeta$ is a complex root of unity. Then $\chi(p)=e^{it}$ for some real $t$. Take prime $p$ such that $p\nmid k$. Setting $\epsilon=1/p^{s}$,
+				\begin{align*}
+					\parenthesis{1-\dfrac{\chi_{0}(p)}{p^{s}}}^{3}\abslarge{1-\dfrac{\chi(p)}{p^{s}}}^{4}\abslarge{1-\dfrac{\chi^{2}(p)}{p^{s}}}^{2}
+						& \leq 1
+				\end{align*}
+			If $p\mid k$, then we have equality. Then we see that the claim is true since
+				\begin{align*}
+					L(s, \chi)
+						& = \prod_{p}\parenthesis{1-\dfrac{\chi(p)}{p^{s}}}^{-1}
+				\end{align*}
+		\end{proof}
+
 		\begin{proposition}
 			$L(1, \chi)\neq0$ for a non-principal character $\chi$.
 		\end{proposition}
 
 		\begin{proof}
-			We have already showed this for $\chi$ of the second kind. If $\chi$ is of the third kind, notice that $\chi^{2}$ is also a non-principal character. Because if $\chi^{2}=1$, then $\chi\in\{1,-1\}$ which would make $\chi$ real.
+			We have already showed this for $\chi$ of the second kind. If $\chi$ is of the third kind, notice that $\chi^{2}$ is also a non-principal character. Because if $\chi^{2}=1$, then $\chi\in\{1,-1\}$ which would make $\chi$ real. Using \autoref{prop:lsumlimited},
+				\begin{align*}
+					|L(s, \chi)|
+						& = \sum_{n\geq1}\dfrac{\chi(n)}{n^{s}}\\
+						& \leq \sum_{n\geq 1}\chi(n)\\
+						& \leq\varphi(k)
+				\end{align*}
+			For $1<s<2$,
+				\begin{align*}
+					L(s, \chi_{0})
+						& \sum_{n\geq1}\dfrac{\chi_{0}(n)}{n^{s}}\\
+						& = \sum_{\substack{n\geq1\\\gcd(n,k)=1}}\dfrac{1}{n^{s}}\\
+						& < 1+\sum_{n\geq1}\dfrac{1}{n^{s}}\\
+						& < \dfrac{s}{s-1}\\
+						& < \dfrac{2}{s-1}
+				\end{align*}
+			Then $|L(s, \chi_{0})|^{3}<8/(s-1)^{3}$. If $L(1, \chi)=0$ indeed holds,
+				\begin{align*}
+					|L(s, \chi)|
+						& = |L(s, \chi)-L(1, \chi)|\\
+						& = \abslarge{\int_{1}^{s}L'(t, \chi)dt}\\
+						& < (s-1)\varphi(k)
+				\end{align*}
+			Multiplying them, we have for $1<s<2$ and using $|L(s, \chi^{2})|<\varphi(k)$,
+				\begin{align*}
+					|L(s, \chi)|^{4}L(s, \chi_{0})^{3}|L(s, \chi^{2})|^{2}
+						& < (s-1)^{4}\varphi(k)^{4}\dfrac{8}{(s-1)^{3}}\varphi(k)^{2}
+				\end{align*}
+			By the lemma, $|L(s, \chi)|^{4}L(s, \chi_{0})^{3}|L(s, \chi^{2})|^{2}\geq1$, so for all $1<s<2$,
+				\begin{align*}
+					8(s-1)\varphi(k)^{6}
+						& > 1
+				\end{align*}
+			For $k>2$, $\varphi(k)>1$, so setting
+				\begin{align*}
+					s
+						&:=1+\dfrac{1}{8\varphi(k)^{6}}
+				\end{align*}
+			which still satisfies $1<s<2$, we get $1>1$ which is impossible. Thus, $L(1, \chi)\neq0$ cannot hold.
 		\end{proof}
 
 		\begin{proposition}
@@ -649,6 +746,17 @@
 				& = \int_{2}^{x}\dfrac{\vartheta(t)}{t}dt\\
 				& = O(x)
 		\end{align*}
-	Recall that, from Tchebyscheff's theorems, we already know that $\vartheta(x)=O(x)$ and $\psi(x)=O(x)$.
-
+	since we already know from Tchebyscheff's theorems that $\vartheta(x)=O(x)$ and $\psi(x)=O(x)$. Thus,
+		\begin{align*}
+			\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\log{p}\log{\frac{x^{2}}{p}}
+				& = \sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\log^{2}{p}+O(x)
+		\end{align*}
+	Next, for $\u\geq2$,
+		\begin{align*}
+			\sum_{\substack{p^{u}\leq x,u\geq2\\p^{u}\equiv l\pmod{k}}}\log{p}\log{\frac{x^{2}}{p}}
+				& \leq 2\parenthesis{\sum_{p\leq \sqrt{x}}\log{p}}\log{x}\\
+				& \leq 2\pi(\sqrt{x})\log^{2}{x}\\
+				& = \bigo{\dfrac{\sqrt{x}}{\log{x}}}\log^{2}{x}\\
+				& = \bigo{\sqrt{x}\log{x}}
+		\end{align*}
 \end{document}
