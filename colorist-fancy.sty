@@ -573,13 +573,13 @@ heading_suffix "}\n"
 \newcommand*{\IndexDotfill}
   {
     \null\nobreak
-    \leaders \hbox to .67em {\hss \textcolor{main-text!15!paper}{.} \hss} \hskip1em plus1fill
+    \leaders \hbox to .67em {\hss {.} \hss} \hskip1em plus1fill
   }
 \newcommand*{\IndexLinebreak}
   {
-    \nobreakspace\textcolor{main-text!45!paper}{\raisebox{.4ex}{.}\raisebox{.2ex}{.}}
+    \nobreakspace{\raisebox{.4ex}{.}\raisebox{.2ex}{.}}
     \item\hspace*{\hangindent}
-    \textcolor{main-text!45!paper}{\raisebox{.45ex}{.}\raisebox{.25ex}{.}}\:
+    {\raisebox{.45ex}{.}\raisebox{.25ex}{.}}\:
     \unskip
   }
 
@@ -590,8 +590,8 @@ heading_suffix "}\n"
       { \tl_set:Nn \l_tmpa_tl { #1 } }
     \tikz\node[
       rounded~corners=5pt,
-      draw=maintheme,
-      fill=maintheme!10,
+      draw=black,
+      fill=black!10,
       line~width=1pt,
       inner~sep=5pt,
       align=center,

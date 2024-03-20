@@ -271,8 +271,8 @@
 			For a complex number $s=\sigma+it$ and $a=e^{b}$, $|a^{s}|=a^{\sigma}|a^{it}|=a^{\sigma}|e^{bit}|$. Since $e^{ix}=\cos{x}+i\sin{x}$, $|e^{ix}|=\cos^{2}{x}+\sin^{2}{x}=1$. Thus, $|a^{s}|=a^{\sigma}$ and by triangle inequality,
 				\begin{align*}
 					|L(s, \chi)|
-						& = \left|\sum_{a\geq 1}\dfrac{\chi(a)}{a^{s}}\right|\\
-						& \leq \sum_{a\geq 1}\left|\dfrac{\chi(a)}{a^{s}}\right|\\
+						& \leq \abslarge{\sum_{a\geq 1}\dfrac{\chi(a)}{a^{s}}}\\
+						& \leq \sum_{a\geq 1}\abslarge{\dfrac{\chi(a)}{a^{s}}}\\
 						& = \sum_{a\geq 1}\dfrac{|\chi(a)|}{a^{\sigma}}\\
 						& \leq \sum_{a\geq 1}\dfrac{1}{a^{\sigma}}\\
 						& = \zeta(\sigma)
@@ -665,16 +665,16 @@
 			\lambda_{d}(x)
 				& = \mu(d)\log^{2}{\frac{x}{d}}
 		\end{align*}
-	and $\theta$ be the summatory function of $\lambda$,
+	and $\phi$ be the summatory function of $\lambda$,
 		\begin{align*}
-			\theta_{n}(x)
+			\phi_{n}(x)
 			& = \sum_{d\mid n}\lambda_{d}(x)
 		\end{align*}
 
 		\begin{lemma}
 			We have
 				\begin{align*}
-					\theta_{n}(x)
+					\phi_{n}(x)
 						& =
 							\begin{cases}
 								\log^{2}{x}& \mbox{ if }n=1\\
@@ -689,12 +689,12 @@
 		\begin{proof}
 			Assume that $n$ is square-free. If $n=p_{1}\cdots p_{r}$ for distinct primes $p_{1},\ldots,p_{r}$,
 				\begin{align}
-					\theta_{n}(x)
-						& = \theta_{n/p_{i}}(x)-\theta_{n/p_{i}}(x/p_{i})\label{eqn:thetan}
+					\phi_{n}(x)
+						& = \phi_{n/p_{i}}(x)-\phi_{n/p_{i}}(x/p_{i})\label{eqn:thetan}
 				\end{align}
 			Then by induction, the claim follows. If $n=p_{1}^{u_{1}}\cdots p_{r}^{u_{r}}$, then we can either resort to induction or simply notice that \eqref{eqn:thetan} is independent of $u_{i}$.
 		\end{proof}
-	This $\theta$ can be considered a characteristic function for numbers with at most two distinct prime factors much like Mangoldt's $\Lambda$. However, $\theta$ is also dependent on $x$. Although, we can consider a generalization of von Mangoldt function. We know that $\log{n}=\sum_{d\mid n}\Lambda(d)$. From M\"{o}bius inversion,
+	This $\phi$ can be considered a characteristic function for numbers with at most two distinct prime factors much like Mangoldt's $\Lambda$. However, $\phi$ is also dependent on $x$. Although, we can consider a generalization of von Mangoldt function. We know that $\log{n}=\sum_{d\mid n}\Lambda(d)$. From M\"{o}bius inversion,
 		\begin{align*}
 			\Lambda(n)
 				& = \sum_{d\mid n}\mu(d)\log{\frac{n}{d}}
@@ -723,8 +723,8 @@
 		\end{proposition}
 	For the rest of the section, $\chi$ is a character of the second kind. When $\gcd(k,l)=1$,
 		\begin{align*}
-			\sum_{\substack{n\leq x\\n\equiv l\pmod{k}}}\theta_{n}(x)
-				& = +\bigo{\log^{2}{x}}+\sum_{\substack{p^{u}\leq x\\p^{u}\equiv l\pmod{k}}}\theta_{p^{u}}(x)+\sum_{\substack{p^{u}q^{v}\leq x\\p^{u}q^{v}\equiv l\pmod{k}}}\theta_{p^{u}q^{v}}(x)\\
+			\sum_{\substack{n\leq x\\n\equiv l\pmod{k}}}\phi_{n}(x)
+				& = +\bigo{\log^{2}{x}}+\sum_{\substack{p^{u}\leq x\\p^{u}\equiv l\pmod{k}}}\phi_{p^{u}}(x)+\sum_{\substack{p^{u}q^{v}\leq x\\p^{u}q^{v}\equiv l\pmod{k}}}\phi_{p^{u}q^{v}}(x)\\
 				& = \bigo{\log^{2}{x}}+\sum_{\substack{p^{u}\leq x\\p^{u}\equiv l\pmod{k}}}\log{p}\log{\frac{x^{2}}{p}}+\sum_{\substack{p^{u}q^{v}\leq x\\p^{u}q^{v}\equiv l\pmod{k}}}\log{p}\log{q}
 		\end{align*}
 	Here, we are not actually omitting the factor $2$. Rather we are simply considering that the contribution from $p^{u}q^{v}$ is $2\log{p}\log{q}$ whereas $q^{v}p^{u}$ is $0$ since both are actually same even though by order only which does not matter. So instead we can simply consider it as if both $p^{u}q^{v}$ and $q^{v}p^{u}$ contribute $\log{p}\log{q}$ which actually makes our calculation easier while keeping the total invariant. Again, we will treat $u=1$ and $u>1$ separately.
@@ -751,7 +751,7 @@
 			\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\log{p}\log{\frac{x^{2}}{p}}
 				& = \sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\log^{2}{p}+O(x)
 		\end{align*}
-	Next, for $\u\geq2$,
+	Next, for $u\geq2$,
 		\begin{align*}
 			\sum_{\substack{p^{u}\leq x,u\geq2\\p^{u}\equiv l\pmod{k}}}\log{p}\log{\frac{x^{2}}{p}}
 				& \leq 2\parenthesis{\sum_{p\leq \sqrt{x}}\log{p}}\log{x}\\
