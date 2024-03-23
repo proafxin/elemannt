@@ -324,23 +324,23 @@
 		\begin{proof}
 			Let
 				\begin{align*}
-					\varUpsilon(x)
+					\Upsilon(x)
 						& = \sum_{n\leq x}\dfrac{\varsigma(n)}{\sqrt{n}}
 				\end{align*}
 			By \autoref{pro:second-char-geq1}, $\varsigma(n)\geq 1$ for square $n$, so
 				\begin{align*}
-					\varUpsilon(x)
+					\Upsilon(x)
 						& \geq \sum_{n\leq\sqrt{x}}\dfrac{1}{n}
 				\end{align*}
-			Clearly $\varUpsilon(x)\to\infty$ as $x\to\infty$. Now,
+			Clearly $\Upsilon(x)\to\infty$ as $x\to\infty$. Now,
 				\begin{align*}
-					\varUpsilon(x)
+					\Upsilon(x)
 						& = \sum_{n\leq x}\dfrac{\sum_{d\mid n}\chi(d)}{\sqrt{n}}\\
 						& = \sum_{de\leq x}\dfrac{\chi(d)}{\sqrt{de}}
 				\end{align*}
 			We can use \nameref{thm:hyperbola} with $a=b=\sqrt{x}, f(n)=\frac{\chi(n)}{\sqrt{n}}$ and $g(n)=\frac{1}{\sqrt{n}}$.
 				\begin{align*}
-					\varUpsilon(x)
+					\Upsilon(x)
 						& = \sum_{n\leq\sqrt{x}}\dfrac{\chi(n)}{\sqrt{n}}\func{G}{\dfrac{x}{n}}+\sum_{n\leq \sqrt{x}}\dfrac{1}{\sqrt{n}}\func{F}{\dfrac{x}{n}}-F(\sqrt{x})G(\sqrt{x})
 				\end{align*}
 			where $F(x)=\sum_{n\leq x}f(n)$ and $G(x)=\sum_{n\leq x}g(n)$. Setting $f(n):=\frac{1}{\sqrt{n}}$ in \autoref{pro:o(f)},
@@ -359,7 +359,7 @@
 				\end{align*}
 			Using these, we get
 				\begin{align*}
-					\varUpsilon(x)
+					\Upsilon(x)
 						& = \sum_{n\leq \sqrt{x}}\dfrac{1}{\sqrt{n}}\func{}{\chi(n)\func{}{2\sqrt{\dfrac{x}{n}}+D+\bigo{\sqrt{\dfrac{n}{x}}}+C+\bigo{\sqrt{\dfrac{n}{x}}}}}-F(\sqrt{x})G(\sqrt{x})\\
 						& = 2\sqrt{x}\sum_{n\leq \sqrt{x}}\dfrac{\chi(n)}{n}+D\sum_{n\leq \sqrt{x}}\dfrac{\chi(n)}{\sqrt{n}}+\dfrac{1}{\sqrt{x}}\bigo{\sum_{n\leq \sqrt{x}}\chi(n)}\\
 						& +C\sum_{n\leq \sqrt{x}}\dfrac{1}{\sqrt{n}}+\dfrac{1}{\sqrt{x}}\bigo{\sum_{n\leq \sqrt{x}}1}-F(\sqrt{x})G(\sqrt{x})\\
@@ -372,11 +372,11 @@
 				\end{align*}
 			Taking $x\to\infty$, we have
 				\begin{align*}
-					\lim_{x\to\infty}\varUpsilon(x)
+					\lim_{x\to\infty}\Upsilon(x)
 					& = 2\sqrt{x}\sum_{n\leq \sqrt{x}}\dfrac{\chi(n)}{n}+O(1)\\
 					& = 2\sqrt{x}L(1,\chi)+O(1)
 				\end{align*}
-			If $L(1,\chi)=0$, then $\lim_{x\to\infty}\varUpsilon(x^{2})=O(1)$ which is impossible since $\varUpsilon(x)\to\infty$ as $x\to\infty$. Therefore, we must have $L(1,\chi)\neq0$.
+			If $L(1,\chi)=0$, then $\lim_{x\to\infty}\Upsilon(x^{2})=O(1)$ which is impossible since $\Upsilon(x)\to\infty$ as $x\to\infty$. Therefore, we must have $L(1,\chi)\neq0$.
 		\end{proof}
 
 		\begin{lemma}
