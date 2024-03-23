@@ -751,12 +751,31 @@
 			\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\log{p}\log{\frac{x^{2}}{p}}
 				& = \sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\log^{2}{p}+O(x)
 		\end{align*}
-	Next, for $u\geq2$,
+	For $u\geq2$,
 		\begin{align*}
 			\sum_{\substack{p^{u}\leq x,u\geq2\\p^{u}\equiv l\pmod{k}}}\log{p}\log{\frac{x^{2}}{p}}
 				& \leq 2\parenthesis{\sum_{p\leq \sqrt{x}}\log{p}}\log{x}\\
 				& \leq 2\pi(\sqrt{x})\log^{2}{x}\\
 				& = \bigo{\dfrac{\sqrt{x}}{\log{x}}}\log^{2}{x}\\
 				& = \bigo{\sqrt{x}\log{x}}
+		\end{align*}
+	Next, for when $u\geq2$ and $n=p^{u}q^{v}$,
+		\begin{align*}
+			\sum_{\substack{p^{u}q^{v}\leq x\\u\geq2\\p^{u}q^{v}\equiv l\pmod{k}}}\log{p}{\log{q}}
+				& \leq \sum_{\substack{p^{u}q^{v}\leq x\\u\geq2}}\log{p}{\log{q}}\\
+				& = \sum_{\substack{p^{u}\leq x\\u\geq 2}}(\log{p})\sum_{q^{v}\leq x/p^{u}}\log{q}\\
+				& = \sum_{\substack{p^{u}\leq x\\u\geq 2}}(\log{p})\parenthesis{\log_{q}{\floor{\frac{x}{p^{u}}}}\log{q}}
+		\end{align*}
+	Using $\log_{a}{b}\log{b}{c}=\log_{a}{c}$,
+		\begin{align*}
+			\sum_{\substack{p^{u}q^{v}\leq x\\u\geq2\\p^{u}q^{v}\equiv l\pmod{k}}}\log{p}{\log{q}}
+				& = \sum_{\substack{p^{u}\leq x\\u\geq 2}}\log{p}\log{{\floor{\frac{x}{p^{u}}}}}\\
+				& = \bigo{x\sum_{\substack{p^{u}\leq x\\u\geq 2}}\dfrac{\log{p}}{p^{u}}}\\
+				& = \bigo{x\sum_{p\leq x}\dfrac{\log{p}}{p(p-1)}}
+		\end{align*}
+	Again, $\sum\frac{\log{p}}{p(p-1)}$ converges, so the sum is simply $O(x)$. Combining all of these,
+		\begin{align*}
+			\sum_{\substack{n\leq x\\n\equiv l\pmod{k}}}\phi_{n}(x)
+				& = \sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\log^{2}{p}+\sum_{\substack{pq\leq x\\pq\equiv l\pmod{k}}}\log{p}{\log{q}}+O(x)
 		\end{align*}
 \end{document}
