@@ -65,8 +65,8 @@
 	%\setmathfont{CenturymodernTT-Regular.otf}[range={it/{num,"03BB},up/{num,"03BB},\mid,},Scale=\scale,FakeStretch=\fakestretch,FakeBold=\fakemathbold]
 	\setmathfont{CenturymodernTT-Regular.otf}[range={it/{num,"03BB},up/{num,"03BB},"002D,"005E-"0060,"00A7,"03BB,"007B-"007D,"002F, "005F,"00A7,\mid,},Scale=\scale,FakeStretch=\fakestretch,FakeBold=\fakemathbold]
 	\setmathfont{ModernMT-ExtendedItalic-New.otf}[range={"2260-"2265,"226A-"226B,"003C-"003E,"03B1},FakeBold=\fakemathbold,FakeStretch=1.1\fakestretch]
-	\setmathfont[range={bb,frak,"221E,},Scale=\scale,FakeStretch=1.05\fakestretch,FakeBold=\fakemathbold]{CenturymodernTT-Italic.otf}
-	\setmathfont[range={"2022,"22EF,"2217-"2219,"2229-"222B,"2208,"2022,"2260,"22C4,"002F,"00B1,"0021,"002D},Scale=\scale,FakeStretch=1.05\fakestretch,FakeBold=2]{CenturymodernTT-Italic.otf}
+	\setmathfont[range={frak,"221E,},Scale=\scale,FakeStretch=\fakestretch,FakeBold=\fakemathbold]{CenturymodernTT-Italic.otf}
+	\setmathfont[range={bb,"2022,"22EF,"2217-"2219,"2229-"222B,"2208,"2022,"2260,"22C4,"002F,"00B1,"0021,"002D},Scale=\scale,FakeStretch=\fakestretch,FakeBold=2]{CenturymodernTT-Italic.otf}
 	%\setmathfont[range={{up/Greek},{it/Greek},} ,Scale=\scale,FakeStretch=1.05\fakestretch,FakeBold=\fakemathbold]{ModernMT-Extended-New.otf}
 	%\setmathfont{NewCMMath-Book-custom.otf}
 	%\setmathfont{CenturymodernTT-Italic.ttf}[range={},Scale=\scale,FakeBold=\fakemathbold,FakeStretch=\fakestretch]%,{it/{greek}},{up/{greek}},
@@ -209,8 +209,8 @@
 \newcommand{\floor}[1]{\ifxetex{\squarebracket{#1}}\else{\left\lfloor{#1}\right\rfloor}\fi}
 \newcommand{\ceiling}[1]{\left\lceil{#1}\right\rceil}
 \ifxetex\renewcommand{\binom}[2]{\scaleleftright[.8ex]{(}{\genfrac{}{}{0pt}{0}{#1}{#2}}{)}}\fi
-\newcommand{\parenthesis}[1]{\ifxetex{\scaleleftright[.8ex]{(}{#1}{)}}\else{\left(#1\right)}\fi}
-%\newcommand{\parenthesis}[1]{\left(#1\right)}
+%\newcommand{\parenthesis}[1]{\ifxetex{\scaleleftright[.8ex]{(}{#1}{)}}\else{\left(#1\right)}\fi}
+\newcommand{\parenthesis}[1]{\left(#1\right)}
 %\newcommand{\curlybrace}[1]{\ifxetex{\scaleleftright[1ex]{\{}{#1}{\}}}\else{\left\{#1\right\}}\fi}
 \newcommand{\curlybrace}[1]{\left{#1\right}}
 \newcommand{\squarebracket}[1]{\left[#1\right]}
