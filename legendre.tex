@@ -778,4 +778,25 @@
 			\sum_{\substack{n\leq x\\n\equiv l\pmod{k}}}\phi_{n}(x)
 				& = \sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\log^{2}{p}+\sum_{\substack{pq\leq x\\pq\equiv l\pmod{k}}}\log{p}{\log{q}}+O(x)
 		\end{align*}
+	Since $\phi$ is the summatory function of $\lambda$,
+		\begin{align*}
+			\sum_{\substack{n\leq x\\n\equiv l\pmod{k}}}\phi_{n}(x)
+				& = \sum_{\substack{n\leq x\\n\equiv l\pmod{k}}}\sum_{d\mid n}\lambda_{d}(x)\\
+				& = \sum_{\substack{n\leq x\\\gcd(n,k)=1}}\lambda_{n}(x)\sum_{\substack{m\leq x/n\\mn\equiv l\pmod{k}}}1\\
+				& = \sum_{\substack{n\leq x\\\gcd(n,k)=1}}\lambda_{n}(x)\floor{\frac{x}{nk}}\\
+				& = \dfrac{x}{k}\sum_{\substack{n\leq x\\\gcd(n,k)=1}}\dfrac{\lambda_{n}(x)}{n}+\bigo{\sum_{n\leq x}|\lambda_{n}(x)|}\\
+				& = \dfrac{x}{k}\sum_{\substack{n\leq x\\\gcd(n,k)=1}}\dfrac{\lambda_{n}(x)}{n}+\bigo{\sum_{n\leq x}\log^{2}{\frac{x}{n}}}
+		\end{align*}
+	Now, $\log^{2}{\frac{x}{n}}=(\log{x}-\log{n})^{2}=\log^{2}{x}-2\log{x}\log{n}+\log^{2}{n}$. Using Abel's partial summation formula, $\sum_{n\leq x}\log{n}=x\log{x}-x+\bigo{\log{x}}$. Combining this and Abel's partial summation again on $\sum_{n\leq x}\log^{2}{n}$, we can verify that
+		\begin{align*}
+			\sum_{n\leq x}\log^{2}\frac{x}{n}
+				& = O(x)
+		\end{align*}
+	Thus,
+		\begin{align*}
+			\sum_{\substack{n\leq x\\n\equiv l\pmod{k}}}\phi_{n}(x)
+				& = \dfrac{x}{k}\sum_{\substack{n\leq x\\\gcd(n,k)=1}}\dfrac{\lambda_{n}(x)}{n}+O(x)\\
+			\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\log^{2}{p}+\sum_{\substack{pq\leq x\\pq\equiv l\pmod{k}}}\log{p}{\log{q}}
+				& = \dfrac{x}{k}\sum_{\substack{n\leq x\\\gcd(n,k)=1}}\dfrac{\lambda_{n}(x)}{n}+O(x)
+		\end{align*}
 \end{document}
