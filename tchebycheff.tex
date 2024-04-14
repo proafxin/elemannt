@@ -437,14 +437,14 @@
 				\end{align*}
 			Notice that this is awfully similar to the original sum in question. Indeed, the sum is very closely related to this.
 				\begin{align*}
-					\left|\sum_{n\leq x}\dfrac{\Lambda(n)}{n}-\sum_{p\leq x}\dfrac{\log{p}}{p}\right|
+					\abslarge{\sum_{n\leq x}\dfrac{\Lambda(n)}{n}-\sum_{p\leq x}\dfrac{\log{p}}{p}}
 						& \leq \sum_{p\leq x}\func{}{\dfrac{1}{p^{2}}+\dfrac{1}{p^{3}}+\ldots}\log{p}\\
-						& = \sum_{p\leq x}\dfrac{1}{p^{2}}\dfrac{p}{p-1}\log{p}\\
+						& = \sum_{p\leq x}\dfrac{1}{p^{2}}\parenthesis{\dfrac{p}{p-1}}\log{p}\\
 						& = \sum_{p\leq x}\dfrac{\log{p}}{p(p-1)}
 				\end{align*}
 			Since for all large enough $p>N$, $\log{p}\leq \frac{p-1}{\sqrt{p}}$,
 				\begin{align*}
-					\left|\sum_{n\leq x}\dfrac{\Lambda(n)}{n}-\sum_{p\leq x}\dfrac{\log{p}}{p}\right|
+					\abslarge{\sum_{n\leq x}\dfrac{\Lambda(n)}{n}-\sum_{p\leq x}\dfrac{\log{p}}{p}}
 						& \leq \sum_{N<p\leq x}\dfrac{1}{p\sqrt{p}}+O(1)\\
 						& < \sum_{i\geq 1}\dfrac{1}{i^{\frac{3}{2}}}+O(1)\\
 						& = \zeta\func{}{\frac{3}{2}}+O(1)
