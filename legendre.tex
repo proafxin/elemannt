@@ -800,4 +800,28 @@
 				& = \dfrac{x}{k}\sum_{\substack{n\leq x\\\gcd(n,k)=1}}\dfrac{\lambda_{n}(x)}{n}+O(x)
 		\end{align*}
 	This is now much more friendly to work with because we have reduced the restriction to $\gcd(n,k)=1$ only which is free of $l$.
+		\begin{align*}
+			\sum_{\substack{n=1\\\gcd(n,k)>1}}^{x}\sum_{\substack{p\leq x\\p\equiv n\pmod{k}}}\log^{2}{p}
+				& \leq \sum_{p\leq x}\sum_{\substack{n=1\\p\mid n}}^{k}\log^{2}{p}\\
+				& = \sum_{p\leq x}\log^{2}{p}\floor{\frac{k}{p}}\\
+				& \leq k\sum_{p\leq x}\dfrac{\log^{2}{p}}{p}\\
+				& = \bigo{\log^{2}{x}}
+		\end{align*}
+	We also need to calculate the same for $\log{p}\log{q}$.
+		\begin{align*}
+			\sum_{\substack{n=1\\\gcd(n,k)>1}}^{x}\sum_{\substack{pq\leq x\\pq\equiv n\pmod{k}}}\log{p}\log{q}
+				& \leq 2\sum_{pq\leq x}\sum_{\substack{n=1\\p\mid n}}^{k}\log{p}\log{q}\\
+				& = 2\sum_{pq\leq x}\log{p}\log{q}\floor{\frac{k}{p}}\\
+				& \leq 2k\sum_{pq\leq x}\dfrac{\log{p}}{p}\log{q}\\
+				& = 2k\sum_{p\leq x}\dfrac{\log{p}}{p}\sum_{q\leq x/p}\log{q}\\
+				& = \bigo{\sum_{p\leq x}\dfrac{\log{p}}{p}\sum_{q\leq x/p}\log(x/p)}\\
+				& = \bigo{\sum_{p\leq x}\dfrac{\log{p}}{p}\log(x/p)\bigo{\frac{x/p}{\log(x/p)}}}\\
+				& = \bigo{x\sum_{p\leq x}\dfrac{\log{p}}{p^{2}}}\\
+				& = \bigo{x}
+		\end{align*}
+	This is once again a desirable result for us. The right side is independent of the choice of $l$. Therefore,
+		\begin{align*}
+			\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\log^{2}{p}+\sum_{\substack{pq\leq x\\pq\equiv l\pmod{k}}}\log{p}{\log{q}}
+				& = \dfrac{1}{\varphi(k)}\parenthesis{\sum_{p\leq x}\log^{2}{p}+\sum_{pq\leq x}\log{p}\log{q}}+O(x)
+		\end{align*}
 \end{document}
