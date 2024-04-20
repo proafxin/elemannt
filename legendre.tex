@@ -819,9 +819,34 @@
 				& = \bigo{x\sum_{p\leq x}\dfrac{\log{p}}{p^{2}}}\\
 				& = \bigo{x}
 		\end{align*}
+	We leave it as an exercise for the reader to show that
+		\begin{align*}
+			\sum_{p\leq x}\dfrac{\log{p}}{p^{2}}
+				& = O(1)
+		\end{align*}
 	This is once again a desirable result for us. The right side is independent of the choice of $l$. Therefore,
 		\begin{align*}
 			\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\log^{2}{p}+\sum_{\substack{pq\leq x\\pq\equiv l\pmod{k}}}\log{p}{\log{q}}
 				& = \dfrac{1}{\varphi(k)}\parenthesis{\sum_{p\leq x}\log^{2}{p}+\sum_{pq\leq x}\log{p}\log{q}}+O(x)
+		\end{align*}
+	So far, it hasn't been very clear where exactly this line of thinking was going. Now we see that we finally have a result relating primes not exceeding $x$ which are of the form $kn+l$ to primes not exceeding $x$ in general. This last result we have actually gives us more insight. One way is to write $\log^{2}{p}=p\parenthesis{\frac{\log^{2}{p}}{p}}$ and use partial summation formula.
+		\begin{align*}
+			\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\dfrac{\log^{2}{p}}{p}
+				& = \dfrac{1}{x}\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\log^{2}{p}+\int_{1}^{x}\parenthesis{\sum_{\substack{p\leq t\\p\equiv l\pmod{k}}}\log^{2}{p}}\dfrac{1}{t^{2}}dt
+		\end{align*}
+	In a similar manner,
+		\begin{align*}
+			\sum_{\substack{pq\leq x\\pq\equiv l\pmod{k}}}\dfrac{\log{p}\log{q}}{pq}
+				& = \dfrac{1}{x}\sum_{\substack{pq\leq x\\pq\equiv l\pmod{k}}}\log{p}\log{q}+\int_{1}^{x}\parenthesis{\sum_{\substack{pq\leq t\\pq\equiv l\pmod{k}}}\log{p}\log{q}}\dfrac{1}{t^{2}}dt
+		\end{align*}
+	Summing them,
+		\begin{align*}
+			\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\dfrac{\log^{2}{p}}{p}+\sum_{\substack{pq\leq x\\pq\equiv l\pmod{k}}}\dfrac{\log{p}\log{q}}{pq}
+				& = \dfrac{1}{x}\parenthesis{\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\log^{2}{p}+\sum_{\substack{pq\leq x\\pq\equiv l\pmod{k}}}\log{p}\log{q}}\\
+				& +\int_{1}^{x}\dfrac{1}{t^{2}}\parenthesis{\sum_{\substack{p\leq t\\p\equiv l\pmod{k}}}\log^{2}{p}+\sum_{\substack{pq\leq t\\pq\equiv l\pmod{k}}}\log{p}\log{q}}dt\\
+				& = \dfrac{1}{x\varphi(k)}\parenthesis{\sum_{p\leq x}\log^{2}{p}+\sum_{pq\leq x}\log{p}\log{q}}+O(1)\\
+				& +\int_{1}^{x}\parenthesis{\dfrac{1}{t^{2}\varphi(k)}\parenthesis{\sum_{p\leq x}\log^{2}{p}+\sum_{pq\leq x}\log{p}\log{q}}+\bigo{\dfrac{1}{t}}}dt\\
+				& = \dfrac{1}{x\varphi(k)}\parenthesis{\sum_{p\leq x}\log^{2}{p}+\sum_{pq\leq x}\log{p}\log{q}}+O(1)\\
+				& +\dfrac{1}{\varphi(k)}\int_{1}^{x}\dfrac{\sum_{p\leq t}\log^{2}{p}+\sum_{pq\leq t}\log{p}\log{q}}{t^{2}}dt+O(\log{x})
 		\end{align*}
 \end{document}
