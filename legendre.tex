@@ -657,7 +657,7 @@
 		\begin{note}
 			It may not be apparent at first where we used the fact $L(1, \chi)\neq0$. Do ponder on it in case you missed that we did not state it explicitly. But it is still a necessary prerequisite for this proof to work.
 		\end{note}
-	\section{Second Proof by Selberg}
+	\section{Second Proof by Selberg}\index{Selberg's proof of Dirichlet's theorem}
 	Today there are many variations of the proof of Dirichlet's theorem on arithmetic progressions. But most proofs essentially have the same core idea. A much lesser known and studied proof due to \textcite{selberg_1949} has a little different approach to it. The idea itself is primarily a modification of \textit{Selberg's asymptotic formula} which will be discussed heavily in \autoref{sec:fundamentallemma}. In the last proof, we tried to connect sums of prime powers of the form $kn+l$ with another sum that would not converge. Then we separated the primes only so that the prime powers that are at least squares contribute only to a convergent sum. Selberg's proof does something similar except instead of using the divergence of $L$ series, he used a characteristic function for product of at most two prime powers. Here, we will lay the foundation of Selberg's asymptotic formula and we will prove the actual formula that will be used to prove the prime number theorem later.
 
 	For a real $x$, let
@@ -876,4 +876,30 @@
 			\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\dfrac{\log^{2}{p}}{p}+\sum_{\substack{pq\leq x\\pq\equiv l\pmod{k}}}\dfrac{\log{p}\log{q}}{pq}
 				& = \dfrac{1}{\varphi(k)}\parenthesis{\sum_{p\leq x}\dfrac{\log^{2}{p}}{p}+\sum_{pq\leq x}\dfrac{\log{p}\log{q}}{pq}}+O(\log{x})
 		\end{align*}
+	Here we can again get a better estimation separating $\frac{\log{p}\log{q}}{pq}$.
+		\begin{align*}
+			\sum_{pq\leq x}\dfrac{\log{p}\log{q}}{pq}
+				& = \sum_{p\leq x}\dfrac{\log{p}}{p}\sum_{q\leq x/p}\dfrac{\log{q}}{q}\\
+				& = \sum_{p\leq x}\dfrac{\log{p}}{p}\log{\frac{x}{p}}+\bigo{\log{x}}\\
+				& = \parenthesis{\sum_{p\leq x}\dfrac{\log{p}}{p}}\log{x}-\sum_{p\leq x}\dfrac{\log^{2}{p}}{p}+O(\log{x})\\
+				& = \log^{2}{x}-\sum_{p\leq x}\dfrac{\log^{2}{p}}{p}+O(\log{x})
+		\end{align*}
+	Therefore,
+		\begin{align*}
+			\sum_{p\leq x}\dfrac{\log^{2}{p}}{p}+\sum_{pq\leq x}\dfrac{\log{p}\log{q}}{pq}
+				& = \log^{2}{x}+O(\log{x})\\
+			\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\dfrac{\log^{2}{p}}{p}+\sum_{\substack{pq\leq x\\pq\equiv l\pmod{k}}}\dfrac{\log{p}\log{q}}{pq}
+				& = \dfrac{\log^{2}{x}}{\varphi(k)}+O(\log{x})
+		\end{align*}
+	Notice that we already know partial sum of $\frac{\log{p}}{p}$ so it makes sense to use it again, however, $\frac{\log{p}\log{q}}{pq}$ makes it difficult. We can simply ignore this term and write
+		\begin{align*}
+			\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\dfrac{\log^{2}{p}}{p}
+				& \leq \dfrac{\log^{2}{x}}{\varphi(k)}+O(\log{x})
+		\end{align*}
+	Using partial summation formula,
+		\begin{align*}
+			\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\dfrac{\log^{2}{p}}{p}
+				& = \parenthesis{\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\dfrac{\log{p}}{p}}\log{x}-\int_{1}^{x}\dfrac{\sum_{\substack{p\leq t\\p\equiv l\pmod{k}}}\dfrac{\log{p}}{p}}{t}dt
+		\end{align*}
+	So
 \end{document}
