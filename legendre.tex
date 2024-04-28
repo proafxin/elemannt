@@ -658,7 +658,7 @@
 			It may not be apparent at first where we used the fact $L(1, \chi)\neq0$. Do ponder on it in case you missed that we did not state it explicitly. But it is still a necessary prerequisite for this proof to work.
 		\end{note}
 	\section{Second Proof by Selberg}\index{Selberg's proof of Dirichlet's theorem}
-	Today there are many variations of the proof of Dirichlet's theorem on arithmetic progressions. But most proofs essentially have the same core idea. A much lesser known and studied proof due to \textcite{selberg_1949} has a little different approach to it. The idea itself is primarily a modification of \textit{Selberg's asymptotic formula} which will be discussed heavily in \autoref{sec:fundamentallemma}. In the last proof, we tried to connect sums of prime powers of the form $kn+l$ with another sum that would not converge. Then we separated the primes only so that the prime powers that are at least squares contribute only to a convergent sum. Selberg's proof does something similar except instead of using the divergence of $L$ series, he used a characteristic function for product of at most two prime powers. Here, we will lay the foundation of Selberg's asymptotic formula and we will prove the actual formula that will be used to prove the prime number theorem later.
+	Today there are many variations of the proof of Dirichlet's theorem on arithmetic progressions. But most proofs essentially have the same core idea. A much lesser known and studied proof due to \textcite{selberg_1949} has a little different approach to it. The idea itself is primarily a modification of \textit{Selberg's asymptotic formula} which will be discussed heavily in \autoref{sec:fundamentallemma}. In the last proof, we tried to connect sums of prime powers of the form $kn+l$ with another sum that would not converge. Then we separated the primes only so that the prime powers that are at least squares contribute only to a convergent sum. Selberg's proof does something similar except instead of using the divergence of $L$ series, he used a characteristic function for product of at most two prime powers. Here, we will lay the foundation of Selberg's asymptotic formula and we will prove the actual formula that will be used to prove the prime number theorem later. The calculations in this proof are pretty heavy but we will try to show as much of the calculation as possible here.
 
 	For a real $x$, let
 		\begin{align*}
@@ -898,8 +898,81 @@
 		\end{align*}
 	Using partial summation formula,
 		\begin{align*}
-			\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\dfrac{\log^{2}{p}}{p}
-				& = \parenthesis{\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\dfrac{\log{p}}{p}}\log{x}-\int_{1}^{x}\dfrac{\sum_{\substack{p\leq t\\p\equiv l\pmod{k}}}\dfrac{\log{p}}{p}}{t}dt
+			\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\dfrac{\log{p}}{p}
+				& = \sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\dfrac{\log^{2}{p}}{p\log{p}}\\
+				& = \dfrac{\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\dfrac{\log^{2}{p}}{p}}{\log{x}}+\int_{1}^{x}\dfrac{\sum_{\substack{p\leq t\\p\equiv l\pmod{k}}}\dfrac{\log^{2}{p}}{p}}{t\log^{2}{t}}dt\\
+				& \leq \dfrac{\log{x}}{\varphi(k)}+\int_{1}^{x}\dfrac{\dfrac{\log^{2}{t}}{\varphi(k)}+O(\log{t})}{t\log^{2}{t}}dt\\
+				& = \dfrac{\log{x}}{\varphi(k)}+\dfrac{1}{\varphi(k)}\int_{1}^{x}\dfrac{1}{t}dt+\bigo{\int_{1}^{x}\dfrac{1}{t\log{t}}dt}\\
+				& = \dfrac{2\log{x}}{\varphi(k)}+O(1)+I
 		\end{align*}
-	So
+	Letting $\log{t}=z$, $dt=e^{z}dz$,
+		\begin{align*}
+			I
+				& = \int_{1}^{\log{x}} \dfrac{e^{z}dz}{ze^{z}}\\
+				& = \log{\log{x}}+O(1)
+		\end{align*}
+	Thus, we have
+		\begin{align*}
+			\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\dfrac{\log{p}}{p}
+				& \leq \dfrac{2\log{x}}{\varphi(k)}+\bigo{\log{\log{x}}}
+		\end{align*}
+	Same as before, we also calculate
+		\begin{align*}
+			\sum_{\substack{pq\leq x\\pq\equiv l\pmod{k}}}\dfrac{\log{p}\log{q}}{pq}
+				& \leq \sum_{\substack{p\leq\sqrt[3]{x}\\q\leq \sqrt[3]{x}\\pq\equiv l\pmod{k}}}\dfrac{\log{p}\log{q}}{pq}+2\sum_{\substack{\sqrt[3]{x}<p\leq x\\pq\equiv l\pmod{k}}}\dfrac{\log{p}\log{q}}{pq}\\
+				& = \sum_{p\leq\sqrt[3]{x}}\sum_{\substack{q\leq \sqrt[3]{x}\\pq\equiv l\pmod{k}}}\dfrac{\log{p}\log{q}}{pq}+2\sum_{\sqrt[3]{x}<p\leq x}\dfrac{\log{p}}{p}\sum_{\substack{q\leq x/p\\pq\equiv l\pmod{k}}}\dfrac{\log{q}}{q}
+		\end{align*}
+	For the second part of the right sum, note that
+		\begin{align*}
+			\sum_{p\leq z}\dfrac{\log{p}}{p}\log(x/p)
+				& = \log{x}\log{z}-\dfrac{\log^{2}{z}}{2}+O(\log{x})
+		\end{align*}
+	Then
+		\begin{align*}
+			\sum_{\sqrt[3]{x}<p\leq x}\dfrac{\log{p}}{p}\sum_{\substack{q\leq x/p\\pq\equiv l\pmod{k}}}\dfrac{\log{q}}{q}
+				& \leq \sum_{\sqrt[3]{x}<p\leq x}\dfrac{2\log{p}\log(x/p)}{p\varphi(k)}+\bigo{\sum_{\sqrt[3]{x}<p\leq x}\dfrac{\log{p}}{p}\log\log{x}}\\
+				& = \dfrac{2}{\varphi(k)}\sum_{\sqrt[3]{x}<p\leq x}\dfrac{\log{p}}{p}\log(x/p)+\bigo{\log{x}\log\log{x}}\\
+				& = \dfrac{2}{\varphi(k)}\parenthesis{\sum_{p\leq x}\dfrac{\log{p}}{p}\log(x/p)-\sum_{p\leq \sqrt[3]{x}}\dfrac{\log{p}}{p}\log(x/p)}+\bigo{\log{x}\log\log{x}}\\
+				& = \dfrac{2}{\varphi(k)}\parenthesis{\dfrac{1}{2}\log^{2}{x}-\dfrac{1}{3}\log^{2}{x}+\dfrac{1}{18}\log^{2}{x}+O(\log{x})}+O(\log{x}\log{\log{x}})\\
+				& = \dfrac{4\log^{2}{x}}{9\varphi(k)}+O(\log{x}\log{\log{x}})
+		\end{align*}
+	Using this
+		\begin{align*}
+			\sum_{\substack{pq\leq x\\pq\equiv l\pmod{k}}}\dfrac{\log{p}\log{q}}{pq}
+				& \leq \sum_{p\leq\sqrt[3]{x}}\sum_{\substack{q\leq \sqrt[3]{x}\\pq\equiv l\pmod{k}}}\dfrac{\log{p}\log{q}}{pq}+\dfrac{8\log^{2}{x}}{9\varphi(k)}+O(\log{\log{x}})
+		\end{align*}
+	Recall that we have already established
+		\begin{align*}
+			\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\dfrac{\log^{2}{p}}{p}+\sum_{\substack{pq\leq x\\pq\equiv l\pmod{k}}}\dfrac{\log{p}\log{q}}{pq}
+				& = \dfrac{\log^{2}{x}}{\varphi(k)}+O(\log{x})
+		\end{align*}
+	This gives us
+		\begin{align*}
+			\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\dfrac{\log^{2}{p}}{p}
+				& \geq\dfrac{\log^{2}{x}}{9\varphi(k)}-\sum_{\substack{p,q\leq \sqrt[3]{x}\\pq\equiv l\pmod{k}}}\dfrac{\log{p}\log{q}}{pq}+O(\log{\log{x}})
+		\end{align*}
+	Obviously,
+		\begin{align*}
+			\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\dfrac{\log^{2}{p}}{p}
+				& \leq\log{x}\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\dfrac{\log{p}}{p}
+		\end{align*}
+	Therefore,
+		\begin{align*}
+			\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\dfrac{\log{p}}{p}
+				& \geq \dfrac{\log{x}}{9\varphi(k)}-\dfrac{1}{\log{x}}\sum_{\substack{p,q\leq \sqrt[3]{x}\\pq\equiv l\pmod{k}}}\dfrac{\log{p}\log{q}}{pq}+O(\log{\log{x}})\\
+			\dfrac{1}{\log{x}}\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\dfrac{\log{p}}{p}
+				& \geq \dfrac{1}{9\varphi(k)}-\dfrac{1}{\log^{2}{x}}\sum_{\substack{p,q\leq \sqrt[3]{x}\\pq\equiv l\pmod{k}}}\dfrac{\log{p}\log{q}}{pq}+\bigo{\dfrac{\log{\log{x}}}{\log{x}}}\\
+				& = \dfrac{1}{9\varphi(k)}-\dfrac{1}{\log^{2}{x}}\sum_{\substack{p\leq\sqrt[3]{x}\\p\equiv u\pmod{k}}}\dfrac{\log{p}}{p}\sum_{\substack{q\leq\sqrt[3]{x}\\q\equiv v\pmod{k}\\uv\equiv l\pmod{k}}}\dfrac{\log{q}}{q}+O(1)
+		\end{align*}
+	Letting
+		\begin{align*}
+			Q_{l}(x)
+				& \coloneq \dfrac{1}{\log{x}}\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\dfrac{\log{p}}{p}
+		\end{align*}
+	we get
+		\begin{align*}
+			Q_{l}(x)
+				& \geq \dfrac{1}{9\varphi(k)}-\dfrac{1}{9}\sum_{uv\equiv l\pmod{k}}\parenthesis{\dfrac{1}{\log{\sqrt[3]{x}}}\sum_{\substack{p\leq \sqrt[3]{x}\\p\equiv u\pmod{k}}}\dfrac{\log{p}}{p}}\parenthesis{\dfrac{1}{\log{\sqrt[3]{x}}}\sum_{\substack{q\leq \sqrt[3]{x}\\q\equiv v\pmod{k}}}\dfrac{\log{q}}{q}}+O(1)\\
+				& \geq\dfrac{1}{9\varphi(k)}-\sum_{uv\equiv l\pmod{k}}Q_{u}(\sqrt[3]{x})Q_{v}(\sqrt[3]{x})+O(1)
+		\end{align*}
 \end{document}
