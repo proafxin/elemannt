@@ -922,18 +922,19 @@
 				& \leq \sum_{\substack{p\leq\sqrt[3]{x}\\q\leq \sqrt[3]{x}\\pq\equiv l\pmod{k}}}\dfrac{\log{p}\log{q}}{pq}+2\sum_{\substack{\sqrt[3]{x}<p\leq x\\pq\equiv l\pmod{k}}}\dfrac{\log{p}\log{q}}{pq}\\
 				& = \sum_{p\leq\sqrt[3]{x}}\sum_{\substack{q\leq \sqrt[3]{x}\\pq\equiv l\pmod{k}}}\dfrac{\log{p}\log{q}}{pq}+2\sum_{\sqrt[3]{x}<p\leq x}\dfrac{\log{p}}{p}\sum_{\substack{q\leq x/p\\pq\equiv l\pmod{k}}}\dfrac{\log{q}}{q}
 		\end{align*}
-	For the second part of the right sum, note that
+	For the second part of the right sum using partial summation formula,
 		\begin{align*}
-			\sum_{p\leq z}\dfrac{\log{p}}{p}\log(x/p)
-				& = \log{x}\log{z}-\dfrac{\log^{2}{z}}{2}+O(\log{x})
-		\end{align*}
-	Then
-		\begin{align*}
+			\sum_{p\leq z}\dfrac{\log{p}}{p}\log\parenthesis{\frac{x}{p}}
+				& = \log{x}\sum_{p\leq z}\dfrac{\log{p}}{p}-\sum_{p\leq z}\dfrac{\log^{2}{p}}{p}\\
+				& = \log{x}\log{z}-\dfrac{\log^{2}{z}}{2}+O(\log{x})\\
 			\sum_{\sqrt[3]{x}<p\leq x}\dfrac{\log{p}}{p}\sum_{\substack{q\leq x/p\\pq\equiv l\pmod{k}}}\dfrac{\log{q}}{q}
 				& \leq \sum_{\sqrt[3]{x}<p\leq x}\dfrac{2\log{p}\log(x/p)}{p\varphi(k)}+\bigo{\sum_{\sqrt[3]{x}<p\leq x}\dfrac{\log{p}}{p}\log\log{x}}\\
-				& = \dfrac{2}{\varphi(k)}\sum_{\sqrt[3]{x}<p\leq x}\dfrac{\log{p}}{p}\log(x/p)+\bigo{\log{x}\log\log{x}}\\
-				& = \dfrac{2}{\varphi(k)}\parenthesis{\sum_{p\leq x}\dfrac{\log{p}}{p}\log(x/p)-\sum_{p\leq \sqrt[3]{x}}\dfrac{\log{p}}{p}\log(x/p)}+\bigo{\log{x}\log\log{x}}\\
-				& = \dfrac{2}{\varphi(k)}\parenthesis{\dfrac{1}{2}\log^{2}{x}-\dfrac{1}{3}\log^{2}{x}+\dfrac{1}{18}\log^{2}{x}+O(\log{x})}+O(\log{x}\log{\log{x}})\\
+				& = \dfrac{2}{\varphi(k)}\sum_{\sqrt[3]{x}<p\leq x}\dfrac{\log{p}}{p}\log\parenthesis{\frac{x}{p}}\\
+				& +\bigo{\log{x}\log\log{x}}\\
+				& = \dfrac{2}{\varphi(k)}\parenthesis{\sum_{p\leq x}\dfrac{\log{p}}{p}\log\parenthesis{\frac{x}{p}}-\sum_{p\leq \sqrt[3]{x}}\dfrac{\log{p}}{p}\log\parenthesis{\frac{x}{p}}}\\
+				& +\bigo{\log{x}\log\log{x}}\\
+				& = \dfrac{2}{\varphi(k)}\parenthesis{\dfrac{1}{2}\log^{2}{x}-\dfrac{1}{3}\log^{2}{x}+\dfrac{1}{18}\log^{2}{x}+O(\log{x})}\\
+				& +O(\log{x}\log{\log{x}})\\
 				& = \dfrac{4\log^{2}{x}}{9\varphi(k)}+O(\log{x}\log{\log{x}})
 		\end{align*}
 	Using this
@@ -961,10 +962,14 @@
 			\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\dfrac{\log{p}}{p}
 				& \geq \dfrac{\log{x}}{9\varphi(k)}-\dfrac{1}{\log{x}}\sum_{\substack{p,q\leq \sqrt[3]{x}\\pq\equiv l\pmod{k}}}\dfrac{\log{p}\log{q}}{pq}+O(\log{\log{x}})\\
 			\dfrac{1}{\log{x}}\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\dfrac{\log{p}}{p}
-				& \geq \dfrac{1}{9\varphi(k)}-\dfrac{1}{\log^{2}{x}}\sum_{\substack{p,q\leq \sqrt[3]{x}\\pq\equiv l\pmod{k}}}\dfrac{\log{p}\log{q}}{pq}+\bigo{\dfrac{\log{\log{x}}}{\log{x}}}\\
-				& = \dfrac{1}{9\varphi(k)}-\dfrac{1}{\log^{2}{x}}\sum_{\substack{p\leq\sqrt[3]{x}\\p\equiv u\pmod{k}}}\dfrac{\log{p}}{p}\sum_{\substack{q\leq\sqrt[3]{x}\\q\equiv v\pmod{k}\\uv\equiv l\pmod{k}}}\dfrac{\log{q}}{q}+O(1)
+				& \geq \dfrac{1}{9\varphi(k)}-\dfrac{1}{\log^{2}{x}}\sum_{\substack{p,q\leq \sqrt[3]{x}\\pq\equiv l\pmod{k}}}\dfrac{\log{p}\log{q}}{pq}+\bigo{\dfrac{\log{\log{x}}}{\log{x}}}
 		\end{align*}
-	Letting
+	Since $0\leq \log_{x}{\log{x}}<1$ for $x\geq e$, there is a real number $x_{0}(k)>0$ such that for all $x>x_{0}(k)$, $c\delta\log_{x}{\log{x}}$ is positive for any positive $c$. For such $x_{0}(k)$,
+		\begin{align*}
+			\dfrac{1}{9\varphi(k)}\log^{2}{x}+\bigo{\log_{x}{\log{x}}}
+				& > \dfrac{1}{10\varphi(k)}\log^{2}{x}
+		\end{align*}
+	Following Selberg, if we set
 		\begin{align*}
 			Q_{l}(x)
 				& \coloneq \dfrac{1}{\log{x}}\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\dfrac{\log{p}}{p}
@@ -972,7 +977,9 @@
 	we get
 		\begin{align*}
 			Q_{l}(x)
-				& \geq \dfrac{1}{9\varphi(k)}-\dfrac{1}{9}\sum_{uv\equiv l\pmod{k}}\parenthesis{\dfrac{1}{\log{\sqrt[3]{x}}}\sum_{\substack{p\leq \sqrt[3]{x}\\p\equiv u\pmod{k}}}\dfrac{\log{p}}{p}}\parenthesis{\dfrac{1}{\log{\sqrt[3]{x}}}\sum_{\substack{q\leq \sqrt[3]{x}\\q\equiv v\pmod{k}}}\dfrac{\log{q}}{q}}+O(1)\\
-				& \geq\dfrac{1}{9\varphi(k)}-\dfrac{1}{9}\sum_{uv\equiv l\pmod{k}}Q_{u}(\sqrt[3]{x})Q_{v}(\sqrt[3]{x})+O(1)
+				& > \dfrac{1}{10\varphi(k)}-\dfrac{1}{9}\sum_{uv\equiv l\pmod{k}}\parenthesis{\dfrac{1}{\log{\sqrt[3]{x}}}\sum_{\substack{p\leq \sqrt[3]{x}\\p\equiv u\pmod{k}}}\dfrac{\log{p}}{p}}\parenthesis{\dfrac{1}{\log{\sqrt[3]{x}}}\sum_{\substack{q\leq \sqrt[3]{x}\\q\equiv v\pmod{k}}}\dfrac{\log{q}}{q}}\\
+				& >\dfrac{1}{10\varphi(k)}-\dfrac{1}{9}\sum_{uv\equiv l\pmod{k}}Q_{u}(\sqrt[3]{x})Q_{v}(\sqrt[3]{x})
 		\end{align*}
+
+
 \end{document}
