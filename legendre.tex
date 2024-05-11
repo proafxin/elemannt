@@ -942,12 +942,13 @@
 			\sum_{\substack{pq\leq x\\pq\equiv l\pmod{k}}}\dfrac{\log{p}\log{q}}{pq}
 				& \leq \sum_{p\leq\sqrt[3]{x}}\sum_{\substack{q\leq \sqrt[3]{x}\\pq\equiv l\pmod{k}}}\dfrac{\log{p}\log{q}}{pq}+\dfrac{8\log^{2}{x}}{9\varphi(k)}+O(\log{\log{x}})
 		\end{align*}
-	Recall that we have already established
+	For brevity, let
 		\begin{align*}
-			\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\dfrac{\log^{2}{p}}{p}+\sum_{\substack{pq\leq x\\pq\equiv l\pmod{k}}}\dfrac{\log{p}\log{q}}{pq}
+			S(k,x)
+				& =\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\dfrac{\log^{2}{p}}{p}+\sum_{\substack{pq\leq x\\pq\equiv l\pmod{k}}}\dfrac{\log{p}\log{q}}{pq}\\
 				& = \dfrac{\log^{2}{x}}{\varphi(k)}+O(\log{x})
 		\end{align*}
-	This gives us
+	We don't need to consider $l$ here because the expression is free of $l$. This gives us
 		\begin{align*}
 			\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\dfrac{\log^{2}{p}}{p}
 				& \geq\dfrac{\log^{2}{x}}{9\varphi(k)}-\sum_{\substack{p,q\leq \sqrt[3]{x}\\pq\equiv l\pmod{k}}}\dfrac{\log{p}\log{q}}{pq}+O(\log{\log{x}})
@@ -980,6 +981,25 @@
 				& > \dfrac{1}{10\varphi(k)}-\dfrac{1}{9}\sum_{uv\equiv l\pmod{k}}\parenthesis{\dfrac{1}{\log{\sqrt[3]{x}}}\sum_{\substack{p\leq \sqrt[3]{x}\\p\equiv u\pmod{k}}}\dfrac{\log{p}}{p}}\parenthesis{\dfrac{1}{\log{\sqrt[3]{x}}}\sum_{\substack{q\leq \sqrt[3]{x}\\q\equiv v\pmod{k}}}\dfrac{\log{q}}{q}}\\
 				& >\dfrac{1}{10\varphi(k)}-\dfrac{1}{9}\sum_{uv\equiv l\pmod{k}}Q_{u}(\sqrt[3]{x})Q_{v}(\sqrt[3]{x})
 		\end{align*}
-
+	Using partial summation formula and the notation $S$,
+		\begin{align*}
+			\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\dfrac{\log^{3}{p}}{p}+\sum_{\substack{pq\leq x\\pq\equiv l\pmod{k}}}\dfrac{\log{p}\log{q}}{pq}\log{pq}
+				& = S(k, x)\log{x}-\int_{1}^{x}\dfrac{S(k, t)}{t}dt\\
+				& = \dfrac{\log^{3}{x}}{\varphi(k)}+O(\log^{2}{x})-\dfrac{1}{\varphi(k)}\int_{1}^{x}\dfrac{\log^{2}{x}}{t}dt-\int_{1}^{x}\dfrac{\log{t}}{t}dt\\
+				& = \dfrac{2\log^{3}{x}}{3\varphi(k)}+\bigo{\log^{2}{x}}
+		\end{align*}
+	Here,
+		\begin{align*}
+			\sum_{\substack{pq\leq x\\pq\equiv l\pmod{k}}}\dfrac{\log{p}\log{q}}{pq}\log{pq}
+				& = \sum_{\substack{pq\leq x\\pq\equiv l\pmod{k}}}\dfrac{\log{p}\log{q}}{pq}(\log{p}+\log{q})\\
+				& = \sum_{\substack{pq\leq x\\pq\equiv l\pmod{k}}}\dfrac{\log{p}\log^{2}{q}}{pq}+\sum_{\substack{pq\leq x\\pq\equiv l\pmod{k}}}\dfrac{\log^{2}{p}\log{q}}{pq}\\
+				& = 2\sum_{\substack{pq\leq x\\pq\equiv l\pmod{k}}}\dfrac{\log{p}\log{q}}{pq}\log^{2}{q}\\
+				& = 2\sum_{p\leq x}\dfrac{\log{p}}{p}\sum_{\substack{q\leq x/p\\pq\equiv l\pmod{k}}}\dfrac{\log^{2}{q}}{q}
+		\end{align*}
+	Now, using the definition of $S(lp', x/p)$ where $pp'\equiv1\pmod{k}$ so $p'$ is the modular inverse of $p$,
+		\begin{align*}
+			\sum_{\substack{q\leq x/p\\pq\equiv l\pmod{k}}}\dfrac{\log^{2}{q}}{q}
+				& = S(lp', x/p)-\sum_{\substack{pqr\leq x\\pqr\equiv l\pmod{k}}}\dfrac{\log{q}\log{r}}{qr}+O(\log{x})
+		\end{align*}
 
 \end{document}
