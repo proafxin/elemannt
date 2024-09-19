@@ -9,13 +9,12 @@
 		\end{align*}
 	was made which is now known as \index{Logarithmic integral}\textit{logarithmic integral}. Gauss conjectured (see \textcite[Page 37]{landau_1911}) around 1792 or 1793 that
 		\begin{align*}
-			\lim\limits_{x\to\infty}\dfrac{\pi(x)}{\dfrac{x}{\log{x}}}
+			\lim\limits_{x\to\infty}\dfrac{\pi(x)}{x/\log{x}}
 				& = 1
 		\end{align*}
-	\textcite{tchebycheff_1852} is the first one to make any substantial progress on the matter. %But instead of going straight into discussing the findings of Tchebyscheff, we will first try to understand the reasoning behind his approach. It is very difficult to do so and there is no real concrete intuition behind it. But we will make an attempt anyway. Imagine you are given the numbers from $1$ to $n$. If one of these numbers was missing, we could find the missing number by subtracting the sum of the remaining numbers from the sum $1+\ldots+n$. Now what happens if two numbers go missing? Does the same technique apply? Let us give it a try. If $a$ and $b$ are the missing numbers, then we only know that the subtracted value is going to be $a+b$. However, there are $a+b-1$ possible pairs of positive integers for which $a+b$ can be achieved. So, how do we know exactly which pair is the answer? Definitely we need another clue for this. Now, if you were allowed to ask questions for getting clues (directly asking for the numbers is not allowed obviously), what kind of questions would you want to ask? Assume that you are allowed only one question in this scenario regarding only one of the numbers (again, except asking what the actual number is). One idea would be to ask what the multiple of that number (say, multiple of $3$) is. But this is again asking for the numbers directly. So assume that this type of questioning is also not allowed either. But now we can ask questions such as what is the sum when the first number multiplied by $3$ is added to the second number? We can form equations from such questions and then easily find the answers. Let us now make this a little more challenging. Imagine the same problem, except now you do not have to find the numbers explicitly. Rather you just have to find the number of missing numbers. However, you can ask fewer questions this time. What should be our approach now? If we just keep randomly asking questions to form linear equations like before, we will run out of questions sooner.
-	In fact, Tchebyscheff was close to proving the prime number theorem himself. \textcite{tschebischeff_1852} proved that if $\pi(x)$ was of order $\frac{x}{\log^{N}{x}}$ as $x\to\infty$, then $N=1$. Consequently, he also proved that if the limit
+	\textcite{tchebycheff_1852} is the first one to make any substantial progress on the matter. In fact, Tchebyscheff was close to proving the prime number theorem himself. \textcite{tschebischeff_1852} proved that if $\pi(x)$ was of order $\frac{x}{\log^{N}{x}}$ as $x\to\infty$, then $N=1$. Consequently, he also proved that if the limit
 		\begin{align*}
-			\lim_{x\to\infty}\dfrac{x}{\log{x}}
+			\lim_{x\to\infty}\dfrac{\pi(x)}{x/\log{x}}
 		\end{align*}
 	exists, then it is $1$. The only problem was to actually prove that this limit indeed exists. One of our objectives in this book is prove the prime number theorem without any serious analysis from the scratch. We will discuss some relevant results first that give us better insight into the structure of primes before doing that.
 		\subfile{prime.tex}
@@ -226,7 +225,7 @@
 		\begin{theorem}\label{thm:pntequivalence}
 			If any of the three limits
 				\begin{align*}
-					\lim_{x\to\infty}\dfrac{\pi(x)}{\dfrac{x}{\log{x}}}
+					\lim_{x\to\infty}\dfrac{\pi(x)}{x/\log{x}}
 						& ,\lim_{x\to\infty}\dfrac{\vartheta(x)}{x}, \lim_{x\to\infty}\dfrac{\psi(x)}{x}
 				\end{align*}
 			exists, then all three limits are equal.
@@ -245,7 +244,7 @@
 			Then, for all $x$,
 				\begin{align*}
 					\dfrac{\vartheta(x)}{x}
-						& \leq \dfrac{\psi(x)}{x}\leq \dfrac{\pi(x)}{\dfrac{x}{\log{x}}}
+						& \leq \dfrac{\psi(x)}{x}\leq \dfrac{\pi(x)}{x/\log{x}}
 				\end{align*}
 			So, $l_{2}\leq l_{3}\leq l_{1}$. Now, for any $0<\epsilon<1$, $\vartheta(x^{\epsilon})\geq0$ so $\vartheta(x)-\vartheta(x^{\epsilon})\leq \vartheta(x)$.
 				\begin{align*}
@@ -258,19 +257,34 @@
 			Here, $\pi(x^{\epsilon})<x^{\epsilon}$ so $\pi(x)-\pi(x^{\epsilon})\geq \pi(x)-x^{\epsilon}$ and
 				\begin{align*}
 					\dfrac{\vartheta(x)}{x}
-						& > \epsilon\left(\dfrac{\pi(x)}{\dfrac{x}{\log{x}}}-\dfrac{\log{x}}{x^{1-\epsilon}}\right)
+						& > \epsilon\left(\dfrac{\pi(x)}{x/\log{x}}-\dfrac{\log{x}}{x^{1-\epsilon}}\right)
 				\end{align*}
 			Taking $x\to\infty$, $\lim_{x\to\infty}\frac{\log{x}}{x^{1-\epsilon}}=0$ so
 				\begin{align*}
 					\lim_{x\to\infty}\dfrac{\vartheta(x)}{x}
-						& \geq \epsilon \dfrac{\pi(x)}{\dfrac{x}{\log{x}}}
+						& \geq \epsilon \dfrac{\pi(x)}{x/\log{x}}
 				\end{align*}
 			Therefore, $l_{2}\geq l_{1}$ so $l_{1}=l_{2}$ and so $l_{3}=l_{2}=l_{1}$.
 		\end{proof}
-	$\vartheta$ and $\psi$ are discussed in every book on analytic number theory, however, it is never discussed why Tchebyscheff would consider these functions to begin with. Like most notable mathematical discovery, this was not a blind attempt by Tchebyscheff and he did not suddenly receive divine knowledge one night either. So there must be some explanation of how he thought of these functions and why they are so crucial in the study of prime numbers. Initially, I wanted to discuss a rationalization how Tchebyscheff might have thought of them. But I think it is more appropriate if we leave it as an open question to the reader to come up with such a rationalization how we might come up with such functions if we were to prove the prime number theorem. \textcite[pp. 13]{ingham_1932} says the following about this matter:
+	Before we move on, we need to ask ourselves a very important question. $\vartheta$ and $\psi$ are discussed in every book on analytic number theory, however, it is never discussed why Tchebyscheff would consider these functions to begin with. Like most notable mathematical discovery, this was not a blind attempt by Tchebyscheff. He did not receive divine knowledge one night out of the blue either. And make no mistake, Tchebyscheff's work on these functions are the most important building blocks of modern analytic number theory. We first proved the above equivalence before asking the question to make it appparent just how important it is. So there must be some explanation of how he came up with these functions and the aspect of this theory is always overlooked when discussing analytic number theory. \textcite[pp. 13]{ingham_1932} says the following about this matter:
 		\begin{quote}
 			It happens (as will appear more clearly in $\S7$) that, of the three functions $\pi,\vartheta,\psi$, the one which arises most naturally from the analytical point of view is the most remote from the original problem, namely $\psi$. For this reason, it is usually most convenient to work in the first instance with $\psi$ and to use Theorem 3 (or more precise relations corresponding to the degree of approximation contemplated) to deduce the results about $\pi$. This is a complication which seems inherent in the subject, and the reader should familiarize himself at the outset with the function $\psi$, which is to be regarded as the fundamental one.
 		\end{quote}
+	We will first make an attempt to rationalize what led Tchebyscheff to this discovery. Imagine you are asked to find a missing numbers and you want to find them by asking some questions. Our first intuition will be to take some linear combinations and use matrix and determinants. We can consider these linear combinations as weighted averages of those numbers. The problem of such an imagination in the case of primes is we do not know much about the values of linear combinations of primes. Now,
+		\begin{align*}
+			\pi(x)
+				& = \sum_{p\leq x}1
+		\end{align*}
+	We can hope to get a better understanding indirectly if not directly by considering some weighted averages
+		\begin{align*}
+			\pi(x)
+				& = \sum_{p\leq x}f(p)
+		\end{align*}
+	How do we choose $f$? There is no obvious candidate that helps us gain new insights into $\pi(x)$. Well we must consider what we do know to even attempt such an estimation. At the same time, recall the fact that
+		\begin{align*}
+			\lcm(1,2,\ldots,n)
+				& = \prod_{p\leq n}p^{\log_{p}{n}}
+		\end{align*}
 	One of the goals of Tchebyscheff's work was to prove a postulate by \textcite{bertrand_1845}.
 		\begin{conjecture}[Bertrand's postulate]\label{con:bertrand}
 			For any real number $x>1$, there is a prime $p$ such that $n<p<2n$.
