@@ -266,25 +266,33 @@
 				\end{align*}
 			Therefore, $l_{2}\geq l_{1}$ so $l_{1}=l_{2}$ and so $l_{3}=l_{2}=l_{1}$.
 		\end{proof}
-	Before we move on, we need to ask ourselves a very important question. $\vartheta$ and $\psi$ are discussed in every book on analytic number theory, however, it is never discussed why Tchebyscheff would consider these functions to begin with. Like most notable mathematical discovery, this was not a blind attempt by Tchebyscheff. He did not receive divine knowledge one night out of the blue either. And make no mistake, Tchebyscheff's work on these functions are the most important building blocks of modern analytic number theory. We first proved the above equivalence before asking the question to make it appparent just how important it is. So there must be some explanation of how he came up with these functions and the aspect of this theory is always overlooked when discussing analytic number theory. \textcite[pp. 13]{ingham_1932} says the following about this matter:
+	Before we move on, we need to ask ourselves a very important question. $\vartheta$ and $\psi$ are discussed in every book on analytic number theory, however, it is never discussed why Tchebyscheff would consider these functions to begin with. Like most notable mathematical discovery, this was not a blind attempt by Tchebyscheff. He did not suddenly receive divine knowledge one night. And make no mistake, Tchebyscheff's work on these functions are the most important building blocks of modern analytic number theory. We first proved the equivalence above to make it apparent just how important it is. So there must be some explanation of how he came up with these functions and the aspect of this theory is always overlooked when discussing analytic number theory. \textcite[pp. 13]{ingham_1932} says the following about this matter:
 		\begin{quote}
 			It happens (as will appear more clearly in $\S7$) that, of the three functions $\pi,\vartheta,\psi$, the one which arises most naturally from the analytical point of view is the most remote from the original problem, namely $\psi$. For this reason, it is usually most convenient to work in the first instance with $\psi$ and to use Theorem 3 (or more precise relations corresponding to the degree of approximation contemplated) to deduce the results about $\pi$. This is a complication which seems inherent in the subject, and the reader should familiarize himself at the outset with the function $\psi$, which is to be regarded as the fundamental one.
 		\end{quote}
-	We will first make an attempt to rationalize what led Tchebyscheff to this discovery. Imagine you are asked to find a missing numbers and you want to find them by asking some questions. Our first intuition will be to take some linear combinations and use matrix and determinants. We can consider these linear combinations as weighted averages of those numbers. The problem of such an imagination in the case of primes is we do not know much about the values of linear combinations of primes. Now,
+	As is the case in almost every book, Ingham himself also simply suggests the reader to get familiarized with these functions. The question still remains what can motivate us to consider these functions. First, we have no idea about the sum of primes not exceeding $n$ or a clear estimation of the product either for that matter. If you are asked to find some missing numbers, your first question would probably be whether we know the values of some linear combinations of those unknowns or not. This fundamental way of thinking should provoke you to reach the conclusion that you are essentially asking for a weighted average of those numbers. Notice how this interpretation is more insightful than simply making queries about the numbers. Now, what if you do not even have a clear answer for these weighted averages? That case seems to be very similar to our problem. The prime counting function is
 		\begin{align*}
 			\pi(x)
 				& = \sum_{p\leq x}1
 		\end{align*}
-	We can hope to get a better understanding indirectly if not directly by considering some weighted averages
+	which possesses no insight of any value. We can only hope to get a better understanding of $\pi(x)$ indirectly by considering
 		\begin{align*}
-			\pi(x)
-				& = \sum_{p\leq x}f(p)
+			\sum_{p\leq x}f(p)
 		\end{align*}
-	How do we choose $f$? There is no obvious candidate that helps us gain new insights into $\pi(x)$. Well we must consider what we do know to even attempt such an estimation. At the same time, recall the fact that
+	Now the question is how we choose $f$. Obviously, we want a function $f$ which is fairly easy for us to analyze and estimate. On the other hand, we would also like to have some flexibility so that we could represent this sum in a different manner which might give us new insights. Moreover, if the reader is familiar with Abel's partial summation formula and the prime number theorem is true,
 		\begin{align*}
-			\lcm(1,2,\ldots,n)
-				& = \prod_{p\leq n}p^{\log_{p}{n}}
+			\pi(x)\log{x}
+				& \sim x
 		\end{align*}
+	Keeping the partial summation formula in mind and considering
+		\begin{align*}
+			\sum_{p\leq x}f(p)
+				& \sim x\\
+			f(x)\sum_{p\leq x}1-g(x)
+				& \sim x
+		\end{align*}
+	we see that $f(x)=\log{x}$ and $g(x)=o(x)$ or $g(x)=O(1)$ seem to be suitable candidates.
+	
 	One of the goals of Tchebyscheff's work was to prove a postulate by \textcite{bertrand_1845}.
 		\begin{conjecture}[Bertrand's postulate]\label{con:bertrand}
 			For any real number $x>1$, there is a prime $p$ such that $n<p<2n$.
