@@ -1,4 +1,4 @@
-\documentclass[12pt, leqno]{book}
+\documentclass[a4paper,12pt]{book}
 
 
 \usepackage{amsmath,amssymb, amsthm}
@@ -178,12 +178,12 @@
 	\makeatother
 \else
 	\usepackage{pdfrender, xcolor,relsize}
-	\usepackage{times}
+	%\usepackage{times}
 
 	%\usepackage[scale=1.2]{baskervillef}
 	%\usepackage[baskerville, scaled=1.2]{newtxmath}
-	\pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.1pt}
-	\makeatletter\let\normalrender\PdfRender@NormalColorHook\let\PdfRender@NormalColorHook\@empty\newcommand*{\textnormalrender}[1]{\begingroup\normalrender#1\endgroup}\makeatother
+	%\pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.1pt}
+	%\makeatletter\let\normalrender\PdfRender@NormalColorHook\let\PdfRender@NormalColorHook\@empty\newcommand*{\textnormalrender}[1]{\begingroup\normalrender#1\endgroup}\makeatother
 \fi
 
 %\usepackage[,nopostdot,]{glossaries}
@@ -350,7 +350,15 @@
 \newcommand{\propositionautorefname}{Proposition}
 \definecolor{burgundy}{rgb}{0.5, 0.0, 0.13}
 \definecolor{darkgreen}{rgb}{0.0, 0.2, 0.13}
+\definecolor{yaleblue}{rgb}{0.06, 0.3, 0.57}
+
 \usepackage{relsize}
+
+\usepackage{titlesec}
+
+%\titleformat{\section}[runin]{}{\thesection}{}{}
+\titleformat{\section}[runin]{\normalfont\bfseries}{}{0em}{{#1}.}
+
 
 \begin{document}
 	%\AddToShipoutPictureBG{\includegraphics[width=\paperwidth,height=\paperheight]{background}}
@@ -383,21 +391,24 @@
 
 	\TitlePage [  ]
 	{
-		color = { main = burgundy!75!black, back = black!100 }
-		, title     = \normalfont\textsc{Elementary Analytic Number Theory}
+		color = { main = burgundy!75!black, back = gray!100 }
+		, title     = \color{black}\normalfont\Huge\bfseries\textsl{Elementary Analytic Number Theory}
 		, subtitle  =
-		, author    = \normalfont{Masum Billal}
+		, author    = \color{black}\normalfont\bfseries\MakeUppercase{Masum\hspace{.2em} Billal}
 		, date      = {}
 		, logo      = {} %<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 	}
-	\relscale{1.1}
+	
+	\ifPDFTeX
+		%\relscale{1.1}
+	\fi
 
 	\section*{Preface}
 	While analytic number theory is a very broad subject and there are a great many books on this topic, there are not many books that are truly introductory. There are some that are introductory enough such as \textcite{apostol_1976} but they usually depend on abstract algebra and complex analysis heavily. In contrast, it can be argued that both topics are entirely excluded from this book except the very basics. Probably the heaviest result from complex numbers used here is that the product of absolute values of two complex numbers equals to the absolute value of the product of those complex numbers. Thus, the primary objective of this book is to discuss analytic number theory in the most \textit{elementary} way possible. Before I explain what I mean by elementary, I will mention a few more details.
 		\begin{enumerate}
 			\item I neither discuss class number of quadratic forms nor do I follow \textcite[Part Two, Chapter III]{landau_1969} to prove that $L(1,\chi)\neq0$ for real non-principal Dirichlet character $\chi$. Therefore, one of the two proofs I present for Dirichlet's prime number theorem is a mixture of the approach taken by \textcite[Part two, Chapter III, $\S$3]{landau_1969} and \textcite[Chapter VI]{apostol_1976}. Thus, we avoid the unnecessarily confusing and counter-intuitive calculation presented by \textcite[Theorem 152]{landau_1969} while still keeping the proof of Dirichlet's theorem completely elementary. The other proof is due to \textcite{selberg_1949}. Both will be included in \autoref{ch:legendre}. We keep the calculation by Landau for complex characters though since it is quite intuitive and historically, this case has always been the easier one.
 			\item I will treat the reader to a topic I consider to be bittersweet--\textit{Sieve Theory}. However, I will only discuss Brun's theorem on prime pairs and the idea behind Selberg's sieve; the reason being that I primarily intend to lay the groundwork for a solid foundation. One can consult \textcite{cojocaru_murty_2006} and \textcite{friedlander_iwaniec_2010} after reading this chapter. If I only discuss a lot of sieving techniques and prove a lot of theorems, that may cause a lack of sense in the mind of the reader as to why such methods are necessary and what leads one to think in such a way that allows us to prove such powerful results. \textcite{friedlander_iwaniec_2010} has an enormous discussion on the matter and it is mostly elementary but I think the text is a little difficult for a non-enthusiast.
-			\item The reason I include sieve theory at all in this book is that this is the strongest and most interesting area in all of number theory. I will explain further. The development in recent number theory has been a little slow in comparison to the previous century. Brun's theorem on twin primes and Chen's theorem on almost primes related to Goldbach conjecture are still two of the most spectacular results in all of mathematics. Yet both of them are really old and I do not know of any improvements over these results that are of any real significance. \item Brun's theorem is of incredible historical importance; being the starting point of sieve methods today despite being over 100 years old. A story goes that Erd\H{o}s was asked what he thought the strongest theorem was in elementary number theory. His response was Brun's theorem on twin prime pairs. Indeed, one can see that the result of Viggo Brun on twin primes is still the most spectacular result regarding twin primes which requires no analysis or deep results. \textcite[Chapter VI]{friedlander_iwaniec_2010} named their chapter on Brun's theorem \textit{Brun’s Sieve--The Big Bang}. It just goes to show how beautiful this result really is and I believe this theorem is the most underrated result in all of mathematics. Another story goes that Landau had been sitting on Brun's paper for 8 years, mostly due to the use of difficult notations by Brun. Later, Landau dedicated an entire chapter in his \textit{Elementaren Zahlentheorie}, volume I.1 of \textcite{landau_1927} to Brun's theorem. I personally believe this story to be true, and that Landau did this out of guilt that he had deprived the mathematics world from such influential results for so long. The other result, Chen's theorem is based on Selberg's sieve that states that an even number greater than 2 is the sum of a prime and an \textit{almost prime} (product of two primes). To my knowledge, this is still the best result available related to Goldbach's conjecture despite being $\sim$60 years old. As you can see, the most influential results related to the oldest problems in number theory are actually fruits of sieve methods and quite old. This goes to show how difficult it is to improve on sieve methods.
+			\item I include sieve theory at all in the book because this is the strongest and most interesting area in all of number theory. I will explain further. The development in recent history of number theory has been a little slow in comparison to the previous century. Brun's theorem on twin primes and Chen's result on almost primes related to Goldbach conjecture are still two of the most spectacular results in all of mathematics. Yet both of them are really old and I do not know of any improvements over these results that are of any real significance. \item Brun's theorem is of incredible historical importance; being the starting point of sieve methods today despite being over 100 years old. A story goes that Erd\H{o}s was asked what he thought the strongest theorem was in elementary number theory. His response was Brun's theorem on twin prime pairs. Indeed, one can see that the result of Viggo Brun on twin primes is still the most spectacular result regarding twin primes which requires no analysis or deep results. \textcite[Chapter VI]{friedlander_iwaniec_2010} named their chapter on Brun's theorem \textit{Brun’s Sieve--The Big Bang}. It just goes to show how beautiful this result really is and I believe this theorem is the most underrated result in all of mathematics. Another story goes that Landau had been sitting on Brun's paper for 8 years, mostly due to the use of difficult notations by Brun. Later, Landau dedicated an entire chapter in his \textit{Elementaren Zahlentheorie}, volume I.1 of \textcite{landau_1927} to Brun's theorem. I personally believe this story to be true, and that Landau did this out of guilt that he had deprived the mathematics world from such influential results for so long. The other result, Chen's theorem is based on Selberg's sieve that states that an even number greater than 2 is the sum of a prime and an \textit{almost prime} (product of two primes). To my knowledge, this is still the best result available related to Goldbach's conjecture despite being $\sim$60 years old. As you can see, the most influential results related to the oldest problems in number theory are actually fruits of sieve methods and quite old. This goes to show how difficult it is to improve on sieve methods.
 			\item I will discuss Tur\'{a}n's proof of a weaker version of a theorem on normal order by Ramanujan-Hardy which essentially contains \textit{Tur\'{a}n's sieve} in it. I do not go into the sieving technique itself but I show this proof because I mention normal order early in the book.
 			\item I will discuss two elementary proofs of the prime number theorem. Again, this begs the question: \textit{exactly what do we consider to be elementary?} which will be answered below. Both proofs will be included in \autoref{ch:pnt}.
 			\item I initially wanted to discuss basic complex analysis with connection to the convergence of Dirichlet series but later decided not to include it at all. It simply does not go with the spirit of this book. Similarly, I did not follow \textcite{apostol_1976} and discuss Dirichlet characters from a more general point of view using group theory.
@@ -408,7 +419,7 @@
 		{\itshape Masum Billal}\\
 		4:03 AM, 13 May, 2022
 	\end{flushright}
-	\subsection*{Prerequisites}
+	\section*{Prerequisites}
 	As for the prerequisites of this book, a fair introduction to number theory is necessary. There are many great texts that cover the basics that would suffice for this purpose; so I am not specifying any in particular. However, I have to state that the theory barely matters here. What matters is how well someone can make sense of the theories. I will go into detail using a particular example. Usually most students learn how to calculate greatest common divisor and least common multiple by the time they are in grade 5 or 6. For example, usually in grade 4 or 5 they are taught how to compute the greatest common divisor using Euclid's division algorithm; where one keeps dividing by the smaller number until 0 is reached. Once 0 is found as remainder, the divisor is the greatest common divisor. I prioritize on students making sense of why this division works rather than just using this method as a technique and knowing that this works. In practice, most students are unable to make sense of why this works during their lifetime. The point here is that; there is a way to make sense of it that even a 5th grader can think of. And yet none of the students I have asked this question have ever been able to explain to me why this makes sense. The best answer I get uses prime factorization and computing greatest common divisor from there. If the reader has never thought about this before, it is recommended that the reader tries this before moving on with the book. This is to make the reader understand what is more important for understanding number theory. It does not matter how much someone knows, if they are unable to make sense of it. I think of it like a bottleneck; to the effect that regardless of the volume inside bottle, the output when pouring will still be limited by the size of the cork that prevents the contents from flowing out.
 	\frontmatter
     \tableofcontents

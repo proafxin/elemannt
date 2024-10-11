@@ -298,7 +298,7 @@
 		\end{proposition}
 
 		\begin{proof}
-			Since $\chi$ is completely multiplicative and $\varsigma$ is the summatory function on divisors, $\varsigma$ is multiplicative also. So we mainly need to look at
+			Since $\chi$ is completely multiplicative and $\varsigma$ is the summatory function on divisors, $\varsigma$ is also multiplicative. So we mainly need to look at
 				\begin{align*}
 					\varsigma(p^{e})
 						& = \sum_{d\mid p^{e}}\chi(d)\\
@@ -732,7 +732,7 @@
 			\sum_{\substack{p^{u}\leq x\\p^{u}\equiv l\pmod{k}}}\log{p}\log{\frac{x^{2}}{p}}
 				& = \sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\log{p}\log{\frac{x^{2}}{p}}+\sum_{\substack{p^{u}\leq x,u\geq2\\p^{u}\equiv l\pmod{k}}}\log{p}\log{\frac{x^{2}}{p}}
 		\end{align*}
-	You can probably guess by now that the reason we treat them separately is because largest contribution towards the sum is made by the $p\leq x$ rather than $p^{2}\leq x,p^{3}\leq x,\ldots$ since they are much rarer.
+	You can probably guess by now that the reason we treat them separately is because largest contribution towards the sum is made by the $p\leq x$ rather than $p^{2}\leq x,p^{3}\leq x,\ldots$ since they are much rarer. This is not a new idea. In fact, this was the original idea behind Tchebyscheff's $\vartheta(x)\sim\psi(x)$. The contributions of $\log{p}$ we get from $p^{2},p^{3},\ldots\leq x$ is negligible compared to what we get from $p\leq x$ alone when $x\to\infty$. Selberg makes a clever use of this idea here.
 		\begin{align*}
 			\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\log{p}\log{\frac{x^{2}}{p}}
 				& = \sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\log{p}(2\log{x}-\log{p})\\
@@ -766,7 +766,7 @@
 				& = \sum_{\substack{p^{u}\leq x\\u\geq 2}}(\log{p})\sum_{q^{v}\leq x/p^{u}}\log{q}\\
 				& = \sum_{\substack{p^{u}\leq x\\u\geq 2}}(\log{p})\parenthesis{\log_{q}{\floor{\frac{x}{p^{u}}}}\log{q}}
 		\end{align*}
-	Using $\log_{a}{b}\log{b}{c}=\log_{a}{c}$,
+	Using $\log_{a}{b}\log_{b}{c}=\log_{a}{c}$,
 		\begin{align*}
 			\sum_{\substack{p^{u}q^{v}\leq x\\u\geq2\\p^{u}q^{v}\equiv l\pmod{k}}}\log{p}{\log{q}}
 				& = \sum_{\substack{p^{u}\leq x\\u\geq 2}}\log{p}\log{{\floor{\frac{x}{p^{u}}}}}\\
@@ -829,7 +829,7 @@
 			\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\log^{2}{p}+\sum_{\substack{pq\leq x\\pq\equiv l\pmod{k}}}\log{p}{\log{q}}
 				& = \dfrac{1}{\varphi(k)}\parenthesis{\sum_{p\leq x}\log^{2}{p}+\sum_{pq\leq x}\log{p}\log{q}}+O(x)
 		\end{align*}
-	So far, it hasn't been very clear where exactly this line of thinking was going. Now we see that we finally have a result relating primes not exceeding $x$ which are of the form $kn+l$ to primes not exceeding $x$ in general. This last result we have actually gives us more insight. One way is to write $\log^{2}{p}=p\parenthesis{\frac{\log^{2}{p}}{p}}$ and use partial summation formula.
+	So far, it hasn't been very clear where exactly this line of thinking was going. Now we finally have a result related to primes not exceeding $x$ which are of the form $kn+l$ to primes not exceeding $x$ in general. This last result we have actually gives us more insight. One way is to write $\log^{2}{p}=p\parenthesis{\frac{\log^{2}{p}}{p}}$ and use partial summation formula.
 		\begin{align*}
 			\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\dfrac{\log^{2}{p}}{p}
 				& = \dfrac{1}{x}\sum_{\substack{p\leq x\\p\equiv l\pmod{k}}}\log^{2}{p}+\int_{1}^{x}\parenthesis{\sum_{\substack{p\leq t\\p\equiv l\pmod{k}}}\log^{2}{p}}\dfrac{1}{t^{2}}dt
