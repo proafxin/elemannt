@@ -292,7 +292,8 @@
 				& \sim x
 		\end{align*}
 	we see that $f(x)=\log{x}$ and $g(x)=o(x)$ or $g(x)=O(1)$ seem to be suitable candidates.
-	
+
+	\section{Bertrand's Postulate}
 	One of the goals of Tchebyscheff's work was to prove a postulate by \textcite{bertrand_1845}.
 		\begin{conjecture}[Bertrand's postulate]\label{con:bertrand}
 			For any real number $x>1$, there is a prime $p$ such that $n<p<2n$.
@@ -416,14 +417,16 @@
 		\end{proof}
 
 		\begin{remark}
-			In fact, you can show easily that $n\leq 4000$. Also, notice that we can  easily show that primes exist in the region $n<p<2n$ for $n<4000$ in at most $12$ steps which is also easy.
+			In fact, you can show easily that $n\leq 4000$. Also, notice that we can show that primes exist in the region $n<p<2n$ for $n<4000$ in at most $12$ steps which is also easy.
 		\end{remark}
+
+	\section{Mertens' Theorems}\index{Mertens' Theorems}
 	\textcite{mertens_1874} gave more precise results than \nameref{thm:primereciprocal}.
 		\begin{theorem}[Mertens' theorems]\label{thm:mertens}
 			Let $x$ be a positive real number. As $x\to\infty$,
 			\begin{align}
 				\sum_{p\leq x}\dfrac{1}{p}
-				& = \log{\log{x}}+B+\bigo{\dfrac{1}{x}}\label{eqn:mertens1}\\
+				& = \log{\log{x}}+B+\bigo{\dfrac{1}{\log{x}}}\label{eqn:mertens1}\\
 				\sum_{p\leq x}\dfrac{\log{p}}{p}
 				& = \log{x}+O(1)\label{eqn:mertens2}\\
 				\prod_{p\leq x}\func{}{1-\dfrac{1}{p}}
@@ -432,7 +435,7 @@
 			where $B$ is a constant and $\gamma$ is Euler-Mascheroni constant.
 		\end{theorem}
 
-		\begin{proof}
+		\begin{proof}[Proof of \eqref{eqn:mertens1} and \eqref{eqn:mertens2}]
 			From \nameref{thm:stirling},
 				\begin{align*}
 					\log{n!}
@@ -507,4 +510,43 @@
 						& = x\log{x}-x+\bigo{\log{x}}
 				\end{align*}
 		\end{corollary}
+	\section{The Value of $B$} In order to calculate the value of $B$, consider $s>1$. By \nameref{thm:abel}
+		\begin{align*}
+			\sum_{p\leq x}\dfrac{1}{p^{s}}
+				& = \sum_{p\leq x}\dfrac{1}{p}p^{1-s}\\
+				& = x^{1-s}\sum_{p\leq x}\dfrac{1}{p}+(s-1)\int_{2}^{x}\parenthesis{\sum_{p\leq t}\dfrac{1}{p}}t^{-s}dt
+		\end{align*}
+	Taking $x\to\infty$, $x^{1-s}\to0$.
+		\begin{align*}
+			\sum_{p\leq x}\dfrac{1}{p^{s}}
+				& = (s-1)\int_{2}^{\infty}\parenthesis{\log{\log{t}}+B+\dfrac{1}{t}}t^{-s}dt\\
+				& = (s-1)\int_{2}^{\infty}\dfrac{\log{\log{t}}}{t^{s}}dt+B(s-1)\int_{2}^{\infty}t^{-s}dt+(s-1)\bigo{\int_{2}^{\infty}\dfrac{1}{t^{s}\log{t}}dt}
+		\end{align*}
+	Let us tackle each of the terms individually. Using integration by parts,
+		\begin{align*}
+			\int_{2}^{\infty}\dfrac{1}{t^{s}\log{t}}dt
+				& = \squarebracket{\dfrac{1}{\log{x}}\int_{2}^{\infty}t^{-s}dt+\int_{2}^{\infty}\parenthesis{\dfrac{1}{t\log^{2}{t}}\int_{2}^{\infty}t^{-s}dt}dt}^{\infty}_{2}\\
+				& = \squarebracket{\dfrac{K}{\log{x}}+K\int_{2}^{\infty}\dfrac{dt}{t\log^{2}{t}}}^{\infty}_{2}
+		\end{align*}
+	Taking $\log{x}=z$ we see that
+		\begin{align*}
+			\int\dfrac{1}{x\log^{2}x}dx
+				& = -\dfrac{1}{\log{x}}+D
+		\end{align*}
+	Thus,
+		\begin{align*}
+			\int_{2}^{\infty}\dfrac{1}{t^{s}\log{t}}dt
+				& = \squarebracket{\dfrac{K}{\log{x}}-\dfrac{K}{\log{x}}+D}^{\infty}_{2}=0
+		\end{align*}
+	\begin{proof}[Proof of \eqref{eqn:mertens3}]
+		We will work on a slight reformation
+			\begin{align*}
+				\prod_{p\leq x}\parenthesis{1-\dfrac{1}{p}}
+					& \sim \dfrac{e^{-\gamma}}{\log{x}}\\
+				\iff -\sum_{p\leq x}\log\parenthesis{1-\dfrac{1}{p}}
+					& \sim \gamma+\log{\log{x}}
+			\end{align*}
+	\end{proof}
+
+
 \end{document}

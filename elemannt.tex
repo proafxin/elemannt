@@ -182,8 +182,8 @@
 
 	%\usepackage[scale=1.2]{baskervillef}
 	%\usepackage[baskerville, scaled=1.2]{newtxmath}
-	%\pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.1pt}
-	%\makeatletter\let\normalrender\PdfRender@NormalColorHook\let\PdfRender@NormalColorHook\@empty\newcommand*{\textnormalrender}[1]{\begingroup\normalrender#1\endgroup}\makeatother
+	\pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.2pt}
+	\makeatletter\let\normalrender\PdfRender@NormalColorHook\let\PdfRender@NormalColorHook\@empty\newcommand*{\textnormalrender}[1]{\begingroup\normalrender#1\endgroup}\makeatother
 \fi
 
 %\usepackage[,nopostdot,]{glossaries}
@@ -357,7 +357,7 @@
 \usepackage{titlesec}
 
 %\titleformat{\section}[runin]{}{\thesection}{}{}
-\titleformat{\section}[runin]{\normalfont\bfseries}{}{0em}{{#1}.}
+\titleformat{\section}[runin]{\large\normalfont\bfseries}{}{0em}{{#1}.}
 
 
 \begin{document}
@@ -391,17 +391,18 @@
 
 	\TitlePage [  ]
 	{
-		color = { main = burgundy!75!black, back = gray!100 }
-		, title     = \color{black}\normalfont\Huge\bfseries\textsl{Elementary Analytic Number Theory}
+		color = { main = purple!100!, back = gray!100 }
+		, title     = \color{black}\centering\normalfont\Huge\bfseries\textit{Elementary Analytic Number Theory}
 		, subtitle  =
 		, author    = \color{black}\normalfont\bfseries\MakeUppercase{Masum\hspace{.2em} Billal}
 		, date      = {}
 		, logo      = {} %<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 	}
-	
+
 	\ifPDFTeX
-		%\relscale{1.1}
+		\relscale{1.1}
 	\fi
+	\ifXeTeX\relscale{1.1}\fi
 
 	\section*{Preface}
 	While analytic number theory is a very broad subject and there are a great many books on this topic, there are not many books that are truly introductory. There are some that are introductory enough such as \textcite{apostol_1976} but they usually depend on abstract algebra and complex analysis heavily. In contrast, it can be argued that both topics are entirely excluded from this book except the very basics. Probably the heaviest result from complex numbers used here is that the product of absolute values of two complex numbers equals to the absolute value of the product of those complex numbers. Thus, the primary objective of this book is to discuss analytic number theory in the most \textit{elementary} way possible. Before I explain what I mean by elementary, I will mention a few more details.
